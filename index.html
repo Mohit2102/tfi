@@ -365,10 +365,7 @@
       height: auto;
     }
 
-    .hero-collage {
-      position: relative;
-      height: 440px;
-    }
+
 
     @media(max-width:920px) {
       .hero-collage {
@@ -1191,34 +1188,41 @@
     .hero-collage {
       position: relative;
       width: 100%;
-      height: 560px;
-      overflow: hidden;
-      border-radius: 24px;
+      /* let it size to content instead of a hardcoded px/vh height */
+      /* min-height: 600px; */
+      /* fallback */
+      height: auto;
     }
 
     .hero-carousel {
       position: relative;
       width: 100%;
-      height: 100%;
+      aspect-ratio: 16 / 9;
+      /* controls proportions without clipping */
       overflow: hidden;
-      border-radius: 24px;
+      background: transparent;
     }
+
 
     .carousel-slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transform: scale(1.05);
-      transition:
-        opacity 0.9s ease,
-        transform 5s ease;
-      pointer-events: none;
+      transition: opacity 0.6s ease;
     }
 
     .carousel-slide.active {
       opacity: 1;
-      transform: scale(1);
-      pointer-events: auto;
+    }
+
+    .slide-bg,
+    .slide-fg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      /* keeps top of image (faces/heads) visible */
+      display: block;
     }
 
     .carousel-slide img {
@@ -1233,11 +1237,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to top,
-          rgba(0, 0, 0, 0.75) 0%,
-          rgba(0, 0, 0, 0.15) 55%,
-          rgba(0, 0, 0, 0.05) 100%);
+      z-index: 2;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 22%);
+      pointer-events: none;
     }
 
     /* Text on image */
@@ -1320,8 +1322,8 @@
     /* Mobile */
     @media (max-width: 768px) {
       .hero-collage {
-        height: 430px;
-        margin-top: 30px;
+        height: 380px;
+        margin-top: 20px;
       }
 
       .slide-label {
@@ -1355,6 +1357,7 @@
         <a href="#pricing">Pricing</a>
         <a href="#contact">Contact</a>
       </nav>
+
       <div class="navcta">
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
           <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1372,6 +1375,7 @@
         </button>
       </div>
     </div>
+
     <div id="mobilemenu">
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
@@ -1388,43 +1392,30 @@
       <div class="hero-carousel">
 
         <div class="carousel-slide active">
-          <img src="images/fitness-1.png" alt="Personal training">
-          <div class="slide-label">
-            <!-- <strong>Personal Training</strong>
-            <span>Train stronger. Move better.</span> -->
-          </div>
+          <img class="slide-bg" src="images/fitness-1.png" alt="" aria-hidden="true">
+          <img class="slide-fg" src="images/fitness-1.png" alt="Personal training">
         </div>
 
         <div class="carousel-slide">
-          <img src="images/fitness-2.png" alt="Strength training">
-          <div class="slide-label">
-            <!-- <strong>Strength & Conditioning</strong>
-            <span>Build strength. Build confidence.</span> -->
-          </div>
+          <img class="slide-bg" src="images/fitness-2.jpg" alt="" aria-hidden="true">
+          <img class="slide-fg" src="images/fitness-2.jpg" alt="Strength training">
         </div>
 
         <div class="carousel-slide">
-          <img src="images/fitness-3.jpg" alt="Group fitness">
-          <div class="slide-label">
-            <!-- <strong>Group Fitness</strong>
-            <span>Energy. Community. Results.</span> -->
-          </div>
+          <img class="slide-bg" src="images/fitness-3.jpg" alt="" aria-hidden="true">
+          <img class="slide-fg" src="images/fitness-3.jpg" alt="Group fitness">
         </div>
-      </div>
 
-      <div class="carousel-dots">
-        <button class="active" data-slide="0"></button>
-        <button data-slide="1"></button>
-        <button data-slide="2"></button>
-        <button data-slide="3"></button>
-      </div>
+        <div class="carousel-dots">
+          <button class="active" data-slide="0"></button>
+          <button data-slide="1"></button>
+          <button data-slide="2"></button>
+        </div>
 
-      <!-- <div class="collage-badge">
-        <span class="n">4.8★</span>
-        <span class="l">Member rating</span>
-      </div> -->
+      </div>
 
     </div>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
 
@@ -1435,6 +1426,10 @@
         let carouselTimer;
 
         function showSlide(index) {
+
+          if (index < 0 || index >= slides.length) {
+            index = 0;
+          }
 
           slides.forEach((slide, i) => {
             slide.classList.toggle("active", i === index);
@@ -1448,8 +1443,8 @@
         }
 
         function nextSlide() {
-          const next = (currentSlide + 1) % slides.length;
-          showSlide(next);
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
         }
 
         function startCarousel() {
