@@ -1187,6 +1187,156 @@
     html.dark-mode .theme-toggle .icon-moon {
       display: block;
     }
+
+    .hero-collage {
+      position: relative;
+      width: 100%;
+      height: 560px;
+      overflow: hidden;
+      border-radius: 24px;
+    }
+
+    .hero-carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 24px;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.05);
+      transition:
+        opacity 0.9s ease,
+        transform 5s ease;
+      pointer-events: none;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Dark gradient over image */
+    .carousel-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top,
+          rgba(0, 0, 0, 0.75) 0%,
+          rgba(0, 0, 0, 0.15) 55%,
+          rgba(0, 0, 0, 0.05) 100%);
+    }
+
+    /* Text on image */
+    .slide-label {
+      position: absolute;
+      z-index: 2;
+      left: 30px;
+      bottom: 35px;
+      color: #fff;
+    }
+
+    .slide-label strong {
+      display: block;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .slide-label span {
+      display: block;
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    /* Carousel dots */
+    .carousel-dots {
+      position: absolute;
+      z-index: 10;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .carousel-dots button {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-dots button.active {
+      width: 28px;
+      border-radius: 10px;
+      background: #D8AF37;
+    }
+
+    /* Rating badge */
+    .collage-badge {
+      position: absolute;
+      z-index: 20;
+      top: 22px;
+      right: 22px;
+      padding: 12px 17px;
+      border-radius: 12px;
+      background: rgba(20, 18, 14, 0.88);
+      backdrop-filter: blur(10px);
+      color: #fff;
+    }
+
+    .collage-badge .n {
+      display: block;
+      color: #D8AF37;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .collage-badge .l {
+      display: block;
+      margin-top: 2px;
+      font-size: 11px;
+      opacity: 0.75;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero-collage {
+        height: 430px;
+        margin-top: 30px;
+      }
+
+      .slide-label {
+        left: 20px;
+        bottom: 35px;
+      }
+
+      .slide-label strong {
+        font-size: 22px;
+      }
+
+      .slide-label span {
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 
@@ -1233,56 +1383,97 @@
   </header>
 
   <main id="top">
+    <div class="hero-collage reveal" id="heroLogo">
 
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="badge"><span class="dot"></span>Admissions open · 2026</div>
-          <h1>Time to fit.<br>Time to <span class="accent">transform.</span></h1>
-          <p class="lede">Personal training, strength conditioning, weight loss and group fitness — coached by certified
-            trainers who track every rep, every set, every result.</p>
-          <div class="hero-ctas">
-            <a class="btn btn-solid" href="#contact">Start your journey</a>
-            <a class="btn btn-quiet" href="#programs">Explore programs</a>
+      <div class="hero-carousel">
+
+        <div class="carousel-slide active">
+          <img src="images/fitness-1.png" alt="Personal training">
+          <div class="slide-label">
+            <!-- <strong>Personal Training</strong>
+            <span>Train stronger. Move better.</span> -->
           </div>
         </div>
-        <div class="hero-collage reveal" id="heroLogo">
-          <div class="collage-card card-a">
-            <svg viewBox="0 0 260 340" xmlns="http://www.w3.org/2000/svg">
-              <rect width="260" height="340" fill="#1C1A15" />
-              <g stroke="#D8AF37" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                opacity="0.85">
-                <circle cx="130" cy="88" r="30" />
-                <path d="M96 340 v-70 c0-40 15-70 34-70 s34 30 34 70 v70" />
-                <path d="M60 210 c10-30 28-46 40-52 M200 210 c-10-30-28-46-40-52" />
-                <rect x="30" y="196" width="26" height="10" rx="2" />
-                <rect x="204" y="196" width="26" height="10" rx="2" />
-              </g>
-            </svg>
+
+        <div class="carousel-slide">
+          <img src="images/fitness-2.png" alt="Strength training">
+          <div class="slide-label">
+            <!-- <strong>Strength & Conditioning</strong>
+            <span>Build strength. Build confidence.</span> -->
           </div>
-          <div class="collage-card card-c">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <rect width="200" height="200" fill="#1C1A15" />
-              <g stroke="#D8AF37" stroke-width="2" fill="none" opacity="0.8">
-                <circle cx="100" cy="100" r="46" />
-                <path d="M60 100h80M100 60v80" />
-              </g>
-            </svg>
+        </div>
+
+        <div class="carousel-slide">
+          <img src="images/fitness-3.jpg" alt="Group fitness">
+          <div class="slide-label">
+            <!-- <strong>Group Fitness</strong>
+            <span>Energy. Community. Results.</span> -->
           </div>
-          <div class="collage-card card-b">
-            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
-              <rect width="220" height="180" fill="#1C1A15" />
-              <g stroke="#D8AF37" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85">
-                <path d="M30 130 L75 70 L110 105 L150 40 L195 80" />
-                <circle cx="30" cy="130" r="5" fill="#D8AF37" stroke="none" />
-                <circle cx="195" cy="80" r="5" fill="#D8AF37" stroke="none" />
-              </g>
-            </svg>
-          </div>
-          <div class="collage-badge"><span class="n">4.8★</span><span class="l">Member rating</span></div>
         </div>
       </div>
-    </section>
+
+      <div class="carousel-dots">
+        <button class="active" data-slide="0"></button>
+        <button data-slide="1"></button>
+        <button data-slide="2"></button>
+        <button data-slide="3"></button>
+      </div>
+
+      <!-- <div class="collage-badge">
+        <span class="n">4.8★</span>
+        <span class="l">Member rating</span>
+      </div> -->
+
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+
+        const slides = document.querySelectorAll(".carousel-slide");
+        const dots = document.querySelectorAll(".carousel-dots button");
+
+        let currentSlide = 0;
+        let carouselTimer;
+
+        function showSlide(index) {
+
+          slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+          });
+
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+          });
+
+          currentSlide = index;
+        }
+
+        function nextSlide() {
+          const next = (currentSlide + 1) % slides.length;
+          showSlide(next);
+        }
+
+        function startCarousel() {
+          carouselTimer = setInterval(nextSlide, 4000);
+        }
+
+        function resetCarousel() {
+          clearInterval(carouselTimer);
+          startCarousel();
+        }
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", function () {
+            showSlide(index);
+            resetCarousel();
+          });
+        });
+
+        showSlide(0);
+        startCarousel();
+
+      });
+    </script>
+
 
     <div class="stats">
       <div class="wrap stats-row">
