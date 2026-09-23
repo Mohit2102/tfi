@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,6 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
+    --bg:#F5F2EB;
+    --surface:#FFFFFF;
+    --surface-2:#EDE9E0;
+    --gold:#B8901A;
+    --gold-light:#8C6A14;
+    --gold-deep:#6B4F0E;
+    --text:#1A1404;
+    --text-secondary:#4A4233;
+    --text-muted:#7A7361;
+    --line: rgba(26,20,4,0.12);
+    --line-strong: rgba(26,20,4,0.20);
+    --header-bg: rgba(245,242,235,0.92);
+    color-scheme: light;
+  }
+  html.dark-mode{
     --bg:#0B0A08;
     --surface:#151310;
     --surface-2:#1C1A15;
@@ -20,10 +35,8 @@
     --text-muted:#7A7361;
     --line: rgba(243,238,223,0.12);
     --line-strong: rgba(243,238,223,0.24);
+    --header-bg: rgba(11,10,8,0.9);
     color-scheme: dark;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --bg:#080705; --surface:#131110; }
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth; scroll-padding-top: calc(78px + env(safe-area-inset-top, 0px));}
@@ -67,7 +80,7 @@
   /* NAV */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(11,10,8,0.9); backdrop-filter:blur(8px);
+    background:var(--header-bg, rgba(245,242,235,0.92)); backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
     padding-top:env(safe-area-inset-top,0px);
   }
@@ -119,7 +132,7 @@
   .card-a{width:58%; height:78%; top:0; left:0; z-index:2;}
   .card-b{width:42%; height:46%; bottom:0; right:0; z-index:3; border-color:var(--gold);}
   .card-c{width:34%; height:34%; top:6%; right:4%; z-index:1;}
-  .collage-badge{position:absolute; bottom:14px; left:14px; z-index:4; background:rgba(11,10,8,0.85); border:1px solid var(--gold); padding:8px 12px; display:flex; align-items:center; gap:8px;}
+  .collage-badge{position:absolute; bottom:14px; left:14px; z-index:4; background:var(--bg); border:1px solid var(--gold); padding:8px 12px; display:flex; align-items:center; gap:8px;}
   .collage-badge .n{font-family:'Oswald',sans-serif; font-weight:700; font-size:18px; color:var(--gold-light);}
   .collage-badge .l{font-size:10.5px; color:var(--text-secondary);}
 
@@ -249,6 +262,24 @@
   @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
 
   :focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+
+  /* Theme toggle button */
+  .theme-toggle{
+    background:none; border:1.5px solid var(--line-strong); cursor:pointer;
+    width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    transition: background .2s ease, border-color .2s ease, transform .15s ease;
+    padding:0; flex-shrink:0;
+  }
+  .theme-toggle:hover{
+    background:rgba(216,175,55,0.10); border-color:var(--gold); transform:translateY(-2px);
+  }
+  .theme-toggle svg{
+    width:20px; height:20px; fill:var(--gold); transition: fill .2s ease;
+  }
+  .theme-toggle .icon-sun{ display:block; }
+  .theme-toggle .icon-moon{ display:none; }
+  html.dark-mode .theme-toggle .icon-sun{ display:none; }
+  html.dark-mode .theme-toggle .icon-moon{ display:block; }
 </style>
 </head>
 <body>
@@ -267,6 +298,10 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="navcta">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-13.435l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2 1 1 0 0 0-.35-1 1 1 0 0 0-1.05-.17 10 10 0 1 0 13.71 10.68z"/></svg>
+      </button>
       <a class="btn btn-solid" href="#contact">Book a free trial</a>
       <button class="navtoggle" id="navtoggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -596,6 +631,25 @@
     if(!valid){ form.reportValidity(); return; }
     success.style.display = 'block';
     form.reset();
+  });
+
+  // Theme toggle
+  var themeBtn = document.getElementById('themeToggle');
+  function setTheme(dark) {
+    if (dark) {
+      document.documentElement.classList.add('dark-mode');
+      localStorage.setItem('tfi-theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+      localStorage.setItem('tfi-theme', 'light');
+    }
+  }
+  // Load saved preference (default is light)
+  var saved = localStorage.getItem('tfi-theme');
+  if (saved === 'dark') { setTheme(true); }
+  themeBtn.addEventListener('click', function(){
+    var isDark = document.documentElement.classList.contains('dark-mode');
+    setTheme(!isDark);
   });
 </script>
 
