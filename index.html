@@ -546,13 +546,13 @@
       margin-bottom: 52px;
     }
 
-    .sec-kicker {
+    /* .sec-kicker {
       font-family: 'Oswald', sans-serif;
       font-size: 14px;
       font-weight: 600;
       color: var(--gold);
       margin-bottom: 10px;
-    }
+    } */
 
     .sec-head h2 {
       font-size: clamp(28px, 4vw, 42px);
@@ -674,47 +674,286 @@
       gap: 9px;
     }
 
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line-strong);
-      border: 1px solid var(--line-strong);
-    }
+    #why {
+  padding: 110px 0;
+  background: var(--cream, #f5f2eb);
+}
 
-    @media(max-width:880px) {
-      .why-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+#why .sec-head {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 70px;
+}
 
-    @media(max-width:560px) {
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+#why .sec-kicker {
+  color: var(--gold, #b8901a);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
 
-    .why-cell {
-      background: var(--surface);
-      padding: 32px 28px;
-    }
+#why .sec-head h2 {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1000px;
+}
 
-    .why-cell svg {
-      width: 30px;
-      height: 30px;
-      margin-bottom: 18px;
-      stroke: var(--gold);
-    }
 
-    .why-cell h4 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
+/* GRID */
 
-    .why-cell p {
-      font-size: 14.5px;
-    }
+/* ================================
+   WHY / TFI EDGE
+================================ */
 
+#why {
+  padding: 110px 0;
+  background: var(--cream, #f5f2eb);
+}
+
+/* #why .sec-head {
+  text-align: center;
+  margin-bottom: 55px;
+} */
+
+/* #why .sec-kicker {
+  color: var(--gold, #b8901a);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+} */
+
+/* #why .sec-head h2 {
+  margin: 0;
+  color: var(--dark, #0b0a08);
+  font-size: clamp(38px, 5vw, 68px);
+  line-height: 1;
+  font-weight: 700;
+} */
+
+
+/* GRID */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+
+/* CARD */
+
+.why-cell {
+  position: relative;
+  min-height: 390px;
+
+  background-size: cover;
+  background-position: center;
+
+  border-radius: 18px;
+  overflow: hidden;
+
+  isolation: isolate;
+
+  display: flex;
+  align-items: flex-end;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.14);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
+/* IMAGE HOVER */
+
+.why-cell:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.22);
+}
+
+
+/* DARK IMAGE OVERLAY */
+
+.why-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(5, 8, 12, 0.97) 0%,
+      rgba(5, 8, 12, 0.78) 38%,
+      rgba(5, 8, 12, 0.22) 72%,
+      rgba(5, 8, 12, 0.05) 100%
+    );
+
+  transition: background 0.4s ease;
+}
+
+
+/* HOVER OVERLAY */
+
+.why-cell:hover .why-overlay {
+  background:
+    linear-gradient(
+      to top,
+      rgba(5, 8, 12, 0.98) 0%,
+      rgba(5, 8, 12, 0.72) 45%,
+      rgba(184, 144, 26, 0.12) 100%
+    );
+}
+
+
+/* CONTENT */
+
+.why-content {
+  width: 100%;
+  padding: 30px;
+  color: white;
+}
+
+
+/* ICON */
+
+.why-content svg {
+  width: 44px;
+  height: 44px;
+
+  color: var(--gold, #b8901a);
+
+  margin-bottom: 18px;
+
+  transition:
+    transform 0.4s ease,
+    color 0.4s ease;
+}
+
+.why-cell:hover .why-content svg {
+  transform: scale(1.12);
+  color: #d8af37;
+}
+
+
+/* HEADING */
+
+.why-content h4 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+
+  font-family: "Oswald", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+
+  line-height: 1.15;
+}
+
+
+/* DESCRIPTION */
+
+.why-content p {
+  margin: 0;
+
+  max-width: 430px;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* GOLD LINE */
+
+.why-content h4::after {
+  content: "";
+
+  display: block;
+
+  width: 42px;
+  height: 2px;
+
+  margin-top: 12px;
+
+  background: var(--gold, #b8901a);
+
+  transition: width 0.4s ease;
+}
+
+.why-cell:hover .why-content h4::after {
+  width: 70px;
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 1000px) {
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-cell {
+    min-height: 370px;
+  }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 650px) {
+
+  #why {
+    padding: 75px 0;
+  }
+
+  #why .sec-head {
+    margin-bottom: 35px;
+  }
+
+  #why .sec-head h2 {
+    font-size: 38px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .why-cell {
+    min-height: 360px;
+    border-radius: 15px;
+  }
+
+  .why-content {
+    padding: 25px;
+  }
+
+  .why-content h4 {
+    font-size: 25px;
+  }
+
+  .why-content p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+}
     .sched-table,
     .price-table {
       width: 100%;
@@ -1997,7 +2236,7 @@
     <div class="wrap navrow">
       <a class="logo" href="#top">
         <img src="logo/logo.png" alt="Logo">
-        <span class="word"><b>TFI</b>Time To Fit India</span>
+        <span class="word">Time to Fit India</span>
       </a>
       <nav class="navlinks" aria-label="Primary">
         <a href="#about">Home</a>
@@ -2479,66 +2718,174 @@
 
     <section id="why">
       <div class="wrap">
+    
         <div class="sec-head">
           <div class="sec-kicker">The TFI edge</div>
           <h2>Train smarter. Show up stronger.</h2>
         </div>
+    
         <div class="why-grid">
-          <div class="why-cell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path
-                d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" />
-              <circle cx="12" cy="12" r="3.2" />
-            </svg>
-            <h4>Certified expert coaches</h4>
-            <p>Every trainer is certified and experienced, turning textbook technique into personalised, hands-on
-              coaching.</p>
+    
+          <!-- 01 Certified Coaches -->
+          <div class="why-cell"
+            style="background-image: url('images/why-coaches.jpg');">
+    
+            <div class="why-overlay"></div>
+    
+            <div class="why-content">
+              <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>
+                <circle cx="12" cy="12" r="3.2"/>
+              </svg>
+    
+              <h4>Certified expert coaches</h4>
+    
+              <p>
+                Every trainer is certified and experienced, turning textbook
+                technique into personalised, hands-on coaching.
+              </p>
+            </div>
           </div>
-          <div class="why-cell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="9" cy="7" r="3.2" />
-              <path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2S15.5 16.4 15.5 20" />
-              <circle cx="17.5" cy="8" r="2.4" />
-              <path d="M17 13.4c2.6.4 4.5 2.4 4.5 5.1" />
-            </svg>
-            <h4>Goal-based small batches</h4>
-            <p>No crowded floors. Members train in focused batches grouped by fitness level and goal.</p>
+    
+    
+          <!-- 02 Small Batches -->
+          <div class="why-cell"
+            style="background-image: url('images/why-small-batches.jpg');">
+    
+            <div class="why-overlay"></div>
+    
+            <div class="why-content">
+              <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="9" cy="7" r="3.2"/>
+                <path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2S15.5 16.4 15.5 20"/>
+                <circle cx="17.5" cy="8" r="2.4"/>
+                <path d="M17 13.4c2.6.4 4.5 2.4 4.5 5.1"/>
+              </svg>
+    
+              <h4>Goal-based small batches</h4>
+    
+              <p>
+                No crowded floors. Members train in focused batches grouped by
+                fitness level and goal.
+              </p>
+            </div>
           </div>
-          <div class="why-cell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M4 21V10M10 21V4M16 21v-7M22 21H2" />
-            </svg>
-            <h4>Fitness plus nutrition</h4>
-            <p>Training alone isn't enough — every program pairs with practical, personalised nutrition guidance.</p>
+    
+    
+          <!-- 03 Nutrition -->
+          <div class="why-cell"
+            style="background-image: url('images/why-nutrition.jpg');">
+    
+            <div class="why-overlay"></div>
+    
+            <div class="why-content">
+              <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 21V10M10 21V4M16 21v-7M22 21H2"/>
+              </svg>
+    
+              <h4>Fitness plus nutrition</h4>
+    
+              <p>
+                Training alone isn't enough — every program pairs with practical,
+                personalised nutrition guidance.
+              </p>
+            </div>
           </div>
-          <div class="why-cell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M3 12h4l3 8 4-16 3 8h4" />
-            </svg>
-            <h4>Results you can track</h4>
-            <p>Body composition, strength benchmarks and consistency — progress is never a guessing game here.</p>
+    
+    
+          <!-- 04 Results -->
+          <div class="why-cell"
+            style="background-image: url('images/why-results.jpg');">
+    
+            <div class="why-overlay"></div>
+    
+            <div class="why-content">
+              <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 12h4l3 8 4-16 3 8h4"/>
+              </svg>
+    
+              <h4>Results you can track</h4>
+    
+              <p>
+                Body composition, strength benchmarks and consistency — progress
+                is never a guessing game here.
+              </p>
+            </div>
           </div>
-          <div class="why-cell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="1" />
-              <path d="M3 9h18M9 21V9" />
-            </svg>
-            <h4>Modern, clean facility</h4>
-            <p>Well-maintained free weights, machines and a functional zone in a hygienic, focused space.</p>
+    
+    
+          <!-- 05 Facility -->
+          <div class="why-cell"
+            style="background-image: url('images/why-facility.jpg');">
+    
+            <div class="why-overlay"></div>
+    
+            <div class="why-content">
+              <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="1"/>
+                <path d="M3 9h18M9 21V9"/>
+              </svg>
+    
+              <h4>Modern, clean facility</h4>
+    
+              <p>
+                Well-maintained free weights, machines and a functional zone in
+                a hygienic, focused space.
+              </p>
+            </div>
           </div>
-          <div class="why-cell"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 7v5l3.5 2" />
-            </svg>
-            <h4>Flexible scheduling</h4>
-            <p>Morning and evening slots across every program, built around work and college hours.</p>
+    
+    
+          <!-- 06 Scheduling -->
+          <div class="why-cell"
+            style="background-image: url('images/why-scheduling.jpg');">
+    
+            <div class="why-overlay"></div>
+    
+            <div class="why-content">
+              <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3.5 2"/>
+              </svg>
+    
+              <h4>Flexible scheduling</h4>
+    
+              <p>
+                Morning and evening slots across every program, built around
+                work and college hours.
+              </p>
+            </div>
           </div>
+    
         </div>
       </div>
     </section>
 
-    <section style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <!-- <section style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
       <div class="wrap">
         <div class="sec-head">
           <div class="sec-kicker">Weekly rhythm</div>
@@ -2597,7 +2944,7 @@
         </div>
         <p class="price-note">All batches grouped by fitness level. Trial session available.</p>
       </div>
-    </section>
+    </section> -->
 
     <section>
       <div class="wrap">
@@ -2725,7 +3072,7 @@
       </div>
     </section>
 
-    <section id="pricing"
+    <!-- <section id="pricing"
       style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
       <div class="wrap">
         <div class="sec-head">
@@ -2785,7 +3132,7 @@
         </div>
         <p class="price-note">Sample pricing shown for layout — confirm actual rates before publishing.</p>
       </div>
-    </section>
+    </section> -->
 
     <section class="bmi-section" id="bmi">
       <div class="bmi-container">
