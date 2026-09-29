@@ -388,8 +388,8 @@
       <div class="hero-carousel">
 
         <div class="carousel-slide active">
-          <img class="slide-bg" src="images/fitness-1.png" alt="" aria-hidden="true">
-          <img class="slide-fg" src="images/fitness-1.png" alt="Personal training">
+          <img class="slide-bg" src="images/fitness-1.jpg" alt="" aria-hidden="true">
+          <img class="slide-fg" src="images/fitness-1.jpg" alt="Personal training">
         </div>
 
         <div class="carousel-slide">
@@ -1677,16 +1677,262 @@
         const container = document.querySelector(".testimonials-scroll");
         const next = document.querySelector(".testimonial-btn.next");
         const prev = document.querySelector(".testimonial-btn.prev");
-        const progress = document.querySelector(".testimonials-scroll-line span");
+        const progress = document.querySelector(
+          ".testimonials-scroll-line span"
+        );
       
         if (!container) return;
       
         let autoScroll;
         let isPaused = false;
+        let isMoving = false;
       
-        /* --------------------------------
-           SMOOTH AUTO CAROUSEL
-        -------------------------------- */
+        const AUTO_DELAY = 3000;
+      
+        /* =========================================================
+           CREATE INFINITE LOOP
+        ========================================================= */
+      
+        const originalCards = Array.from(
+          container.querySelectorAll(".testi-card")
+        );
+      
+        const totalCards = originalCards.length;
+      
+        if (totalCards === 0) return;
+      
+      
+        /*
+           Clone all cards.
+      
+           Original:
+           01 02 03 04 05 06 07 08
+      
+           Clones:
+           01 02 03 04 05 06 07 08
+      
+           When we reach clone 01, we silently reset
+           back to original 01.
+        */
+      
+        originalCards.forEach(card => {
+          const clone = card.cloneNode(true);
+          clone.classList.add("testi-card-clone");
+          container.appendChild(clone);
+        });
+      
+      
+        /* =========================================================
+           GET CARD WIDTH
+        ========================================================= */
+      
+        function getCardStep() {
+      
+          const card = container.querySelector(".testi-card");
+      
+          if (!card) return 0;
+      
+          const styles = window.getComputedStyle(container);
+          const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+      
+          return card.getBoundingClientRect().width + gap;
+        }
+      
+      
+        /* =========================================================
+           GET CURRENT CARD INDEX
+        ========================================================= */
+      
+        function getCurrentIndex() {
+      
+          const step = getCardStep();
+      
+          if (!step) return 0;
+      
+          return Math.round(container.scrollLeft / step);
+        }
+      
+      
+        /* =========================================================
+           MOVE TO CARD
+        ========================================================= */
+      
+        function moveToCard(index) {
+      
+          const step = getCardStep();
+      
+          if (!step || isMoving) return;
+      
+          isMoving = true;
+      
+          container.scrollTo({
+            left: Math.round(step * index),
+            behavior: "smooth"
+          });
+      
+          /*
+             Allow smooth scrolling to finish
+          */
+          setTimeout(() => {
+            isMoving = false;
+          }, 650);
+        }
+      
+      
+        /* =========================================================
+           NEXT
+        ========================================================= */
+      
+        function goNext() {
+      
+          if (isMoving) return;
+      
+          const currentIndex = getCurrentIndex();
+      
+          moveToCard(currentIndex + 1);
+      
+          restartAutoScroll();
+        }
+      
+      
+        /* =========================================================
+           PREVIOUS
+        ========================================================= */
+      
+        function goPrevious() {
+      
+          if (isMoving) return;
+      
+          const currentIndex = getCurrentIndex();
+      
+          /*
+             If we're at the beginning, jump to the
+             corresponding cloned position first.
+          */
+      
+          if (currentIndex <= 0) {
+      
+            const step = getCardStep();
+      
+            /*
+               Move silently to the cloned last card
+            */
+      
+            container.scrollTo({
+              left: Math.round(step * totalCards),
+              behavior: "auto"
+            });
+      
+            /*
+               Then move backward normally
+            */
+      
+            requestAnimationFrame(() => {
+              moveToCard(totalCards - 1);
+            });
+      
+          } else {
+      
+            moveToCard(currentIndex - 1);
+          }
+      
+          restartAutoScroll();
+        }
+      
+      
+        /* =========================================================
+           BUTTON EVENTS
+        ========================================================= */
+      
+        if (next) {
+          next.addEventListener("click", goNext);
+        }
+      
+        if (prev) {
+          prev.addEventListener("click", goPrevious);
+        }
+      
+      
+        /* =========================================================
+           INFINITE LOOP RESET
+        ========================================================= */
+      
+        container.addEventListener("scroll", function () {
+      
+          const step = getCardStep();
+      
+          if (!step) return;
+      
+          const currentIndex = getCurrentIndex();
+      
+          /*
+             We have reached the cloned cards.
+      
+             Example:
+      
+             Original:
+             01 02 03 04 05 06 07 08
+      
+             Clone:
+             01 02 03 04 05 06 07 08
+                               ↑
+                             here
+      
+             Reset to the original position without animation.
+          */
+      
+          if (currentIndex >= totalCards) {
+      
+            const originalIndex =
+              currentIndex - totalCards;
+      
+            /*
+               Wait until the smooth animation has
+               visually completed.
+            */
+      
+            setTimeout(() => {
+      
+              container.scrollTo({
+                left: Math.round(step * originalIndex),
+                behavior: "auto"
+              });
+      
+            }, 50);
+          }
+      
+      
+          /* =====================================================
+             PROGRESS BAR
+          ===================================================== */
+      
+          if (progress) {
+      
+            let displayIndex =
+              currentIndex % totalCards;
+      
+            let percentage =
+              ((displayIndex + 1) / totalCards) * 100;
+      
+            /*
+               Keep progress between 18% and 100%
+            */
+      
+            percentage = Math.max(
+              18,
+              Math.min(100, percentage)
+            );
+      
+            progress.style.width =
+              percentage + "%";
+          }
+      
+        });
+      
+      
+        /* =========================================================
+           AUTO CAROUSEL
+        ========================================================= */
       
         function startAutoScroll() {
       
@@ -1694,142 +1940,116 @@
       
           autoScroll = setInterval(() => {
       
-            if (isPaused) return;
-      
-            const maxScroll =
-              container.scrollWidth - container.clientWidth;
-      
-            /*
-              When reaching the end,
-              smoothly return to beginning
-            */
-            if (container.scrollLeft >= maxScroll - 5) {
-      
-              container.scrollTo({
-                left: 0,
-                behavior: "smooth"
-              });
-      
-            } else {
-      
-              /*
-                Small movement = smooth carousel
-              */
-              container.scrollBy({
-                left: 2,
-                behavior: "auto"
-              });
-      
+            if (isPaused || isMoving) {
+              return;
             }
       
-          }, 25);
+            const currentIndex = getCurrentIndex();
+      
+            /*
+               When we reach the final original card,
+               next moves to its clone automatically.
+            */
+      
+            moveToCard(currentIndex + 1);
+      
+          }, AUTO_DELAY);
         }
       
       
-        /* --------------------------------
-           NEXT BUTTON
-        -------------------------------- */
-      
-        next.addEventListener("click", function () {
-      
-          const card = container.querySelector(".testi-card");
-      
-          const cardWidth =
-            card.offsetWidth + 18;
-      
-          container.scrollBy({
-            left: cardWidth * 2,
-            behavior: "smooth"
-          });
-      
-          restartAutoScroll();
-        });
-      
-      
-        /* --------------------------------
-           PREVIOUS BUTTON
-        -------------------------------- */
-      
-        prev.addEventListener("click", function () {
-      
-          const card = container.querySelector(".testi-card");
-      
-          const cardWidth =
-            card.offsetWidth + 18;
-      
-          container.scrollBy({
-            left: -cardWidth * 2,
-            behavior: "smooth"
-          });
-      
-          restartAutoScroll();
-        });
-      
-      
-        /* --------------------------------
-           PAUSE WHEN MOUSE IS OVER CARDS
-        -------------------------------- */
-      
-        container.addEventListener("mouseenter", function () {
-          isPaused = true;
-        });
-      
-        container.addEventListener("mouseleave", function () {
-          isPaused = false;
-        });
-      
-      
-        /* --------------------------------
-           PAUSE ON TOUCH
-        -------------------------------- */
-      
-        container.addEventListener("touchstart", function () {
-          isPaused = true;
-        }, { passive: true });
-      
-        container.addEventListener("touchend", function () {
-          setTimeout(() => {
-            isPaused = false;
-          }, 1500);
-        }, { passive: true });
-      
-      
-        /* --------------------------------
+        /* =========================================================
            RESTART AUTO SCROLL
-        -------------------------------- */
+        ========================================================= */
       
         function restartAutoScroll() {
       
           clearInterval(autoScroll);
       
           setTimeout(() => {
-            startAutoScroll();
-          }, 2000);
       
+            if (!isPaused) {
+              startAutoScroll();
+            }
+      
+          }, 2000);
         }
       
       
-        /* --------------------------------
-           PROGRESS BAR
-        -------------------------------- */
+        /* =========================================================
+           PAUSE ON MOUSE
+        ========================================================= */
       
-        container.addEventListener("scroll", function () {
+        container.addEventListener("mouseenter", () => {
+          isPaused = true;
+        });
       
-          const maxScroll =
-            container.scrollWidth - container.clientWidth;
+        container.addEventListener("mouseleave", () => {
       
-          if (maxScroll <= 0) return;
+          isPaused = false;
       
-          const percentage =
-            (container.scrollLeft / maxScroll) * 100;
-      
-          progress.style.width =
-            Math.max(18, percentage) + "%";
-      
+          restartAutoScroll();
         });
       
       
-        /* START */
+        /* =========================================================
+           PAUSE ON TOUCH
+        ========================================================= */
+      
+        container.addEventListener(
+          "touchstart",
+          () => {
+      
+            isPaused = true;
+      
+            clearInterval(autoScroll);
+      
+          },
+          { passive: true }
+        );
+      
+      
+        container.addEventListener(
+          "touchend",
+          () => {
+      
+            setTimeout(() => {
+      
+              isPaused = false;
+      
+              startAutoScroll();
+      
+            }, 1500);
+      
+          },
+          { passive: true }
+        );
+      
+      
+        /* =========================================================
+           PAUSE WHEN TAB IS NOT VISIBLE
+        ========================================================= */
+      
+        document.addEventListener(
+          "visibilitychange",
+          () => {
+      
+            if (document.hidden) {
+      
+              clearInterval(autoScroll);
+      
+            } else {
+      
+              startAutoScroll();
+      
+            }
+      
+          }
+        );
+      
+      
+        /* =========================================================
+           START
+        ========================================================= */
       
         startAutoScroll();
       

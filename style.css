@@ -9,58 +9,84 @@
 ========================================================= */
 
 :root {
-  --bg: #f5f2eb;
-  --surface: #ffffff;
-  --surface-2: #ede9e0;
-
-  --gold: #b8901a;
-  --gold-light: #8c6a14;
-  --gold-deep: #6b4f0e;
-
-  --text: #1a1404;
-  --text-secondary: #4a4233;
-  --text-muted: #7a7361;
-
-  --line: rgba(26, 20, 4, 0.12);
-  --line-strong: rgba(26, 20, 4, 0.20);
-
-  --header-bg: rgba(245, 242, 235, 0.92);
-
-  --radius-sm: 3px;
-  --radius-md: 6px;
-  --radius-lg: 18px;
-
-  --shadow-sm: 0 8px 24px rgba(26, 20, 4, 0.06);
-  --shadow-md: 0 18px 36px rgba(26, 20, 4, 0.12);
-  --shadow-lg: 0 22px 50px rgba(0, 0, 0, 0.20);
-
-  color-scheme: light;
-}
+    /* ---------- BACKGROUNDS ---------- */
+    --bg: #f7f4ed;
+    --surface: #ffffff;
+    --surface-2: #eee9df;
+  
+    /* ---------- PREMIUM GOLD ---------- */
+    --gold: #c99a2e;
+    --gold-light: #e2bd5b;
+    --gold-bright: #f3d98b;
+    --gold-deep: #8f6819;
+    --gold-dark: #76500d;
+  
+    /* ---------- TEXT ---------- */
+    --text: #17130a;
+    --text-secondary: #514a3b;
+    --text-muted: #827a68;
+  
+    /* ---------- BORDERS ---------- */
+    --line: rgba(23, 19, 10, 0.10);
+    --line-strong: rgba(23, 19, 10, 0.18);
+  
+    /* ---------- HEADER ---------- */
+    --header-bg: rgba(247, 244, 237, 0.88);
+  
+    /* ---------- GLOW ---------- */
+    --primary-glow: rgba(201, 154, 46, 0.30);
+  
+    /* ---------- RADIUS ---------- */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 18px;
+  
+    /* ---------- SHADOWS ---------- */
+    --shadow-sm:
+      0 8px 24px rgba(23, 19, 10, 0.06);
+  
+    --shadow-md:
+      0 18px 40px rgba(23, 19, 10, 0.11);
+  
+    --shadow-lg:
+      0 24px 60px rgba(23, 19, 10, 0.18);
+  
+    color-scheme: light;
+  }
+  
 
 
 /* DARK MODE */
 
 html.dark-mode {
-  --bg: #0b0a08;
-  --surface: #151310;
-  --surface-2: #1c1a15;
-
-  --gold: #d8af37;
-  --gold-light: #f2d57e;
-  --gold-deep: #8c6a14;
-
-  --text: #f3eedf;
-  --text-secondary: #b3a98f;
-  --text-muted: #7a7361;
-
-  --line: rgba(243, 238, 223, 0.12);
-  --line-strong: rgba(243, 238, 223, 0.24);
-
-  --header-bg: rgba(11, 10, 8, 0.90);
-
-  color-scheme: dark;
-}
-
+    --bg: #090806;
+    --surface: #12100d;
+    --surface-2: #1a1711;
+  
+    /* ---------- GOLD ---------- */
+    --gold: #d4a83a;
+    --gold-light: #e8c765;
+    --gold-bright: #f7df9a;
+    --gold-deep: #a8791c;
+    --gold-dark: #8b6313;
+  
+    /* ---------- TEXT ---------- */
+    --text: #f5f0df;
+    --text-secondary: #bdb49d;
+    --text-muted: #837b68;
+  
+    /* ---------- BORDERS ---------- */
+    --line: rgba(245, 240, 223, 0.10);
+    --line-strong: rgba(245, 240, 223, 0.20);
+  
+    /* ---------- HEADER ---------- */
+    --header-bg: rgba(9, 8, 6, 0.88);
+  
+    /* ---------- GLOW ---------- */
+    --primary-glow: rgba(212, 168, 58, 0.34);
+  
+    color-scheme: dark;
+  }
 
 /* =========================================================
    02. RESET
@@ -199,41 +225,92 @@ section {
 }
 
 .btn-solid {
-    background: linear-gradient(
-      135deg,
-      #F7E7A9 0%,
-      #D4AF37 35%,
-      #B8860B 65%,
-      #F0D77A 100%
-    );
+    position: relative;
   
-    border: 1px solid #D4AF37;
-    color: #17130A;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    overflow: hidden;
+  
+    background:
+      linear-gradient(
+        135deg,
+        #f7e6a4 0%,
+        #e0bc55 28%,
+        #c99a2e 52%,
+        #a9791c 78%,
+        #e6c86d 100%
+      );
+  
+    border: 1px solid rgba(201, 154, 46, 0.85);
+  
+    color: #17130a;
+  
     box-shadow:
-      0 4px 14px rgba(212, 175, 55, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      0 7px 20px rgba(201, 154, 46, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1px 0 rgba(90, 61, 8, 0.25);
   
-    transition: all 0.3s ease;
+    transition:
+      transform 0.25s ease,
+      background 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .btn-solid::before {
+    content: "";
+  
+    position: absolute;
+    top: 0;
+    left: -120%;
+  
+    width: 70%;
+    height: 100%;
+  
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.42),
+        transparent
+      );
+  
+    transform: skewX(-20deg);
+  
+    transition: left 0.65s ease;
+  }
+  
+  .btn-solid:hover::before {
+    left: 140%;
   }
   
   .btn-solid:hover {
-    background: linear-gradient(
-      135deg,
-      #FFF1B8 0%,
-      #E2C45A 40%,
-      #C5961A 70%,
-      #F7E7A9 100%
-    );
+    transform: translateY(-2px);
   
-    color: #17130A;
-    border-color: #E2C45A;
+    background:
+      linear-gradient(
+        135deg,
+        #fff1b9 0%,
+        #e9ca69 30%,
+        #d4a83a 55%,
+        #b98720 78%,
+        #f0d883 100%
+      );
+  
+    border-color: var(--gold-bright);
   
     box-shadow:
-      0 6px 20px rgba(212, 175, 55, 0.38),
-      inset 0 1px 0 rgba(255, 255, 255, 0.45);
-  
-    transform: translateY(-1px);
+      0 12px 30px rgba(201, 154, 46, 0.32),
+      0 0 32px var(--primary-glow),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65);
   }
+
+  .btn-solid:active {
+    transform: translateY(0);
+  }
+
 .btn-quiet {
   border-color: var(--line-strong);
   color: var(--text);
@@ -242,6 +319,37 @@ section {
 .btn-quiet:hover {
   background: rgba(216, 175, 55, 0.08);
 }
+
+.transition-colors {
+    transition:
+      color 0.25s ease,
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      outline-color 0.25s ease,
+      text-decoration-color 0.25s ease,
+      fill 0.25s ease,
+      stroke 0.25s ease;
+  }
+
+  .shadow-primary-glow {
+    box-shadow:
+      0 0 32px var(--primary-glow);
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+  
+  .text-primary-foreground {
+    color: #17130a;
+  }
+
+
+  html.dark-mode .text-primary-foreground {
+    color: #090806;
+  }
+
+  
 
 
 /* =========================================================
@@ -288,11 +396,16 @@ section {
     z-index: 1000;
     width: 100%;
   
-    background: var(--bg, #f5f2eb);
-    border-bottom: 1px solid rgba(205, 156, 23, 0.18);
+    /* Premium glass effect */
+    background: rgba(245, 242, 235, 0.72);
   
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(184, 144, 26, 0.22);
+  
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+  
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.06);
   
     transition:
       background 0.3s ease,
@@ -342,20 +455,34 @@ section {
   
   .logo .word {
     font-family: "Oswald", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text);
   
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.2;
+    line-height: 1;
+    white-space: nowrap;
   
-    letter-spacing: 0.02em;
+    background: linear-gradient(
+      110deg,
+      var(--text) 0%,
+      var(--gold-light) 48%,
+      var(--gold) 100%
+    );
   
-    color: var(--text-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   
-    transition: color 0.25s ease;
+    transition:
+      letter-spacing 0.3s ease,
+      filter 0.3s ease;
   }
   
   .logo:hover .word {
-    color: var(--gold-light, #d8af37);
+    letter-spacing: 0.2em;
+    filter: brightness(1.15);
   }
   
   
@@ -409,10 +536,13 @@ section {
     height: 2px;
   
     background: linear-gradient(
-      90deg,
-      var(--gold-dark, #b8901a),
-      var(--gold-light, #d8af37)
-    );
+  90deg,
+  var(--gold-dark),
+  var(--gold),
+  var(--gold-bright),
+  var(--gold),
+  var(--gold-dark)
+);
   
     transform: scaleX(0);
     transform-origin: center;
@@ -1005,14 +1135,17 @@ section {
      DARK MODE HEADER
      ========================================================= */
   
-  html.dark-mode .site-header {
-    background: rgba(11, 10, 8, 0.88);
-  
-    border-bottom-color: rgba(216, 175, 55, 0.18);
-  
-    box-shadow:
-      0 8px 30px rgba(0, 0, 0, 0.22);
-  }
+     html.dark-mode .site-header {
+        background: rgba(11, 10, 8, 0.48);
+      
+        border-bottom: 1px solid rgba(216, 175, 55, 0.24);
+      
+        backdrop-filter: blur(32px) saturate(170%);
+        -webkit-backdrop-filter: blur(32px) saturate(170%);
+      
+        box-shadow:
+          0 12px 40px rgba(0, 0, 0, 0.32);
+      }
   
   html.dark-mode .dropdown-menu {
     background:
@@ -3433,301 +3566,739 @@ section {
 ========================================================= */
 
 .testimonials-section {
-  padding: 110px 0;
+    position: relative;
+  
+    padding: 110px 0;
+  
+    background: var(--bg);
+  
+    /*
+      Do not hide vertical overflow here.
+      Cards move upward slightly on hover.
+    */
+    overflow: visible;
+  }
+  
+  
+  /* =========================================================
+     TESTIMONIAL HEADER
+  ========================================================= */
+  
+  .testimonials-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  
+    gap: 30px;
+  
+    margin-bottom: 45px;
+  }
+  
+  .testimonials-head h2 {
+    margin-top: 10px;
+  
+    color: var(--text);
+  
+    font-size: clamp(40px, 5vw, 68px);
+  
+    line-height: 0.98;
+  
+    letter-spacing: -2px;
+  }
+  
+  
+  /* =========================================================
+     TESTIMONIAL CONTROLS
+  ========================================================= */
+  
+  .testimonial-controls {
+    display: flex;
+    align-items: center;
+  
+    gap: 8px;
+  
+    flex-shrink: 0;
+  }
+  
+  .testimonial-btn {
+    width: 48px;
+    height: 48px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    flex-shrink: 0;
+  
+    cursor: pointer;
+  
+    border: 1px solid var(--line);
+    border-radius: 50%;
+  
+    background: var(--surface);
+  
+    color: var(--text);
+  
+    font-size: 18px;
+    line-height: 1;
+  
+    transition:
+      transform 0.25s ease,
+      background 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  
+  .testimonial-btn:hover {
+    transform: translateY(-2px);
+  
+    background: var(--gold);
+  
+    border-color: var(--gold);
+  
+    color: #0b0a08;
+  
+    box-shadow:
+      0 8px 20px rgba(184, 144, 26, 0.18);
+  }
+  
+  .testimonial-btn:active {
+    transform: translateY(0);
+  }
+  
+  .testimonial-btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+  
+  
+  /* =========================================================
+     TESTIMONIAL CAROUSEL
+  ========================================================= */
+  
+  .testimonials-scroll {
+    display: flex;
+  
+    gap: 18px;
+  
+    width: 100%;
+  
+    /*
+      Horizontal scrolling only.
+      Vertical overflow stays visible so hover cards
+      are never clipped.
+    */
+    overflow-x: auto;
+    overflow-y: visible;
+  
+    /*
+      Smooth movement between cards.
+    */
+    scroll-behavior: smooth;
+  
+    /*
+      Snap each card into position.
+    */
+    scroll-snap-type: x mandatory;
+  
+    /*
+      Hide scrollbar.
+    */
+    scrollbar-width: none;
+  
+    -ms-overflow-style: none;
+  
+    /*
+      Prevent unwanted browser scroll chaining.
+    */
+    overscroll-behavior-x: contain;
+  
+    /*
+      Touch scrolling.
+    */
+    -webkit-overflow-scrolling: touch;
+  
+    /*
+      Small vertical breathing room for hover animation.
+    */
+    padding: 10px 4px 22px;
+  
+    box-sizing: border-box;
+  }
+  
+  .testimonials-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  /*
+    Do NOT disable text selection globally.
+    Users should still be able to select testimonial text.
+  */
+  
+  
+  /* =========================================================
+     TESTIMONIAL CARD
+  ========================================================= */
+  
+  .testi-card {
+    position: relative;
+  
+    /*
+      3 cards per row.
+    */
+    flex: 0 0 calc((100% - 36px) / 3);
+  
+    min-width: 0;
+  
+    /*
+      Make every card consistent.
+    */
+    min-height: 360px;
+  
+    box-sizing: border-box;
+  
+    /*
+      Keep card aligned during carousel movement.
+    */
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  
+    /*
+      IMPORTANT:
+      Do not use overflow:hidden here.
+      It can clip content and the hover animation.
+    */
+    overflow: visible;
+  
+    /*
+      Card spacing.
+    */
+    padding: 30px 28px;
+  
+    /*
+      Premium border.
+    */
+    border: 1px solid rgba(184, 144, 26, 0.18);
+  
+    border-radius: 18px;
+  
+    background: var(--surface);
+  
+    /*
+      Keep the card above the section background.
+    */
+    isolation: isolate;
+  
+    /*
+      Smooth hover.
+    */
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+  
+    /*
+      Text rendering.
+    */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  
+    /*
+      Avoid visual flickering.
+    */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  
+  /* =========================================================
+     GOLD TOP ACCENT
+  ========================================================= */
+  
+  .testi-card::before {
+    content: "";
+  
+    position: absolute;
+  
+    top: 0;
+    left: 0;
+  
+    width: 100%;
+    height: 3px;
+  
+    border-radius: 18px 18px 0 0;
+  
+    background: linear-gradient(
+      90deg,
+      var(--gold-dark, #b8901a),
+      var(--gold-light, #d8af37),
+      var(--gold-dark, #b8901a)
+    );
+  
+    z-index: 2;
+  
+    pointer-events: none;
+  }
+  
+  
+  /* =========================================================
+     CARD HOVER
+  ========================================================= */
+  
+  .testi-card:hover {
+    transform: translateY(-7px);
+  
+    border-color: var(--gold);
+  
+    box-shadow:
+      0 18px 40px rgba(0, 0, 0, 0.10),
+      0 5px 18px rgba(184, 144, 26, 0.12);
+  }
+  
+  
+  /* =========================================================
+     TESTIMONIAL TOP
+  ========================================================= */
+  
+  .testi-top {
+    position: relative;
+    z-index: 3;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 15px;
+  
+    width: 100%;
+  }
+  
+  
+  /* =========================================================
+     CARD NUMBER
+  ========================================================= */
+  
+  .testi-number {
+    color: var(--gold);
+  
+    font-family: "Oswald", sans-serif;
+  
+    font-size: 13px;
+  
+    font-weight: 500;
+  
+    letter-spacing: 1px;
+  }
+  
+  
+  /* =========================================================
+     STARS
+  ========================================================= */
+  
+  .testi-stars {
+    color: var(--gold);
+  
+    font-size: 11px;
+  
+    letter-spacing: 1px;
+  
+    white-space: nowrap;
+  }
+  
+  
+  /* =========================================================
+     QUOTE
+  ========================================================= */
+  
+  .testi-quote {
+    position: relative;
+    z-index: 3;
+  
+    height: 42px;
+  
+    margin-top: 42px;
+  
+    color: var(--gold);
+  
+    font-family: Georgia, "Times New Roman", serif;
+  
+    font-size: 65px;
+  
+    line-height: 0.5;
+  
+    pointer-events: none;
+  }
+  
+  
+  /* =========================================================
+     TESTIMONIAL TEXT
+  ========================================================= */
+  
+  .testi-card > p {
+    position: relative;
+    z-index: 3;
+  
+    margin: 18px 0 30px;
+  
+    color: var(--text-secondary);
+  
+    font-size: 17px;
+  
+    line-height: 1.6;
+  
+    /*
+      Prevent clipping.
+    */
+    overflow: visible;
+  
+    /*
+      Normal text wrapping.
+    */
+    white-space: normal;
+  
+    overflow-wrap: break-word;
+  
+    word-break: normal;
+  
+    /*
+      Better rendering.
+    */
+    -webkit-font-smoothing: antialiased;
+  
+    text-rendering: optimizeLegibility;
+  }
+  
+  
+  /* =========================================================
+     CARD CONTENT RENDERING
+  ========================================================= */
+  
+  .testi-card p,
+  .testi-card strong,
+  .testi-card span {
+    -webkit-font-smoothing: antialiased;
+  
+    -moz-osx-font-smoothing: grayscale;
+  
+    text-rendering: optimizeLegibility;
+  }
+  
+  
+  /* =========================================================
+     TESTIMONIAL BOTTOM
+  ========================================================= */
+  
+  .testi-bottom {
+    position: relative;
+    z-index: 3;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 12px;
+  
+    /*
+      Keep member information toward bottom.
+    */
+    margin-top: auto;
+  
+    padding-top: 20px;
+  
+    border-top: 1px solid var(--line);
+  }
+  
+  
+  /* =========================================================
+     AVATAR
+  ========================================================= */
+  
+  .testi-avatar {
+    width: 38px;
+    height: 38px;
+  
+    flex: 0 0 38px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 50%;
+  
+    background: linear-gradient(
+      135deg,
+      var(--gold-light, #d8af37),
+      var(--gold-dark, #b8901a)
+    );
+  
+    color: #0b0a08;
+  
+    font-size: 12px;
+  
+    font-weight: 700;
+  }
+  
+  
+  /* =========================================================
+     MEMBER NAME
+  ========================================================= */
+  
+  .testi-bottom strong {
+    display: block;
+  
+    margin-bottom: 3px;
+  
+    color: var(--text);
+  
+    font-size: 13px;
+  
+    line-height: 1.3;
+  }
+  
+  
+  /* =========================================================
+     MEMBER PROGRAM
+  ========================================================= */
+  
+  .testi-bottom span {
+    display: block;
+  
+    color: var(--text-muted);
+  
+    font-size: 10px;
+  
+    line-height: 1.4;
+  
+    white-space: normal;
+  }
+  
+  
+  /* =========================================================
+     TESTIMONIAL FOOTER
+  ========================================================= */
+  
+  .testimonials-footer {
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: space-between;
+  
+    gap: 30px;
+  
+    margin-top: 15px;
+  }
+  
+  
+  /* =========================================================
+     PROGRESS BAR
+  ========================================================= */
+  
+  .testimonials-scroll-line {
+    position: relative;
+  
+    width: 100%;
+  
+    max-width: 260px;
+  
+    height: 2px;
+  
+    overflow: hidden;
+  
+    background: var(--line);
+  
+    border-radius: 10px;
+  }
+  
+  
+  /*
+     Gold progress indicator.
+  */
+  
+  .testimonials-scroll-line span {
+    display: block;
+  
+    width: 18%;
+  
+    height: 100%;
+  
+    background: linear-gradient(
+      90deg,
+      var(--gold-dark, #b8901a),
+      var(--gold-light, #d8af37)
+    );
+  
+    border-radius: 10px;
+  
+    transition:
+      width 0.35s ease;
+  }
+  
+  
+  /* =========================================================
+     MEMBER COUNT
+  ========================================================= */
+  
+  .testimonials-count {
+    flex-shrink: 0;
+  
+    color: var(--text-muted);
+  
+    font-family: "Oswald", sans-serif;
+  
+    font-size: 11px;
+  
+    letter-spacing: 2px;
+  }
+  
+  
+  /* =========================================================
+     DARK MODE
+  ========================================================= */
+  
+  html.dark-mode .testi-card {
+    background: var(--surface);
+  
+    border-color: rgba(216, 175, 55, 0.18);
+  }
+  
+  html.dark-mode .testi-card:hover {
+    border-color: var(--gold-light, #d8af37);
+  
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, 0.35),
+      0 5px 20px rgba(216, 175, 55, 0.10);
+  }
+  
+  html.dark-mode .testi-card > p {
+    color: var(--text-secondary);
+  }
+  
+  
+  /* =========================================================
+     TABLET
+  ========================================================= */
+  
+  @media (max-width: 1000px) {
+  
+    .testimonials-section {
+      padding: 90px 0;
+    }
+  
+    .testi-card {
+      flex: 0 0 calc((100% - 18px) / 2);
+  
+      min-height: 350px;
+    }
+  
+  }
+  
+  
+  /* =========================================================
+     MOBILE
+  ========================================================= */
+  
+  @media (max-width: 650px) {
+  
+    .testimonials-section {
+      padding: 75px 0;
+    }
+  
+    .testimonials-head {
+      align-items: flex-start;
+  
+      flex-direction: column;
+  
+      margin-bottom: 30px;
+    }
+  
+    .testimonials-head h2 {
+      font-size: clamp(36px, 11vw, 48px);
+  
+      letter-spacing: -1.5px;
+    }
+  
+    .testimonial-controls {
+      align-self: flex-end;
+    }
+  
+    .testimonial-btn {
+      width: 44px;
+      height: 44px;
+    }
+  
+    .testimonials-scroll {
+      gap: 18px;
+  
+      padding: 10px 4px 20px;
+    }
+  
+    .testi-card {
+      flex: 0 0 88%;
+  
+      min-height: 340px;
+  
+      padding: 26px 22px;
+    }
+  
+    .testi-card:hover {
+      transform: translateY(-4px);
+    }
+  
+    .testi-quote {
+      margin-top: 35px;
+  
+      font-size: 58px;
+    }
+  
+    .testi-card > p {
+      font-size: 16px;
+  
+      line-height: 1.6;
+    }
+  
+    .testimonials-footer {
+      gap: 15px;
+    }
+  
+    .testimonials-scroll-line {
+      max-width: 180px;
+    }
+  
+    .testimonials-count {
+      font-size: 10px;
+  
+      letter-spacing: 1.5px;
+    }
+  
+  }
+  
+  
+  /* =========================================================
+     SMALL MOBILE
+  ========================================================= */
+  
+  @media (max-width: 420px) {
+  
+    .testi-card {
+      flex: 0 0 92%;
+  
+      padding: 24px 20px;
+    }
+  
+    .testi-card > p {
+      font-size: 15px;
+    }
+  
+    .testimonials-scroll-line {
+      max-width: 140px;
+    }
+  
+  }
 
-  background: var(--bg);
-
-  overflow: hidden;
-}
-
-.testimonials-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-
-  gap: 30px;
-
-  margin-bottom: 45px;
-}
-
-.testimonials-head h2 {
-  margin-top: 10px;
-
-  color: var(--text);
-
-  font-size: clamp(40px, 5vw, 68px);
-
-  line-height: 0.98;
-
-  letter-spacing: -2px;
-}
-
-
-/* CONTROLS */
-
-.testimonial-controls {
-  display: flex;
-  gap: 8px;
-
-  flex-shrink: 0;
-}
-
-.testimonial-btn {
-  width: 52px;
-  height: 52px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
-
-  background: transparent;
-
-  color: var(--text);
-
-  font-size: 19px;
-
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.testimonial-btn:hover {
-  background: var(--gold);
-
-  border-color: var(--gold);
-
-  color: #fff;
-
-  transform: translateY(-2px);
-}
-
-
-/* SCROLL */
-
-.testimonials-scroll {
-  display: flex;
-
-  gap: 18px;
-
-  padding: 5px 0 22px;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scrollbar-width: none;
-
-  scroll-behavior: smooth;
-
-  cursor: grab;
-
-  touch-action: pan-x;
-}
-
-.testimonials-scroll:active {
-  cursor: grabbing;
-}
-
-.testimonials-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-
-/* CARD */
-
-.testi-card {
-  position: relative;
-
-  flex: 0 0 calc((100% - 90px) / 6);
-
-  min-width: 245px;
-  min-height: 365px;
-
-  display: flex;
-  flex-direction: column;
-
-  padding: 25px;
-
-  background: var(--surface);
-
-  color: var(--text);
-
-  border: 1px solid var(--line);
-
-  border-radius: 5px;
-
-  scroll-snap-align: start;
-
-  transition:
-    transform 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.testi-card::before {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 3px;
-
-  background: var(--gold);
-}
-
-.testi-card:hover {
-  transform: translateY(-7px);
-
-  border-color: var(--gold);
-
-  box-shadow: var(--shadow-md);
-}
-
-.testi-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.testi-number,
-.testi-stars {
-  color: var(--gold);
-
-  font-size: 13px;
-}
-
-.testi-number {
-  font-family: "Oswald", sans-serif;
-
-  letter-spacing: 1px;
-}
-
-.testi-stars {
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-
-.testi-quote {
-  height: 35px;
-
-  margin-top: 45px;
-
-  color: var(--gold);
-
-  font-family: Georgia, serif;
-  font-size: 65px;
-
-  line-height: 0.5;
-}
-
-.testi-card > p {
-  margin: 18px 0 30px;
-
-  color: var(--text-secondary);
-
-  font-size: 17px;
-  line-height: 1.55;
-}
-
-.testi-bottom {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  margin-top: auto;
-  padding-top: 20px;
-
-  border-top: 1px solid var(--line);
-}
-
-.testi-avatar {
-  width: 38px;
-  height: 38px;
-
-  flex-shrink: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: var(--gold);
-
-  color: #0b0a08;
-
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.testi-bottom strong {
-  display: block;
-
-  margin-bottom: 3px;
-
-  color: var(--text);
-
-  font-size: 13px;
-}
-
-.testi-bottom span {
-  display: block;
-
-  color: var(--text-muted);
-
-  font-size: 10px;
-}
-
-
-/* TESTIMONIAL FOOTER */
-
-.testimonials-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 30px;
-
-  margin-top: 15px;
-}
-
-.testimonials-scroll-line {
-  position: relative;
-
-  flex: 1;
-
-  height: 2px;
-
-  background: var(--line);
-}
-
-.testimonials-scroll-line span {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 18%;
-  height: 100%;
-
-  background: var(--gold);
-}
-
-.testimonials-count {
-  color: var(--text-muted);
-
-  font-family: "Oswald", sans-serif;
-  font-size: 11px;
-
-  letter-spacing: 2px;
-}
 
 
 /* =========================================================
@@ -3999,13 +4570,6 @@ footer {
    29. RESPONSIVE — 1200px
 ========================================================= */
 
-@media (max-width: 1200px) {
-
-  .testi-card {
-    flex: 0 0 calc((100% - 54px) / 4);
-  }
-
-}
 
 
 /* =========================================================
@@ -4027,6 +4591,7 @@ footer {
 
     gap: 22px;
   }
+
 
 }
 
@@ -4171,13 +4736,7 @@ footer {
    34. RESPONSIVE — 850px
 ========================================================= */
 
-@media (max-width: 850px) {
 
-  .testi-card {
-    flex: 0 0 calc((100% - 36px) / 3);
-  }
-
-}
 
 
 /* =========================================================
@@ -4344,6 +4903,8 @@ footer {
   .why-content p {
     font-size: 14px;
   }
+
+
 
 }
 
@@ -4541,33 +5102,6 @@ footer {
 
   .result-info strong {
     font-size: 18px;
-  }
-
-
-  /* TESTIMONIALS */
-
-  .testimonials-section {
-    padding: 75px 0;
-  }
-
-  .testimonials-head {
-    align-items: flex-start;
-
-    flex-direction: column;
-  }
-
-  .testimonials-head h2 {
-    font-size: 42px;
-  }
-
-  .testimonial-controls {
-    margin-top: 5px;
-  }
-
-  .testi-card {
-    flex: 0 0 82%;
-
-    min-height: 350px;
   }
 
 
