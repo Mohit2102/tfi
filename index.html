@@ -3,2372 +3,383 @@
 
 <head>
   <meta charset="UTF-8">
+
   <title>TFI — Time To Fit India</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #F5F2EB;
-      --surface: #FFFFFF;
-      --surface-2: #EDE9E0;
-      --gold: #B8901A;
-      --gold-light: #8C6A14;
-      --gold-deep: #6B4F0E;
-      --text: #1A1404;
-      --text-secondary: #4A4233;
-      --text-muted: #7A7361;
-      --line: rgba(26, 20, 4, 0.12);
-      --line-strong: rgba(26, 20, 4, 0.20);
-      --header-bg: rgba(245, 242, 235, 0.92);
-      color-scheme: light;
-    }
+    rel="stylesheet"
+  >
 
-    html.dark-mode {
-      --bg: #0B0A08;
-      --surface: #151310;
-      --surface-2: #1C1A15;
-      --gold: #D8AF37;
-      --gold-light: #F2D57E;
-      --gold-deep: #8C6A14;
-      --text: #F3EEDF;
-      --text-secondary: #B3A98F;
-      --text-muted: #7A7361;
-      --line: rgba(243, 238, 223, 0.12);
-      --line-strong: rgba(243, 238, 223, 0.24);
-      --header-bg: rgba(11, 10, 8, 0.9);
-      color-scheme: dark;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: calc(78px + env(safe-area-inset-top, 0px));
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', system-ui, sans-serif;
-      margin: 0;
-      padding-top: env(safe-area-inset-top, 0px);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    .disp {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 600;
-      letter-spacing: 0.005em;
-      line-height: 1.06;
-      margin: 0;
-      color: var(--text);
-    }
-
-    p {
-      margin: 0;
-      color: var(--text-secondary);
-      line-height: 1.65;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding-left: 24px;
-      padding-right: 24px;
-    }
-
-    section {
-      padding: 88px 0;
-    }
-
-    @media(max-width:720px) {
-      section {
-        padding: 56px 0;
-      }
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Oswald', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      letter-spacing: 0.02em;
-      padding: 14px 26px;
-      border-radius: 2px;
-      border: 1.5px solid var(--gold);
-      cursor: pointer;
-      background: transparent;
-      color: var(--gold-light);
-      transition: transform .15s ease, background .15s ease, color .15s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      background: rgba(216, 175, 55, 0.08);
-    }
-
-    .btn-solid {
-      background: linear-gradient(180deg, var(--gold-light), var(--gold));
-      border-color: var(--gold);
-      color: #1A1404;
-    }
-
-    .btn-solid:hover {
-      background: var(--gold-light);
-      color: #1A1404;
-    }
-
-    .btn-quiet {
-      border-color: var(--line-strong);
-      color: var(--text);
-    }
-
-    .btn-quiet:hover {
-      background: rgba(243, 238, 223, 0.06);
-    }
-
-    /* NAV */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--header-bg, rgba(245, 242, 235, 0.92));
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line);
-      padding-top: env(safe-area-inset-top, 0px);
-    }
-
-    .navrow {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 78px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .logo img {
-      height: 42px;
-      width: auto;
-      display: block;
-    }
-
-    .logo .word {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      color: var(--text-secondary);
-      letter-spacing: 0.02em;
-      line-height: 1.2;
-    }
-
-    .logo .word b {
-      display: block;
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .navlinks {
-      display: flex;
-      gap: 34px;
-      font-size: 14.5px;
-      font-weight: 500;
-    }
-
-    .navlinks a {
-      color: var(--text-secondary);
-      border-bottom: 2px solid transparent;
-      padding-bottom: 4px;
-      transition: color .15s;
-    }
-
-    .navlinks a:hover {
-      color: var(--gold-light);
-      border-color: var(--gold);
-    }
-
-    .navcta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .navtoggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    .navtoggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      margin: 5px 0;
-    }
-
-    @media(max-width:880px) {
-      .navlinks {
-        display: none;
-      }
-
-      .navcta .btn {
-        display: none;
-      }
-
-      .navtoggle {
-        display: block;
-      }
-    }
-
-    #mobilemenu {
-      display: none;
-      flex-direction: column;
-      gap: 2px;
-      padding: 8px 24px 20px;
-      border-top: 1px solid var(--line);
-    }
-
-    #mobilemenu.open {
-      display: flex;
-    }
-
-    #mobilemenu a {
-      padding: 12px 4px;
-      font-size: 15px;
-      border-bottom: 1px solid var(--line);
-      color: var(--text-secondary);
-    }
-
-    #mobilemenu .btn {
-      margin-top: 12px;
-      text-align: center;
-      justify-content: center;
-    }
-
-    /* HERO */
-    .hero {
-      padding: 72px 0 0;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -200px;
-      right: -160px;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(216, 175, 55, 0.14), transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-      position: relative;
-    }
-
-    @media(max-width:920px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gold-light);
-      border: 1px solid var(--line-strong);
-      padding: 7px 14px;
-      border-radius: 100px;
-      margin-bottom: 22px;
-    }
-
-    .badge .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-
-    .hero h1 {
-      font-size: clamp(40px, 6vw, 66px);
-    }
-
-    .hero h1 .accent {
-      color: var(--gold);
-    }
-
-    .hero p.lede {
-      font-size: 18px;
-      max-width: 480px;
-      margin-top: 22px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 14px;
-      margin-top: 34px;
-      flex-wrap: wrap;
-    }
-
-    .hero-logo-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .hero-logo-wrap img {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-    }
-
-
-    @media (max-width: 920px) {
-      .hero-collage {
-        height: auto;
-        /* was 340px */
-      }
-    }
-
-    .collage-card {
-      position: absolute;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--line-strong);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
-      background: var(--surface);
-    }
-
-    .collage-card svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .card-a {
-      width: 58%;
-      height: 78%;
-      top: 0;
-      left: 0;
-      z-index: 2;
-    }
-
-    .card-b {
-      width: 42%;
-      height: 46%;
-      bottom: 0;
-      right: 0;
-      z-index: 3;
-      border-color: var(--gold);
-    }
-
-    .card-c {
-      width: 34%;
-      height: 34%;
-      top: 6%;
-      right: 4%;
-      z-index: 1;
-    }
-
-    .collage-badge {
-      position: absolute;
-      bottom: 14px;
-      left: 14px;
-      z-index: 4;
-      background: var(--bg);
-      border: 1px solid var(--gold);
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .collage-badge .n {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--gold-light);
-    }
-
-    .collage-badge .l {
-      font-size: 10.5px;
-      color: var(--text-secondary);
-    }
-
-    .coach-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line-strong);
-      border: 1px solid var(--line-strong);
-      margin-top: 52px;
-    }
-
-    @media(max-width:760px) {
-      .coach-strip {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .coach-card {
-      background: var(--surface);
-      padding: 26px;
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .coach-avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      overflow: hidden;
-      border: 1.5px solid var(--gold);
-    }
-
-    .coach-avatar svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .coach-name {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    .coach-role {
-      font-size: 12.5px;
-      color: var(--gold-light);
-      margin-top: 2px;
-    }
-
-    .coach-note {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 6px;
-    }
-
-    .stats {
-      background: var(--surface);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media(max-width:720px) {
-      .stats-row {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .stat-cell {
-      padding: 38px 20px;
-      border-right: 1px solid var(--line);
-      text-align: center;
-    }
-
-    .stat-cell:last-child {
-      border-right: none;
-    }
-
-    .stat-num {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: clamp(30px, 4vw, 44px);
-      color: var(--text);
-    }
-
-    .stat-num .u {
-      color: var(--gold);
-    }
-
-    .stat-label {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      margin-top: 6px;
-      font-weight: 500;
-    }
-
-    .sec-head {
-      max-width: 640px;
-      margin-bottom: 52px;
-    }
-
-    /* .sec-kicker {
-      font-family: 'Oswald', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--gold);
-      margin-bottom: 10px;
-    } */
-
-    .sec-head h2 {
-      font-size: clamp(28px, 4vw, 42px);
-    }
-
-    .sec-head p {
-      margin-top: 14px;
-      font-size: 16.5px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    @media(max-width:880px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-    }
-
-    .about-copy p {
-      font-size: 16.5px;
-      margin-bottom: 16px;
-    }
-
-    .about-copy p:last-child {
-      margin-bottom: 0;
-    }
-
-    .feature-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .feature-item {
-      display: flex;
-      gap: 18px;
-      padding: 22px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .feature-item:last-child {
-      border-bottom: 1px solid var(--line);
-    }
-
-    .feature-item .fnum {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--gold);
-      min-width: 28px;
-    }
-
-    .feature-item h4 {
-      font-size: 17px;
-      margin-bottom: 6px;
-    }
-
-    .feature-item p {
-      font-size: 14.5px;
-    }
-
-    .prog-list {
-      border-top: 1px solid var(--line-strong);
-    }
-
-    .prog-row {
-      display: grid;
-      grid-template-columns: 60px 1fr 1.3fr auto;
-      gap: 24px;
-      align-items: center;
-      padding: 26px 0;
-      border-bottom: 1px solid var(--line-strong);
-    }
-
-    @media(max-width:760px) {
-      .prog-row {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 22px 0;
-      }
-    }
-
-    .prog-idx {
-      font-family: 'Oswald', sans-serif;
-      font-size: 14px;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .prog-name {
-      font-family: 'Oswald', sans-serif;
-      font-size: 22px;
-      font-weight: 600;
-    }
-
-    .prog-desc {
-      font-size: 15px;
-      color: var(--text-secondary);
-    }
-
-    .prog-cta {
-      font-family: 'Oswald', sans-serif;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--gold-light);
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap .15s ease;
-    }
-
-    .prog-row:hover .prog-cta {
-      gap: 9px;
-    }
-
-    #why {
-  padding: 110px 0;
-  background: var(--cream, #f5f2eb);
-}
-
-#why .sec-head {
-  width: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 70px;
-}
-
-#why .sec-kicker {
-  color: var(--gold, #b8901a);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-#why .sec-head h2 {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 1000px;
-}
-
-
-/* GRID */
-
-/* ================================
-   WHY / TFI EDGE
-================================ */
-
-#why {
-  padding: 110px 0;
-  background: var(--cream, #f5f2eb);
-}
-
-/* #why .sec-head {
-  text-align: center;
-  margin-bottom: 55px;
-} */
-
-/* #why .sec-kicker {
-  color: var(--gold, #b8901a);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-} */
-
-/* #why .sec-head h2 {
-  margin: 0;
-  color: var(--dark, #0b0a08);
-  font-size: clamp(38px, 5vw, 68px);
-  line-height: 1;
-  font-weight: 700;
-} */
-
-
-/* GRID */
-
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-
-/* CARD */
-
-.why-cell {
-  position: relative;
-  min-height: 390px;
-
-  background-size: cover;
-  background-position: center;
-
-  border-radius: 18px;
-  overflow: hidden;
-
-  isolation: isolate;
-
-  display: flex;
-  align-items: flex-end;
-
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.14);
-
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-
-/* IMAGE HOVER */
-
-.why-cell:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.22);
-}
-
-
-/* DARK IMAGE OVERLAY */
-
-.why-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(5, 8, 12, 0.97) 0%,
-      rgba(5, 8, 12, 0.78) 38%,
-      rgba(5, 8, 12, 0.22) 72%,
-      rgba(5, 8, 12, 0.05) 100%
-    );
-
-  transition: background 0.4s ease;
-}
-
-
-/* HOVER OVERLAY */
-
-.why-cell:hover .why-overlay {
-  background:
-    linear-gradient(
-      to top,
-      rgba(5, 8, 12, 0.98) 0%,
-      rgba(5, 8, 12, 0.72) 45%,
-      rgba(184, 144, 26, 0.12) 100%
-    );
-}
-
-
-/* CONTENT */
-
-.why-content {
-  width: 100%;
-  padding: 30px;
-  color: white;
-}
-
-
-/* ICON */
-
-.why-content svg {
-  width: 44px;
-  height: 44px;
-
-  color: var(--gold, #b8901a);
-
-  margin-bottom: 18px;
-
-  transition:
-    transform 0.4s ease,
-    color 0.4s ease;
-}
-
-.why-cell:hover .why-content svg {
-  transform: scale(1.12);
-  color: #d8af37;
-}
-
-
-/* HEADING */
-
-.why-content h4 {
-  margin: 0 0 12px;
-
-  color: #ffffff;
-
-  font-family: "Oswald", sans-serif;
-  font-size: 27px;
-  font-weight: 600;
-
-  line-height: 1.15;
-}
-
-
-/* DESCRIPTION */
-
-.why-content p {
-  margin: 0;
-
-  max-width: 430px;
-
-  color: rgba(255, 255, 255, 0.82);
-
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-
-/* GOLD LINE */
-
-.why-content h4::after {
-  content: "";
-
-  display: block;
-
-  width: 42px;
-  height: 2px;
-
-  margin-top: 12px;
-
-  background: var(--gold, #b8901a);
-
-  transition: width 0.4s ease;
-}
-
-.why-cell:hover .why-content h4::after {
-  width: 70px;
-}
-
-
-/* =================================
-   TABLET
-================================= */
-
-@media (max-width: 1000px) {
-
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .why-cell {
-    min-height: 370px;
-  }
-
-}
-
-
-/* =================================
-   MOBILE
-================================= */
-
-@media (max-width: 650px) {
-
-  #why {
-    padding: 75px 0;
-  }
-
-  #why .sec-head {
-    margin-bottom: 35px;
-  }
-
-  #why .sec-head h2 {
-    font-size: 38px;
-  }
-
-  .why-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .why-cell {
-    min-height: 360px;
-    border-radius: 15px;
-  }
-
-  .why-content {
-    padding: 25px;
-  }
-
-  .why-content h4 {
-    font-size: 25px;
-  }
-
-  .why-content p {
-    font-size: 14px;
-    line-height: 1.65;
-  }
-
-}
-    .sched-table,
-    .price-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 15px;
-    }
-
-    .sched-table th,
-    .price-table th {
-      text-align: left;
-      font-family: 'Oswald', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      color: var(--text-muted);
-      padding: 14px 16px;
-      border-bottom: 1.5px solid var(--line-strong);
-    }
-
-    .sched-table td,
-    .price-table td {
-      padding: 16px;
-      border-bottom: 1px solid var(--line);
-      color: var(--text-secondary);
-    }
-
-    .sched-table tr td:first-child,
-    .price-table tr td:first-child {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-      color: var(--text);
-    }
-
-    .sched-wrap {
-      overflow-x: auto;
-    }
-
-    .pill {
-      display: inline-block;
-      font-size: 12.5px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 100px;
-      background: rgba(216, 175, 55, 0.14);
-      color: var(--gold-light);
-    }
-
-    .price-table .amt {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 600;
-      color: var(--gold-light);
-      font-size: 16px;
-    }
-
-    .price-note {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 16px;
-      font-style: italic;
-    }
-
-    .studio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    @media(max-width:760px) {
-      .studio-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .studio-cell {
-      aspect-ratio: 1;
-      background: var(--surface);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      padding: 16px;
-      border: 1px solid var(--line);
-    }
-
-    .studio-cell svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .studio-cell span {
-      position: relative;
-      color: var(--text);
-      font-family: 'Oswald', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      z-index: 2;
-    }
-
-    .studio-cell::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 55%);
-      z-index: 1;
-    }
-
-    .founder-grid {
-      display: grid;
-      grid-template-columns: 0.7fr 1.3fr;
-      gap: 56px;
-      align-items: center;
-    }
-
-    @media(max-width:820px) {
-      .founder-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .founder-frame {
-      aspect-ratio: 4/5;
-      background: var(--surface);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
-    }
-
-    .founder-frame svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .founder-badge {
-      position: absolute;
-      bottom: 16px;
-      left: 16px;
-      background: var(--bg);
-      padding: 10px 14px;
-      border-left: 3px solid var(--gold);
-    }
-
-    .founder-badge .n {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--gold-light);
-    }
-
-    .founder-badge .l {
-      font-size: 11.5px;
-      color: var(--text-muted);
-    }
-
-    .founder-quote {
-      font-family: 'Oswald', sans-serif;
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 1.4;
-      color: var(--text);
-      margin: 20px 0 24px;
-      max-width: 520px;
-    }
-
-    .founder-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 13px;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .founder-check {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      margin-top: 12px;
-      font-size: 14.5px;
-      color: var(--text-secondary);
-    }
-
-    .founder-check svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-      margin-top: 3px;
-      stroke: var(--gold);
-    }
-
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--line-strong);
-      border: 1px solid var(--line-strong);
-    }
-
-    @media(max-width:760px) {
-      .testi-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .testi-cell {
-      background: var(--surface);
-      padding: 32px;
-    }
-
-    .testi-cell p.quote {
-      font-size: 16.5px;
-      color: var(--text);
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
-    .testi-who {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .testi-who b {
-      color: var(--gold-light);
-    }
-
-    .cta-band {
-      background: var(--surface);
-      border-top: 1px solid var(--line);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-band::before {
-      content: "";
-      position: absolute;
-      bottom: -160px;
-      left: -120px;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(216, 175, 55, 0.10), transparent 70%);
-    }
-
-    .cta-inner {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 48px;
-      align-items: center;
-      position: relative;
-    }
-
-    @media(max-width:880px) {
-      .cta-inner {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .cta-band h2 {
-      font-size: clamp(28px, 4vw, 42px);
-    }
-
-    .cta-band>.wrap>.cta-inner>div>p {
-      margin-top: 14px;
-      font-size: 16px;
-    }
-
-    .cta-flag {
-      font-size: 13px;
-      color: var(--gold-light);
-      font-weight: 600;
-      margin-top: 22px;
-    }
-
-    form.enquiry {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    form.enquiry input,
-    form.enquiry select,
-    form.enquiry textarea {
-      background: var(--bg);
-      border: 1px solid var(--line-strong);
-      color: var(--text);
-      padding: 13px 14px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14.5px;
-      border-radius: 2px;
-      width: 100%;
-    }
-
-    form.enquiry input::placeholder,
-    form.enquiry textarea::placeholder {
-      color: var(--text-muted);
-    }
-
-    form.enquiry select {
-      color: var(--text-secondary);
-    }
-
-    form.enquiry textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    form.enquiry .row2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    @media(max-width:520px) {
-      form.enquiry .row2 {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .form-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    .form-success {
-      display: none;
-      font-size: 14px;
-      color: var(--gold-light);
-      margin-top: 10px;
-    }
-
-    footer {
-      padding: 56px 0 32px;
-      border-top: 1px solid var(--line);
-    }
-
-    .foot-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 36px;
-    }
-
-    @media(max-width:760px) {
-      .foot-grid {
-        grid-template-columns: 1fr 1fr;
-        row-gap: 32px;
-      }
-    }
-
-    .foot-grid h5 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 13.5px;
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: var(--text);
-    }
-
-    .foot-grid ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .foot-grid a,
-    .foot-grid li {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .foot-grid a:hover {
-      color: var(--gold-light);
-    }
-
-    .foot-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .foot-logo img {
-      height: 36px;
-    }
-
-    .foot-bottom {
-      margin-top: 44px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-
-      html {
-        scroll-behavior: auto;
-      }
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 2px;
-    }
-
-    /* Theme toggle button */
-    .theme-toggle {
-      background: none;
-      border: 1.5px solid var(--line-strong);
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .2s ease, border-color .2s ease, transform .15s ease;
-      padding: 0;
-      flex-shrink: 0;
-    }
-
-    .theme-toggle:hover {
-      background: rgba(216, 175, 55, 0.10);
-      border-color: var(--gold);
-      transform: translateY(-2px);
-    }
-
-    .theme-toggle svg {
-      width: 20px;
-      height: 20px;
-      fill: var(--gold);
-      transition: fill .2s ease;
-    }
-
-    .theme-toggle .icon-sun {
-      display: block;
-    }
-
-    .theme-toggle .icon-moon {
-      display: none;
-    }
-
-    html.dark-mode .theme-toggle .icon-sun {
-      display: none;
-    }
-
-    html.dark-mode .theme-toggle .icon-moon {
-      display: block;
-    }
-
-    .hero-collage {
-      position: relative;
-      width: 100%;
-      /* let it size to content instead of a hardcoded px/vh height */
-      /* min-height: 600px; */
-      /* fallback */
-      height: auto;
-    }
-
-    .hero-carousel {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      /* controls proportions without clipping */
-      overflow: hidden;
-      background: transparent;
-    }
-
-
-    .carousel-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
-
-    .carousel-slide.active {
-      opacity: 1;
-    }
-
-    .slide-bg,
-    .slide-fg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      /* keeps top of image (faces/heads) visible */
-      display: block;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    /* Dark gradient over image */
-    .carousel-slide::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 22%);
-      pointer-events: none;
-    }
-
-    /* Text on image */
-    .slide-label {
-      position: absolute;
-      z-index: 2;
-      left: 30px;
-      bottom: 35px;
-      color: #fff;
-    }
-
-    .slide-label strong {
-      display: block;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .slide-label span {
-      display: block;
-      font-size: 15px;
-      opacity: 0.9;
-    }
-
-    /* Carousel dots */
-    .carousel-dots {
-      position: absolute;
-      z-index: 10;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-    }
-
-    .carousel-dots button {
-      width: 9px;
-      height: 9px;
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.45);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .carousel-dots button.active {
-      width: 28px;
-      border-radius: 10px;
-      background: #D8AF37;
-    }
-
-    /* Rating badge */
-    .collage-badge {
-      position: absolute;
-      z-index: 20;
-      top: 22px;
-      right: 22px;
-      padding: 12px 17px;
-      border-radius: 12px;
-      background: rgba(20, 18, 14, 0.88);
-      backdrop-filter: blur(10px);
-      color: #fff;
-    }
-
-    .collage-badge .n {
-      display: block;
-      color: #D8AF37;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .collage-badge .l {
-      display: block;
-      margin-top: 2px;
-      font-size: 11px;
-      opacity: 0.75;
-    }
-
-    /* Mobile */
-    @media (max-width: 768px) {
-      .hero-collage {
-        height: auto;
-        /* was 380px */
-        margin-top: 0;
-      }
-
-      .slide-label {
-        left: 20px;
-        bottom: 35px;
-      }
-
-      .slide-label strong {
-        font-size: 22px;
-      }
-
-      .slide-label span {
-        font-size: 13px;
-      }
-    }
-
-    .nav-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 200px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      padding: 8px 0;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(8px);
-      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-      z-index: 20;
-    }
-
-    .nav-dropdown:hover>.dropdown-menu,
-    .nav-dropdown:focus-within>.dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 10px 16px;
-      color: #1a1a1a;
-      font-size: 14px;
-      white-space: nowrap;
-      text-decoration: none;
-    }
-
-    .dropdown-menu a:hover {
-      background: #f5f1e8;
-      color: #D8AF37;
-    }
-
-    /* Nested submenu: sits to the right of the parent item, not stacked below */
-    .nav-dropdown--nested {
-      display: block;
-      width: 100%;
-    }
-
-    .dropdown-menu--nested {
-      top: -8px;
-      /* aligns with the parent row instead of dropping further down */
-      left: 100%;
-      margin-left: 4px;
-      min-width: 320px;
-      /* wider, since "Ultimate Workout & Nutrition Plan" is long */
-    }
-
-    .m-dropdown {
-      width: 100%;
-    }
-
-    .m-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      background: none;
-      border: none;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      padding: 12px 4px;
-      font: inherit;
-      font-size: 15px;
-      color: var(--text-secondary);
-      cursor: pointer;
-    }
-
-    .m-chevron {
-      width: 8px;
-      height: 8px;
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
-      transform: rotate(45deg);
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .m-toggle[aria-expanded="true"] .m-chevron {
-      transform: rotate(-135deg);
-    }
-
-    .m-submenu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease;
-    }
-
-    .m-toggle[aria-expanded="true"]+.m-submenu {
-      max-height: 600px;
-      /* large enough to fit the longest submenu */
-    }
-
-    .m-submenu a {
-      display: block;
-      padding: 10px 4px 10px 20px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .m-submenu--l2 a {
-      padding-left: 36px;
-      font-size: 13.5px;
-    }
-
-
-    .path-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    @media(max-width:880px) {
-      .path-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .path-card {
-      display: flex;
-      flex-direction: column;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(26, 20, 4, 0.06);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .path-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 36px rgba(26, 20, 4, 0.14);
-    }
-
-    .path-media {
-      position: relative;
-      aspect-ratio: 5 / 4;
-      overflow: hidden;
-    }
-
-    .path-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform .5s ease;
-    }
-
-    .path-card:hover .path-media img {
-      transform: scale(1.08);
-    }
-
-    /* .path-badge {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, var(--gold-light), var(--gold));
-      box-shadow: 0 6px 16px rgba(26, 20, 4, 0.25);
-    } */
-
-    .path-badge svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .path-body {
-      padding: 26px 24px 28px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .path-body h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
-    }
-
-    .path-body p {
-      font-size: 14.5px;
-      flex: 1;
-    }
-
-    .path-cta {
-      margin-top: 20px;
-      align-self: flex-start;
-      font-family: 'Oswald', sans-serif;
-      font-weight: 600;
-      font-size: 12.5px;
-      letter-spacing: 0.04em;
-      padding: 11px 22px;
-      border-radius: 100px;
-      border: 1.5px solid var(--line-strong);
-      color: var(--text);
-      transition: background .2s ease, border-color .2s ease, color .2s ease;
-    }
-
-    .path-card:hover .path-cta {
-      background: rgba(216, 175, 55, 0.1);
-      border-color: var(--gold);
-      color: var(--gold-light);
-    }
-
-    /* =========================================
-   BMI CALCULATOR
-========================================= */
-
-    .bmi-section {
-      width: 100%;
-      background: #ffffff;
-      padding: 60px 0 0 !important;
-      margin: 0 !important;
-      overflow: hidden;
-    }
-
-    .bmi-container {
-      width: min(1180px, 92%);
-      margin: 0 auto;
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      align-items: center;
-      gap: 90px;
-      /* Important */
-      padding: 0 !important;
-      margin-bottom: 0 !important;
-    }
-
-    /* =========================================
-   IMAGE
-========================================= */
-
-    .bmi-image {
-      width: 100%;
-      height: auto !important;
-
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-
-      overflow: hidden;
-      margin: 0 !important;
-      padding: 0 !important;
-
-    }
-
-    .bmi-image img {
-      display: block;
-
-      width: 100%;
-      max-width: 520px;
-
-      height: auto;
-
-      object-fit: contain;
-
-      margin: 0 !important;
-      padding: 0 !important;
-
-      vertical-align: bottom;
-    }
-
-    /* =========================================
-   CONTENT
-========================================= */
-
-    .bmi-content {
-      width: 100%;
-      max-width: 560px;
-    }
-
-    /* =========================================
-   HEADING
-========================================= */
-
-    .bmi-heading {
-      margin-bottom: 55px;
-    }
-
-    .bmi-heading span {
-      font-family: 'Oswald', sans-serif;
-      font-size: 24px;
-      font-weight: 500;
-      color: #b7b7b7;
-      letter-spacing: 1px;
-      margin-bottom: 2px;
-    }
-
-    .bmi-heading h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 54px;
-      font-weight: 700;
-      color: #222;
-      letter-spacing: -1px;
-      margin: 0;
-    }
-
-    /* =========================================
-   UNIT SELECTOR
-========================================= */
-
-    .unit-selector {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-
-      margin-bottom: 35px;
-    }
-
-    .unit-option {
-      display: flex;
-      align-items: center;
-
-      gap: 16px;
-
-      font-size: 20px;
-
-      color: #999999;
-
-      cursor: pointer;
-
-      user-select: none;
-    }
-
-    .unit-option input {
-      display: none;
-    }
-
-    .radio {
-      width: 30px;
-      height: 30px;
-
-      border: 3px solid #666666;
-      border-radius: 50%;
-
-      position: relative;
-
-      display: inline-block;
-
-      transition: 0.25s ease;
-    }
-
-    .unit-option input:checked+.radio {
-      border-color: #8C6A14;
-    }
-
-    .unit-option input:checked+.radio::after {
-      content: "";
-
-      position: absolute;
-
-      width: 16px;
-      height: 16px;
-
-      border-radius: 50%;
-
-      background: #8C6A14;
-
-      top: 4px;
-      left: 4px;
-    }
-
-    /* =========================================
-   INPUTS
-========================================= */
-
-    .bmi-input {
-      width: 100%;
-
-      margin-bottom: 25px;
-
-      border-bottom: 1px solid #aaa;
-    }
-
-    .bmi-input input {
-      width: 100%;
-
-      border: none;
-      outline: none;
-
-      background: transparent;
-
-      padding: 12px 0 18px;
-
-      font-size: 20px;
-
-      color: #444;
-
-      font-family: inherit;
-    }
-
-    .bmi-input input::placeholder {
-      color: #c5c5c5;
-    }
-
-    .bmi-input input:focus {
-      border: none;
-    }
-
-    .bmi-input:focus-within {
-      border-bottom-color: #8C6A14;
-    }
-
-    /* =========================================
-   IMPERIAL
-========================================= */
-
-    .hidden {
-      display: none !important;
-    }
-
-    .imperial-height {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 30px;
-    }
-
-    /* =========================================
-   BUTTON
-========================================= */
-
-    .bmi-button {
-      font-family: 'Oswald', sans-serif;
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-
-      background: #8C6A14;
-      color: #fff;
-
-      border: none;
-      border-radius: 3px;
-
-      padding: 16px 30px;
-
-      cursor: pointer;
-
-      transition: all 0.25s ease;
-    }
-
-    .bmi-button:hover {
-      transform: translateY(-2px);
-      background: #8C6A14;
-    }
-
-    .bmi-button:active {
-      transform: translateY(0);
-    }
-
-    /* =========================================
-   RESULT
-========================================= */
-
-    .bmi-result {
-      margin-top: 35px;
-
-      display: flex;
-      align-items: center;
-
-      gap: 25px;
-
-      padding: 0;
-
-      opacity: 0;
-
-      transform: translateY(10px);
-
-      pointer-events: none;
-
-      transition: all 0.35s ease;
-    }
-
-    .bmi-result.show {
-      opacity: 1;
-
-      transform: translateY(0);
-
-      pointer-events: auto;
-    }
-
-    .result-number {
-      min-width: 90px;
-      height: 90px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background: #8C6A14;
-
-      color: white;
-    }
-
-    .result-number span {
-      font-size: 27px;
-      font-weight: 800;
-    }
-
-    .result-info strong {
-      display: block;
-
-      font-size: 21px;
-
-      color: #333;
-
-      margin-bottom: 5px;
-    }
-
-    .result-info p {
-      margin: 0;
-
-      color: #888;
-
-      font-size: 15px;
-
-      line-height: 1.5;
-    }
-
-    /* =========================================
-   TABLET
-========================================= */
-
-    @media (max-width: 900px) {
-
-      .bmi-container {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-      }
-
-      .bmi-image {
-        height: 420px;
-
-        order: 1;
-      }
-
-      .bmi-content {
-        order: 2;
-
-        max-width: 650px;
-
-        margin: 0 auto;
-      }
-
-    }
-
-    /* =========================================
-   MOBILE
-========================================= */
-
-    @media (max-width: 600px) {
-
-      .bmi-section {
-        padding: 60px 0;
-      }
-
-      .bmi-container {
-        width: 90%;
-
-        gap: 25px;
-      }
-
-      .bmi-image {
-        height: 320px;
-      }
-
-      .bmi-heading {
-        margin-bottom: 35px;
-      }
-
-      .bmi-heading span {
-        font-size: 21px;
-      }
-
-      .bmi-heading h2 {
-        font-size: 27px;
-      }
-
-      .unit-option {
-        font-size: 18px;
-      }
-
-      .radio {
-        width: 27px;
-        height: 27px;
-      }
-
-      .unit-option input:checked+.radio::after {
-        width: 13px;
-        height: 13px;
-
-        top: 4px;
-        left: 4px;
-      }
-
-      .bmi-input input {
-        font-size: 17px;
-      }
-
-      .bmi-button {
-        width: 100%;
-
-        font-size: 18px;
-      }
-
-      .bmi-result {
-        gap: 15px;
-      }
-
-      .result-number {
-        min-width: 75px;
-        height: 75px;
-      }
-
-      .result-number span {
-        font-size: 22px;
-      }
-
-      .result-info strong {
-        font-size: 18px;
-      }
-
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header>
+  <header class="site-header" id="site-header">
     <div class="wrap navrow">
-      <a class="logo" href="#top">
-        <img src="logo/logo.png" alt="Logo">
-        <span class="word">Time to Fit India</span>
+  
+  
+  <!-- LOGO -->
+  <a class="logo" href="#top" aria-label="Time to Fit India Home">
+    <img src="logo/logo.png" alt="TFI — Time to Fit India">
+    <span class="word">Time to Fit India</span>
+  </a>
+  
+  <!-- DESKTOP NAVIGATION -->
+  <nav class="navlinks" aria-label="Primary navigation">
+  
+    <a href="#top">Home</a>
+  
+    <a href="#about">About</a>
+  
+    <!-- PROGRAMS -->
+    <div class="nav-dropdown">
+      <a href="#programs" class="nav-dropdown-trigger">
+        Programs
+        <span class="nav-arrow">⌄</span>
       </a>
-      <nav class="navlinks" aria-label="Primary">
-        <a href="#about">Home</a>
-
-        <a href="#about">About</a>
-
-        <div class="nav-dropdown">
-          <a href="#programs">Programs</a>
-          <div class="dropdown-menu">
-
-            <div class="nav-dropdown nav-dropdown--nested">
-              <a href="#programs-virtual">Virtual</a>
-              <div class="dropdown-menu dropdown-menu--nested">
-                <a href="#plan-monthly-virtual">Monthly Virtual Training Plan</a>
-                <a href="#plan-12-weeks-virtual">12 Weeks Virtual Training Transformation Plan</a>
-                <a href="#plan-half-yearly-virtual">Half Yearly Virtual Training Transformation Plan</a>
-                <a href="#plan-yearly-virtual">Yearly Virtual Training Transformation Plan</a>
-              </div>
-            </div>
-
-            <div class="nav-dropdown nav-dropdown--nested">
-              <a href="#programs-non-virtual">Non-Virtual</a>
-              <div class="dropdown-menu dropdown-menu--nested">
-                <a href="#plan-personalised-workout">Personalised Workout Plan</a>
-                <a href="#plan-personalised-nutrition">Personalised Nutrition Plan</a>
-                <a href="#plan-ultimate">Ultimate Workout &amp; Nutrition Plan</a>
-                <a href="#plan-transformation">Transformation Plan</a>
-              </div>
-            </div>
-
-            <div class="nav-dropdown nav-dropdown--nested">
-              <a href="#programs-personal">Personal Training</a>
-              <div class="dropdown-menu dropdown-menu--nested">
-                <a href="#pt-diabetes">Diabetes Management / Blood Sugar Control</a>
-                <a href="#pt-pcos">PCOS/PCOD Balanced Nutrition</a>
-                <a href="#pt-hypertension">Hypertension Heart-Healthy Workouts</a>
-                <a href="#pt-prenatal">Pre and Post Natal Fitness Safe Workouts</a>
-                <a href="#pt-back-spine">Lower Back and Spine Pains Posture Correction</a>
-                <a href="#pt-cardio">Cardiovascular Health Cardio Conditioning</a>
-                <a href="#pt-thyroid">Thyroid Management Metabolic Support</a>
-                <a href="#pt-gerd">GERD (Gastroesophageal Reflux Disease)</a>
-              </div>
-            </div>
-
+  
+      <div class="dropdown-menu">
+  
+        <!-- VIRTUAL -->
+        <div class="nav-dropdown nav-dropdown--nested">
+          <a href="#programs-virtual">
+            <span>Virtual</span>
+            <span class="dropdown-arrow">›</span>
+          </a>
+  
+          <div class="dropdown-menu dropdown-menu--nested">
+            <a href="#plan-monthly-virtual">
+              Monthly Virtual Training Plan
+            </a>
+  
+            <a href="#plan-12-weeks-virtual">
+              12 Weeks Virtual Training Transformation Plan
+            </a>
+  
+            <a href="#plan-half-yearly-virtual">
+              Half Yearly Virtual Training Transformation Plan
+            </a>
+  
+            <a href="#plan-yearly-virtual">
+              Yearly Virtual Training Transformation Plan
+            </a>
           </div>
         </div>
-
-        <a href="#why">Why TFI</a>
-        <a href="#pricing">Testimonial</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="navcta">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-13.435l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
-          </svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2 1 1 0 0 0-.35-1 1 1 0 0 0-1.05-.17 10 10 0 1 0 13.71 10.68z" />
-          </svg>
-        </button>
-        <a class="btn btn-solid" href="#contact">Book a free trial</a>
-        <button class="navtoggle" id="navtoggle" aria-label="Toggle menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+  
+        <!-- NON-VIRTUAL -->
+        <div class="nav-dropdown nav-dropdown--nested">
+          <a href="#programs-non-virtual">
+            <span>Non-Virtual</span>
+            <span class="dropdown-arrow">›</span>
+          </a>
+  
+          <div class="dropdown-menu dropdown-menu--nested">
+            <a href="#plan-personalised-workout">
+              Personalised Workout Plan
+            </a>
+  
+            <a href="#plan-personalised-nutrition">
+              Personalised Nutrition Plan
+            </a>
+  
+            <a href="#plan-ultimate">
+              Ultimate Workout &amp; Nutrition Plan
+            </a>
+  
+            <a href="#plan-transformation">
+              Transformation Plan
+            </a>
+          </div>
+        </div>
+  
+        <!-- PERSONAL TRAINING -->
+        <div class="nav-dropdown nav-dropdown--nested">
+          <a href="#programs-personal">
+            <span>Personal Training</span>
+            <span class="dropdown-arrow">›</span>
+          </a>
+  
+          <div class="dropdown-menu dropdown-menu--nested">
+  
+            <a href="#pt-diabetes">
+              Diabetes Management / Blood Sugar Control
+            </a>
+  
+            <a href="#pt-pcos">
+              PCOS/PCOD Balanced Nutrition
+            </a>
+  
+            <a href="#pt-hypertension">
+              Hypertension Heart-Healthy Workouts
+            </a>
+  
+            <a href="#pt-prenatal">
+              Pre and Post Natal Fitness Safe Workouts
+            </a>
+  
+            <a href="#pt-back-spine">
+              Lower Back and Spine Pain / Posture Correction
+            </a>
+  
+            <a href="#pt-cardio">
+              Cardiovascular Health / Cardio Conditioning
+            </a>
+  
+            <a href="#pt-thyroid">
+              Thyroid Management / Metabolic Support
+            </a>
+  
+            <a href="#pt-gerd">
+              GERD (Gastroesophageal Reflux Disease)
+            </a>
+  
+          </div>
+        </div>
+  
       </div>
     </div>
-
+  
+    <a href="#who-we-train">Who We Train</a>
+  
+    <a href="#why">Why TFI</a>
+  
+    <a href="#testimonials">Testimonials</a>
+  
+    <a href="#contact">Contact</a>
+  
+  </nav>
+  
+  <!-- RIGHT SIDE ACTIONS -->
+  <div class="navcta">
+  
+    <!-- THEME TOGGLE -->
+    <button
+      class="theme-toggle"
+      id="themeToggle"
+      type="button"
+      aria-label="Toggle dark mode"
+      title="Toggle theme"
+    >
+  
+      <!-- SUN -->
+      <svg
+        class="icon-sun"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-13.435l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414 2.121-2.121-1.414-1.414-2.121 2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/>
+      </svg>
+  
+      <!-- MOON -->
+      <svg
+        class="icon-moon"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2 1 1 0 0 0-.35-1 10 10 0 1 0 13.71 10.68z"/>
+      </svg>
+  
+    </button>
+  
+    <!-- DESKTOP CTA -->
+    <a class="btn btn-solid nav-book-btn" href="#contact">
+      Book a Free Trial
+    </a>
+  
+    <!-- MOBILE MENU BUTTON -->
+    <button
+      class="navtoggle"
+      id="navtoggle"
+      type="button"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobilemenu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  
+  </div>
+  
+  
+    </div>
+  
+    <!-- MOBILE MENU -->
+  
     <div id="mobilemenu">
-      <a href="#about">About</a>
-
+  
+  
+  <a href="#top">Home</a>
+  
+  <a href="#about">About</a>
+  
+  <!-- MOBILE PROGRAMS -->
+  <div class="m-dropdown">
+  
+    <button
+      class="m-toggle"
+      type="button"
+      aria-expanded="false"
+    >
+      <span>Programs</span>
+      <span class="m-chevron"></span>
+    </button>
+  
+    <div class="m-submenu">
+  
+      <!-- VIRTUAL -->
       <div class="m-dropdown">
-        <button class="m-toggle" aria-expanded="false">
-          Programs
+  
+        <button
+          class="m-toggle"
+          type="button"
+          aria-expanded="false"
+        >
+          <span>Virtual</span>
           <span class="m-chevron"></span>
         </button>
-        <div class="m-submenu">
-
-          <div class="m-dropdown">
-            <button class="m-toggle" aria-expanded="false">
-              Virtual
-              <span class="m-chevron"></span>
-            </button>
-            <div class="m-submenu m-submenu--l2">
-              <a href="#plan-monthly-virtual">Monthly Virtual Training Plan</a>
-              <a href="#plan-12-weeks-virtual">12 Weeks Virtual Training Transformation Plan</a>
-              <a href="#plan-half-yearly-virtual">Half Yearly Virtual Training Transformation Plan</a>
-              <a href="#plan-yearly-virtual">Yearly Virtual Training Transformation Plan</a>
-            </div>
-          </div>
-
-          <div class="m-dropdown">
-            <button class="m-toggle" aria-expanded="false">
-              Non-Virtual
-              <span class="m-chevron"></span>
-            </button>
-            <div class="m-submenu m-submenu--l2">
-              <a href="#plan-personalised-workout">Personalised Workout Plan</a>
-              <a href="#plan-personalised-nutrition">Personalised Nutrition Plan</a>
-              <a href="#plan-ultimate">Ultimate Workout &amp; Nutrition Plan</a>
-              <a href="#plan-transformation">Transformation Plan</a>
-            </div>
-          </div>
-
-          <div class="m-dropdown">
-            <button class="m-toggle" aria-expanded="false">
-              Personal Training
-              <span class="m-chevron"></span>
-            </button>
-            <div class="m-submenu m-submenu--l2">
-              <a href="#pt-diabetes">Diabetes Management / Blood Sugar Control</a>
-              <a href="#pt-pcos">PCOS/PCOD Balanced Nutrition</a>
-              <a href="#pt-hypertension">Hypertension Heart-Healthy Workouts</a>
-              <a href="#pt-prenatal">Pre and Post Natal Fitness Safe Workouts</a>
-              <a href="#pt-back-spine">Lower Back and Spine Pains Posture Correction</a>
-              <a href="#pt-cardio">Cardiovascular Health Cardio Conditioning</a>
-              <a href="#pt-thyroid">Thyroid Management Metabolic Support</a>
-              <a href="#pt-gerd">GERD (Gastroesophageal Reflux Disease)</a>
-            </div>
-          </div>
-
+  
+        <div class="m-submenu m-submenu--l2">
+  
+          <a href="#plan-monthly-virtual">
+            Monthly Virtual Training Plan
+          </a>
+  
+          <a href="#plan-12-weeks-virtual">
+            12 Weeks Virtual Training Transformation Plan
+          </a>
+  
+          <a href="#plan-half-yearly-virtual">
+            Half Yearly Virtual Training Transformation Plan
+          </a>
+  
+          <a href="#plan-yearly-virtual">
+            Yearly Virtual Training Transformation Plan
+          </a>
+  
         </div>
+  
       </div>
-
-      <a href="#why">Why TFI</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn-solid" href="#contact">Book a free trial</a>
+  
+      <!-- NON-VIRTUAL -->
+      <div class="m-dropdown">
+  
+        <button
+          class="m-toggle"
+          type="button"
+          aria-expanded="false"
+        >
+          <span>Non-Virtual</span>
+          <span class="m-chevron"></span>
+        </button>
+  
+        <div class="m-submenu m-submenu--l2">
+  
+          <a href="#plan-personalised-workout">
+            Personalised Workout Plan
+          </a>
+  
+          <a href="#plan-personalised-nutrition">
+            Personalised Nutrition Plan
+          </a>
+  
+          <a href="#plan-ultimate">
+            Ultimate Workout &amp; Nutrition Plan
+          </a>
+  
+          <a href="#plan-transformation">
+            Transformation Plan
+          </a>
+  
+        </div>
+  
+      </div>
+  
+      <!-- PERSONAL TRAINING -->
+      <div class="m-dropdown">
+  
+        <button
+          class="m-toggle"
+          type="button"
+          aria-expanded="false"
+        >
+          <span>Personal Training</span>
+          <span class="m-chevron"></span>
+        </button>
+  
+        <div class="m-submenu m-submenu--l2">
+  
+          <a href="#pt-diabetes">
+            Diabetes Management / Blood Sugar Control
+          </a>
+  
+          <a href="#pt-pcos">
+            PCOS/PCOD Balanced Nutrition
+          </a>
+  
+          <a href="#pt-hypertension">
+            Hypertension Heart-Healthy Workouts
+          </a>
+  
+          <a href="#pt-prenatal">
+            Pre and Post Natal Fitness Safe Workouts
+          </a>
+  
+          <a href="#pt-back-spine">
+            Lower Back and Spine Pain / Posture Correction
+          </a>
+  
+          <a href="#pt-cardio">
+            Cardiovascular Health / Cardio Conditioning
+          </a>
+  
+          <a href="#pt-thyroid">
+            Thyroid Management / Metabolic Support
+          </a>
+  
+          <a href="#pt-gerd">
+            GERD (Gastroesophageal Reflux Disease)
+          </a>
+  
+        </div>
+  
+      </div>
+  
     </div>
+  
+  </div>
+  
+  <a href="#who-we-train">Who We Train</a>
+  
+  <a href="#why">Why TFI</a>
+  
+  <a href="#testimonials">Testimonials</a>
+  
+  <a href="#contact">Contact</a>
+  
+  <!-- MOBILE CTA -->
+  <a class="btn btn-solid mobile-book-btn" href="#contact">
+    Book a Free Trial
+  </a>
+  
+  
+    </div>
+  
   </header>
+  
 
 
   <main id="top">
@@ -2564,7 +575,7 @@
       });
     </script>
 
-    <section id="about">
+  <!-- <section id="about">
       <div class="wrap about-grid">
         <div class="about-copy">
           <div class="sec-kicker">Our studio</div>
@@ -2642,78 +653,357 @@
           </div>
         </div>
       </div>
+  </section> -->
+
+
+    <!-- YOUR FITNESS JOURNEY -->
+    <section id="journey" class="journey-section">
+
+      <div class="wrap">
+    
+        <!-- HEADER -->
+        <div class="journey-intro">
+    
+          <div class="sec-kicker">YOUR FITNESS JOURNEY</div>
+    
+          <h2>
+            Understand.<br>
+            Plan. Train. Progress.
+          </h2>
+    
+          <p>
+            Your fitness journey starts with understanding where you are,
+            where you want to go and what works best for you.
+          </p>
+    
+        </div>
+    
+    
+        <!-- TIMELINE -->
+        <div class="journey-timeline">
+    
+    
+          <!-- 01 -->
+          <div class="journey-step">
+    
+            <div class="journey-marker">
+              <span>01</span>
+            </div>
+    
+            <div class="journey-card">
+    
+              <div class="journey-card-top">
+                <span>01 — START HERE</span>
+                <h3>ASSESS</h3>
+              </div>
+    
+              <p class="journey-description">
+                Understand your current fitness and health background.
+              </p>
+    
+              <div class="journey-points">
+    
+                <div>Readiness &amp; health screening</div>
+                <div>Health &amp; injury history</div>
+                <div>Body composition</div>
+                <div>Cardio fitness</div>
+                <div>Strength &amp; endurance</div>
+                <div>Flexibility &amp; mobility</div>
+                <div>Posture &amp; movement</div>
+    
+              </div>
+    
+            </div>
+    
+          </div>
+    
+    
+          <!-- 02 -->
+          <div class="journey-step">
+    
+            <div class="journey-marker">
+              <span>02</span>
+            </div>
+    
+            <div class="journey-card">
+    
+              <div class="journey-card-top">
+                <span>02 — KNOW YOURSELF</span>
+                <h3>UNDERSTAND</h3>
+              </div>
+    
+              <p class="journey-description">
+                Understand what works best for you and fits your life.
+              </p>
+    
+              <div class="journey-points">
+    
+                <div>Lifestyle &amp; daily routine</div>
+                <div>Goals &amp; expectations</div>
+                <div>Exercise experience</div>
+                <div>Exercise preferences</div>
+                <div>Preferred training intensity</div>
+                <div>Time, challenges &amp; limitations</div>
+                <div>Health considerations</div>
+    
+              </div>
+    
+            </div>
+    
+          </div>
+    
+    
+          <!-- 03 -->
+          <div class="journey-step">
+    
+            <div class="journey-marker">
+              <span>03</span>
+            </div>
+    
+            <div class="journey-card">
+    
+              <div class="journey-card-top">
+                <span>03 — BUILD YOUR PATH</span>
+                <h3>PLAN</h3>
+              </div>
+    
+              <p class="journey-description">
+                Turn what we learn about you into a plan built around your goals.
+              </p>
+    
+              <div class="journey-points">
+    
+                <div>Personalised exercise plan</div>
+                <div>Training frequency &amp; intensity</div>
+                <div>Exercise selection &amp; progression</div>
+                <div>Nutrition guidance</div>
+                <div>Built around your goals &amp; lifestyle</div>
+    
+              </div>
+    
+            </div>
+    
+          </div>
+    
+    
+          <!-- 04 -->
+          <div class="journey-step">
+    
+            <div class="journey-marker">
+              <span>04</span>
+            </div>
+    
+            <div class="journey-card">
+    
+              <div class="journey-card-top">
+                <span>04 — PUT IT INTO ACTION</span>
+                <h3>TRAIN WITH PURPOSE</h3>
+              </div>
+    
+              <p class="journey-description">
+                Start where you are and train towards where you want to be.
+              </p>
+    
+              <div class="journey-points">
+    
+                <div>Based on your current fitness level</div>
+                <div>Beginner, intermediate or advanced</div>
+                <div>Proper technique &amp; individual attention</div>
+                <div>Appropriate intensity &amp; progression</div>
+                <div>Adapted to your needs and goals</div>
+    
+              </div>
+    
+            </div>
+    
+          </div>
+    
+    
+          <!-- 05 -->
+          <div class="journey-step">
+    
+            <div class="journey-marker">
+              <span>05</span>
+            </div>
+    
+            <div class="journey-card">
+    
+              <div class="journey-card-top">
+                <span>05 — KEEP MOVING</span>
+                <h3>PROGRESS</h3>
+              </div>
+    
+              <p class="journey-description">
+                Track your progress, learn from your results and adapt as you improve.
+              </p>
+    
+              <div class="journey-points">
+    
+                <div>Track fitness &amp; performance</div>
+                <div>Monitor key changes</div>
+                <div>Review progress regularly</div>
+                <div>Adapt training &amp; intensity</div>
+                <div>Progress towards your goals</div>
+    
+              </div>
+    
+            </div>
+    
+          </div>
+    
+        </div>
+    
+    
+        <!-- FLOW -->
+        <div class="journey-flow">
+    
+          <span>ASSESS</span>
+          <i>→</i>
+    
+          <span>UNDERSTAND</span>
+          <i>→</i>
+    
+          <span>PLAN</span>
+          <i>→</i>
+    
+          <span>TRAIN</span>
+          <i>→</i>
+    
+          <span>PROGRESS</span>
+    
+        </div>
+    
+    
+        <!-- BOTTOM -->
+        <div class="journey-bottom">
+    
+          <span></span>
+    
+          <p>
+            A personalised journey, thoughtfully built around you.
+          </p>
+    
+          <span></span>
+    
+        </div>
+    
+      </div>
+    
     </section>
 
+
+
+
     <section id="programs"
-      style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="sec-kicker">Find your program</div>
-          <h2>Every body. Every goal. One team.</h2>
-          <p>Three ways to train with TFI — pick the path that fits your life, then choose a plan inside it.</p>
-        </div>
+    style="
+      background:#F5F2EB;
+      border-top:1px solid rgba(11,10,8,.10);
+      border-bottom:1px solid rgba(11,10,8,.10);
+    ">
 
-        <div class="path-grid">
+    <div class="wrap">
 
-          <a class="path-card" href="#programs-virtual">
-            <div class="path-media">
-              <img src="images/virtual.jpg" alt="Member training virtually from home">
-              <div class="path-badge">
-                <!-- <svg viewBox="0 0 24 24" fill="none" stroke="#1A1404" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="12" rx="1.5" />
-                  <path d="M2 20h20" />
-                  <path d="M9 20l1-4h4l1 4" />
-                </svg> -->
-              </div>
-            </div>
-            <div class="path-body">
-              <h3>Virtual Training</h3>
-              <p>Live and on-demand coaching from home, on a schedule built around you — plans from monthly to a full
-                year.</p>
-              <span class="path-cta">View details</span>
-            </div>
-          </a>
+      <div class="sec-head">
 
-          <a class="path-card" href="#programs-non-virtual">
-            <div class="path-media">
-              <img src="images/personaltrain.jpg" alt="Member training in-studio at TFI">
-              <div class="path-badge">
-                <!-- <svg viewBox="0 0 24 24" fill="none" stroke="#1A1404" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M6.5 6.5l11 11M4 9l4-4M20 15l-4 4M2 9l3-3M22 15l-3 3" />
-                </svg> -->
-              </div>
-            </div>
-            <div class="path-body">
-              <h3>Non-Virtual Training</h3>
-              <p>In-person coaching built around your plate and your plan — personalised workouts, nutrition and full
-                transformation programs.</p>
-              <span class="path-cta">View details</span>
-            </div>
-          </a>
+        <div class="sec-kicker">Find your program</div>
 
-          <a class="path-card" href="#programs-personal">
-            <div class="path-media">
-              <img src="images/non-virtual.jpg" alt="One-on-one personal training session">
-              <div class="path-badge">
-                <!-- <svg viewBox="0 0 24 24" fill="none" stroke="#1A1404" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path
-                    d="M20.8 4.6a4.6 4.6 0 0 0-7.8-1 4.6 4.6 0 0 0-7.8 3.3c0 4.8 7.8 9.6 7.8 9.6s7.8-4.8 7.8-9.6a4.5 4.5 0 0 0 0-2.3z" />
-                </svg> -->
-              </div>
-            </div>
-            <div class="path-body">
-              <h3>Personal Training</h3>
-              <p>One-on-one coaching for specific conditions and goals — from diabetes and PCOS to back pain, cardio
-                health and thyroid support.</p>
-              <span class="path-cta">View details</span>
-            </div>
-          </a>
+        <h2>Every body. Every goal. One team.</h2>
 
-        </div>
+        <p>
+          Three ways to train with TFI — pick the path that fits your life,
+          then choose a plan inside it.
+        </p>
+
       </div>
+
+      <div class="path-grid">
+
+        <a class="path-card" href="#programs-virtual">
+
+          <div class="path-media">
+            <img
+              src="images/virtual.jpg"
+              alt="Member training virtually from home"
+            >
+
+            <div class="path-badge"></div>
+          </div>
+
+          <div class="path-body">
+
+            <h3>Virtual Training</h3>
+
+            <p>
+              Live and on-demand coaching from home, on a schedule built
+              around you — plans from monthly to a full year.
+            </p>
+
+            <span class="path-cta">View details</span>
+
+          </div>
+
+        </a>
+
+
+        <a class="path-card" href="#programs-non-virtual">
+
+          <div class="path-media">
+            <img
+              src="images/personaltrain.jpg"
+              alt="Member training in-studio at TFI"
+            >
+
+            <div class="path-badge"></div>
+          </div>
+
+          <div class="path-body">
+
+            <h3>Non-Virtual Training</h3>
+
+            <p>
+              In-person coaching built around your plate and your plan —
+              personalised workouts, nutrition and full transformation
+              programs.
+            </p>
+
+            <span class="path-cta">View details</span>
+
+          </div>
+
+        </a>
+
+
+        <a class="path-card" href="#programs-personal">
+
+          <div class="path-media">
+            <img
+              src="images/non-virtual.jpg"
+              alt="One-on-one personal training session"
+            >
+
+            <div class="path-badge"></div>
+          </div>
+
+          <div class="path-body">
+
+            <h3>Personal Training</h3>
+
+            <p>
+              One-on-one coaching for specific conditions and goals —
+              from diabetes and PCOS to back pain, cardio health and
+              thyroid support.
+            </p>
+
+            <span class="path-cta">View details</span>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
     </section>
 
     <section id="why">
@@ -2946,7 +1236,7 @@
       </div>
     </section> -->
 
-    <section>
+    <!-- <section>
       <div class="wrap">
         <div class="sec-head">
           <div class="sec-kicker">Inside TFI</div>
@@ -3001,138 +1291,650 @@
             </svg><span>Equipment zone</span></div>
         </div>
       </div>
-    </section>
-
-    <section style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-      <div class="wrap founder-grid">
-        <div class="founder-frame">
-          <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
-            <rect width="300" height="375" fill="var(--surface)" />
-            <circle cx="150" cy="145" r="52" fill="none" stroke="var(--gold)" stroke-width="2" opacity="0.5" />
-            <path d="M80 320c8-58 46-88 70-88s62 30 70 88" fill="none" stroke="var(--gold)" stroke-width="2"
-              opacity="0.5" />
-          </svg>
-          <div class="founder-badge">
-            <div class="n">8+ yrs</div>
-            <div class="l">Coaching experience</div>
-          </div>
-        </div>
-        <div>
-          <div class="founder-title">Founder &amp; head coach</div>
-          <h2 style="font-size:clamp(24px,3.4vw,34px); margin-bottom:6px;">[Founder Name]</h2>
-          <p style="margin-top:14px; max-width:520px;">Founder of TFI — Time To Fit India, [Founder Name] built this
-            studio around one idea: fitness should be honest, personal and sustainable. Every program is shaped by
-            hands-on coaching experience and a genuine commitment to each member's progress.</p>
-          <blockquote class="founder-quote">"Motivation gets you started. Discipline, coaching and consistency are what
-            get you results."</blockquote>
-          <div class="founder-check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>Certified personal trainer and strength coach</div>
-          <div class="founder-check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>Specialised in fat-loss and strength programming</div>
-          <div class="founder-check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>Hands-on coaching with personal progress tracking</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="sec-kicker">Loved by members</div>
-          <h2>Real bodies. Real transformations.</h2>
-        </div>
-        <div class="testi-grid">
-          <div class="testi-cell">
-            <p class="quote">"I lost 12 kilos in five months without starving myself. The coaches actually track your
-              progress — it's not just a gym, it's a system."</p>
-            <div class="testi-who"><b>Member</b> · Weight Loss Program</div>
-          </div>
-          <div class="testi-cell">
-            <p class="quote">"Best personal training I've done. My trainer corrects every rep and actually pushes me on
-              the days I don't want to show up."</p>
-            <div class="testi-who"><b>Member</b> · Personal Training</div>
-          </div>
-          <div class="testi-cell">
-            <p class="quote">"The Zumba classes are the highlight of my week — high energy, zero judgement, real
-              results."</p>
-            <div class="testi-who"><b>Member</b> · Zumba &amp; Dance Fitness</div>
-          </div>
-          <div class="testi-cell">
-            <p class="quote">"TFI's nutrition coaching changed how I eat completely. Down eight kilos and still eating
-              food I actually enjoy."</p>
-            <div class="testi-who"><b>Member</b> · Nutrition Coaching</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section id="pricing"
-      style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="sec-kicker">Fee chart</div>
-          <h2>Transparent, program-wise pricing</h2>
-          <p>Pay monthly to start flexibly, or yearly to lock in the best value. No hidden charges.</p>
-        </div>
-        <div class="sched-wrap">
-          <table class="price-table">
-            <thead>
-              <tr>
-                <th>Program</th>
-                <th>Frequency</th>
-                <th>Monthly</th>
-                <th>Yearly</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Personal Training</td>
-                <td>1-on-1, flexible</td>
-                <td class="amt">₹4,500</td>
-                <td class="amt">₹45,000</td>
-                <td><a class="prog-cta" href="#contact">Enroll →</a></td>
-              </tr>
-              <tr>
-                <td>Group Fitness / HIIT</td>
-                <td>5 days / week</td>
-                <td class="amt">₹2,000</td>
-                <td class="amt">₹19,000</td>
-                <td><a class="prog-cta" href="#contact">Enroll →</a></td>
-              </tr>
-              <tr>
-                <td>Weight Loss Program</td>
-                <td>5 days + diet plan</td>
-                <td class="amt">₹2,500</td>
-                <td class="amt">₹24,000</td>
-                <td><a class="prog-cta" href="#contact">Enroll →</a></td>
-              </tr>
-              <tr>
-                <td>Zumba &amp; Dance Fitness</td>
-                <td>4 days / week</td>
-                <td class="amt">₹1,500</td>
-                <td class="amt">₹14,000</td>
-                <td><a class="prog-cta" href="#contact">Enroll →</a></td>
-              </tr>
-              <tr>
-                <td>Yoga &amp; Mobility</td>
-                <td>Daily</td>
-                <td class="amt">₹1,800</td>
-                <td class="amt">₹17,000</td>
-                <td><a class="prog-cta" href="#contact">Enroll →</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="price-note">Sample pricing shown for layout — confirm actual rates before publishing.</p>
-      </div>
     </section> -->
+
+    <!-- FOUNDER -->
+    <section id="founder" class="founder-section">
+      <div class="wrap">
+
+        <div class="founder-grid">
+
+          <!-- LEFT: FOUNDER IMAGE -->
+          <div class="founder-visual">
+
+            <div class="founder-image-frame">
+              <img
+                src="images/santhosh.png"
+                alt="Santhosh M - Founder of Time To Fit India"
+              >
+
+              <div class="founder-experience">
+                <div class="experience-number">12+</div>
+                <div class="experience-label">Years in<br>Fitness</div>
+              </div>
+            </div>
+
+            <div class="founder-image-caption">
+              <span></span>
+              <p>Founder · Head Coach · Personal Trainer</p>
+            </div>
+
+          </div>
+
+
+          <!-- RIGHT: FOUNDER CONTENT -->
+          <div class="founder-content">
+
+            <div class="sec-kicker">MEET THE FOUNDER</div>
+
+            <h2>Santhosh M</h2>
+
+            <div class="founder-role">
+              <span>ACE-Certified Personal Trainer</span>
+              <b>·</b>
+              <span>12+ Years in Fitness</span>
+            </div>
+
+            <p class="founder-lead">
+              I believe the right fitness journey begins with understanding
+              the person — their goals, lifestyle and individual needs.
+            </p>
+
+            <p>
+              I'm Santhosh M, an ACE-Certified Personal Trainer with
+              12+ years of experience in the fitness industry.
+            </p>
+
+            <p>
+              Over the years, I've worked with people across different
+              fitness levels and goals, including people over 40 and
+              individuals with specific health considerations.
+            </p>
+
+            <p>
+              This experience shaped my approach to fitness:
+              <strong>understand the person first, then build the right
+              training around them.</strong>
+            </p>
+
+
+            <!-- TRAINING APPROACH -->
+            <div class="founder-approach">
+
+              <div class="approach-title">
+                My approach to your fitness journey
+              </div>
+
+              <div class="approach-list">
+
+                <div class="approach-item">
+                  <span class="approach-number">01</span>
+                  <div>
+                    <strong>Understand</strong>
+                    <p>Your goals, lifestyle and current fitness level.</p>
+                  </div>
+                </div>
+
+                <div class="approach-item">
+                  <span class="approach-number">02</span>
+                  <div>
+                    <strong>Personalise</strong>
+                    <p>Training designed around what works for you.</p>
+                  </div>
+                </div>
+
+                <div class="approach-item">
+                  <span class="approach-number">03</span>
+                  <div>
+                    <strong>Progress</strong>
+                    <p>Consistent coaching, tracking and meaningful progress.</p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- TRAINING OPTIONS -->
+            <div class="founder-programs">
+
+              <div class="program-heading">
+                Three ways to train with TFI
+              </div>
+
+              <div class="program-tags">
+                <span>Live Virtual Personal Training</span>
+                <span>In-Person Personal Training</span>
+                <span>Custom Exercise &amp; Nutrition Plan</span>
+              </div>
+
+            </div>
+
+
+            <!-- QUOTE -->
+            <div class="founder-quote">
+              <span class="quote-mark">“</span>
+              <p>
+                Fitness should be personal.<br>
+                Training should have a purpose.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- testimonials -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="wrap">
+    
+        <div class="testimonials-head">
+          <div>
+            <div class="sec-kicker">Loved by members</div>
+            <h2>Real bodies. Real transformations.</h2>
+          </div>
+    
+          <div class="testimonial-controls">
+            <button class="testimonial-btn prev" aria-label="Previous">
+              &#8592;
+            </button>
+    
+            <button class="testimonial-btn next" aria-label="Next">
+              &#8594;
+            </button>
+          </div>
+        </div>
+    
+    
+        <div class="testimonials-scroll">
+    
+          <!-- CARD 01 -->
+          <div class="testi-card">
+            <div class="testi-top">
+              <span class="testi-number">01</span>
+              <span class="testi-stars">★★★★★</span>
+            </div>
+    
+            <div class="testi-quote">“</div>
+    
+            <p>
+              I lost 12 kilos in five months without starving myself.
+              The coaches actually track your progress — it's not just
+              a gym, it's a system.
+            </p>
+    
+            <div class="testi-bottom">
+              <div class="testi-avatar">M</div>
+    
+              <div>
+                <strong>Member</strong>
+                <span>Weight Loss Program</span>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- CARD 02 -->
+          <div class="testi-card">
+            <div class="testi-top">
+              <span class="testi-number">02</span>
+              <span class="testi-stars">★★★★★</span>
+            </div>
+    
+            <div class="testi-quote">“</div>
+    
+            <p>
+              Best personal training I've done. My trainer corrects
+              every rep and actually pushes me on the days I don't
+              want to show up.
+            </p>
+    
+            <div class="testi-bottom">
+              <div class="testi-avatar">M</div>
+    
+              <div>
+                <strong>Member</strong>
+                <span>Personal Training</span>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- CARD 03 -->
+          <div class="testi-card">
+            <div class="testi-top">
+              <span class="testi-number">03</span>
+              <span class="testi-stars">★★★★★</span>
+            </div>
+    
+            <div class="testi-quote">“</div>
+    
+            <p>
+              The Zumba classes are the highlight of my week —
+              high energy, zero judgement, real results.
+            </p>
+    
+            <div class="testi-bottom">
+              <div class="testi-avatar">M</div>
+    
+              <div>
+                <strong>Member</strong>
+                <span>Zumba &amp; Dance Fitness</span>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- CARD 04 -->
+          <div class="testi-card">
+            <div class="testi-top">
+              <span class="testi-number">04</span>
+              <span class="testi-stars">★★★★★</span>
+            </div>
+    
+            <div class="testi-quote">“</div>
+    
+            <p>
+              TFI's nutrition coaching changed how I eat completely.
+              Down eight kilos and still eating food I actually enjoy.
+            </p>
+    
+            <div class="testi-bottom">
+              <div class="testi-avatar">M</div>
+    
+              <div>
+                <strong>Member</strong>
+                <span>Nutrition Coaching</span>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- CARD 05 -->
+          <div class="testi-card">
+            <div class="testi-top">
+              <span class="testi-number">05</span>
+              <span class="testi-stars">★★★★★</span>
+            </div>
+    
+            <div class="testi-quote">“</div>
+    
+            <p>
+              The coaches make every workout feel purposeful.
+              I've become stronger, more confident and more consistent.
+            </p>
+    
+            <div class="testi-bottom">
+              <div class="testi-avatar">M</div>
+    
+              <div>
+                <strong>Member</strong>
+                <span>Strength &amp; Conditioning</span>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- CARD 06 -->
+          <div class="testi-card">
+            <div class="testi-top">
+              <span class="testi-number">06</span>
+              <span class="testi-stars">★★★★★</span>
+            </div>
+    
+            <div class="testi-quote">“</div>
+    
+            <p>
+              I finally found a routine that fits my lifestyle.
+              The team understands that everyone's fitness journey is different.
+            </p>
+    
+            <div class="testi-bottom">
+              <div class="testi-avatar">M</div>
+    
+              <div>
+                <strong>Member</strong>
+                <span>Personal Training</span>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- CARD 07 -->
+          <div class="testi-card">
+            <div class="testi-top">
+              <span class="testi-number">07</span>
+              <span class="testi-stars">★★★★★</span>
+            </div>
+    
+            <div class="testi-quote">“</div>
+    
+            <p>
+              Every session has a clear purpose. The support,
+              accountability and attention to technique made a huge difference.
+            </p>
+    
+            <div class="testi-bottom">
+              <div class="testi-avatar">M</div>
+    
+              <div>
+                <strong>Member</strong>
+                <span>Fitness Program</span>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- CARD 08 -->
+          <div class="testi-card">
+            <div class="testi-top">
+              <span class="testi-number">08</span>
+              <span class="testi-stars">★★★★★</span>
+            </div>
+    
+            <div class="testi-quote">“</div>
+    
+            <p>
+              TFI made fitness feel simple and achievable.
+              I enjoy coming to every session and can genuinely see the progress.
+            </p>
+    
+            <div class="testi-bottom">
+              <div class="testi-avatar">M</div>
+    
+              <div>
+                <strong>Member</strong>
+                <span>Fitness &amp; Wellness</span>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+    
+    
+        <div class="testimonials-footer">
+    
+          <div class="testimonials-scroll-line">
+            <span></span>
+          </div>
+    
+          <div class="testimonials-count">
+            08 MEMBERS
+          </div>
+    
+        </div>
+    
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+      
+        const container = document.querySelector(".testimonials-scroll");
+        const next = document.querySelector(".testimonial-btn.next");
+        const prev = document.querySelector(".testimonial-btn.prev");
+        const progress = document.querySelector(".testimonials-scroll-line span");
+      
+        if (!container) return;
+      
+        let autoScroll;
+        let isPaused = false;
+      
+        /* --------------------------------
+           SMOOTH AUTO CAROUSEL
+        -------------------------------- */
+      
+        function startAutoScroll() {
+      
+          clearInterval(autoScroll);
+      
+          autoScroll = setInterval(() => {
+      
+            if (isPaused) return;
+      
+            const maxScroll =
+              container.scrollWidth - container.clientWidth;
+      
+            /*
+              When reaching the end,
+              smoothly return to beginning
+            */
+            if (container.scrollLeft >= maxScroll - 5) {
+      
+              container.scrollTo({
+                left: 0,
+                behavior: "smooth"
+              });
+      
+            } else {
+      
+              /*
+                Small movement = smooth carousel
+              */
+              container.scrollBy({
+                left: 2,
+                behavior: "auto"
+              });
+      
+            }
+      
+          }, 25);
+        }
+      
+      
+        /* --------------------------------
+           NEXT BUTTON
+        -------------------------------- */
+      
+        next.addEventListener("click", function () {
+      
+          const card = container.querySelector(".testi-card");
+      
+          const cardWidth =
+            card.offsetWidth + 18;
+      
+          container.scrollBy({
+            left: cardWidth * 2,
+            behavior: "smooth"
+          });
+      
+          restartAutoScroll();
+        });
+      
+      
+        /* --------------------------------
+           PREVIOUS BUTTON
+        -------------------------------- */
+      
+        prev.addEventListener("click", function () {
+      
+          const card = container.querySelector(".testi-card");
+      
+          const cardWidth =
+            card.offsetWidth + 18;
+      
+          container.scrollBy({
+            left: -cardWidth * 2,
+            behavior: "smooth"
+          });
+      
+          restartAutoScroll();
+        });
+      
+      
+        /* --------------------------------
+           PAUSE WHEN MOUSE IS OVER CARDS
+        -------------------------------- */
+      
+        container.addEventListener("mouseenter", function () {
+          isPaused = true;
+        });
+      
+        container.addEventListener("mouseleave", function () {
+          isPaused = false;
+        });
+      
+      
+        /* --------------------------------
+           PAUSE ON TOUCH
+        -------------------------------- */
+      
+        container.addEventListener("touchstart", function () {
+          isPaused = true;
+        }, { passive: true });
+      
+        container.addEventListener("touchend", function () {
+          setTimeout(() => {
+            isPaused = false;
+          }, 1500);
+        }, { passive: true });
+      
+      
+        /* --------------------------------
+           RESTART AUTO SCROLL
+        -------------------------------- */
+      
+        function restartAutoScroll() {
+      
+          clearInterval(autoScroll);
+      
+          setTimeout(() => {
+            startAutoScroll();
+          }, 2000);
+      
+        }
+      
+      
+        /* --------------------------------
+           PROGRESS BAR
+        -------------------------------- */
+      
+        container.addEventListener("scroll", function () {
+      
+          const maxScroll =
+            container.scrollWidth - container.clientWidth;
+      
+          if (maxScroll <= 0) return;
+      
+          const percentage =
+            (container.scrollLeft / maxScroll) * 100;
+      
+          progress.style.width =
+            Math.max(18, percentage) + "%";
+      
+        });
+      
+      
+        /* START */
+      
+        startAutoScroll();
+      
+      });
+      </script>
+
+    <!-- WHO WE TRAIN -->
+
+    <section id="who-we-train" class="who-section">
+      <div class="wrap">
+
+        <div class="sec-head who-head">
+          <div class="sec-kicker">WHO WE TRAIN</div>
+          <h2>Different people.<br>Different goals. Different needs.</h2>
+          <p>One personalised approach.</p>
+        </div>
+
+        <div class="who-grid">
+
+          <!-- WOMEN -->
+          <article class="who-card">
+            <div class="who-top">
+              <span class="who-number">01</span>
+              <span class="who-line"></span>
+            </div>
+
+            <h3>Women</h3>
+
+            <p class="who-intro">
+              Helping women become stronger, fitter and more confident
+              at every stage of life.
+            </p>
+
+            <ul class="who-list">
+              <li>Lose fat &amp; manage body composition</li>
+              <li>Build muscle &amp; strength</li>
+              <li>Improve stamina &amp; cardiovascular fitness</li>
+              <li>
+                Individual training considerations for PCOS/PCOD,
+                thyroid-related concerns &amp; hormonal changes
+              </li>
+              <li>Post-pregnancy strength &amp; fitness</li>
+              <li>Stay strong, mobile &amp; active after menopause</li>
+              <li>Improve flexibility, mobility &amp; movement</li>
+            </ul>
+          </article>
+
+
+          <!-- MEN -->
+          <article class="who-card">
+            <div class="who-top">
+              <span class="who-number">02</span>
+              <span class="who-line"></span>
+            </div>
+
+            <h3>Men</h3>
+
+            <p class="who-intro">
+              Helping men build strength, improve fitness and stay active
+              through every stage of life.
+            </p>
+
+            <ul class="who-list">
+              <li>Lose fat &amp; manage body composition</li>
+              <li>Build muscle &amp; strength</li>
+              <li>Improve stamina &amp; cardiovascular fitness</li>
+              <li>Build fitness around a sedentary lifestyle</li>
+              <li>Maintain muscle, strength &amp; mobility after 40</li>
+              <li>Improve flexibility, mobility &amp; movement</li>
+              <li>Improve posture &amp; manage common movement concerns</li>
+            </ul>
+          </article>
+
+        </div>
+
+
+        <!-- OUR FOCUS -->
+        <div class="who-focus">
+
+          <div class="who-focus-content">
+            <div class="sec-kicker">OUR FOCUS</div>
+
+            <h3>
+              Your body.<br>
+              Your goals.<br>
+              Your starting point.
+            </h3>
+          </div>
+
+          <div class="who-focus-copy">
+            <p>
+              Whether your goal is to lose fat, build muscle, improve stamina,
+              move better or become stronger, we start with your current level
+              and build from there.
+            </p>
+
+            <strong>
+              Your training is built around you.
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
 
     <section class="bmi-section" id="bmi">
       <div class="bmi-container">
