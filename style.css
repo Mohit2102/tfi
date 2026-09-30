@@ -53,7 +53,7 @@
 
   /* Text */
   --text: #17130a;
-  --text-secondary: #514a3b;
+  --text-secondary: #2e2103;
   --text-muted: #211b0d;
 
   /* Borders */
@@ -1315,6 +1315,84 @@ html.dark-mode #mobilemenu {
     width: 100%;
     min-width: 0;
   }
+}
+
+/* =========================================================
+   HERO — MOBILE BUTTONS BELOW BANNER
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .hero-collage {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .hero-carousel {
+    width: 100%;
+    height: 420px; /* adjust if needed */
+    position: relative;
+  }
+
+  .hero-buttons {
+    position: static !important;
+    transform: none !important;
+
+    width: 100%;
+    padding: 14px 10px 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+    z-index: 5;
+  }
+
+  .hero-buttons .hero-btn-primary {
+    position: static !important;
+
+    flex: 1 1 0;
+    width: 50%;
+    max-width: none;
+
+    min-height: 46px;
+    margin: 0 !important;
+    padding: 10px 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    white-space: normal;
+    line-height: 1.2;
+
+    font-size: 11px;
+  }
+}
+
+/* Smaller phones */
+@media (max-width: 480px) {
+
+  .hero-carousel {
+    height: 150px;
+  }
+
+  .hero-buttons {
+    padding: 12px 8px 0;
+    gap: 8px;
+  }
+
+  .hero-buttons .hero-btn-primary {
+    min-height: 44px;
+    padding: 8px 5px;
+    font-size: 10px;
+  }
+
 }
 
 
@@ -3379,24 +3457,50 @@ html.dark-mode .who-divider {
 /* ---------- List ---------- */
 
 .who-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  gap: 16px;
 }
 
 .who-list li {
-  position: relative;
-  padding-left: 25px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
   color: var(--text);
-  font-size: 14px;
-  line-height: 1.65;
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
+  font-size: 15px;
+  line-height: 1.6;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
+
+/* GOLD ICON */
+.who-icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(216, 175, 55, 0.35);
+  border-radius: 50%;
+
+  color: var(--gold);
+  background: rgba(216, 175, 55, 0.06);
+
+  font-size: 13px;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
 
 .who-list li:last-child {
   border-bottom: 1px solid var(--line);
@@ -3435,9 +3539,26 @@ html.dark-mode .who-divider {
   display: none;
 }
 
-.who-list li:hover {
+/* .who-list li:hover {
   transform: translateX(5px);
   color: var(--gold);
+} */
+
+.who-list li:hover .who-icon {
+  background: var(--gold);
+  color: #0b0a08;
+  border-color: var(--gold);
+
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 0 4px rgba(216, 175, 55, 0.08),
+    0 5px 18px rgba(216, 175, 55, 0.18);
+}
+
+.who-list li > span:last-child {
+  flex: 1;
+  padding-top: 4px;
 }
 
 .who-list li:hover::before {
@@ -3446,6 +3567,20 @@ html.dark-mode .who-divider {
     0 0 0 4px rgba(184, 144, 26, 0.12),
     0 0 14px rgba(184, 144, 26, 0.25);
 }
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+html.dark-mode .who-list li {
+  color: var(--text);
+}
+
+html.dark-mode .who-icon {
+  background: rgba(216, 175, 55, 0.08);
+  border-color: rgba(216, 175, 55, 0.32);
+}
+
 
 /* ---------- Our focus (dark band) ---------- */
 
@@ -3595,6 +3730,8 @@ html.dark-mode .who-divider {
   .who-list li {
     padding-left: 23px;
     font-size: 13px;
+    gap: 11px;
+    font-size: 14px;
   }
 
   .who-focus {
@@ -3608,6 +3745,18 @@ html.dark-mode .who-divider {
   .who-focus-copy p {
     font-size: 15px;
   }
+
+  .who-list {
+    gap: 14px;
+  }
+
+  .who-icon {
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+    font-size: 12px;
+  }
+
 }
 
 
@@ -5385,3 +5534,273 @@ footer {
   }
 }
 
+/* =========================================================
+   TFI — PAGE PROGRESS NAVIGATION
+   GOLD + BLACK PREMIUM STYLE
+========================================================= */
+
+.page-progress {
+
+  /* ---------- POSITION ---------- */
+  position: fixed;
+  right: 28px;
+  bottom: 105px;
+
+  /* ---------- SIZE ---------- */
+  width: 54px;
+  height: 54px;
+
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+
+  /* ---------- PREMIUM BLACK ---------- */
+  background: #0b0a08;
+
+  color: #d8af37;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 9998;
+
+  /* ---------- SHADOW ---------- */
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.30),
+    inset 0 0 0 1px rgba(216, 175, 55, 0.18);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   CIRCULAR PROGRESS RING
+========================================================= */
+
+.page-progress-ring {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transform: rotate(-90deg);
+
+  pointer-events: none;
+}
+
+
+/* ---------- EMPTY RING ---------- */
+
+.page-progress-track {
+
+  fill: none;
+
+  stroke: rgba(216, 175, 55, 0.20);
+
+  stroke-width: 2.5;
+}
+
+
+/* ---------- GOLD PROGRESS ---------- */
+
+.page-progress-fill {
+
+  fill: none;
+
+  stroke: #d8af37;
+
+  stroke-width: 2.8;
+
+  stroke-linecap: round;
+
+  stroke-dasharray: 150.8;
+
+  stroke-dashoffset: 150.8;
+
+  transition:
+    stroke-dashoffset 0.15s linear;
+}
+
+
+/* =========================================================
+   MODERN ARROW CONTAINER
+========================================================= */
+
+.page-progress-arrow {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #d8af37;
+
+  transition:
+    transform 0.35s ease,
+    color 0.25s ease;
+}
+
+
+/* =========================================================
+   MODERN CHEVRON
+========================================================= */
+
+.arrow-icon {
+
+  width: 23px;
+  height: 23px;
+
+  display: block;
+
+  overflow: visible;
+
+  transition:
+    transform 0.35s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.page-progress:hover {
+
+  background: #15130f;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.38),
+    0 0 18px rgba(216, 175, 55, 0.16),
+    inset 0 0 0 1px rgba(216, 175, 55, 0.30);
+}
+
+
+.page-progress:hover .page-progress-arrow {
+
+  color: #f2d57e;
+
+  transform: translateY(2px);
+}
+
+
+/* =========================================================
+   COMPLETED PAGE
+========================================================= */
+
+.page-progress.complete {
+
+  background: #0b0a08;
+
+}
+
+
+.page-progress.complete .page-progress-arrow {
+
+  color: #f2d57e;
+
+  transform: translateY(-1px);
+}
+
+
+.page-progress.complete .arrow-icon {
+
+  transform: rotate(180deg);
+}
+
+
+/* Completed ring */
+
+.page-progress.complete .page-progress-fill {
+
+  stroke: #f2d57e;
+
+  filter:
+    drop-shadow(0 0 3px rgba(216, 175, 55, 0.45));
+}
+
+
+/* =========================================================
+   CLICK EFFECT
+========================================================= */
+
+.page-progress:active {
+
+  transform: scale(0.94);
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+========================================================= */
+
+.page-progress:focus-visible {
+
+  outline: 2px solid #d8af37;
+
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .page-progress {
+
+    right: 18px;
+    bottom: 88px;
+
+    width: 48px;
+    height: 48px;
+
+  }
+
+
+  .page-progress-arrow {
+
+    width: 22px;
+    height: 22px;
+
+  }
+
+
+  .arrow-icon {
+
+    width: 20px;
+    height: 20px;
+
+  }
+
+
+  .page-progress-track {
+
+    stroke-width: 2.3;
+
+  }
+
+
+  .page-progress-fill {
+
+    stroke-width: 2.6;
+
+  }
+
+}
