@@ -1,481 +1,277 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-mode">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="TFI — Time To Fit India. Personalised virtual and in-person personal training, workout and nutrition plans.">
 
   <title>TFI — Time To Fit India</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  >
-
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
+    rel="stylesheet">
 
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- =========================================================
+       HEADER & NAVIGATION
+  ========================================================== -->
   <header class="site-header" id="site-header">
+
     <div class="wrap navrow">
-  
-  
-  <!-- LOGO -->
-  <a class="logo" href="#top" aria-label="Time to Fit India Home">
-    <img src="logo/logo.png" alt="TFI — Time to Fit India">
-    <span class="word">Time to Fit India</span>
-  </a>
-  
-  <!-- DESKTOP NAVIGATION -->
-  <nav class="navlinks" aria-label="Primary navigation">
-  
-    <a href="#top">Home</a>
-  
-    <a href="#about">About</a>
-  
-    <!-- PROGRAMS -->
-    <div class="nav-dropdown">
-      <a href="#programs" class="nav-dropdown-trigger">
-        Programs
-        <span class="nav-arrow">⌄</span>
+
+      <!-- Logo -->
+      <a class="logo" href="#top" aria-label="Time to Fit India Home">
+        <img src="logo/logo.png" alt="TFI — Time to Fit India">
+        <span class="word">Time to Fit India</span>
       </a>
-  
-      <div class="dropdown-menu">
-  
-        <!-- VIRTUAL -->
-        <div class="nav-dropdown nav-dropdown--nested">
-          <a href="#programs-virtual">
-            <span>Virtual</span>
-            <span class="dropdown-arrow">›</span>
+
+      <!-- Desktop navigation -->
+      <nav class="navlinks" aria-label="Primary navigation">
+
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+
+        <!-- Programs dropdown -->
+        <div class="nav-dropdown">
+          <a href="#programs" class="nav-dropdown-trigger">
+            Programs
+            <span class="nav-arrow" aria-hidden="true">⌄</span>
           </a>
-  
-          <div class="dropdown-menu dropdown-menu--nested">
-            <a href="#plan-monthly-virtual">
-              Monthly Virtual Training Plan
-            </a>
-  
-            <a href="#plan-12-weeks-virtual">
-              12 Weeks Virtual Training Transformation Plan
-            </a>
-  
-            <a href="#plan-half-yearly-virtual">
-              Half Yearly Virtual Training Transformation Plan
-            </a>
-  
-            <a href="#plan-yearly-virtual">
-              Yearly Virtual Training Transformation Plan
-            </a>
+
+          <div class="dropdown-menu">
+
+            <!-- Virtual -->
+            <div class="nav-dropdown nav-dropdown--nested">
+              <a href="#programs-virtual">
+                <span>Virtual</span>
+                <span class="dropdown-arrow" aria-hidden="true">›</span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu--nested">
+                <a href="#plan-monthly-virtual">Monthly Virtual Training Plan</a>
+                <a href="#plan-12-weeks-virtual">12 Weeks Virtual Training Transformation Plan</a>
+                <a href="#plan-half-yearly-virtual">Half Yearly Virtual Training Transformation Plan</a>
+                <a href="#plan-yearly-virtual">Yearly Virtual Training Transformation Plan</a>
+              </div>
+            </div>
+
+            <!-- Non-virtual -->
+            <div class="nav-dropdown nav-dropdown--nested">
+              <a href="#programs-non-virtual">
+                <span>Non-Virtual</span>
+                <span class="dropdown-arrow" aria-hidden="true">›</span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu--nested">
+                <a href="#plan-personalised-workout">Personalised Workout Plan</a>
+                <a href="#plan-personalised-nutrition">Personalised Nutrition Plan</a>
+                <a href="#plan-ultimate">Ultimate Workout &amp; Nutrition Plan</a>
+                <a href="#plan-transformation">Transformation Plan</a>
+              </div>
+            </div>
+
+            <!-- Personal training -->
+            <div class="nav-dropdown nav-dropdown--nested">
+              <a href="#programs-personal">
+                <span>Personal Training</span>
+                <span class="dropdown-arrow" aria-hidden="true">›</span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu--nested">
+                <a href="#pt-diabetes">Diabetes Management / Blood Sugar Control</a>
+                <a href="#pt-pcos">PCOS/PCOD Balanced Nutrition</a>
+                <a href="#pt-hypertension">Hypertension Heart-Healthy Workouts</a>
+                <a href="#pt-prenatal">Pre and Post Natal Fitness Safe Workouts</a>
+                <a href="#pt-back-spine">Lower Back and Spine Pain / Posture Correction</a>
+                <a href="#pt-cardio">Cardiovascular Health / Cardio Conditioning</a>
+                <a href="#pt-thyroid">Thyroid Management / Metabolic Support</a>
+                <a href="#pt-gerd">GERD (Gastroesophageal Reflux Disease)</a>
+              </div>
+            </div>
+
           </div>
         </div>
-  
-        <!-- NON-VIRTUAL -->
-        <div class="nav-dropdown nav-dropdown--nested">
-          <a href="#programs-non-virtual">
-            <span>Non-Virtual</span>
-            <span class="dropdown-arrow">›</span>
-          </a>
-  
-          <div class="dropdown-menu dropdown-menu--nested">
-            <a href="#plan-personalised-workout">
-              Personalised Workout Plan
-            </a>
-  
-            <a href="#plan-personalised-nutrition">
-              Personalised Nutrition Plan
-            </a>
-  
-            <a href="#plan-ultimate">
-              Ultimate Workout &amp; Nutrition Plan
-            </a>
-  
-            <a href="#plan-transformation">
-              Transformation Plan
-            </a>
-          </div>
-        </div>
-  
-        <!-- PERSONAL TRAINING -->
-        <div class="nav-dropdown nav-dropdown--nested">
-          <a href="#programs-personal">
-            <span>Personal Training</span>
-            <span class="dropdown-arrow">›</span>
-          </a>
-  
-          <div class="dropdown-menu dropdown-menu--nested">
-  
-            <a href="#pt-diabetes">
-              Diabetes Management / Blood Sugar Control
-            </a>
-  
-            <a href="#pt-pcos">
-              PCOS/PCOD Balanced Nutrition
-            </a>
-  
-            <a href="#pt-hypertension">
-              Hypertension Heart-Healthy Workouts
-            </a>
-  
-            <a href="#pt-prenatal">
-              Pre and Post Natal Fitness Safe Workouts
-            </a>
-  
-            <a href="#pt-back-spine">
-              Lower Back and Spine Pain / Posture Correction
-            </a>
-  
-            <a href="#pt-cardio">
-              Cardiovascular Health / Cardio Conditioning
-            </a>
-  
-            <a href="#pt-thyroid">
-              Thyroid Management / Metabolic Support
-            </a>
-  
-            <a href="#pt-gerd">
-              GERD (Gastroesophageal Reflux Disease)
-            </a>
-  
-          </div>
-        </div>
-  
+
+        <a href="#who-we-train">Who We Train</a>
+        <a href="#why">Why TFI</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+
+      </nav>
+
+      <!-- Right-side actions -->
+      <div class="navcta">
+
+        <!-- Theme toggle -->
+        <button class="theme-toggle" id="themeToggle" type="button"
+          aria-label="Toggle dark mode" title="Toggle theme">
+
+          <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-13.435l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414 2.121-2.121-1.414-1.414-2.121 2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+          </svg>
+
+          <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2 1 1 0 0 0-.35-1 10 10 0 1 0 13.71 10.68z" />
+          </svg>
+
+        </button>
+
+        <!-- Desktop CTA -->
+        <a class="btn btn-solid nav-book-btn" href="#contact">Login/Signup</a>
+
+        <!-- Mobile menu button -->
+        <button class="navtoggle" id="navtoggle" type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobilemenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
       </div>
+
     </div>
-  
-    <a href="#who-we-train">Who We Train</a>
-  
-    <a href="#why">Why TFI</a>
-  
-    <a href="#testimonials">Testimonials</a>
-  
-    <a href="#contact">Contact</a>
-  
-  </nav>
-  
-  <!-- RIGHT SIDE ACTIONS -->
-  <div class="navcta">
-  
-    <!-- THEME TOGGLE -->
-    <button
-      class="theme-toggle"
-      id="themeToggle"
-      type="button"
-      aria-label="Toggle dark mode"
-      title="Toggle theme"
-    >
-  
-      <!-- SUN -->
-      <svg
-        class="icon-sun"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-13.435l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414 2.121-2.121-1.414-1.414-2.121 2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/>
-      </svg>
-  
-      <!-- MOON -->
-      <svg
-        class="icon-moon"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2 1 1 0 0 0-.35-1 10 10 0 1 0 13.71 10.68z"/>
-      </svg>
-  
-    </button>
-  
-    <!-- DESKTOP CTA -->
-    <a class="btn btn-solid nav-book-btn" href="#contact">
-      Book a Free Trial
-    </a>
-  
-    <!-- MOBILE MENU BUTTON -->
-    <button
-      class="navtoggle"
-      id="navtoggle"
-      type="button"
-      aria-label="Toggle navigation menu"
-      aria-expanded="false"
-      aria-controls="mobilemenu"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  
-  </div>
-  
-  
-    </div>
-  
-    <!-- MOBILE MENU -->
-  
+
+    <!-- Mobile menu -->
     <div id="mobilemenu">
-  
-  
-  <a href="#top">Home</a>
-  
-  <a href="#about">About</a>
-  
-  <!-- MOBILE PROGRAMS -->
-  <div class="m-dropdown">
-  
-    <button
-      class="m-toggle"
-      type="button"
-      aria-expanded="false"
-    >
-      <span>Programs</span>
-      <span class="m-chevron"></span>
-    </button>
-  
-    <div class="m-submenu">
-  
-      <!-- VIRTUAL -->
+
+      <a href="#top">Home</a>
+      <a href="#about">About</a>
+
+      <!-- Programs -->
       <div class="m-dropdown">
-  
-        <button
-          class="m-toggle"
-          type="button"
-          aria-expanded="false"
-        >
-          <span>Virtual</span>
+
+        <button class="m-toggle" type="button" aria-expanded="false">
+          <span>Programs</span>
           <span class="m-chevron"></span>
         </button>
-  
-        <div class="m-submenu m-submenu--l2">
-  
-          <a href="#plan-monthly-virtual">
-            Monthly Virtual Training Plan
-          </a>
-  
-          <a href="#plan-12-weeks-virtual">
-            12 Weeks Virtual Training Transformation Plan
-          </a>
-  
-          <a href="#plan-half-yearly-virtual">
-            Half Yearly Virtual Training Transformation Plan
-          </a>
-  
-          <a href="#plan-yearly-virtual">
-            Yearly Virtual Training Transformation Plan
-          </a>
-  
+
+        <div class="m-submenu">
+
+          <!-- Virtual -->
+          <div class="m-dropdown">
+            <button class="m-toggle" type="button" aria-expanded="false">
+              <span>Virtual</span>
+              <span class="m-chevron"></span>
+            </button>
+
+            <div class="m-submenu m-submenu--l2">
+              <a href="#plan-monthly-virtual">Monthly Virtual Training Plan</a>
+              <a href="#plan-12-weeks-virtual">12 Weeks Virtual Training Transformation Plan</a>
+              <a href="#plan-half-yearly-virtual">Half Yearly Virtual Training Transformation Plan</a>
+              <a href="#plan-yearly-virtual">Yearly Virtual Training Transformation Plan</a>
+            </div>
+          </div>
+
+          <!-- Non-virtual -->
+          <div class="m-dropdown">
+            <button class="m-toggle" type="button" aria-expanded="false">
+              <span>Non-Virtual</span>
+              <span class="m-chevron"></span>
+            </button>
+
+            <div class="m-submenu m-submenu--l2">
+              <a href="#plan-personalised-workout">Personalised Workout Plan</a>
+              <a href="#plan-personalised-nutrition">Personalised Nutrition Plan</a>
+              <a href="#plan-ultimate">Ultimate Workout &amp; Nutrition Plan</a>
+              <a href="#plan-transformation">Transformation Plan</a>
+            </div>
+          </div>
+
+          <!-- Personal training -->
+          <div class="m-dropdown">
+            <button class="m-toggle" type="button" aria-expanded="false">
+              <span>Personal Training</span>
+              <span class="m-chevron"></span>
+            </button>
+
+            <div class="m-submenu m-submenu--l2">
+              <a href="#pt-diabetes">Diabetes Management / Blood Sugar Control</a>
+              <a href="#pt-pcos">PCOS/PCOD Balanced Nutrition</a>
+              <a href="#pt-hypertension">Hypertension Heart-Healthy Workouts</a>
+              <a href="#pt-prenatal">Pre and Post Natal Fitness Safe Workouts</a>
+              <a href="#pt-back-spine">Lower Back and Spine Pain / Posture Correction</a>
+              <a href="#pt-cardio">Cardiovascular Health / Cardio Conditioning</a>
+              <a href="#pt-thyroid">Thyroid Management / Metabolic Support</a>
+              <a href="#pt-gerd">GERD (Gastroesophageal Reflux Disease)</a>
+            </div>
+          </div>
+
         </div>
-  
       </div>
-  
-      <!-- NON-VIRTUAL -->
-      <div class="m-dropdown">
-  
-        <button
-          class="m-toggle"
-          type="button"
-          aria-expanded="false"
-        >
-          <span>Non-Virtual</span>
-          <span class="m-chevron"></span>
-        </button>
-  
-        <div class="m-submenu m-submenu--l2">
-  
-          <a href="#plan-personalised-workout">
-            Personalised Workout Plan
-          </a>
-  
-          <a href="#plan-personalised-nutrition">
-            Personalised Nutrition Plan
-          </a>
-  
-          <a href="#plan-ultimate">
-            Ultimate Workout &amp; Nutrition Plan
-          </a>
-  
-          <a href="#plan-transformation">
-            Transformation Plan
-          </a>
-  
-        </div>
-  
-      </div>
-  
-      <!-- PERSONAL TRAINING -->
-      <div class="m-dropdown">
-  
-        <button
-          class="m-toggle"
-          type="button"
-          aria-expanded="false"
-        >
-          <span>Personal Training</span>
-          <span class="m-chevron"></span>
-        </button>
-  
-        <div class="m-submenu m-submenu--l2">
-  
-          <a href="#pt-diabetes">
-            Diabetes Management / Blood Sugar Control
-          </a>
-  
-          <a href="#pt-pcos">
-            PCOS/PCOD Balanced Nutrition
-          </a>
-  
-          <a href="#pt-hypertension">
-            Hypertension Heart-Healthy Workouts
-          </a>
-  
-          <a href="#pt-prenatal">
-            Pre and Post Natal Fitness Safe Workouts
-          </a>
-  
-          <a href="#pt-back-spine">
-            Lower Back and Spine Pain / Posture Correction
-          </a>
-  
-          <a href="#pt-cardio">
-            Cardiovascular Health / Cardio Conditioning
-          </a>
-  
-          <a href="#pt-thyroid">
-            Thyroid Management / Metabolic Support
-          </a>
-  
-          <a href="#pt-gerd">
-            GERD (Gastroesophageal Reflux Disease)
-          </a>
-  
-        </div>
-  
-      </div>
-  
+
+      <a href="#who-we-train">Who We Train</a>
+      <a href="#why">Why TFI</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+
+      <!-- Mobile CTA -->
+      <a class="btn btn-solid mobile-book-btn" href="#contact">Login/Signup</a>
+
     </div>
-  
-  </div>
-  
-  <a href="#who-we-train">Who We Train</a>
-  
-  <a href="#why">Why TFI</a>
-  
-  <a href="#testimonials">Testimonials</a>
-  
-  <a href="#contact">Contact</a>
-  
-  <!-- MOBILE CTA -->
-  <a class="btn btn-solid mobile-book-btn" href="#contact">
-    Book a Free Trial
-  </a>
-  
-  
-    </div>
-  
+
   </header>
-  
 
 
   <main id="top">
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
     <div class="hero-collage reveal" id="heroLogo">
 
+      <!-- Carousel -->
       <div class="hero-carousel">
 
+        <!-- Slide 01 -->
         <div class="carousel-slide active">
           <img class="slide-bg" src="images/fitness-1.jpg" alt="" aria-hidden="true">
           <img class="slide-fg" src="images/fitness-1.jpg" alt="Personal training">
         </div>
 
+        <!-- Slide 02 -->
         <div class="carousel-slide">
-          <img class="slide-bg" src="images/fitness-2.jpg" alt="" aria-hidden="true">
-          <img class="slide-fg" src="images/fitness-2.jpg" alt="Strength training">
+          <img class="slide-bg" src="images/fitness-2.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img class="slide-fg" src="images/fitness-2.jpg" alt="Strength training" loading="lazy">
         </div>
 
+        <!-- Slide 03 -->
         <div class="carousel-slide">
-          <img class="slide-bg" src="images/fitness-3.jpg" alt="" aria-hidden="true">
-          <img class="slide-fg" src="images/fitness-3.jpg" alt="Group fitness">
+          <img class="slide-bg" src="images/fitness-3.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img class="slide-fg" src="images/fitness-3.jpg" alt="Group fitness" loading="lazy">
         </div>
 
+        <!-- Dots -->
         <div class="carousel-dots">
-          <button class="active" data-slide="0"></button>
-          <button data-slide="1"></button>
-          <button data-slide="2"></button>
+          <button class="active" type="button" data-slide="0" aria-label="Show slide 1"></button>
+          <button type="button" data-slide="1" aria-label="Show slide 2"></button>
+          <button type="button" data-slide="2" aria-label="Show slide 3"></button>
         </div>
 
       </div>
 
+      <!-- Buttons on top of the banner -->
+      <div class="hero-buttons">
+        <a class="btn btn-solid hero-btn-primary" href="#programs">Explore Programmes</a>
+        <a class="btn btn-solid hero-btn-primary" href="#journey">Start Your Fitness Journey</a>
+      </div>
+
     </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
 
-        const slides = document.querySelectorAll(".carousel-slide");
-        const dots = document.querySelectorAll(".carousel-dots button");
-
-        let currentSlide = 0;
-        let carouselTimer;
-
-        function showSlide(index) {
-
-          if (index < 0 || index >= slides.length) {
-            index = 0;
-          }
-
-          slides.forEach((slide, i) => {
-            slide.classList.toggle("active", i === index);
-          });
-
-          dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === index);
-          });
-
-          currentSlide = index;
-        }
-
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % slides.length;
-          showSlide(currentSlide);
-        }
-
-        function startCarousel() {
-          carouselTimer = setInterval(nextSlide, 4000);
-        }
-
-        function resetCarousel() {
-          clearInterval(carouselTimer);
-          startCarousel();
-        }
-
-        dots.forEach((dot, index) => {
-          dot.addEventListener("click", function () {
-            showSlide(index);
-            resetCarousel();
-          });
-        });
-
-        showSlide(0);
-        startCarousel();
-
-      });
-
-
-      Array.prototype.forEach.call(menu.querySelectorAll('.m-toggle'), function (btn) {
-        btn.addEventListener('click', function () {
-          var expanded = btn.getAttribute('aria-expanded') === 'true';
-          btn.setAttribute('aria-expanded', String(!expanded));
-        });
-      });
-
-
-    </script>
-
-
+    <!-- =========================================================
+         STATS
+    ========================================================== -->
     <div class="stats">
       <div class="wrap stats-row">
 
@@ -510,199 +306,73 @@
       </div>
     </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
 
-        const counters = document.querySelectorAll(".counter");
-        const statsSection = document.querySelector(".stats");
-
-        function animateCounter(counter) {
-          const target = parseInt(counter.getAttribute("data-target"));
-          const duration = target >= 1000 ? 2000 : 1500;
-
-          let startTime = null;
-
-          // Reset to 0 every time animation starts
-          counter.textContent = "0";
-
-          function updateCounter(currentTime) {
-            if (!startTime) startTime = currentTime;
-
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            // Smooth ease-out
-            const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-            const currentValue = Math.floor(easedProgress * target);
-
-            counter.textContent = currentValue.toLocaleString();
-
-            if (progress < 1) {
-              requestAnimationFrame(updateCounter);
-            } else {
-              counter.textContent = target.toLocaleString();
-            }
-          }
-
-          requestAnimationFrame(updateCounter);
-        }
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach(entry => {
-
-              if (entry.isIntersecting) {
-
-                // Animate every time the section becomes visible
-                counters.forEach(counter => {
-                  animateCounter(counter);
-                });
-
-              }
-
-            });
-          },
-          {
-            threshold: 0.4
-          }
-        );
-
-        if (statsSection) {
-          observer.observe(statsSection);
-        }
-
-      });
-    </script>
-
-  <!-- <section id="about">
-      <div class="wrap about-grid">
-        <div class="about-copy">
-          <div class="sec-kicker">Our studio</div>
-          <h2 style="font-size:clamp(26px,3.6vw,36px); margin-bottom:20px;">We don't just train bodies. We build
-            discipline.</h2>
-          <p>TFI — Time To Fit India was founded on a simple belief: fitness isn't a six-week fix, it's a lifelong
-            habit. We pair every member with a dedicated coach who builds a workout and nutrition plan around their
-            body, not a generic template — then stays with them through every stage of the transformation.</p>
-          <p>Whether you're stepping into a gym for the first time or chasing a competition-ready physique, coaching
-            here is personal: your trainer tracks your form, your food and your progress, session after session, so
-            results are never left to guesswork.</p>
-        </div>
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="fnum">01</div>
-            <div>
-              <h4>Certified, hands-on coaches</h4>
-              <p>Every session is supervised, corrected and progressed by a qualified trainer — not left to a printout
-                on the wall.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="fnum">02</div>
-            <div>
-              <h4>Personalised, not generic</h4>
-              <p>Your coach designs your plan around your body, schedule and goals, and adjusts it as you transform.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="fnum">03</div>
-            <div>
-              <h4>Small, focused batches</h4>
-              <p>Low trainer-to-member ratios mean real correction and real accountability, every session.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="wrap">
-        <div class="coach-strip">
-          <div class="coach-card">
-            <div class="coach-avatar"><svg viewBox="0 0 100 100">
-                <rect width="100" height="100" fill="#1C1A15" />
-                <circle cx="50" cy="38" r="16" fill="none" stroke="#D8AF37" stroke-width="2" />
-                <path d="M22 90c3-22 14-34 28-34s25 12 28 34" fill="none" stroke="#D8AF37" stroke-width="2" />
-              </svg></div>
-            <div>
-              <div class="coach-name">Strength coach</div>
-              <div class="coach-role">Weight training & conditioning</div>
-              <div class="coach-note">Form correction and progressive overload, every session.</div>
-            </div>
-          </div>
-          <div class="coach-card">
-            <div class="coach-avatar"><svg viewBox="0 0 100 100">
-                <rect width="100" height="100" fill="#1C1A15" />
-                <circle cx="50" cy="38" r="16" fill="none" stroke="#D8AF37" stroke-width="2" />
-                <path d="M22 90c3-22 14-34 28-34s25 12 28 34" fill="none" stroke="#D8AF37" stroke-width="2" />
-              </svg></div>
-            <div>
-              <div class="coach-name">Transformation coach</div>
-              <div class="coach-role">Weight loss & body recomposition</div>
-              <div class="coach-note">Structured fat-loss plans built around your routine.</div>
-            </div>
-          </div>
-          <div class="coach-card">
-            <div class="coach-avatar"><svg viewBox="0 0 100 100">
-                <rect width="100" height="100" fill="#1C1A15" />
-                <circle cx="50" cy="38" r="16" fill="none" stroke="#D8AF37" stroke-width="2" />
-                <path d="M22 90c3-22 14-34 28-34s25 12 28 34" fill="none" stroke="#D8AF37" stroke-width="2" />
-              </svg></div>
-            <div>
-              <div class="coach-name">Nutrition coach</div>
-              <div class="coach-role">Diet & macro guidance</div>
-              <div class="coach-note">Ongoing check-ins to keep food choices on track.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </section> -->
-
-
-    <!-- YOUR FITNESS JOURNEY -->
+    <!-- =========================================================
+         YOUR FITNESS JOURNEY
+    ========================================================== -->
     <section id="journey" class="journey-section">
-
       <div class="wrap">
-    
-        <!-- HEADER -->
+
+        <!-- Intro -->
         <div class="journey-intro">
-    
-          <div class="sec-kicker">YOUR FITNESS JOURNEY</div>
-    
-          <h2>
-            Understand.<br>
-            Plan. Train. Progress.
-          </h2>
-    
-          <p>
-            Your fitness journey starts with understanding where you are,
-            where you want to go and what works best for you.
-          </p>
-    
-        </div>
-    
-    
-        <!-- TIMELINE -->
-        <div class="journey-timeline">
-    
-    
-          <!-- 01 -->
-          <div class="journey-step">
-    
-            <div class="journey-marker">
-              <span>01</span>
+
+          <div class="journey-intro-content">
+            <div class="sec-kicker">YOUR FITNESS JOURNEY HERE</div>
+
+            <h2>
+              Assess. Understand.<br>
+              Plan. Train. Progress.
+            </h2>
+
+            <p>
+              Your fitness journey starts with understanding where you are,
+              where you want to go and what works best for you.
+            </p>
+          </div>
+
+          <!-- Highlight card -->
+          <div class="journey-highlight">
+
+            <div class="journey-highlight-top">
+              <span>THE TFI METHOD</span>
+              <b>01 — 05</b>
             </div>
-    
+
+            <div class="journey-highlight-title">
+              <strong>YOUR JOURNEY</strong>
+              <span>BUILT AROUND YOU</span>
+            </div>
+
+            <div class="journey-progress">
+              <div class="progress-item active"><span>01</span><small>ASSESS</small></div>
+              <div class="progress-item"><span>02</span><small>UNDERSTAND</small></div>
+              <div class="progress-item"><span>03</span><small>PLAN</small></div>
+              <div class="progress-item"><span>04</span><small>TRAIN</small></div>
+              <div class="progress-item"><span>05</span><small>PROGRESS</small></div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Timeline -->
+        <div class="journey-timeline">
+
+          <!-- 01 — Assess -->
+          <div class="journey-step">
+            <div class="journey-marker"><span>01</span></div>
+
             <div class="journey-card">
-    
               <div class="journey-card-top">
                 <span>01 — START HERE</span>
                 <h3>ASSESS</h3>
               </div>
-    
+
               <p class="journey-description">
                 Understand your current fitness and health background.
               </p>
-    
+
               <div class="journey-points">
-    
                 <div>Readiness &amp; health screening</div>
                 <div>Health &amp; injury history</div>
                 <div>Body composition</div>
@@ -710,34 +380,25 @@
                 <div>Strength &amp; endurance</div>
                 <div>Flexibility &amp; mobility</div>
                 <div>Posture &amp; movement</div>
-    
               </div>
-    
             </div>
-    
           </div>
-    
-    
-          <!-- 02 -->
+
+          <!-- 02 — Understand -->
           <div class="journey-step">
-    
-            <div class="journey-marker">
-              <span>02</span>
-            </div>
-    
+            <div class="journey-marker"><span>02</span></div>
+
             <div class="journey-card">
-    
               <div class="journey-card-top">
                 <span>02 — KNOW YOURSELF</span>
                 <h3>UNDERSTAND</h3>
               </div>
-    
+
               <p class="journey-description">
                 Understand what works best for you and fits your life.
               </p>
-    
+
               <div class="journey-points">
-    
                 <div>Lifestyle &amp; daily routine</div>
                 <div>Goals &amp; expectations</div>
                 <div>Exercise experience</div>
@@ -745,568 +406,315 @@
                 <div>Preferred training intensity</div>
                 <div>Time, challenges &amp; limitations</div>
                 <div>Health considerations</div>
-    
               </div>
-    
             </div>
-    
           </div>
-    
-    
-          <!-- 03 -->
+
+          <!-- 03 — Plan -->
           <div class="journey-step">
-    
-            <div class="journey-marker">
-              <span>03</span>
-            </div>
-    
+            <div class="journey-marker"><span>03</span></div>
+
             <div class="journey-card">
-    
               <div class="journey-card-top">
                 <span>03 — BUILD YOUR PATH</span>
                 <h3>PLAN</h3>
               </div>
-    
+
               <p class="journey-description">
                 Turn what we learn about you into a plan built around your goals.
               </p>
-    
+
               <div class="journey-points">
-    
                 <div>Personalised exercise plan</div>
                 <div>Training frequency &amp; intensity</div>
                 <div>Exercise selection &amp; progression</div>
                 <div>Nutrition guidance</div>
                 <div>Built around your goals &amp; lifestyle</div>
-    
               </div>
-    
             </div>
-    
           </div>
-    
-    
-          <!-- 04 -->
+
+          <!-- 04 — Train -->
           <div class="journey-step">
-    
-            <div class="journey-marker">
-              <span>04</span>
-            </div>
-    
+            <div class="journey-marker"><span>04</span></div>
+
             <div class="journey-card">
-    
               <div class="journey-card-top">
                 <span>04 — PUT IT INTO ACTION</span>
                 <h3>TRAIN WITH PURPOSE</h3>
               </div>
-    
+
               <p class="journey-description">
                 Start where you are and train towards where you want to be.
               </p>
-    
+
               <div class="journey-points">
-    
                 <div>Based on your current fitness level</div>
                 <div>Beginner, intermediate or advanced</div>
                 <div>Proper technique &amp; individual attention</div>
                 <div>Appropriate intensity &amp; progression</div>
                 <div>Adapted to your needs and goals</div>
-    
               </div>
-    
             </div>
-    
           </div>
-    
-    
-          <!-- 05 -->
+
+          <!-- 05 — Progress -->
           <div class="journey-step">
-    
-            <div class="journey-marker">
-              <span>05</span>
-            </div>
-    
+            <div class="journey-marker"><span>05</span></div>
+
             <div class="journey-card">
-    
               <div class="journey-card-top">
                 <span>05 — KEEP MOVING</span>
                 <h3>PROGRESS</h3>
               </div>
-    
+
               <p class="journey-description">
                 Track your progress, learn from your results and adapt as you improve.
               </p>
-    
+
               <div class="journey-points">
-    
                 <div>Track fitness &amp; performance</div>
                 <div>Monitor key changes</div>
                 <div>Review progress regularly</div>
                 <div>Adapt training &amp; intensity</div>
                 <div>Progress towards your goals</div>
-    
               </div>
-    
             </div>
-    
           </div>
-    
+
         </div>
-    
-    
-        <!-- FLOW -->
+
+        <!-- Flow -->
         <div class="journey-flow">
-    
           <span>ASSESS</span>
           <i>→</i>
-    
           <span>UNDERSTAND</span>
           <i>→</i>
-    
           <span>PLAN</span>
           <i>→</i>
-    
           <span>TRAIN</span>
           <i>→</i>
-    
           <span>PROGRESS</span>
-    
         </div>
-    
-    
-        <!-- BOTTOM -->
+
+        <!-- Bottom message -->
         <div class="journey-bottom">
-    
           <span></span>
-    
-          <p>
-            A personalised journey, thoughtfully built around you.
-          </p>
-    
+          <p>A personalised journey, thoughtfully built around you.</p>
           <span></span>
-    
         </div>
-    
+
       </div>
-    
     </section>
 
 
+    <!-- =========================================================
+         PROGRAMS
+    ========================================================== -->
+    <section id="programs">
+      <div class="wrap">
 
+        <div class="sec-head">
+          <div class="sec-kicker">Find your program</div>
+          <h2>Every body. Every goal. One team.</h2>
+          <p>
+            Three ways to train with TFI — pick the path that fits your life,
+            then choose a plan inside it.
+          </p>
+        </div>
 
-    <section id="programs"
-    style="
-      background:#F5F2EB;
-      border-top:1px solid rgba(11,10,8,.10);
-      border-bottom:1px solid rgba(11,10,8,.10);
-    ">
+        <div class="path-grid">
 
-    <div class="wrap">
+          <!-- Virtual -->
+          <a class="path-card" href="#programs-virtual">
+            <div class="path-media">
+              <img src="images/virtual.jpg" alt="Member training virtually from home" loading="lazy">
+              <div class="path-badge"></div>
+            </div>
 
-      <div class="sec-head">
+            <div class="path-body">
+              <h3>Virtual Training</h3>
+              <p>
+                Live and on-demand coaching from home, on a schedule built
+                around you — plans from monthly to a full year.
+              </p>
+              <span class="path-cta">View details</span>
+            </div>
+          </a>
 
-        <div class="sec-kicker">Find your program</div>
+          <!-- Non-virtual -->
+          <a class="path-card" href="#programs-non-virtual">
+            <div class="path-media">
+              <img src="images/personaltrain.jpg" alt="Member training in-studio at TFI" loading="lazy">
+              <div class="path-badge"></div>
+            </div>
 
-        <h2>Every body. Every goal. One team.</h2>
+            <div class="path-body">
+              <h3>Non-Virtual Training</h3>
+              <p>
+                In-person coaching built around your plate and your plan —
+                personalised workouts, nutrition and full transformation programs.
+              </p>
+              <span class="path-cta">View details</span>
+            </div>
+          </a>
 
-        <p>
-          Three ways to train with TFI — pick the path that fits your life,
-          then choose a plan inside it.
-        </p>
+          <!-- Personal training -->
+          <a class="path-card" href="#programs-personal">
+            <div class="path-media">
+              <img src="images/non-virtual.jpg" alt="One-on-one personal training session" loading="lazy">
+              <div class="path-badge"></div>
+            </div>
 
-      </div>
+            <div class="path-body">
+              <h3>Personal Training</h3>
+              <p>
+                One-on-one coaching for specific conditions and goals —
+                from diabetes and PCOS to back pain, cardio health and thyroid support.
+              </p>
+              <span class="path-cta">View details</span>
+            </div>
+          </a>
 
-      <div class="path-grid">
-
-        <a class="path-card" href="#programs-virtual">
-
-          <div class="path-media">
-            <img
-              src="images/virtual.jpg"
-              alt="Member training virtually from home"
-            >
-
-            <div class="path-badge"></div>
-          </div>
-
-          <div class="path-body">
-
-            <h3>Virtual Training</h3>
-
-            <p>
-              Live and on-demand coaching from home, on a schedule built
-              around you — plans from monthly to a full year.
-            </p>
-
-            <span class="path-cta">View details</span>
-
-          </div>
-
-        </a>
-
-
-        <a class="path-card" href="#programs-non-virtual">
-
-          <div class="path-media">
-            <img
-              src="images/personaltrain.jpg"
-              alt="Member training in-studio at TFI"
-            >
-
-            <div class="path-badge"></div>
-          </div>
-
-          <div class="path-body">
-
-            <h3>Non-Virtual Training</h3>
-
-            <p>
-              In-person coaching built around your plate and your plan —
-              personalised workouts, nutrition and full transformation
-              programs.
-            </p>
-
-            <span class="path-cta">View details</span>
-
-          </div>
-
-        </a>
-
-
-        <a class="path-card" href="#programs-personal">
-
-          <div class="path-media">
-            <img
-              src="images/non-virtual.jpg"
-              alt="One-on-one personal training session"
-            >
-
-            <div class="path-badge"></div>
-          </div>
-
-          <div class="path-body">
-
-            <h3>Personal Training</h3>
-
-            <p>
-              One-on-one coaching for specific conditions and goals —
-              from diabetes and PCOS to back pain, cardio health and
-              thyroid support.
-            </p>
-
-            <span class="path-cta">View details</span>
-
-          </div>
-
-        </a>
+        </div>
 
       </div>
-
-    </div>
-
     </section>
 
+
+    <!-- =========================================================
+         WHY TFI
+    ========================================================== -->
     <section id="why">
       <div class="wrap">
-    
+
         <div class="sec-head">
           <div class="sec-kicker">The TFI edge</div>
           <h2>Train smarter. Show up stronger.</h2>
         </div>
-    
+
         <div class="why-grid">
-    
-          <!-- 01 Certified Coaches -->
-          <div class="why-cell"
-            style="background-image: url('images/why-coaches.jpg');">
-    
+
+          <!-- 01 Certified coaches -->
+          <div class="why-cell" style="background-image: url('images/why-coaches.jpg');">
             <div class="why-overlay"></div>
-    
             <div class="why-content">
-              <svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>
-                <circle cx="12" cy="12" r="3.2"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" />
+                <circle cx="12" cy="12" r="3.2" />
               </svg>
-    
               <h4>Certified expert coaches</h4>
-    
               <p>
                 Every trainer is certified and experienced, turning textbook
                 technique into personalised, hands-on coaching.
               </p>
             </div>
           </div>
-    
-    
-          <!-- 02 Small Batches -->
-          <div class="why-cell"
-            style="background-image: url('images/why-small-batches.jpg');">
-    
+
+          <!-- 02 Small batches -->
+          <div class="why-cell" style="background-image: url('images/why-small-batches.jpg');">
             <div class="why-overlay"></div>
-    
             <div class="why-content">
-              <svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-                <circle cx="9" cy="7" r="3.2"/>
-                <path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2S15.5 16.4 15.5 20"/>
-                <circle cx="17.5" cy="8" r="2.4"/>
-                <path d="M17 13.4c2.6.4 4.5 2.4 4.5 5.1"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="9" cy="7" r="3.2" />
+                <path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2S15.5 16.4 15.5 20" />
+                <circle cx="17.5" cy="8" r="2.4" />
+                <path d="M17 13.4c2.6.4 4.5 2.4 4.5 5.1" />
               </svg>
-    
               <h4>Goal-based small batches</h4>
-    
               <p>
                 No crowded floors. Members train in focused batches grouped by
                 fitness level and goal.
               </p>
             </div>
           </div>
-    
-    
+
           <!-- 03 Nutrition -->
-          <div class="why-cell"
-            style="background-image: url('images/why-nutrition.jpg');">
-    
+          <div class="why-cell" style="background-image: url('images/why-nutrition.jpg');">
             <div class="why-overlay"></div>
-    
             <div class="why-content">
-              <svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M4 21V10M10 21V4M16 21v-7M22 21H2"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 21V10M10 21V4M16 21v-7M22 21H2" />
               </svg>
-    
               <h4>Fitness plus nutrition</h4>
-    
               <p>
                 Training alone isn't enough — every program pairs with practical,
                 personalised nutrition guidance.
               </p>
             </div>
           </div>
-    
-    
+
           <!-- 04 Results -->
-          <div class="why-cell"
-            style="background-image: url('images/why-results.jpg');">
-    
+          <div class="why-cell" style="background-image: url('images/why-results.jpg');">
             <div class="why-overlay"></div>
-    
             <div class="why-content">
-              <svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M3 12h4l3 8 4-16 3 8h4"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 12h4l3 8 4-16 3 8h4" />
               </svg>
-    
               <h4>Results you can track</h4>
-    
               <p>
                 Body composition, strength benchmarks and consistency — progress
                 is never a guessing game here.
               </p>
             </div>
           </div>
-    
-    
+
           <!-- 05 Facility -->
-          <div class="why-cell"
-            style="background-image: url('images/why-facility.jpg');">
-    
+          <div class="why-cell" style="background-image: url('images/why-facility.jpg');">
             <div class="why-overlay"></div>
-    
             <div class="why-content">
-              <svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="1"/>
-                <path d="M3 9h18M9 21V9"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="1" />
+                <path d="M3 9h18M9 21V9" />
               </svg>
-    
               <h4>Modern, clean facility</h4>
-    
               <p>
                 Well-maintained free weights, machines and a functional zone in
                 a hygienic, focused space.
               </p>
             </div>
           </div>
-    
-    
+
           <!-- 06 Scheduling -->
-          <div class="why-cell"
-            style="background-image: url('images/why-scheduling.jpg');">
-    
+          <div class="why-cell" style="background-image: url('images/why-scheduling.jpg');">
             <div class="why-overlay"></div>
-    
             <div class="why-content">
-              <svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M12 7v5l3.5 2"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3.5 2" />
               </svg>
-    
               <h4>Flexible scheduling</h4>
-    
               <p>
                 Morning and evening slots across every program, built around
                 work and college hours.
               </p>
             </div>
           </div>
-    
+
         </div>
+
       </div>
     </section>
 
-    <!-- <section style="background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="sec-kicker">Weekly rhythm</div>
-          <h2>Training that fits your day</h2>
-          <p>Pick a program, pick a slot. Batches run morning and evening to fit work and college schedules.</p>
-        </div>
-        <div class="sched-wrap">
-          <table class="sched-table">
-            <thead>
-              <tr>
-                <th>Program</th>
-                <th>Slots / week</th>
-                <th>Level</th>
-                <th>Batch size</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Personal Training</td>
-                <td>6 days, flexible</td>
-                <td><span class="pill">All levels</span></td>
-                <td>1-on-1</td>
-              </tr>
-              <tr>
-                <td>Group Fitness / HIIT</td>
-                <td>6 slots</td>
-                <td><span class="pill">All levels</span></td>
-                <td>Up to 14</td>
-              </tr>
-              <tr>
-                <td>Weight Loss Batch</td>
-                <td>5 slots</td>
-                <td><span class="pill">Beginner+</span></td>
-                <td>Up to 12</td>
-              </tr>
-              <tr>
-                <td>Zumba &amp; Dance Fitness</td>
-                <td>4 slots</td>
-                <td><span class="pill">All levels</span></td>
-                <td>Up to 18</td>
-              </tr>
-              <tr>
-                <td>Yoga &amp; Mobility</td>
-                <td>Daily</td>
-                <td><span class="pill">All levels</span></td>
-                <td>Up to 15</td>
-              </tr>
-              <tr>
-                <td>Strength &amp; Conditioning</td>
-                <td>6 slots</td>
-                <td><span class="pill">Intermediate+</span></td>
-                <td>Up to 10</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="price-note">All batches grouped by fitness level. Trial session available.</p>
-      </div>
-    </section> -->
 
-    <!-- <section>
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="sec-kicker">Inside TFI</div>
-          <h2>Energy you can feel</h2>
-          <p>A glimpse of the floor, the coaching and the equipment behind every session.</p>
-        </div>
-        <div class="studio-grid">
-          <div class="studio-cell"><svg viewBox="0 0 200 200">
-              <rect width="200" height="200" fill="var(--surface)" />
-              <g stroke="var(--gold)" stroke-width="2" opacity="0.45" fill="none">
-                <circle cx="60" cy="60" r="34" />
-                <circle cx="150" cy="130" r="22" />
-                <line x1="0" y1="150" x2="200" y2="150" />
-              </g>
-            </svg><span>Morning strength session</span></div>
-          <div class="studio-cell"><svg viewBox="0 0 200 200">
-              <rect width="200" height="200" fill="var(--surface)" />
-              <g stroke="var(--gold)" stroke-width="2" opacity="0.45" fill="none">
-                <rect x="40" y="40" width="120" height="120" rx="2" />
-                <line x1="40" y1="100" x2="160" y2="100" />
-                <line x1="100" y1="40" x2="100" y2="160" />
-              </g>
-            </svg><span>One-on-one coaching</span></div>
-          <div class="studio-cell"><svg viewBox="0 0 200 200">
-              <rect width="200" height="200" fill="var(--surface)" />
-              <g stroke="var(--gold)" stroke-width="2" opacity="0.45" fill="none">
-                <path d="M30 160 L70 90 L110 130 L150 50 L180 90" />
-              </g>
-            </svg><span>HIIT circuit in action</span></div>
-          <div class="studio-cell"><svg viewBox="0 0 200 200">
-              <rect width="200" height="200" fill="var(--surface)" />
-              <g stroke="var(--gold)" stroke-width="2" opacity="0.45" fill="none">
-                <circle cx="100" cy="90" r="46" />
-                <line x1="100" y1="44" x2="100" y2="30" />
-              </g>
-            </svg><span>Nutrition consultation</span></div>
-          <div class="studio-cell"><svg viewBox="0 0 200 200">
-              <rect width="200" height="200" fill="var(--surface)" />
-              <g stroke="var(--gold)" stroke-width="2" opacity="0.45" fill="none">
-                <circle cx="70" cy="70" r="16" />
-                <circle cx="130" cy="70" r="16" />
-                <circle cx="100" cy="130" r="16" />
-              </g>
-            </svg><span>Zumba floor</span></div>
-          <div class="studio-cell"><svg viewBox="0 0 200 200">
-              <rect width="200" height="200" fill="var(--surface)" />
-              <g stroke="var(--gold)" stroke-width="2" opacity="0.45" fill="none">
-                <rect x="30" y="60" width="30" height="80" />
-                <rect x="90" y="40" width="30" height="100" />
-                <rect x="150" y="80" width="20" height="60" />
-              </g>
-            </svg><span>Equipment zone</span></div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- FOUNDER -->
+    <!-- =========================================================
+         FOUNDER
+    ========================================================== -->
     <section id="founder" class="founder-section">
       <div class="wrap">
-
         <div class="founder-grid">
 
-          <!-- LEFT: FOUNDER IMAGE -->
+          <!-- Left: image -->
           <div class="founder-visual">
 
             <div class="founder-image-frame">
-              <img
-                src="images/santhosh.png"
-                alt="Santhosh M - Founder of Time To Fit India"
-              >
+              <img src="images/santhosh.png" alt="Santhosh M - Founder of Time To Fit India" loading="lazy">
 
               <div class="founder-experience">
                 <div class="experience-number">12+</div>
@@ -1321,8 +729,7 @@
 
           </div>
 
-
-          <!-- RIGHT: FOUNDER CONTENT -->
+          <!-- Right: content -->
           <div class="founder-content">
 
             <div class="sec-kicker">MEET THE FOUNDER</div>
@@ -1354,16 +761,12 @@
             <p>
               This experience shaped my approach to fitness:
               <strong>understand the person first, then build the right
-              training around them.</strong>
+                training around them.</strong>
             </p>
 
-
-            <!-- TRAINING APPROACH -->
+            <!-- Approach -->
             <div class="founder-approach">
-
-              <div class="approach-title">
-                My approach to your fitness journey
-              </div>
+              <div class="approach-title">My approach to your fitness journey</div>
 
               <div class="approach-list">
 
@@ -1392,27 +795,20 @@
                 </div>
 
               </div>
-
             </div>
 
-
-            <!-- TRAINING OPTIONS -->
+            <!-- Training options -->
             <div class="founder-programs">
-
-              <div class="program-heading">
-                Three ways to train with TFI
-              </div>
+              <div class="program-heading">Three ways to train with TFI</div>
 
               <div class="program-tags">
                 <span>Live Virtual Personal Training</span>
                 <span>In-Person Personal Training</span>
                 <span>Custom Exercise &amp; Nutrition Plan</span>
               </div>
-
             </div>
 
-
-            <!-- QUOTE -->
+            <!-- Quote -->
             <div class="founder-quote">
               <span class="quote-mark">“</span>
               <p>
@@ -1424,640 +820,209 @@
           </div>
 
         </div>
-
       </div>
     </section>
 
-    <!-- testimonials -->
+
+    <!-- =========================================================
+         TESTIMONIALS
+    ========================================================== -->
     <section id="testimonials" class="testimonials-section">
       <div class="wrap">
-    
+
+        <!-- Header + controls -->
         <div class="testimonials-head">
           <div>
             <div class="sec-kicker">Loved by members</div>
             <h2>Real bodies. Real transformations.</h2>
           </div>
-    
+
           <div class="testimonial-controls">
-            <button class="testimonial-btn prev" aria-label="Previous">
-              &#8592;
-            </button>
-    
-            <button class="testimonial-btn next" aria-label="Next">
-              &#8594;
-            </button>
+            <button class="testimonial-btn prev" type="button" aria-label="Previous testimonial">&#8592;</button>
+            <button class="testimonial-btn next" type="button" aria-label="Next testimonial">&#8594;</button>
           </div>
         </div>
-    
-    
+
+        <!-- Cards -->
         <div class="testimonials-scroll">
-    
-          <!-- CARD 01 -->
+
+          <!-- 01 -->
           <div class="testi-card">
             <div class="testi-top">
               <span class="testi-number">01</span>
               <span class="testi-stars">★★★★★</span>
             </div>
-    
             <div class="testi-quote">“</div>
-    
             <p>
               I lost 12 kilos in five months without starving myself.
               The coaches actually track your progress — it's not just
               a gym, it's a system.
             </p>
-    
             <div class="testi-bottom">
               <div class="testi-avatar">M</div>
-    
               <div>
                 <strong>Member</strong>
                 <span>Weight Loss Program</span>
               </div>
             </div>
           </div>
-    
-    
-          <!-- CARD 02 -->
+
+          <!-- 02 -->
           <div class="testi-card">
             <div class="testi-top">
               <span class="testi-number">02</span>
               <span class="testi-stars">★★★★★</span>
             </div>
-    
             <div class="testi-quote">“</div>
-    
             <p>
               Best personal training I've done. My trainer corrects
               every rep and actually pushes me on the days I don't
               want to show up.
             </p>
-    
             <div class="testi-bottom">
               <div class="testi-avatar">M</div>
-    
               <div>
                 <strong>Member</strong>
                 <span>Personal Training</span>
               </div>
             </div>
           </div>
-    
-    
-          <!-- CARD 03 -->
+
+          <!-- 03 -->
           <div class="testi-card">
             <div class="testi-top">
               <span class="testi-number">03</span>
               <span class="testi-stars">★★★★★</span>
             </div>
-    
             <div class="testi-quote">“</div>
-    
             <p>
               The Zumba classes are the highlight of my week —
               high energy, zero judgement, real results.
             </p>
-    
             <div class="testi-bottom">
               <div class="testi-avatar">M</div>
-    
               <div>
                 <strong>Member</strong>
                 <span>Zumba &amp; Dance Fitness</span>
               </div>
             </div>
           </div>
-    
-    
-          <!-- CARD 04 -->
+
+          <!-- 04 -->
           <div class="testi-card">
             <div class="testi-top">
               <span class="testi-number">04</span>
               <span class="testi-stars">★★★★★</span>
             </div>
-    
             <div class="testi-quote">“</div>
-    
             <p>
               TFI's nutrition coaching changed how I eat completely.
               Down eight kilos and still eating food I actually enjoy.
             </p>
-    
             <div class="testi-bottom">
               <div class="testi-avatar">M</div>
-    
               <div>
                 <strong>Member</strong>
                 <span>Nutrition Coaching</span>
               </div>
             </div>
           </div>
-    
-    
-          <!-- CARD 05 -->
+
+          <!-- 05 -->
           <div class="testi-card">
             <div class="testi-top">
               <span class="testi-number">05</span>
               <span class="testi-stars">★★★★★</span>
             </div>
-    
             <div class="testi-quote">“</div>
-    
             <p>
               The coaches make every workout feel purposeful.
               I've become stronger, more confident and more consistent.
             </p>
-    
             <div class="testi-bottom">
               <div class="testi-avatar">M</div>
-    
               <div>
                 <strong>Member</strong>
                 <span>Strength &amp; Conditioning</span>
               </div>
             </div>
           </div>
-    
-    
-          <!-- CARD 06 -->
+
+          <!-- 06 -->
           <div class="testi-card">
             <div class="testi-top">
               <span class="testi-number">06</span>
               <span class="testi-stars">★★★★★</span>
             </div>
-    
             <div class="testi-quote">“</div>
-    
             <p>
               I finally found a routine that fits my lifestyle.
               The team understands that everyone's fitness journey is different.
             </p>
-    
             <div class="testi-bottom">
               <div class="testi-avatar">M</div>
-    
               <div>
                 <strong>Member</strong>
                 <span>Personal Training</span>
               </div>
             </div>
           </div>
-    
-    
-          <!-- CARD 07 -->
+
+          <!-- 07 -->
           <div class="testi-card">
             <div class="testi-top">
               <span class="testi-number">07</span>
               <span class="testi-stars">★★★★★</span>
             </div>
-    
             <div class="testi-quote">“</div>
-    
             <p>
               Every session has a clear purpose. The support,
               accountability and attention to technique made a huge difference.
             </p>
-    
             <div class="testi-bottom">
               <div class="testi-avatar">M</div>
-    
               <div>
                 <strong>Member</strong>
                 <span>Fitness Program</span>
               </div>
             </div>
           </div>
-    
-    
-          <!-- CARD 08 -->
+
+          <!-- 08 -->
           <div class="testi-card">
             <div class="testi-top">
               <span class="testi-number">08</span>
               <span class="testi-stars">★★★★★</span>
             </div>
-    
             <div class="testi-quote">“</div>
-    
             <p>
               TFI made fitness feel simple and achievable.
               I enjoy coming to every session and can genuinely see the progress.
             </p>
-    
             <div class="testi-bottom">
               <div class="testi-avatar">M</div>
-    
               <div>
                 <strong>Member</strong>
                 <span>Fitness &amp; Wellness</span>
               </div>
             </div>
           </div>
-    
+
         </div>
-    
-    
+
+        <!-- Footer: progress + count -->
         <div class="testimonials-footer">
-    
-          <div class="testimonials-scroll-line">
-            <span></span>
-          </div>
-    
-          <div class="testimonials-count">
-            08 MEMBERS
-          </div>
-    
+          <div class="testimonials-scroll-line"><span></span></div>
+          <div class="testimonials-count">08 MEMBERS</div>
         </div>
-    
+
       </div>
     </section>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-      
-        const container = document.querySelector(".testimonials-scroll");
-        const next = document.querySelector(".testimonial-btn.next");
-        const prev = document.querySelector(".testimonial-btn.prev");
-        const progress = document.querySelector(
-          ".testimonials-scroll-line span"
-        );
-      
-        if (!container) return;
-      
-        let autoScroll;
-        let isPaused = false;
-        let isMoving = false;
-      
-        const AUTO_DELAY = 3000;
-      
-        /* =========================================================
-           CREATE INFINITE LOOP
-        ========================================================= */
-      
-        const originalCards = Array.from(
-          container.querySelectorAll(".testi-card")
-        );
-      
-        const totalCards = originalCards.length;
-      
-        if (totalCards === 0) return;
-      
-      
-        /*
-           Clone all cards.
-      
-           Original:
-           01 02 03 04 05 06 07 08
-      
-           Clones:
-           01 02 03 04 05 06 07 08
-      
-           When we reach clone 01, we silently reset
-           back to original 01.
-        */
-      
-        originalCards.forEach(card => {
-          const clone = card.cloneNode(true);
-          clone.classList.add("testi-card-clone");
-          container.appendChild(clone);
-        });
-      
-      
-        /* =========================================================
-           GET CARD WIDTH
-        ========================================================= */
-      
-        function getCardStep() {
-      
-          const card = container.querySelector(".testi-card");
-      
-          if (!card) return 0;
-      
-          const styles = window.getComputedStyle(container);
-          const gap = parseFloat(styles.columnGap || styles.gap) || 0;
-      
-          return card.getBoundingClientRect().width + gap;
-        }
-      
-      
-        /* =========================================================
-           GET CURRENT CARD INDEX
-        ========================================================= */
-      
-        function getCurrentIndex() {
-      
-          const step = getCardStep();
-      
-          if (!step) return 0;
-      
-          return Math.round(container.scrollLeft / step);
-        }
-      
-      
-        /* =========================================================
-           MOVE TO CARD
-        ========================================================= */
-      
-        function moveToCard(index) {
-      
-          const step = getCardStep();
-      
-          if (!step || isMoving) return;
-      
-          isMoving = true;
-      
-          container.scrollTo({
-            left: Math.round(step * index),
-            behavior: "smooth"
-          });
-      
-          /*
-             Allow smooth scrolling to finish
-          */
-          setTimeout(() => {
-            isMoving = false;
-          }, 650);
-        }
-      
-      
-        /* =========================================================
-           NEXT
-        ========================================================= */
-      
-        function goNext() {
-      
-          if (isMoving) return;
-      
-          const currentIndex = getCurrentIndex();
-      
-          moveToCard(currentIndex + 1);
-      
-          restartAutoScroll();
-        }
-      
-      
-        /* =========================================================
-           PREVIOUS
-        ========================================================= */
-      
-        function goPrevious() {
-      
-          if (isMoving) return;
-      
-          const currentIndex = getCurrentIndex();
-      
-          /*
-             If we're at the beginning, jump to the
-             corresponding cloned position first.
-          */
-      
-          if (currentIndex <= 0) {
-      
-            const step = getCardStep();
-      
-            /*
-               Move silently to the cloned last card
-            */
-      
-            container.scrollTo({
-              left: Math.round(step * totalCards),
-              behavior: "auto"
-            });
-      
-            /*
-               Then move backward normally
-            */
-      
-            requestAnimationFrame(() => {
-              moveToCard(totalCards - 1);
-            });
-      
-          } else {
-      
-            moveToCard(currentIndex - 1);
-          }
-      
-          restartAutoScroll();
-        }
-      
-      
-        /* =========================================================
-           BUTTON EVENTS
-        ========================================================= */
-      
-        if (next) {
-          next.addEventListener("click", goNext);
-        }
-      
-        if (prev) {
-          prev.addEventListener("click", goPrevious);
-        }
-      
-      
-        /* =========================================================
-           INFINITE LOOP RESET
-        ========================================================= */
-      
-        container.addEventListener("scroll", function () {
-      
-          const step = getCardStep();
-      
-          if (!step) return;
-      
-          const currentIndex = getCurrentIndex();
-      
-          /*
-             We have reached the cloned cards.
-      
-             Example:
-      
-             Original:
-             01 02 03 04 05 06 07 08
-      
-             Clone:
-             01 02 03 04 05 06 07 08
-                               ↑
-                             here
-      
-             Reset to the original position without animation.
-          */
-      
-          if (currentIndex >= totalCards) {
-      
-            const originalIndex =
-              currentIndex - totalCards;
-      
-            /*
-               Wait until the smooth animation has
-               visually completed.
-            */
-      
-            setTimeout(() => {
-      
-              container.scrollTo({
-                left: Math.round(step * originalIndex),
-                behavior: "auto"
-              });
-      
-            }, 50);
-          }
-      
-      
-          /* =====================================================
-             PROGRESS BAR
-          ===================================================== */
-      
-          if (progress) {
-      
-            let displayIndex =
-              currentIndex % totalCards;
-      
-            let percentage =
-              ((displayIndex + 1) / totalCards) * 100;
-      
-            /*
-               Keep progress between 18% and 100%
-            */
-      
-            percentage = Math.max(
-              18,
-              Math.min(100, percentage)
-            );
-      
-            progress.style.width =
-              percentage + "%";
-          }
-      
-        });
-      
-      
-        /* =========================================================
-           AUTO CAROUSEL
-        ========================================================= */
-      
-        function startAutoScroll() {
-      
-          clearInterval(autoScroll);
-      
-          autoScroll = setInterval(() => {
-      
-            if (isPaused || isMoving) {
-              return;
-            }
-      
-            const currentIndex = getCurrentIndex();
-      
-            /*
-               When we reach the final original card,
-               next moves to its clone automatically.
-            */
-      
-            moveToCard(currentIndex + 1);
-      
-          }, AUTO_DELAY);
-        }
-      
-      
-        /* =========================================================
-           RESTART AUTO SCROLL
-        ========================================================= */
-      
-        function restartAutoScroll() {
-      
-          clearInterval(autoScroll);
-      
-          setTimeout(() => {
-      
-            if (!isPaused) {
-              startAutoScroll();
-            }
-      
-          }, 2000);
-        }
-      
-      
-        /* =========================================================
-           PAUSE ON MOUSE
-        ========================================================= */
-      
-        container.addEventListener("mouseenter", () => {
-          isPaused = true;
-        });
-      
-        container.addEventListener("mouseleave", () => {
-      
-          isPaused = false;
-      
-          restartAutoScroll();
-        });
-      
-      
-        /* =========================================================
-           PAUSE ON TOUCH
-        ========================================================= */
-      
-        container.addEventListener(
-          "touchstart",
-          () => {
-      
-            isPaused = true;
-      
-            clearInterval(autoScroll);
-      
-          },
-          { passive: true }
-        );
-      
-      
-        container.addEventListener(
-          "touchend",
-          () => {
-      
-            setTimeout(() => {
-      
-              isPaused = false;
-      
-              startAutoScroll();
-      
-            }, 1500);
-      
-          },
-          { passive: true }
-        );
-      
-      
-        /* =========================================================
-           PAUSE WHEN TAB IS NOT VISIBLE
-        ========================================================= */
-      
-        document.addEventListener(
-          "visibilitychange",
-          () => {
-      
-            if (document.hidden) {
-      
-              clearInterval(autoScroll);
-      
-            } else {
-      
-              startAutoScroll();
-      
-            }
-      
-          }
-        );
-      
-      
-        /* =========================================================
-           START
-        ========================================================= */
-      
-        startAutoScroll();
-      
-      });
-      </script>
 
-    <!-- WHO WE TRAIN -->
-
+    <!-- =========================================================
+         WHO WE TRAIN
+    ========================================================== -->
     <section id="who-we-train" class="who-section">
       <div class="wrap">
 
@@ -2069,64 +1034,80 @@
 
         <div class="who-grid">
 
-          <!-- WOMEN -->
+          <!-- Women -->
           <article class="who-card">
+
             <div class="who-top">
               <span class="who-number">01</span>
+              <span class="who-label">WOMEN</span>
               <span class="who-line"></span>
             </div>
 
-            <h3>Women</h3>
+            <div class="who-content">
+              <h3>Women</h3>
 
-            <p class="who-intro">
-              Helping women become stronger, fitter and more confident
-              at every stage of life.
-            </p>
+              <p class="who-intro">
+                Helping women become stronger, fitter and more confident
+                at every stage of life.
+              </p>
 
-            <ul class="who-list">
-              <li>Lose fat &amp; manage body composition</li>
-              <li>Build muscle &amp; strength</li>
-              <li>Improve stamina &amp; cardiovascular fitness</li>
-              <li>
-                Individual training considerations for PCOS/PCOD,
-                thyroid-related concerns &amp; hormonal changes
-              </li>
-              <li>Post-pregnancy strength &amp; fitness</li>
-              <li>Stay strong, mobile &amp; active after menopause</li>
-              <li>Improve flexibility, mobility &amp; movement</li>
-            </ul>
+              <div class="who-divider"></div>
+
+              <ul class="who-list">
+                <li>Lose fat &amp; manage body composition</li>
+                <li>Build muscle &amp; strength</li>
+                <li>Improve stamina &amp; cardiovascular fitness</li>
+                <li>
+                  Individual training considerations for PCOS/PCOD,
+                  thyroid-related concerns &amp; hormonal changes
+                </li>
+                <li>Post-pregnancy strength &amp; fitness</li>
+                <li>Stay strong, mobile &amp; active after menopause</li>
+                <li>Improve flexibility, mobility &amp; movement</li>
+              </ul>
+            </div>
+
+            <span class="who-corner"></span>
+
           </article>
 
-
-          <!-- MEN -->
+          <!-- Men -->
           <article class="who-card">
+
             <div class="who-top">
               <span class="who-number">02</span>
+              <span class="who-label">MEN</span>
               <span class="who-line"></span>
             </div>
 
-            <h3>Men</h3>
+            <div class="who-content">
+              <h3>Men</h3>
 
-            <p class="who-intro">
-              Helping men build strength, improve fitness and stay active
-              through every stage of life.
-            </p>
+              <p class="who-intro">
+                Helping men build strength, improve fitness and stay active
+                through every stage of life.
+              </p>
 
-            <ul class="who-list">
-              <li>Lose fat &amp; manage body composition</li>
-              <li>Build muscle &amp; strength</li>
-              <li>Improve stamina &amp; cardiovascular fitness</li>
-              <li>Build fitness around a sedentary lifestyle</li>
-              <li>Maintain muscle, strength &amp; mobility after 40</li>
-              <li>Improve flexibility, mobility &amp; movement</li>
-              <li>Improve posture &amp; manage common movement concerns</li>
-            </ul>
+              <div class="who-divider"></div>
+
+              <ul class="who-list">
+                <li>Lose fat &amp; manage body composition</li>
+                <li>Build muscle &amp; strength</li>
+                <li>Improve stamina &amp; cardiovascular fitness</li>
+                <li>Build fitness around a sedentary lifestyle</li>
+                <li>Maintain muscle, strength &amp; mobility after 40</li>
+                <li>Improve flexibility, mobility &amp; movement</li>
+                <li>Improve posture &amp; manage common movement concerns</li>
+              </ul>
+            </div>
+
+            <span class="who-corner"></span>
+
           </article>
 
         </div>
 
-
-        <!-- OUR FOCUS -->
+        <!-- Our focus -->
         <div class="who-focus">
 
           <div class="who-focus-content">
@@ -2146,9 +1127,7 @@
               and build from there.
             </p>
 
-            <strong>
-              Your training is built around you.
-            </strong>
+            <strong>Your training is built around you.</strong>
           </div>
 
         </div>
@@ -2156,15 +1135,19 @@
       </div>
     </section>
 
+
+    <!-- =========================================================
+         BMI CALCULATOR
+    ========================================================== -->
     <section class="bmi-section" id="bmi">
       <div class="bmi-container">
 
-        <!-- LEFT IMAGE -->
+        <!-- Image -->
         <div class="bmi-image">
-          <img src="images/bmi-fitness.png" alt="Woman checking her fitness progress">
+          <img src="images/bmi-fitness.png" alt="Woman checking her fitness progress" loading="lazy">
         </div>
 
-        <!-- RIGHT CALCULATOR -->
+        <!-- Calculator -->
         <div class="bmi-content">
 
           <div class="bmi-heading">
@@ -2172,7 +1155,7 @@
             <h2>BMI</h2>
           </div>
 
-          <!-- UNIT SWITCH -->
+          <!-- Unit switch -->
           <div class="unit-selector">
 
             <label class="unit-option">
@@ -2189,9 +1172,8 @@
 
           </div>
 
-          <!-- METRIC -->
+          <!-- Metric fields -->
           <div id="metricFields">
-
             <div class="bmi-input">
               <input type="number" id="heightCm" placeholder="Height (cm)" min="50" max="250">
             </div>
@@ -2199,14 +1181,11 @@
             <div class="bmi-input">
               <input type="number" id="weightKg" placeholder="Weight (kg)" min="20" max="300">
             </div>
-
           </div>
 
-          <!-- IMPERIAL -->
+          <!-- Imperial fields -->
           <div id="imperialFields" class="hidden">
-
             <div class="imperial-height">
-
               <div class="bmi-input">
                 <input type="number" id="heightFt" placeholder="Height (ft)" min="1" max="8">
               </div>
@@ -2214,34 +1193,28 @@
               <div class="bmi-input">
                 <input type="number" id="heightIn" placeholder="Height (in)" min="0" max="11">
               </div>
-
             </div>
 
             <div class="bmi-input">
               <input type="number" id="weightLb" placeholder="Weight (lb)" min="40" max="700">
             </div>
-
           </div>
 
-          <!-- BUTTON -->
-          <button class="bmi-button" onclick="calculateBMI()">
+          <!-- Button -->
+          <button class="bmi-button" id="bmiCalculate" type="button">
             CALCULATE YOUR BMI!
           </button>
 
-          <!-- RESULT -->
-          <div class="bmi-result" id="bmiResult">
-
+          <!-- Result -->
+          <div class="bmi-result" id="bmiResult" aria-live="polite">
             <div class="result-number">
               <span id="bmiValue">--</span>
             </div>
 
             <div class="result-info">
               <strong id="bmiCategory">Enter your details</strong>
-              <p id="bmiMessage">
-                Calculate your BMI to understand your current range.
-              </p>
+              <p id="bmiMessage">Calculate your BMI to understand your current range.</p>
             </div>
-
           </div>
 
         </div>
@@ -2249,216 +1222,41 @@
       </div>
     </section>
 
-    <script>
 
-      document.addEventListener("DOMContentLoaded", function () {
-
-        const unitInputs = document.querySelectorAll(
-          'input[name="unit"]'
-        );
-
-        unitInputs.forEach(function (input) {
-
-          input.addEventListener("change", function () {
-
-            const metricFields =
-              document.getElementById("metricFields");
-
-            const imperialFields =
-              document.getElementById("imperialFields");
-
-            if (this.value === "metric") {
-
-              metricFields.classList.remove("hidden");
-              imperialFields.classList.add("hidden");
-
-            } else {
-
-              metricFields.classList.add("hidden");
-              imperialFields.classList.remove("hidden");
-
-            }
-
-            // Reset previous result
-            document
-              .getElementById("bmiResult")
-              .classList.remove("show");
-
-          });
-
-        });
-
-      });
-
-
-      function calculateBMI() {
-
-        const selectedUnit =
-          document.querySelector(
-            'input[name="unit"]:checked'
-          ).value;
-
-        let bmi;
-
-        /* =========================
-           METRIC
-        ========================= */
-
-        if (selectedUnit === "metric") {
-
-          const height =
-            parseFloat(
-              document.getElementById("heightCm").value
-            );
-
-          const weight =
-            parseFloat(
-              document.getElementById("weightKg").value
-            );
-
-          if (!height || !weight || height <= 0 || weight <= 0) {
-
-            alert("Please enter valid height and weight.");
-
-            return;
-          }
-
-          const heightInMeters =
-            height / 100;
-
-          bmi =
-            weight /
-            (heightInMeters * heightInMeters);
-
-        }
-
-        /* =========================
-           IMPERIAL
-        ========================= */
-
-        else {
-
-          const feet =
-            parseFloat(
-              document.getElementById("heightFt").value
-            ) || 0;
-
-          const inches =
-            parseFloat(
-              document.getElementById("heightIn").value
-            ) || 0;
-
-          const weight =
-            parseFloat(
-              document.getElementById("weightLb").value
-            );
-
-          const totalInches =
-            (feet * 12) + inches;
-
-          if (
-            totalInches <= 0 ||
-            !weight ||
-            weight <= 0
-          ) {
-
-            alert("Please enter valid height and weight.");
-
-            return;
-          }
-
-          bmi =
-            (weight /
-              (totalInches * totalInches)) *
-            703;
-
-        }
-
-        bmi = parseFloat(bmi.toFixed(1));
-
-        let category = "";
-        let message = "";
-
-        /* =========================
-           BMI CATEGORY
-        ========================= */
-
-        if (bmi < 18.5) {
-
-          category = "Underweight";
-
-          message =
-            "Your BMI is below the standard healthy range.";
-
-        }
-
-        else if (bmi < 25) {
-
-          category = "Healthy weight";
-
-          message =
-            "Your BMI falls within the standard healthy range.";
-
-        }
-
-        else if (bmi < 30) {
-
-          category = "Overweight";
-
-          message =
-            "Your BMI is above the standard healthy range.";
-
-        }
-
-        else {
-
-          category = "Obesity range";
-
-          message =
-            "Your BMI is in the obesity range.";
-
-        }
-
-        /* =========================
-           DISPLAY
-        ========================= */
-
-        document.getElementById("bmiValue").textContent =
-          bmi;
-
-        document.getElementById("bmiCategory").textContent =
-          category;
-
-        document.getElementById("bmiMessage").textContent =
-          message;
-
-        document
-          .getElementById("bmiResult")
-          .classList.add("show");
-
-      }
-
-    </script>
-
+    <!-- =========================================================
+         CONTACT / ENQUIRY
+    ========================================================== -->
     <section id="contact" class="cta-band">
       <div class="wrap cta-inner">
+
+        <!-- Left: message -->
         <div>
           <h2>Ready to get fit?</h2>
-          <p>Tell us your goal — we'll match you with the right coach, program and schedule. Free trial session
-            available this week.</p>
+
+          <p>
+            Tell us your goal — we'll match you with the right coach, program and schedule.
+            Free trial session available this week.
+          </p>
+
           <div class="cta-flag">Get a free trial session when you enquire this week</div>
-          <div style="margin-top:28px; display:flex; gap:14px; flex-wrap:wrap;">
+
+          <div style="margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap;">
             <a class="btn btn-solid" href="#contact">Book now</a>
             <a class="btn btn-quiet" href="#programs">Explore programs</a>
           </div>
         </div>
+
+        <!-- Right: form -->
         <div>
           <form class="enquiry" id="enquiryForm" novalidate>
+
             <input type="text" name="name" placeholder="Full name" required>
+
             <div class="row2">
               <input type="tel" name="phone" placeholder="Phone number" required>
               <input type="email" name="email" placeholder="Email address" required>
             </div>
+
             <select name="program" required>
               <option value="" disabled selected>Select a program</option>
               <option>Personal Training</option>
@@ -2470,28 +1268,43 @@
               <option>Yoga &amp; Mobility</option>
               <option>Corporate Fitness</option>
             </select>
+
             <textarea name="message" placeholder="Tell us your fitness goal"></textarea>
+
             <button type="submit" class="btn btn-solid"
-              style="width:100%; justify-content:center; margin-top:4px;">Submit enquiry</button>
+              style="width: 100%; justify-content: center; margin-top: 4px;">
+              Submit enquiry
+            </button>
+
             <div class="form-note">We respond within 24 hours · No spam, ever</div>
             <div class="form-success" id="formSuccess">Enquiry received — we'll be in touch shortly.</div>
+
           </form>
         </div>
+
       </div>
     </section>
 
   </main>
 
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
   <footer>
     <div class="wrap">
+
       <div class="foot-grid">
+
         <div>
           <a class="foot-logo" href="#top">
-            <img src="logo/logo.png" alt="Logo">
+            <img src="logo/logo.png" alt="TFI logo">
           </a>
-          <p style="max-width:280px;">Personal training and fitness programs that build strength — and confident people.
+          <p style="max-width: 280px;">
+            Personal training and fitness programs that build strength — and confident people.
           </p>
         </div>
+
         <div>
           <h5>Quick links</h5>
           <ul>
@@ -2501,6 +1314,7 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
+
         <div>
           <h5>Programs</h5>
           <ul>
@@ -2510,6 +1324,7 @@
             <li><a href="#programs">Group Fitness</a></li>
           </ul>
         </div>
+
         <div>
           <h5>Contact</h5>
           <ul>
@@ -2518,65 +1333,542 @@
             <li>info@tfiindia.com</li>
           </ul>
         </div>
+
       </div>
+
       <div class="foot-bottom">
         <span>© 2026 TFI — Time To Fit India. All rights reserved.</span>
-        <!-- <span>Layout reference: kriyasportsacademy.com</span> -->
       </div>
+
     </div>
   </footer>
 
+
+  <!-- =========================================================
+       SCRIPTS
+       All JavaScript lives here, at the end of the page.
+
+       01. Theme (light / dark)
+       02. Navigation (mobile menu + accordions)
+       03. Hero carousel
+       04. Hero reveal animation
+       05. Stats counters
+       06. Testimonials carousel
+       07. BMI calculator
+       08. Enquiry form
+  ========================================================== -->
   <script>
-    var toggle = document.getElementById('navtoggle');
-    var menu = document.getElementById('mobilemenu');
-    toggle.addEventListener('click', function () {
-      var open = menu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (a) {
-      a.addEventListener('click', function () { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); });
-    });
+    (function () {
+      "use strict";
 
-    try {
-      var reveal = document.getElementById('heroLogo');
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); } });
+      var reduceMotion = window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+
+      /* =======================================================
+         01. THEME (LIGHT / DARK)
+      ======================================================= */
+
+      function initTheme() {
+        var button = document.getElementById("themeToggle");
+        var root = document.documentElement;
+
+        function save(value) {
+          try { localStorage.setItem("tfi-theme", value); } catch (e) { }
+        }
+
+        function setTheme(dark) {
+          root.classList.toggle("dark-mode", dark);
+          save(dark ? "dark" : "light");
+        }
+
+        // Dark is the default (set on <html class="dark-mode">).
+        // Switch to light only if the visitor chose light before.
+        try {
+          if (localStorage.getItem("tfi-theme") === "light") {
+            root.classList.remove("dark-mode");
+          }
+        } catch (e) { }
+
+        if (button) {
+          button.addEventListener("click", function () {
+            setTheme(!root.classList.contains("dark-mode"));
+          });
+        }
+      }
+
+
+      /* =======================================================
+         02. NAVIGATION
+      ======================================================= */
+
+      function initNavigation() {
+        var toggle = document.getElementById("navtoggle");
+        var menu = document.getElementById("mobilemenu");
+
+        if (!toggle || !menu) return;
+
+        // Open / close the mobile menu
+        toggle.addEventListener("click", function () {
+          var open = menu.classList.toggle("open");
+          toggle.classList.toggle("active", open);
+          toggle.setAttribute("aria-expanded", String(open));
+        });
+
+        // Close the menu when a link is chosen
+        Array.prototype.forEach.call(menu.querySelectorAll("a"), function (link) {
+          link.addEventListener("click", function () {
+            menu.classList.remove("open");
+            toggle.classList.remove("active");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+
+        // Accordions inside the mobile menu
+        Array.prototype.forEach.call(menu.querySelectorAll(".m-toggle"), function (button) {
+          button.addEventListener("click", function () {
+            var expanded = button.getAttribute("aria-expanded") === "true";
+            button.setAttribute("aria-expanded", String(!expanded));
+          });
+        });
+      }
+
+
+      /* =======================================================
+         03. HERO CAROUSEL
+      ======================================================= */
+
+      function initHeroCarousel() {
+        var slides = document.querySelectorAll(".carousel-slide");
+        var dots = document.querySelectorAll(".carousel-dots button");
+        var current = 0;
+        var timer = null;
+
+        if (!slides.length) return;
+
+        function show(index) {
+          if (index < 0 || index >= slides.length) index = 0;
+
+          Array.prototype.forEach.call(slides, function (slide, i) {
+            slide.classList.toggle("active", i === index);
+          });
+
+          Array.prototype.forEach.call(dots, function (dot, i) {
+            dot.classList.toggle("active", i === index);
+          });
+
+          current = index;
+        }
+
+        function start() {
+          if (reduceMotion) return;
+          timer = setInterval(function () {
+            show((current + 1) % slides.length);
+          }, 4000);
+        }
+
+        function restart() {
+          clearInterval(timer);
+          start();
+        }
+
+        Array.prototype.forEach.call(dots, function (dot, index) {
+          dot.addEventListener("click", function () {
+            show(index);
+            restart();
+          });
+        });
+
+        show(0);
+        start();
+      }
+
+
+      /* =======================================================
+         04. HERO REVEAL ANIMATION
+      ======================================================= */
+
+      function initReveal() {
+        var el = document.getElementById("heroLogo");
+        if (!el) return;
+
+        if (!("IntersectionObserver" in window)) {
+          el.classList.add("in");
+          return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) entry.target.classList.add("in");
+          });
         }, { threshold: 0.2 });
-        io.observe(reveal);
-      } else {
-        reveal.classList.add('in');
-      }
-    } catch (e) { }
 
-    var form = document.getElementById('enquiryForm');
-    var success = document.getElementById('formSuccess');
-    form.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      var valid = form.checkValidity();
-      if (!valid) { form.reportValidity(); return; }
-      success.style.display = 'block';
-      form.reset();
-    });
-
-    // Theme toggle
-    var themeBtn = document.getElementById('themeToggle');
-    function setTheme(dark) {
-      if (dark) {
-        document.documentElement.classList.add('dark-mode');
-        localStorage.setItem('tfi-theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark-mode');
-        localStorage.setItem('tfi-theme', 'light');
+        observer.observe(el);
       }
-    }
-    // Load saved preference (default is light)
-    var saved = localStorage.getItem('tfi-theme');
-    if (saved === 'dark') { setTheme(true); }
-    themeBtn.addEventListener('click', function () {
-      var isDark = document.documentElement.classList.contains('dark-mode');
-      setTheme(!isDark);
-    });
+
+
+      /* =======================================================
+         05. STATS COUNTERS
+      ======================================================= */
+
+      function initCounters() {
+        var counters = document.querySelectorAll(".counter");
+        var section = document.querySelector(".stats");
+
+        if (!counters.length || !section) return;
+
+        function animate(counter) {
+          var target = parseInt(counter.getAttribute("data-target"), 10) || 0;
+          var duration = target >= 1000 ? 2000 : 1500;
+          var startTime = null;
+
+          counter.textContent = "0";
+
+          function tick(now) {
+            if (startTime === null) startTime = now;
+
+            var progress = Math.min((now - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3); // ease-out
+
+            counter.textContent = Math.floor(eased * target).toLocaleString();
+
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            } else {
+              counter.textContent = target.toLocaleString();
+            }
+          }
+
+          requestAnimationFrame(tick);
+        }
+
+        // Without IntersectionObserver, show final numbers straight away
+        if (!("IntersectionObserver" in window)) {
+          Array.prototype.forEach.call(counters, function (counter) {
+            counter.textContent = (parseInt(counter.getAttribute("data-target"), 10) || 0).toLocaleString();
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              Array.prototype.forEach.call(counters, animate);
+            }
+          });
+        }, { threshold: 0.4 });
+
+        observer.observe(section);
+      }
+
+
+      /* =======================================================
+         06. TESTIMONIALS CAROUSEL (infinite loop)
+      ======================================================= */
+
+      function initTestimonials() {
+        var container = document.querySelector(".testimonials-scroll");
+        var nextBtn = document.querySelector(".testimonial-btn.next");
+        var prevBtn = document.querySelector(".testimonial-btn.prev");
+        var bar = document.querySelector(".testimonials-scroll-line span");
+
+        if (!container) return;
+
+        var originals = Array.prototype.slice.call(container.querySelectorAll(".testi-card"));
+        var total = originals.length;
+
+        if (!total) return;
+
+        var AUTO_DELAY = 3000;   // time between automatic slides
+        var MOVE_TIME = 650;     // time allowed for a smooth scroll to finish
+
+        var autoTimer = null;
+        var resumeTimer = null;
+        var settleTimer = null;
+        var paused = false;
+        var moving = false;
+
+        // Clone every card once. When the scroll reaches the first clone,
+        // we silently jump back to the matching original card.
+        originals.forEach(function (card) {
+          var clone = card.cloneNode(true);
+          clone.classList.add("testi-card-clone");
+          clone.setAttribute("aria-hidden", "true");
+          container.appendChild(clone);
+        });
+
+        // Width of one card plus the gap
+        function getStep() {
+          var card = container.querySelector(".testi-card");
+          if (!card) return 0;
+
+          var styles = window.getComputedStyle(container);
+          var gap = parseFloat(styles.columnGap || styles.gap) || 0;
+
+          return card.getBoundingClientRect().width + gap;
+        }
+
+        function getIndex() {
+          var step = getStep();
+          return step ? Math.round(container.scrollLeft / step) : 0;
+        }
+
+        // Instant jump (CSS uses scroll-behavior: smooth, so switch it off briefly)
+        function jumpTo(index) {
+          var step = getStep();
+          if (!step) return;
+
+          container.style.scrollBehavior = "auto";
+          container.scrollLeft = Math.round(step * index);
+          container.style.scrollBehavior = "";
+        }
+
+        // Smooth move
+        function moveTo(index) {
+          var step = getStep();
+          if (!step || moving) return;
+
+          moving = true;
+
+          container.scrollTo({
+            left: Math.round(step * index),
+            behavior: "smooth"
+          });
+
+          setTimeout(function () { moving = false; }, MOVE_TIME);
+        }
+
+        function goNext() {
+          if (moving) return;
+          moveTo(getIndex() + 1);
+          restartAuto();
+        }
+
+        function goPrevious() {
+          if (moving) return;
+
+          var index = getIndex();
+
+          if (index <= 0) {
+            // At the start: jump to the cloned set, then move back one card
+            jumpTo(total);
+            requestAnimationFrame(function () { moveTo(total - 1); });
+          } else {
+            moveTo(index - 1);
+          }
+
+          restartAuto();
+        }
+
+        function updateProgress() {
+          if (!bar) return;
+
+          var position = getIndex() % total;
+          var percent = ((position + 1) / total) * 100;
+
+          bar.style.width = Math.max(18, Math.min(100, percent)) + "%";
+        }
+
+        // Auto play
+        function startAuto() {
+          if (reduceMotion) return;
+
+          clearInterval(autoTimer);
+
+          autoTimer = setInterval(function () {
+            if (paused || moving) return;
+            moveTo(getIndex() + 1);
+          }, AUTO_DELAY);
+        }
+
+        function restartAuto() {
+          clearInterval(autoTimer);
+          clearTimeout(resumeTimer);
+
+          resumeTimer = setTimeout(function () {
+            if (!paused) startAuto();
+          }, 2000);
+        }
+
+        // Buttons
+        if (nextBtn) nextBtn.addEventListener("click", goNext);
+        if (prevBtn) prevBtn.addEventListener("click", goPrevious);
+
+        // Scroll: update progress bar, and reset the loop once scrolling has settled
+        container.addEventListener("scroll", function () {
+          updateProgress();
+
+          clearTimeout(settleTimer);
+          settleTimer = setTimeout(function () {
+            var index = getIndex();
+            if (index >= total) jumpTo(index - total);
+          }, 80);
+        });
+
+        // Pause on hover
+        container.addEventListener("mouseenter", function () {
+          paused = true;
+        });
+
+        container.addEventListener("mouseleave", function () {
+          paused = false;
+          restartAuto();
+        });
+
+        // Pause on touch
+        container.addEventListener("touchstart", function () {
+          paused = true;
+          clearInterval(autoTimer);
+        }, { passive: true });
+
+        container.addEventListener("touchend", function () {
+          setTimeout(function () {
+            paused = false;
+            startAuto();
+          }, 1500);
+        }, { passive: true });
+
+        // Pause when the tab is hidden
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            clearInterval(autoTimer);
+          } else {
+            startAuto();
+          }
+        });
+
+        updateProgress();
+        startAuto();
+      }
+
+
+      /* =======================================================
+         07. BMI CALCULATOR
+      ======================================================= */
+
+      function initBMI() {
+        var button = document.getElementById("bmiCalculate");
+        var result = document.getElementById("bmiResult");
+        var metricFields = document.getElementById("metricFields");
+        var imperialFields = document.getElementById("imperialFields");
+
+        if (!button || !result) return;
+
+        function numberValue(id) {
+          return parseFloat(document.getElementById(id).value);
+        }
+
+        // Switch between metric and imperial
+        Array.prototype.forEach.call(document.querySelectorAll('input[name="unit"]'), function (input) {
+          input.addEventListener("change", function () {
+            var metric = this.value === "metric";
+
+            metricFields.classList.toggle("hidden", !metric);
+            imperialFields.classList.toggle("hidden", metric);
+
+            result.classList.remove("show");
+          });
+        });
+
+        function calculate() {
+          var unit = document.querySelector('input[name="unit"]:checked').value;
+          var bmi;
+
+          if (unit === "metric") {
+            var heightCm = numberValue("heightCm");
+            var weightKg = numberValue("weightKg");
+
+            if (!heightCm || !weightKg || heightCm <= 0 || weightKg <= 0) {
+              alert("Please enter valid height and weight.");
+              return;
+            }
+
+            var meters = heightCm / 100;
+            bmi = weightKg / (meters * meters);
+
+          } else {
+            var feet = numberValue("heightFt") || 0;
+            var inches = numberValue("heightIn") || 0;
+            var weightLb = numberValue("weightLb");
+            var totalInches = (feet * 12) + inches;
+
+            if (totalInches <= 0 || !weightLb || weightLb <= 0) {
+              alert("Please enter valid height and weight.");
+              return;
+            }
+
+            bmi = (weightLb / (totalInches * totalInches)) * 703;
+          }
+
+          bmi = parseFloat(bmi.toFixed(1));
+
+          var category;
+          var message;
+
+          if (bmi < 18.5) {
+            category = "Underweight";
+            message = "Your BMI is below the standard healthy range.";
+          } else if (bmi < 25) {
+            category = "Healthy weight";
+            message = "Your BMI falls within the standard healthy range.";
+          } else if (bmi < 30) {
+            category = "Overweight";
+            message = "Your BMI is above the standard healthy range.";
+          } else {
+            category = "Obesity range";
+            message = "Your BMI is in the obesity range.";
+          }
+
+          document.getElementById("bmiValue").textContent = bmi;
+          document.getElementById("bmiCategory").textContent = category;
+          document.getElementById("bmiMessage").textContent = message;
+
+          result.classList.add("show");
+        }
+
+        button.addEventListener("click", calculate);
+      }
+
+
+      /* =======================================================
+         08. ENQUIRY FORM
+      ======================================================= */
+
+      function initEnquiryForm() {
+        var form = document.getElementById("enquiryForm");
+        var success = document.getElementById("formSuccess");
+
+        if (!form) return;
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          // TODO: send the form data to your backend / email service here.
+          if (success) success.style.display = "block";
+          form.reset();
+        });
+      }
+
+
+      /* =======================================================
+         START
+      ======================================================= */
+
+      initTheme();
+      initNavigation();
+      initHeroCarousel();
+      initReveal();
+      initCounters();
+      initTestimonials();
+      initBMI();
+      initEnquiryForm();
+
+    })();
   </script>
 
 </body>
