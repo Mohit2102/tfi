@@ -1151,75 +1151,160 @@
         <div class="bmi-content">
 
           <div class="bmi-heading">
-            <span>CALCULATE YOUR</span>
-            <h2>BMI</h2>
+            <div class="sec-kicker">HEALTH CHECK</div>
+            <h2>Calculate your <span class="accent">BMI</span></h2>
+            <p>Enter your height and weight to see where you stand today. It takes ten seconds.</p>
           </div>
 
-          <!-- Unit switch -->
-          <div class="unit-selector">
+          <form class="bmi-card" id="bmiForm" novalidate>
 
-            <label class="unit-option">
-              <input type="radio" name="unit" value="metric" checked>
-              <span class="radio"></span>
-              <span>Metric</span>
-            </label>
+            <!-- Unit switch -->
+            <div class="unit-switch" role="radiogroup" aria-label="Measurement units">
 
-            <label class="unit-option">
-              <input type="radio" name="unit" value="imperial">
-              <span class="radio"></span>
-              <span>Imperial</span>
-            </label>
+              <label class="unit-option">
+                <input type="radio" name="unit" value="metric" checked>
+                <span>Metric <small>cm / kg</small></span>
+              </label>
 
-          </div>
+              <label class="unit-option">
+                <input type="radio" name="unit" value="imperial">
+                <span>Imperial <small>ft / lb</small></span>
+              </label>
 
-          <!-- Metric fields -->
-          <div id="metricFields">
-            <div class="bmi-input">
-              <input type="number" id="heightCm" placeholder="Height (cm)" min="50" max="250">
             </div>
 
-            <div class="bmi-input">
-              <input type="number" id="weightKg" placeholder="Weight (kg)" min="20" max="300">
-            </div>
-          </div>
+            <!-- Metric fields -->
+            <div class="bmi-fields" id="metricFields">
 
-          <!-- Imperial fields -->
-          <div id="imperialFields" class="hidden">
-            <div class="imperial-height">
-              <div class="bmi-input">
-                <input type="number" id="heightFt" placeholder="Height (ft)" min="1" max="8">
+              <div class="bmi-field">
+                <label for="heightCm">Height</label>
+                <div class="bmi-input">
+                  <input type="number" id="heightCm" inputmode="decimal" placeholder="170" min="50" max="250" step="any">
+                  <span class="unit">cm</span>
+                </div>
               </div>
 
-              <div class="bmi-input">
-                <input type="number" id="heightIn" placeholder="Height (in)" min="0" max="11">
+              <div class="bmi-field">
+                <label for="weightKg">Weight</label>
+                <div class="bmi-input">
+                  <input type="number" id="weightKg" inputmode="decimal" placeholder="65" min="20" max="300" step="any">
+                  <span class="unit">kg</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Imperial fields -->
+            <div class="bmi-fields hidden" id="imperialFields">
+
+              <div class="bmi-field">
+                <label for="heightFt">Height</label>
+                <div class="bmi-input">
+                  <input type="number" id="heightFt" inputmode="numeric" placeholder="5" min="1" max="8">
+                  <span class="unit">ft</span>
+                </div>
+              </div>
+
+              <div class="bmi-field">
+                <label for="heightIn">Inches</label>
+                <div class="bmi-input">
+                  <input type="number" id="heightIn" inputmode="decimal" placeholder="7" min="0" max="11" step="any">
+                  <span class="unit">in</span>
+                </div>
+              </div>
+
+              <div class="bmi-field bmi-field--full">
+                <label for="weightLb">Weight</label>
+                <div class="bmi-input">
+                  <input type="number" id="weightLb" inputmode="decimal" placeholder="145" min="40" max="700" step="any">
+                  <span class="unit">lb</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Validation message -->
+            <p class="bmi-error" id="bmiError" role="alert"></p>
+
+            <!-- Button -->
+            <button class="btn btn-solid bmi-submit" id="bmiCalculate" type="submit">
+              Calculate my BMI
+            </button>
+
+            <!-- Inline result (also opens the popup) -->
+            <div class="bmi-result" id="bmiResult" aria-live="polite">
+              <div class="result-number">
+                <span id="bmiValue">--</span>
+              </div>
+
+              <div class="result-info">
+                <strong id="bmiCategory">Enter your details</strong>
+                <p id="bmiMessage">Calculate your BMI to understand your current range.</p>
+                <button class="result-link" id="bmiViewDetails" type="button">View full result</button>
               </div>
             </div>
 
-            <div class="bmi-input">
-              <input type="number" id="weightLb" placeholder="Weight (lb)" min="40" max="700">
-            </div>
-          </div>
+            <p class="bmi-note">BMI is a general screening guide, not a medical diagnosis.</p>
 
-          <!-- Button -->
-          <button class="bmi-button" id="bmiCalculate" type="button">
-            CALCULATE YOUR BMI!
-          </button>
-
-          <!-- Result -->
-          <div class="bmi-result" id="bmiResult" aria-live="polite">
-            <div class="result-number">
-              <span id="bmiValue">--</span>
-            </div>
-
-            <div class="result-info">
-              <strong id="bmiCategory">Enter your details</strong>
-              <p id="bmiMessage">Calculate your BMI to understand your current range.</p>
-            </div>
-          </div>
+          </form>
 
         </div>
 
       </div>
+
+      <!-- Result popup -->
+      <div class="bmi-modal" id="bmiModal" aria-hidden="true">
+
+        <div class="bmi-modal-backdrop" data-close></div>
+
+        <div class="bmi-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="bmiModalTitle" tabindex="-1">
+
+          <button class="bmi-modal-close" type="button" data-close aria-label="Close result">&times;</button>
+
+          <div class="modal-kicker">YOUR RESULT</div>
+
+          <div class="modal-ring">
+            <span id="modalBmiValue">--</span>
+            <small>BMI</small>
+          </div>
+
+          <h3 id="bmiModalTitle">Your BMI</h3>
+          <p class="modal-message" id="modalMessage"></p>
+
+          <!-- Scale -->
+          <div class="bmi-scale" aria-hidden="true">
+            <div class="bmi-scale-bar">
+              <span class="bmi-scale-marker" id="bmiMarker"></span>
+            </div>
+
+            <div class="bmi-scale-labels">
+              <span style="left: 0%;">15</span>
+              <span style="left: 14%;">18.5</span>
+              <span style="left: 40%;">25</span>
+              <span style="left: 60%;">30</span>
+              <span style="left: 100%;">40</span>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <ul class="bmi-legend">
+            <li data-cat="under"><b>Underweight</b><span>&lt; 18.5</span></li>
+            <li data-cat="healthy"><b>Healthy</b><span>18.5 – 24.9</span></li>
+            <li data-cat="over"><b>Overweight</b><span>25 – 29.9</span></li>
+            <li data-cat="obese"><b>Obesity</b><span>30 +</span></li>
+          </ul>
+
+          <div class="modal-actions">
+            <a class="btn btn-solid" href="#contact" data-close>Talk to a coach</a>
+            <button class="btn btn-quiet" type="button" data-close>Recalculate</button>
+          </div>
+
+          <p class="modal-note">BMI is a general screening guide, not a medical diagnosis.</p>
+
+        </div>
+
+      </div>
+
     </section>
 
 
@@ -1343,7 +1428,22 @@
     </div>
   </footer>
 
+  <!-- WhatsApp floating button -->
+  <a class="whatsapp-float"
+    href="https://wa.me/918951077599?text=Hi%20TFI%2C%20I%27d%20like%20to%20know%20more%20about%20your%20programs."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat with us on WhatsApp">
 
+    <span class="whatsapp-float__label">Chat with us</span>
+
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+
+  </a>
+
+  
   <!-- =========================================================
        SCRIPTS
        All JavaScript lives here, at the end of the page.
@@ -1742,91 +1842,256 @@
       }
 
 
-      /* =======================================================
-         07. BMI CALCULATOR
-      ======================================================= */
+      
+      /* =========================================================
+        BMI CALCULATOR + RESULT POPUP
+        Replace your old initBMI() function with this one.
+        (Keep the call  initBMI();  at the bottom of your script.)
+      ========================================================= */
 
       function initBMI() {
-        var button = document.getElementById("bmiCalculate");
-        var result = document.getElementById("bmiResult");
+        var form = document.getElementById("bmiForm");
+        var modal = document.getElementById("bmiModal");
+
+        if (!form || !modal) return;
+
+        var dialog = modal.querySelector(".bmi-modal-dialog");
         var metricFields = document.getElementById("metricFields");
         var imperialFields = document.getElementById("imperialFields");
+        var errorBox = document.getElementById("bmiError");
+        var result = document.getElementById("bmiResult");
+        var viewButton = document.getElementById("bmiViewDetails");
+        var marker = document.getElementById("bmiMarker");
+        var legendItems = modal.querySelectorAll(".bmi-legend li");
+        var lastFocus = null;
 
-        if (!button || !result) return;
+        var CATEGORIES = {
+          under: {
+            label: "Underweight",
+            message: "Your BMI is below the standard healthy range."
+          },
+          healthy: {
+            label: "Healthy weight",
+            message: "Your BMI falls within the standard healthy range."
+          },
+          over: {
+            label: "Overweight",
+            message: "Your BMI is above the standard healthy range."
+          },
+          obese: {
+            label: "Obesity range",
+            message: "Your BMI is in the obesity range."
+          }
+        };
 
-        function numberValue(id) {
-          return parseFloat(document.getElementById(id).value);
+        function field(id) {
+          return document.getElementById(id);
         }
 
-        // Switch between metric and imperial
-        Array.prototype.forEach.call(document.querySelectorAll('input[name="unit"]'), function (input) {
+        function getCategory(bmi) {
+          if (bmi < 18.5) return "under";
+          if (bmi < 25) return "healthy";
+          if (bmi < 30) return "over";
+          return "obese";
+        }
+
+
+        /* ---------- Errors ---------- */
+
+        function clearError() {
+          errorBox.textContent = "";
+          errorBox.classList.remove("show");
+
+          Array.prototype.forEach.call(form.querySelectorAll(".bmi-input.invalid"), function (box) {
+            box.classList.remove("invalid");
+          });
+        }
+
+        function fail(message, inputId) {
+          clearError();
+
+          errorBox.textContent = message;
+          errorBox.classList.add("show");
+
+          var input = field(inputId);
+          input.parentNode.classList.add("invalid");
+          input.focus();
+
+          return null;
+        }
+
+
+        /* ---------- Calculation ---------- */
+
+        function calculate() {
+          var unit = form.querySelector('input[name="unit"]:checked').value;
+
+          if (unit === "metric") {
+            var cm = parseFloat(field("heightCm").value);
+            var kg = parseFloat(field("weightKg").value);
+
+            if (!(cm >= 50 && cm <= 250)) {
+              return fail("Please enter a height between 50 and 250 cm.", "heightCm");
+            }
+
+            if (!(kg >= 20 && kg <= 300)) {
+              return fail("Please enter a weight between 20 and 300 kg.", "weightKg");
+            }
+
+            var meters = cm / 100;
+            return kg / (meters * meters);
+          }
+
+          var feet = parseFloat(field("heightFt").value);
+          var inches = parseFloat(field("heightIn").value) || 0;
+          var pounds = parseFloat(field("weightLb").value);
+
+          if (!(feet >= 1 && feet <= 8)) {
+            return fail("Please enter your height in feet (1 to 8).", "heightFt");
+          }
+
+          if (!(inches >= 0 && inches < 12)) {
+            return fail("Inches must be between 0 and 11.", "heightIn");
+          }
+
+          if (!(pounds >= 40 && pounds <= 700)) {
+            return fail("Please enter a weight between 40 and 700 lb.", "weightLb");
+          }
+
+          var totalInches = (feet * 12) + inches;
+          return (pounds / (totalInches * totalInches)) * 703;
+        }
+
+
+        /* ---------- Show result ---------- */
+
+        function showResult(bmi) {
+          var key = getCategory(bmi);
+          var info = CATEGORIES[key];
+
+          // Inline result
+          document.getElementById("bmiValue").textContent = bmi;
+          document.getElementById("bmiCategory").textContent = info.label;
+          document.getElementById("bmiMessage").textContent = info.message;
+          result.setAttribute("data-cat", key);
+          result.classList.add("show");
+
+          // Popup
+          document.getElementById("modalBmiValue").textContent = bmi;
+          document.getElementById("bmiModalTitle").textContent = info.label;
+          document.getElementById("modalMessage").textContent = info.message;
+          dialog.setAttribute("data-cat", key);
+
+          Array.prototype.forEach.call(legendItems, function (item) {
+            item.classList.toggle("active", item.getAttribute("data-cat") === key);
+          });
+
+          openModal(bmi);
+        }
+
+
+        /* ---------- Popup ---------- */
+
+        function openModal(bmi) {
+          lastFocus = document.activeElement;
+
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.classList.add("modal-open");
+
+          dialog.focus();
+
+          // Scale range is 15 to 40 BMI; animate the marker into place
+          var percent = Math.max(2, Math.min(98, ((bmi - 15) / 25) * 100));
+
+          setTimeout(function () {
+            marker.style.left = percent + "%";
+          }, 120);
+        }
+
+        function closeModal() {
+          if (!modal.classList.contains("open")) return;
+
+          modal.classList.remove("open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("modal-open");
+          marker.style.left = "0%";
+
+          if (lastFocus && lastFocus.focus) {
+            lastFocus.focus({ preventScroll: true });
+          }
+        }
+
+
+        /* ---------- Events ---------- */
+
+        // Calculate
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          clearError();
+
+          var value = calculate();
+
+          if (value === null) return;
+
+          showResult(parseFloat(value.toFixed(1)));
+        });
+
+        // Metric / imperial switch
+        Array.prototype.forEach.call(form.querySelectorAll('input[name="unit"]'), function (input) {
           input.addEventListener("change", function () {
             var metric = this.value === "metric";
 
             metricFields.classList.toggle("hidden", !metric);
             imperialFields.classList.toggle("hidden", metric);
 
+            clearError();
             result.classList.remove("show");
           });
         });
 
-        function calculate() {
-          var unit = document.querySelector('input[name="unit"]:checked').value;
-          var bmi;
+        // Clear the error as soon as the user edits a field
+        form.addEventListener("input", clearError);
 
-          if (unit === "metric") {
-            var heightCm = numberValue("heightCm");
-            var weightKg = numberValue("weightKg");
-
-            if (!heightCm || !weightKg || heightCm <= 0 || weightKg <= 0) {
-              alert("Please enter valid height and weight.");
-              return;
-            }
-
-            var meters = heightCm / 100;
-            bmi = weightKg / (meters * meters);
-
-          } else {
-            var feet = numberValue("heightFt") || 0;
-            var inches = numberValue("heightIn") || 0;
-            var weightLb = numberValue("weightLb");
-            var totalInches = (feet * 12) + inches;
-
-            if (totalInches <= 0 || !weightLb || weightLb <= 0) {
-              alert("Please enter valid height and weight.");
-              return;
-            }
-
-            bmi = (weightLb / (totalInches * totalInches)) * 703;
-          }
-
-          bmi = parseFloat(bmi.toFixed(1));
-
-          var category;
-          var message;
-
-          if (bmi < 18.5) {
-            category = "Underweight";
-            message = "Your BMI is below the standard healthy range.";
-          } else if (bmi < 25) {
-            category = "Healthy weight";
-            message = "Your BMI falls within the standard healthy range.";
-          } else if (bmi < 30) {
-            category = "Overweight";
-            message = "Your BMI is above the standard healthy range.";
-          } else {
-            category = "Obesity range";
-            message = "Your BMI is in the obesity range.";
-          }
-
-          document.getElementById("bmiValue").textContent = bmi;
-          document.getElementById("bmiCategory").textContent = category;
-          document.getElementById("bmiMessage").textContent = message;
-
-          result.classList.add("show");
+        // Re-open the popup from the inline result
+        if (viewButton) {
+          viewButton.addEventListener("click", function () {
+            var value = parseFloat(document.getElementById("bmiValue").textContent);
+            if (value) openModal(value);
+          });
         }
 
-        button.addEventListener("click", calculate);
+        // Close: X button, backdrop, "Recalculate", "Talk to a coach"
+        Array.prototype.forEach.call(modal.querySelectorAll("[data-close]"), function (el) {
+          el.addEventListener("click", closeModal);
+        });
+
+        // Keyboard: Escape closes, Tab stays inside the popup
+        document.addEventListener("keydown", function (event) {
+          if (!modal.classList.contains("open")) return;
+
+          if (event.key === "Escape") {
+            closeModal();
+            return;
+          }
+
+          if (event.key === "Tab") {
+            var focusable = dialog.querySelectorAll("a[href], button:not([disabled])");
+
+            if (!focusable.length) return;
+
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+
+            if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
+              event.preventDefault();
+              last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+              event.preventDefault();
+              first.focus();
+            }
+          }
+        });
       }
 
 
