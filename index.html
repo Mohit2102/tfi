@@ -238,20 +238,20 @@
 
         <!-- Slide 01 -->
         <div class="carousel-slide active">
-          <img class="slide-bg" src="images/fitness-1.jpg" alt="" aria-hidden="true">
-          <img class="slide-fg" src="images/fitness-1.jpg" alt="Personal training">
+          <img class="slide-bg" src="images/hero-1.png" alt="" aria-hidden="true">
+          <img class="slide-fg" src="images/hero-1.png" alt="Personal training">
         </div>
 
         <!-- Slide 02 -->
         <div class="carousel-slide">
-          <img class="slide-bg" src="images/fitness-2.jpg" alt="" aria-hidden="true" loading="lazy">
-          <img class="slide-fg" src="images/fitness-2.jpg" alt="Strength training" loading="lazy">
+          <img class="slide-bg" src="images/hero-2.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="slide-fg" src="images/hero-2.png" alt="Strength training" loading="lazy">
         </div>
 
         <!-- Slide 03 -->
         <div class="carousel-slide">
-          <img class="slide-bg" src="images/fitness-3.jpg" alt="" aria-hidden="true" loading="lazy">
-          <img class="slide-fg" src="images/fitness-3.jpg" alt="Group fitness" loading="lazy">
+          <img class="slide-bg" src="images/hero-3.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="slide-fg" src="images/hero-3.png" alt="Group fitness" loading="lazy">
         </div>
 
         <!-- Dots -->
@@ -717,7 +717,7 @@
           <div class="founder-visual">
 
             <div class="founder-image-frame">
-              <img src="images/santhosh.png" alt="Santhosh M - Founder of Time To Fit India" loading="lazy">
+              <img src="images/santhosh-1.png" alt="Santhosh M - Founder of Time To Fit India" loading="lazy">
 
               <div class="founder-experience">
                 <div class="experience-number">12+</div>
@@ -1425,34 +1425,110 @@
         <div>
           <form class="enquiry" id="enquiryForm" novalidate>
 
-            <input type="text" name="name" placeholder="Full name" required>
+            <input
+              type="text"
+              name="name"
+              placeholder="Full name"
+              required
+            >
 
             <div class="row2">
-              <input type="tel" name="phone" placeholder="Phone number" required>
-              <input type="email" name="email" placeholder="Email address" required>
+
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone number"
+                required
+              >
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email address"
+                required
+              >
+
             </div>
 
-            <select name="program" required>
-              <option value="" disabled selected>Select a program</option>
-              <option>Personal Training</option>
-              <option>Weight Loss Program</option>
-              <option>Strength &amp; Conditioning</option>
-              <option>Group Fitness Classes</option>
-              <option>Nutrition Coaching</option>
-              <option>Zumba &amp; Dance Fitness</option>
-              <option>Yoga &amp; Mobility</option>
-              <option>Corporate Fitness</option>
-            </select>
 
-            <textarea name="message" placeholder="Tell us your fitness goal"></textarea>
+            <!-- CUSTOM PROGRAM DROPDOWN -->
+            <div class="custom-select" id="programSelect">
 
-            <button type="submit" class="btn btn-solid"
-              style="width: 100%; justify-content: center; margin-top: 4px;">
+              <button
+                type="button"
+                class="custom-select-trigger"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                <span>Select a program</span>
+                <span class="custom-select-arrow">⌄</span>
+              </button>
+
+              <div class="custom-select-menu" role="listbox">
+
+                <div class="custom-option" data-value="Personal Training">
+                  Personal Training
+                </div>
+
+                <div class="custom-option" data-value="Weight Loss Program">
+                  Weight Loss Program
+                </div>
+
+                <div class="custom-option" data-value="Strength & Conditioning">
+                  Strength &amp; Conditioning
+                </div>
+
+                <div class="custom-option" data-value="Group Fitness Classes">
+                  Group Fitness Classes
+                </div>
+
+                <div class="custom-option" data-value="Nutrition Coaching">
+                  Nutrition Coaching
+                </div>
+
+                <div class="custom-option" data-value="Zumba & Dance Fitness">
+                  Zumba &amp; Dance Fitness
+                </div>
+
+                <div class="custom-option" data-value="Yoga & Mobility">
+                  Yoga &amp; Mobility
+                </div>
+
+                <div class="custom-option" data-value="Corporate Fitness">
+                  Corporate Fitness
+                </div>
+
+              </div>
+
+              <!-- Keeps name="program" for your existing form handling -->
+              <input
+                type="hidden"
+                name="program"
+                id="programValue"
+                required
+              >
+
+            </div>
+
+
+            <textarea
+              name="message"
+              placeholder="Tell us your fitness goal"
+            ></textarea>
+
+
+            <button
+              type="submit"
+              class="btn btn-solid"
+              style="width: 100%; justify-content: center; margin-top: 4px;"
+            >
               Submit enquiry
             </button>
 
-            <div class="form-note">We respond within 24 hours · No spam, ever</div>
-            <div class="form-success" id="formSuccess">Enquiry received — we'll be in touch shortly.</div>
+
+            <div class="form-note">
+              We respond within 24 hours · No spam, ever
+            </div>
 
           </form>
         </div>
@@ -2454,6 +2530,80 @@
       ========================================================= */
 
       updatePageProgress();
+
+
+            document.addEventListener("DOMContentLoaded", function () {
+
+              const select = document.getElementById("programSelect");
+
+              if (!select) return;
+
+              const trigger = select.querySelector(".custom-select-trigger");
+              const triggerText = trigger.querySelector("span:first-child");
+              const arrow = select.querySelector(".custom-select-arrow");
+              const options = select.querySelectorAll(".custom-option");
+              const hiddenInput = document.getElementById("programValue");
+
+
+              /* Open / close */
+
+              trigger.addEventListener("click", function (e) {
+
+                e.stopPropagation();
+
+                const isOpen = select.classList.toggle("open");
+
+                trigger.setAttribute(
+                  "aria-expanded",
+                  isOpen ? "true" : "false"
+                );
+
+              });
+
+
+              /* Select program */
+
+              options.forEach(function (option) {
+
+                option.addEventListener("click", function (e) {
+
+                  e.stopPropagation();
+
+                  const value = this.dataset.value;
+
+                  triggerText.textContent = value;
+
+                  trigger.classList.add("selected");
+
+                  hiddenInput.value = value;
+
+                  options.forEach(function (item) {
+                    item.classList.remove("active");
+                  });
+
+                  this.classList.add("active");
+
+                  select.classList.remove("open");
+
+                  trigger.setAttribute("aria-expanded", "false");
+
+                });
+
+              });
+
+
+              /* Close when clicking outside */
+
+              document.addEventListener("click", function () {
+
+                select.classList.remove("open");
+
+                trigger.setAttribute("aria-expanded", "false");
+
+              });
+
+            });
+
 
   </script>
 
