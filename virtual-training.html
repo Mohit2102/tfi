@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="TFI — Time To Fit India. Personalised virtual and in-person personal training, workout and nutrition plans.">
+  <title>Virtual Training | TFI — Time To Fit India</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="program-pages.css">
+</head>
+<body>
+<header class="site-header" id="site-header">
+
+    <div class="wrap navrow">
+
+      <!-- Logo -->
+      <a class="logo" href="index.html#top" aria-label="Time to Fit India Home">
+        <img src="logo/logo.png" alt="TFI — Time to Fit India">
+        <span class="word">Time to Fit India</span>
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="navlinks" aria-label="Primary navigation">
+
+        <a href="#top">Home</a>
+        <a href="about.html">About</a>
+
+        <!-- Programs dropdown -->
+        <div class="nav-dropdown">
+          <a href="index.html#programs" class="nav-dropdown-trigger">
+            Programs
+            <span class="nav-arrow" aria-hidden="true">⌄</span>
+          </a>
+
+          <div class="dropdown-menu">
+
+            <!-- Virtual -->
+            <div class="nav-dropdown nav-dropdown--nested">
+              <a href="virtual-training.html">
+                <span>Virtual</span>
+                <span class="dropdown-arrow" aria-hidden="true">›</span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu--nested">
+                <a href="#plan-monthly-virtual">Monthly Virtual Training Plan</a>
+                <a href="#plan-12-weeks-virtual">12 Weeks Virtual Training Transformation Plan</a>
+                <a href="#plan-half-yearly-virtual">Half Yearly Virtual Training Transformation Plan</a>
+                <a href="#plan-yearly-virtual">Yearly Virtual Training Transformation Plan</a>
+              </div>
+            </div>
+
+            <!-- Non-virtual -->
+            <div class="nav-dropdown nav-dropdown--nested">
+              <a href="non-virtual-training.html">
+                <span>Non-Virtual</span>
+                <span class="dropdown-arrow" aria-hidden="true">›</span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu--nested">
+                <a href="#plan-personalised-workout">Personalised Workout Plan</a>
+                <a href="#plan-personalised-nutrition">Personalised Nutrition Plan</a>
+                <a href="#plan-ultimate">Ultimate Workout &amp; Nutrition Plan</a>
+                <a href="#plan-transformation">Transformation Plan</a>
+              </div>
+            </div>
+
+            <!-- Personal training -->
+            <div class="nav-dropdown nav-dropdown--nested">
+              <a href="personal-training.html">
+                <span>Personal Training</span>
+                <span class="dropdown-arrow" aria-hidden="true">›</span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu--nested">
+                <a href="#pt-diabetes">Diabetes Management / Blood Sugar Control</a>
+                <a href="#pt-pcos">PCOS/PCOD Balanced Nutrition</a>
+                <a href="#pt-hypertension">Hypertension Heart-Healthy Workouts</a>
+                <a href="#pt-prenatal">Pre and Post Natal Fitness Safe Workouts</a>
+                <a href="#pt-back-spine">Lower Back and Spine Pain / Posture Correction</a>
+                <a href="#pt-cardio">Cardiovascular Health / Cardio Conditioning</a>
+                <a href="#pt-thyroid">Thyroid Management / Metabolic Support</a>
+                <a href="#pt-gerd">GERD (Gastroesophageal Reflux Disease)</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <a href="index.html#who-we-train">Who We Train</a>
+        <a href="index.html#why">Why TFI</a>
+        <a href="index.html#testimonials">Testimonials</a>
+        <a href="index.html#contact">Contact</a>
+
+      </nav>
+
+      <!-- Right-side actions -->
+      <div class="navcta">
+
+        <!-- Theme toggle -->
+        <button class="theme-toggle" id="themeToggle" type="button"
+          aria-label="Toggle dark mode" title="Toggle theme">
+
+          <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-13.435l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414 2.121-2.121-1.414-1.414-2.121 2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+          </svg>
+
+          <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2 1 1 0 0 0-.35-1 10 10 0 1 0 13.71 10.68z" />
+          </svg>
+
+        </button>
+
+        <!-- Desktop CTA -->
+        <a class="btn btn-solid nav-book-btn" href="index.html#contact">Login/Signup</a>
+
+        <!-- Mobile menu button -->
+        <button class="navtoggle" id="navtoggle" type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobilemenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobilemenu">
+
+      <a href="#top">Home</a>
+      <a href="index.html#about">About</a>
+
+      <!-- Programs -->
+      <div class="m-dropdown">
+
+        <button class="m-toggle" type="button" aria-expanded="false">
+          <span>Programs</span>
+          <span class="m-chevron"></span>
+        </button>
+
+        <div class="m-submenu">
+
+          <!-- Virtual -->
+          <div class="m-dropdown">
+            <button class="m-toggle" type="button" aria-expanded="false">
+              <span>Virtual</span>
+              <span class="m-chevron"></span>
+            </button>
+
+            <div class="m-submenu m-submenu--l2">
+              <a href="#plan-monthly-virtual">Monthly Virtual Training Plan</a>
+              <a href="#plan-12-weeks-virtual">12 Weeks Virtual Training Transformation Plan</a>
+              <a href="#plan-half-yearly-virtual">Half Yearly Virtual Training Transformation Plan</a>
+              <a href="#plan-yearly-virtual">Yearly Virtual Training Transformation Plan</a>
+            </div>
+          </div>
+
+          <!-- Non-virtual -->
+          <div class="m-dropdown">
+            <button class="m-toggle" type="button" aria-expanded="false">
+              <span>Non-Virtual</span>
+              <span class="m-chevron"></span>
+            </button>
+
+            <div class="m-submenu m-submenu--l2">
+              <a href="#plan-personalised-workout">Personalised Workout Plan</a>
+              <a href="#plan-personalised-nutrition">Personalised Nutrition Plan</a>
+              <a href="#plan-ultimate">Ultimate Workout &amp; Nutrition Plan</a>
+              <a href="#plan-transformation">Transformation Plan</a>
+            </div>
+          </div>
+
+          <!-- Personal training -->
+          <div class="m-dropdown">
+            <button class="m-toggle" type="button" aria-expanded="false">
+              <span>Personal Training</span>
+              <span class="m-chevron"></span>
+            </button>
+
+            <div class="m-submenu m-submenu--l2">
+              <a href="#pt-diabetes">Diabetes Management / Blood Sugar Control</a>
+              <a href="#pt-pcos">PCOS/PCOD Balanced Nutrition</a>
+              <a href="#pt-hypertension">Hypertension Heart-Healthy Workouts</a>
+              <a href="#pt-prenatal">Pre and Post Natal Fitness Safe Workouts</a>
+              <a href="#pt-back-spine">Lower Back and Spine Pain / Posture Correction</a>
+              <a href="#pt-cardio">Cardiovascular Health / Cardio Conditioning</a>
+              <a href="#pt-thyroid">Thyroid Management / Metabolic Support</a>
+              <a href="#pt-gerd">GERD (Gastroesophageal Reflux Disease)</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <a href="index.html#who-we-train">Who We Train</a>
+      <a href="index.html#why">Why TFI</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#contact">Contact</a>
+
+      <!-- Mobile CTA -->
+      <a class="btn btn-solid mobile-book-btn" href="index.html#contact">Login/Signup</a>
+
+    </div>
+
+  </header>
+<main id="top" class="program-page">
+
+  <section class="program-hero">
+    <div class="wrap">
+      <div class="program-kicker">TFI Virtual Training</div>
+      <h1>Virtual Training</h1>
+      <p>Train wherever you are with structured coaching, flexible plans and a fitness journey built around your lifestyle.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="program-intro">
+        <div class="program-kicker">Find Your Plan</div>
+        <h2>Choose your virtual training plan.</h2>
+        <p>Whether you're starting your fitness journey or working toward a complete transformation, choose the virtual plan that fits your goals.</p>
+      </div>
+
+      <div class="program-list">
+        
+        <a class="program-item" href="#plan-monthly-virtual">
+          <span class="program-number">01</span>
+          <div>
+            <h3>Monthly Virtual Training Plan</h3>
+            <p>Flexible monthly virtual coaching to help you build consistency and stay on track.</p>
+          </div>
+          <span class="program-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="program-item" href="#plan-12-weeks-virtual">
+          <span class="program-number">02</span>
+          <div>
+            <h3>12 Weeks Virtual Training Transformation Plan</h3>
+            <p>A structured 12-week program focused on building sustainable fitness and lifestyle habits.</p>
+          </div>
+          <span class="program-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="program-item" href="#plan-half-yearly-virtual">
+          <span class="program-number">03</span>
+          <div>
+            <h3>Half Yearly Virtual Training Transformation Plan</h3>
+            <p>Six months of structured coaching designed for progressive, long-term transformation.</p>
+          </div>
+          <span class="program-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="program-item" href="#plan-yearly-virtual">
+          <span class="program-number">04</span>
+          <div>
+            <h3>Yearly Virtual Training Transformation Plan</h3>
+            <p>A complete year-long fitness journey with consistent coaching, progression and accountability.</p>
+          </div>
+          <span class="program-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="plan-details">
+    <div class="wrap">
+      
+        <article id="plan-monthly-virtual" class="plan-detail">
+          <div class="program-kicker">TFI Virtual Training · 01</div>
+          <h2>Monthly Virtual Training Plan</h2>
+          <p>Flexible monthly virtual coaching to help you build consistency and stay on track.</p>
+        </article>
+        <article id="plan-12-weeks-virtual" class="plan-detail">
+          <div class="program-kicker">TFI Virtual Training · 02</div>
+          <h2>12 Weeks Virtual Training Transformation Plan</h2>
+          <p>A structured 12-week program focused on building sustainable fitness and lifestyle habits.</p>
+        </article>
+        <article id="plan-half-yearly-virtual" class="plan-detail">
+          <div class="program-kicker">TFI Virtual Training · 03</div>
+          <h2>Half Yearly Virtual Training Transformation Plan</h2>
+          <p>Six months of structured coaching designed for progressive, long-term transformation.</p>
+        </article>
+        <article id="plan-yearly-virtual" class="plan-detail">
+          <div class="program-kicker">TFI Virtual Training · 04</div>
+          <h2>Yearly Virtual Training Transformation Plan</h2>
+          <p>A complete year-long fitness journey with consistent coaching, progression and accountability.</p>
+        </article>
+    </div>
+  </section> -->
+
+</main>
+<footer>
+    <div class="wrap">
+
+      <div class="foot-grid">
+
+        <div>
+          <a class="foot-logo" href="index.html#top">
+            <img src="logo/logo.png" alt="TFI logo">
+          </a>
+          <p style="max-width: 280px;">
+            Personal training and fitness programs that build strength — and confident people.
+          </p>
+        </div>
+
+        <div>
+          <h5>Quick links</h5>
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#programs">Programs</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5>Programs</h5>
+          <ul>
+            <li><a href="index.html#programs">Personal Training</a></li>
+            <li><a href="index.html#programs">Weight Loss</a></li>
+            <li><a href="index.html#programs">Strength &amp; Conditioning</a></li>
+            <li><a href="index.html#programs">Group Fitness</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5>Contact</h5>
+          <ul>
+            <li>[Studio address]</li>
+            <li>[Phone number]</li>
+            <li>info@tfiindia.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="foot-bottom">
+        <span>© 2026 TFI — Time To Fit India. All rights reserved.</span>
+      </div>
+
+    </div>
+  </footer>
+<script>
+(function () {
+  "use strict";
+
+  function initTheme() {
+    var button = document.getElementById("themeToggle");
+    var root = document.documentElement;
+
+    function save(value) {
+      try { localStorage.setItem("tfi-theme", value); } catch (e) {}
+    }
+
+    function setTheme(dark) {
+      root.classList.toggle("dark-mode", dark);
+      save(dark ? "dark" : "light");
+    }
+
+    try {
+      if (localStorage.getItem("tfi-theme") === "light") {
+        root.classList.remove("dark-mode");
+      }
+    } catch (e) {}
+
+    if (button) {
+      button.addEventListener("click", function () {
+        setTheme(!root.classList.contains("dark-mode"));
+      });
+    }
+  }
+
+  function initNavigation() {
+    var toggle = document.getElementById("navtoggle");
+    var menu = document.getElementById("mobilemenu");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      var open = menu.classList.toggle("open");
+      toggle.classList.toggle("active", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+
+    Array.prototype.forEach.call(
+      menu.querySelectorAll("a"),
+      function (link) {
+        link.addEventListener("click", function () {
+          menu.classList.remove("open");
+          toggle.classList.remove("active");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      }
+    );
+
+    Array.prototype.forEach.call(
+      menu.querySelectorAll(".m-toggle"),
+      function (button) {
+        button.addEventListener("click", function () {
+          var expanded =
+            button.getAttribute("aria-expanded") === "true";
+
+          button.setAttribute(
+            "aria-expanded",
+            String(!expanded)
+          );
+        });
+      }
+    );
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initTheme();
+    initNavigation();
+
+    document.querySelectorAll(".program-item").forEach(function (item) {
+      item.addEventListener("click", function () {
+        var target = document.querySelector(
+          item.getAttribute("href")
+        );
+
+        if (target) {
+          setTimeout(function () {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          }, 0);
+        }
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

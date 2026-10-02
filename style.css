@@ -1780,7 +1780,7 @@ html.dark-mode #mobilemenu {
   position: relative;
   width: min(100%, 470px);
   margin: 0 auto;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 5.5;
   overflow: hidden;
   background: #111;
   border: 1px solid var(--line);
@@ -1810,7 +1810,7 @@ html.dark-mode #mobilemenu {
 
 .founder-image-frame img {
   width: 100%;
-  height: 100%;
+  height: 60%;
   object-fit: cover;
   object-position: center;
   transition: transform 0.6s ease;
@@ -9481,3 +9481,441 @@ footer {
   }
 
 }
+
+
+/* =========================================================
+   26. TFI PROGRAM DETAIL PAGES
+   Virtual / Non-Virtual / Personal Training
+   Added directly into the global stylesheet
+========================================================= */
+
+.program-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 85% 12%,
+      rgba(212, 168, 58, 0.10),
+      transparent 32%
+    ),
+    var(--bg);
+}
+
+/* ---------- Program hero ---------- */
+
+.program-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 105px 0 90px;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212, 168, 58, 0.08),
+      transparent 42%
+    ),
+    var(--bg);
+}
+
+.program-hero::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: -180px;
+  right: -120px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 168, 58, 0.18),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.program-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.program-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: var(--gold);
+  font-family: "Oswald", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.program-kicker::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--gold-dark),
+    var(--gold-bright)
+  );
+}
+
+.program-hero h1 {
+  max-width: 900px;
+  font-size: clamp(44px, 7vw, 78px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.program-hero h1 span {
+  color: var(--gold);
+}
+
+.program-hero__lead {
+  max-width: 690px;
+  margin-top: 24px;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.program-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* ---------- Program content ---------- */
+
+.program-content {
+  padding: 92px 0 110px;
+}
+
+.program-intro {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 70px;
+  align-items: start;
+  margin-bottom: 75px;
+}
+
+.program-intro__label {
+  color: var(--gold);
+  font-family: "Oswald", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.program-intro h2 {
+  margin-top: 12px;
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1;
+}
+
+.program-intro__copy {
+  max-width: 690px;
+}
+
+.program-intro__copy p {
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.program-intro__copy p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Program list ---------- */
+
+.program-list {
+  border-top: 1px solid var(--line-strong);
+}
+
+.program-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) 30px;
+  gap: 28px;
+  align-items: start;
+  padding: 38px 0;
+  border-bottom: 1px solid var(--line-strong);
+  transition:
+    padding 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.program-item::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.program-item:hover::before {
+  transform: scaleY(1);
+}
+
+.program-number {
+  color: var(--gold);
+  font-family: "Oswald", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.program-item h3 {
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.08;
+}
+
+.program-item > div > p {
+  max-width: 760px;
+  margin-top: 12px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.program-arrow {
+  color: var(--gold);
+  font-size: 25px;
+  line-height: 1;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.program-item:hover .program-arrow {
+  transform: translateX(5px);
+  color: var(--gold-bright);
+}
+
+/* ---------- Plan details ---------- */
+
+.plan-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.plan-detail {
+  min-height: 100%;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.plan-detail:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 168, 58, 0.45);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.10);
+}
+
+.plan-detail strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gold);
+  font-family: "Oswald", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.plan-detail span {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* ---------- Program CTA ---------- */
+
+.program-page .program-cta {
+  margin-top: 75px;
+  padding: 42px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212, 168, 58, 0.13),
+      rgba(212, 168, 58, 0.03)
+    ),
+    var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+}
+
+.program-page .program-cta h2 {
+  font-size: clamp(30px, 4vw, 44px);
+}
+
+.program-page .program-cta p {
+  max-width: 650px;
+  margin-top: 12px;
+}
+
+.program-page .program-cta .btn {
+  margin-top: 24px;
+}
+
+/* ---------- Light mode refinement ---------- */
+
+html:not(.dark-mode) .program-page {
+  background:
+    radial-gradient(
+      circle at 85% 12%,
+      rgba(201, 154, 46, 0.08),
+      transparent 32%
+    ),
+    var(--bg);
+}
+
+html:not(.dark-mode) .program-item:hover {
+  background: rgba(201, 154, 46, 0.025);
+}
+
+html:not(.dark-mode) .plan-detail:hover {
+  box-shadow: 0 16px 34px rgba(23, 19, 10, 0.09);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .program-hero {
+    padding: 82px 0 72px;
+  }
+
+  .program-intro {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    margin-bottom: 55px;
+  }
+
+  .plan-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .program-item {
+    grid-template-columns: 52px minmax(0, 1fr) 24px;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 680px) {
+  .program-hero {
+    padding: 65px 0 58px;
+  }
+
+  .program-hero h1 {
+    font-size: clamp(40px, 12vw, 60px);
+  }
+
+  .program-hero__lead {
+    margin-top: 18px;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+
+  .program-hero__actions {
+    width: 100%;
+  }
+
+  .program-hero__actions .btn {
+    width: 100%;
+  }
+
+  .program-content {
+    padding: 62px 0 75px;
+  }
+
+  .program-item {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 12px;
+    padding: 28px 0;
+  }
+
+  .program-arrow {
+    display: none;
+  }
+
+  .program-item h3 {
+    font-size: 25px;
+  }
+
+  .program-item > div > p {
+    font-size: 14px;
+  }
+
+  .plan-details {
+    grid-template-columns: 1fr;
+  }
+
+  .program-page .program-cta {
+    margin-top: 55px;
+    padding: 28px 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .program-kicker {
+    font-size: 11px;
+  }
+
+  .program-kicker::before {
+    width: 24px;
+  }
+
+  .program-hero h1 {
+    font-size: 43px;
+  }
+
+  .program-intro h2 {
+    font-size: 34px;
+  }
+
+  .program-item {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .program-number {
+    font-size: 12px;
+  }
+
+  .program-item h3 {
+    font-size: 22px;
+  }
+
+  .plan-detail {
+    padding: 17px;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .program-item,
+  .program-item::before,
+  .program-arrow,
+  .plan-detail {
+    transition: none;
+  }
+}
+
