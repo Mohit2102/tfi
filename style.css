@@ -94,8 +94,8 @@ html.dark-mode {
 
   /* Text */
   --text: #f5f0df;
-  --text-secondary: #bdb49d;
-  --text-muted: #c8c1b2;
+  --text-secondary: #fafafa;
+  --text-muted: #E7E5E4;
 
   /* Borders */
   --line: rgba(245, 240, 223, 0.10);
@@ -1322,14 +1322,15 @@ html.dark-mode #mobilemenu {
   transform: translateX(4px);
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-  .hero-know-more {
-    left: 25px;
-    bottom: 70px;
-    padding: 10px 20px;
-    font-size: 13px;
-  }
+      .hero-know-more {
+        left: 14px;
+        right: auto;
+        bottom: 3px;
+        padding: 2px 6px;
+        font-size: 8px;
+        border-radius: 3px;
+    }
 }
 
 /* ---------- Hero responsive ---------- */
@@ -1388,7 +1389,7 @@ html.dark-mode #mobilemenu {
 
   .hero-carousel {
     width: 100%;
-    height: 420px; /* adjust if needed */
+    /* height: 420px; */
     position: relative;
   }
 
@@ -1435,7 +1436,8 @@ html.dark-mode #mobilemenu {
 @media (max-width: 480px) {
 
   .hero-carousel {
-    height: 150px;
+    width: 100%;
+    /* height: 150px; */
   }
 
   .hero-buttons {
@@ -1568,20 +1570,38 @@ html.dark-mode #mobilemenu {
 
 /* =========================================================
    TFI PERSONALIZED FITNESS
+   Uses Global Theme Variables
 ========================================================= */
 
 .tfi-personalized {
   position: relative;
   overflow: hidden;
   padding: 110px 0;
+
   background:
-    radial-gradient(circle at 80% 45%, rgba(216, 175, 55, 0.10), transparent 30%),
-    radial-gradient(circle at 10% 80%, rgba(216, 175, 55, 0.05), transparent 30%),
-    #090909;
-  color: #fff;
+    radial-gradient(
+      circle at 80% 45%,
+      rgba(201, 154, 46, 0.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 80%,
+      rgba(201, 154, 46, 0.05),
+      transparent 30%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  transition:
+    background .35s ease,
+    color .35s ease;
 }
 
-/* Background */
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
 .tfi-personalized-bg {
   position: absolute;
@@ -1601,7 +1621,9 @@ html.dark-mode #mobilemenu {
 .orb-1 {
   width: 260px;
   height: 260px;
-  background: rgba(216, 175, 55, .16);
+
+  background: rgba(201, 154, 46, .16);
+
   top: 10%;
   right: 10%;
 }
@@ -1609,22 +1631,30 @@ html.dark-mode #mobilemenu {
 .orb-2 {
   width: 180px;
   height: 180px;
+
   background: rgba(255, 255, 255, .05);
+
   bottom: 5%;
   left: 5%;
+
   animation-delay: -3s;
 }
 
 .tfi-ring {
   position: absolute;
-  border: 1px solid rgba(216, 175, 55, .12);
+
+  border: 1px solid rgba(201, 154, 46, .15);
+
   border-radius: 50%;
-  animation: ringRotate 25s linear infinite;
+
+  animation:
+    ringRotate 25s linear infinite;
 }
 
 .ring-1 {
   width: 600px;
   height: 600px;
+
   right: -250px;
   top: -100px;
 }
@@ -1632,13 +1662,17 @@ html.dark-mode #mobilemenu {
 .ring-2 {
   width: 350px;
   height: 350px;
+
   left: -180px;
   bottom: -180px;
+
   animation-direction: reverse;
 }
 
 
-/* Main */
+/* =========================================================
+   MAIN
+========================================================= */
 
 .tfi-personalized-inner {
   position: relative;
@@ -1646,155 +1680,227 @@ html.dark-mode #mobilemenu {
 
   display: grid;
   grid-template-columns: 1.15fr .85fr;
+
   align-items: center;
+
   gap: 80px;
 }
 
 
-/* Eyebrow */
+/* =========================================================
+   EYEBROW
+========================================================= */
 
 .tfi-eyebrow {
   display: flex;
   align-items: center;
+
   gap: 12px;
 
-  color: #d8af37;
+  color: var(--gold);
+
   font-size: 12px;
   font-weight: 700;
+
   letter-spacing: 2.5px;
+
   margin-bottom: 22px;
 }
 
 .tfi-eyebrow span {
   display: block;
+
   width: 30px;
   height: 1px;
-  background: #d8af37;
+
+  background: var(--gold);
 }
 
 
-/* Heading */
+/* =========================================================
+   HEADING
+========================================================= */
 
 .tfi-personalized-copy h2 {
   max-width: 700px;
+
   margin: 0;
 
   font-size: clamp(42px, 5vw, 72px);
+
   line-height: .98;
+
   letter-spacing: -2px;
+
   font-weight: 700;
+
+  color: var(--text);
 }
 
 .tfi-personalized-copy h2 span {
   display: block;
 
-  background: linear-gradient(
-    90deg,
-    #d8af37,
-    #f4d77a,
-    #d8af37
-  );
+  background:
+    linear-gradient(
+      90deg,
+      var(--gold),
+      var(--gold-light),
+      var(--gold)
+    );
 
   background-size: 200% auto;
+
   -webkit-background-clip: text;
   background-clip: text;
+
   color: transparent;
 
   animation: goldShimmer 4s linear infinite;
 }
 
 
-/* Gold line */
+/* =========================================================
+   GOLD LINE
+========================================================= */
 
 .tfi-title-line {
   width: 90px;
   height: 3px;
+
   margin: 28px 0;
 
-  background: #d8af37;
-  box-shadow: 0 0 20px rgba(216, 175, 55, .5);
+  background: var(--gold);
 
-  animation: linePulse 2.5s ease-in-out infinite;
+  box-shadow:
+    0 0 20px var(--primary-glow);
+
+  animation:
+    linePulse 2.5s ease-in-out infinite;
 }
 
 
-/* Subtitle */
+/* =========================================================
+   SUBTITLE
+========================================================= */
 
 .tfi-personalized-subtitle {
   margin: 0 0 20px;
 
   font-size: 24px;
+
   line-height: 1.3;
-  color: #ddd;
+
+  color: var(--text-secondary);
 }
 
 .tfi-personalized-subtitle strong {
-  color: #d8af37;
+  color: var(--gold);
 }
 
 
-/* Description */
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
 .tfi-personalized-text {
   max-width: 680px;
 
   margin: 0;
 
-  color: #aaa;
+  color: var(--text-muted);
+
   font-size: 16px;
+
   line-height: 1.9;
 }
 
 .tfi-personalized-text strong {
-  color: #fff;
+  color: var(--text);
 }
 
 
-/* Points */
+/* =========================================================
+   POINTS
+========================================================= */
 
 .tfi-personalized-points {
   display: flex;
+
   gap: 12px;
+
   margin-top: 35px;
+
   flex-wrap: wrap;
 }
 
 .tfi-point {
   display: flex;
+
   align-items: center;
+
   gap: 12px;
 
   padding: 12px 16px;
 
-  border: 1px solid rgba(216, 175, 55, .18);
-  background: rgba(255, 255, 255, .025);
+  border:
+    1px solid var(--line);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--surface) 75%,
+      transparent
+    );
+
   border-radius: 12px;
 
-  transition: .35s ease;
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    background .35s ease;
 }
 
 .tfi-point:hover {
   transform: translateY(-5px);
-  border-color: rgba(216, 175, 55, .6);
-  background: rgba(216, 175, 55, .06);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--gold) 60%,
+      transparent
+    );
+
+  background:
+    color-mix(
+      in srgb,
+      var(--gold) 8%,
+      var(--surface)
+    );
 }
 
 .point-number {
-  color: #d8af37;
+  color: var(--gold);
+
   font-size: 12px;
+
   font-weight: 700;
 }
 
 .tfi-point strong {
   display: block;
+
   font-size: 13px;
-  color: #fff;
+
+  color: var(--text);
 }
 
 .tfi-point small {
   display: block;
+
   margin-top: 2px;
-  color: #777;
+
+  color: var(--text-secondary);
+
   font-size: 10px;
 }
 
@@ -1809,12 +1915,16 @@ html.dark-mode #mobilemenu {
   min-height: 480px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 }
 
 
-/* Main circle */
+/* =========================================================
+   MAIN CIRCLE
+========================================================= */
 
 .visual-circle {
   position: relative;
@@ -1823,7 +1933,9 @@ html.dark-mode #mobilemenu {
   height: 350px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border-radius: 50%;
@@ -1831,51 +1943,102 @@ html.dark-mode #mobilemenu {
   background:
     radial-gradient(
       circle,
-      rgba(216, 175, 55, .14),
-      rgba(216, 175, 55, .03) 55%,
+      color-mix(
+        in srgb,
+        var(--gold) 14%,
+        transparent
+      ),
+      color-mix(
+        in srgb,
+        var(--gold) 3%,
+        transparent
+      ) 55%,
       transparent 70%
     );
 
-  border: 1px solid rgba(216, 175, 55, .35);
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--gold) 35%,
+      transparent
+    );
 
   box-shadow:
-    0 0 60px rgba(216, 175, 55, .08),
-    inset 0 0 50px rgba(216, 175, 55, .04);
+    0 0 60px
+    color-mix(
+      in srgb,
+      var(--gold) 10%,
+      transparent
+    ),
 
-  animation: circleFloat 6s ease-in-out infinite;
+    inset 0 0 50px
+    color-mix(
+      in srgb,
+      var(--gold) 5%,
+      transparent
+    );
+
+  animation:
+    circleFloat 6s ease-in-out infinite;
 }
 
 .visual-circle::before {
   content: "";
+
   position: absolute;
+
   inset: -25px;
 
-  border: 1px solid rgba(216, 175, 55, .12);
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--gold) 15%,
+      transparent
+    );
+
   border-radius: 50%;
 
-  animation: ringRotate 18s linear infinite;
+  animation:
+    ringRotate 18s linear infinite;
 }
 
 .visual-circle::after {
   content: "";
+
   position: absolute;
+
   inset: 35px;
 
-  border: 1px dashed rgba(216, 175, 55, .2);
+  border:
+    1px dashed
+    color-mix(
+      in srgb,
+      var(--gold) 22%,
+      transparent
+    );
+
   border-radius: 50%;
 
-  animation: ringRotate 14s linear infinite reverse;
+  animation:
+    ringRotate 14s linear infinite reverse;
 }
 
 
-/* Circle text */
+/* =========================================================
+   CIRCLE TEXT
+========================================================= */
 
 .visual-inner {
   position: relative;
+
   z-index: 2;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
 
   text-align: center;
@@ -1883,61 +2046,87 @@ html.dark-mode #mobilemenu {
 
 .visual-inner strong {
   font-size: 76px;
+
   line-height: .85;
+
   letter-spacing: -4px;
 
-  color: #d8af37;
+  color: var(--gold);
 
   text-shadow:
-    0 0 25px rgba(216, 175, 55, .25);
+    0 0 25px var(--primary-glow);
 }
 
 .visual-small {
-  color: #aaa;
+  color: var(--text-secondary);
+
   font-size: 11px;
+
   letter-spacing: 5px;
 }
 
 
-/* Floating cards */
+/* =========================================================
+   FLOATING CARDS
+========================================================= */
 
 .floating-card {
   position: absolute;
 
   display: flex;
+
   align-items: center;
+
   gap: 12px;
 
   padding: 14px 18px;
 
-  background: rgba(18, 18, 18, .8);
-  border: 1px solid rgba(216, 175, 55, .25);
+  background:
+    color-mix(
+      in srgb,
+      var(--surface) 90%,
+      transparent
+    );
+
+  border:
+    1px solid var(--line-strong);
+
   border-radius: 12px;
 
   backdrop-filter: blur(10px);
 
-  box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+  box-shadow:
+    var(--shadow-md);
 
-  animation: cardFloat 5s ease-in-out infinite;
+  animation:
+    cardFloat 5s ease-in-out infinite;
 }
 
 .floating-card > span {
-  color: #d8af37;
+  color: var(--gold);
+
   font-size: 12px;
+
   font-weight: 700;
 }
 
 .floating-card strong {
   display: block;
-  color: #fff;
+
+  color: var(--text);
+
   font-size: 12px;
+
   letter-spacing: 1px;
 }
 
 .floating-card small {
   display: block;
+
   margin-top: 3px;
-  color: #777;
+
+  color: var(--text-secondary);
+
   font-size: 10px;
 }
 
@@ -1954,7 +2143,9 @@ html.dark-mode #mobilemenu {
 }
 
 
-/* Floating dots */
+/* =========================================================
+   FLOATING DOTS
+========================================================= */
 
 .visual-dot {
   position: absolute;
@@ -1963,11 +2154,14 @@ html.dark-mode #mobilemenu {
   height: 7px;
 
   border-radius: 50%;
-  background: #d8af37;
 
-  box-shadow: 0 0 15px rgba(216, 175, 55, .7);
+  background: var(--gold);
 
-  animation: dotPulse 2s ease-in-out infinite;
+  box-shadow:
+    0 0 15px var(--primary-glow);
+
+  animation:
+    dotPulse 2s ease-in-out infinite;
 }
 
 .dot-1 {
@@ -1978,12 +2172,14 @@ html.dark-mode #mobilemenu {
 .dot-2 {
   right: 10%;
   bottom: 35%;
+
   animation-delay: .7s;
 }
 
 .dot-3 {
   left: 15%;
   bottom: 20%;
+
   animation-delay: 1.2s;
 }
 
@@ -1993,6 +2189,7 @@ html.dark-mode #mobilemenu {
 ========================================================= */
 
 @keyframes goldShimmer {
+
   0% {
     background-position: 0% center;
   }
@@ -2000,10 +2197,13 @@ html.dark-mode #mobilemenu {
   100% {
     background-position: 200% center;
   }
+
 }
 
 @keyframes linePulse {
-  0%, 100% {
+
+  0%,
+  100% {
     width: 70px;
     opacity: .7;
   }
@@ -2012,39 +2212,54 @@ html.dark-mode #mobilemenu {
     width: 120px;
     opacity: 1;
   }
+
 }
 
 @keyframes tfiFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
 
   50% {
     transform: translateY(-25px);
   }
+
 }
 
 @keyframes circleFloat {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0deg);
   }
 
   50% {
-    transform: translateY(-12px) rotate(2deg);
+    transform:
+      translateY(-12px)
+      rotate(2deg);
   }
+
 }
 
 @keyframes cardFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
 
   50% {
     transform: translateY(-10px);
   }
+
 }
 
 @keyframes ringRotate {
+
   from {
     transform: rotate(0deg);
   }
@@ -2052,10 +2267,13 @@ html.dark-mode #mobilemenu {
   to {
     transform: rotate(360deg);
   }
+
 }
 
 @keyframes dotPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: .5;
   }
@@ -2064,6 +2282,7 @@ html.dark-mode #mobilemenu {
     transform: scale(1.8);
     opacity: 1;
   }
+
 }
 
 
@@ -2103,11 +2322,7 @@ html.dark-mode #mobilemenu {
     justify-content: center;
   }
 
-  .tfi-personalized-visual {
-    min-height: 400px;
-  }
 }
-
 
 @media (max-width: 600px) {
 
@@ -2117,6 +2332,7 @@ html.dark-mode #mobilemenu {
 
   .tfi-personalized-copy h2 {
     font-size: 43px;
+
     letter-spacing: -1.5px;
   }
 
@@ -2126,11 +2342,13 @@ html.dark-mode #mobilemenu {
 
   .tfi-personalized-text {
     font-size: 14px;
+
     line-height: 1.8;
   }
 
   .tfi-personalized-points {
     flex-direction: column;
+
     align-items: stretch;
   }
 
@@ -2164,9 +2382,8 @@ html.dark-mode #mobilemenu {
   .floating-card {
     padding: 10px 12px;
   }
+
 }
-
-
 /* =========================================================
    10. ABOUT
 ========================================================= */
