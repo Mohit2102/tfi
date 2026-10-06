@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="TFI — Time To Fit India. Build your monthly virtual training plan.">
+  <meta name="description" content="TFI — Time To Fit India. Build your half-yearly virtual training transformation plan.">
   <title>Half Yearly Virtual Transformation | TFI — Time To Fit India</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <!-- <link rel="stylesheet" href="style-fixed.css"> -->
-  <!-- New monthly page styles: load AFTER style-fixed.css -->
   <link rel="stylesheet" href="style.css">
+  <!-- Page styles: load AFTER style.css -->
+  <link rel="stylesheet" href="monthly-virtual-training.css">
 </head>
 
 <body>
@@ -165,224 +165,228 @@
 </header>
 
 
-<main id="top" class="mv-page">
+<main id="top" class="mvp-page">
 
-  <section class="mv-section">
-    <div class="mv-orb mv-orb--1"></div>
-    <div class="mv-orb mv-orb--2"></div>
-    <div class="mv-dot"></div>
-    <div class="mv-dot"></div>
-    <div class="mv-dot"></div>
+  <!-- PRODUCT -->
+  <section class="mvp-product">
+    <div class="mvp-wrap">
+      <nav class="mvp-crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i>
+        <a href="virtual-training.html">Virtual</a><i class="fa-solid fa-chevron-right"></i>
+        <b>Half Yearly Virtual Transformation</b>
+      </nav>
 
-    <div class="wrap">
-
-      <div class="mv-head">
-        <div class="mv-kicker">Half Yearly Virtual Transformation</div>
-        <h1>Six months.<span>A lasting change.</span></h1>
-        <p>Our deepest virtual programme: 24 weeks of live coaching, evolving programming and long-term accountability. Build yours below and watch the price update.</p>
-      </div>
-
-      <div class="mv-layout">
-
-        <!-- LEFT: video + benefits -->
-        <div class="mv-visual">
-          <div class="mv-video">
-            <video autoplay muted loop playsinline preload="metadata">
+      <div class="mvp-grid">
+        <!-- Gallery -->
+        <div class="mvp-gallery">
+          <div class="mvp-stage">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
               <source src="videos/half-yearly-training.mp4" type="video/mp4">
             </video>
-            <div class="mv-video-shade"></div>
-            <div class="mv-video-shine"></div>
-            <span class="mv-live">TFI VIRTUAL · 6 MONTHS</span>
-            <div class="mv-video-copy">
-              <h2>Six months in.<br><span>A different person.</span></h2>
-              <p>Long-term coaching that turns effort into habit, and habit into results that stay.</p>
-            </div>
+            <span class="mvp-tag">TFI VIRTUAL · 6 MONTHS</span>
+            <div class="mvp-ring mvp-ring--1"></div>
+            <div class="mvp-ring mvp-ring--2"></div>
+            <div class="mvp-core"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="mvp-float mvp-float--a"><i class="fa-solid fa-video"></i><div><strong>Live coaching</strong><small>Expert guidance every session</small></div></div>
+            <div class="mvp-float mvp-float--b"><i class="fa-solid fa-bullseye"></i><div><strong>Evolving plan</strong><small>Adapts as you do</small></div></div>
+            <div class="mvp-float mvp-float--c"><i class="fa-solid fa-chart-line"></i><div><strong>Monthly reviews</strong><small>Deep progress resets</small></div></div>
           </div>
-
-          <div class="mv-benefits">
-            <div class="mv-benefit">
-              <i class="fa-solid fa-video"></i>
-              <strong>Live Coaching</strong>
-              <small>Expert guidance in every session</small>
-            </div>
-            <div class="mv-benefit">
-              <i class="fa-solid fa-bullseye"></i>
-              <strong>Personalised</strong>
-              <small>Plans that evolve as you do</small>
-            </div>
-            <div class="mv-benefit">
-              <i class="fa-solid fa-chart-line"></i>
-              <strong>Monthly Reviews</strong>
-              <small>Deep progress reviews and resets</small>
-            </div>
-            <div class="mv-benefit">
-              <i class="fa-solid fa-house-laptop"></i>
-              <strong>Flexible</strong>
-              <small>Train from wherever you are</small>
-            </div>
+          <div class="mvp-badges">
+            <div class="mvp-badge"><i class="fa-solid fa-video"></i><strong>Live Coaching</strong></div>
+            <div class="mvp-badge"><i class="fa-solid fa-bullseye"></i><strong>Personalised</strong></div>
+            <div class="mvp-badge"><i class="fa-solid fa-chart-line"></i><strong>Monthly Reviews</strong></div>
+            <div class="mvp-badge"><i class="fa-solid fa-house-laptop"></i><strong>Flexible</strong></div>
           </div>
         </div>
 
-        <!-- RIGHT: configurator -->
-        <div class="mv-card">
-
-          <div class="mv-card-top">
-            <div>
-              <span class="mv-mini">CONFIGURE YOUR PLAN</span>
-              <h2>Half Yearly Virtual Plan</h2>
-            </div>
-            <div class="mv-price">
-              <small>Your price</small>
-              <strong id="mvPrice">₹14,999</strong>
-              <em>/ 6 months</em>
-              <em id="mvPerMonth">≈ ₹2,500 / month</em>
-            </div>
+        <!-- Info -->
+        <div class="mvp-info">
+          <span class="mvp-cat"><i class="fa-solid fa-video"></i>Virtual Training</span>
+          <h1 class="mvp-title">Half Yearly Virtual Transformation<span>A lasting change</span></h1>
+          <p class="mvp-desc">Our deepest virtual programme: 24 weeks of live coaching, evolving programming and long-term accountability. Build yours below and watch the price update.</p>
+          <ul class="mvp-bul">
+            <li><i class="fa-solid fa-check"></i><span>Live, coach-led sessions 3 to 5 times a week for 24 weeks</span></li>
+            <li><i class="fa-solid fa-check"></i><span>A programme that evolves as you do</span></li>
+            <li><i class="fa-solid fa-check"></i><span>Monthly deep progress reviews and resets</span></li>
+            <li><i class="fa-solid fa-check"></i><span>Optional nutrition plan and couple training</span></li>
+          </ul>
+          <div class="mvp-from"><small>Starting from</small><strong>₹14,999</strong><em>/ 6 months · ≈ ₹2,500 / month</em></div>
+          <div class="mvp-stats">
+            <div><strong>24</strong><small>Weeks of training</small></div>
+            <div><strong>72–120</strong><small>Live sessions</small></div>
+            <div><strong>5</strong><small>Coach levels</small></div>
           </div>
-
-          <div class="mv-steps" aria-hidden="true">
-            <div class="mv-step" data-step="session"><b>1</b><span>Sessions</span></div>
-            <div class="mv-step" data-step="couple"><b>2</b><span>Couple</span></div>
-            <div class="mv-step" data-step="nutrition"><b>3</b><span>Nutrition</span></div>
-            <div class="mv-step" data-step="trainer"><b>4</b><span>Trainer</span></div>
-            <div class="mv-step" data-step="extension"><b>5</b><span>Extend</span></div>
-          </div>
-
-          <form id="mvForm" class="mv-form" novalidate>
-
-            <fieldset class="mv-group" data-group="session">
-              <legend>Sessions per week <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--3">
-                <label class="mv-opt">
-                  <input type="radio" name="session" value="3" data-label="3 sessions/week (72 total)">
-                  <span><b>3</b><em>/ week · 72 total</em></span>
-                </label>
-                <label class="mv-opt mv-opt--hot">
-                  <input type="radio" name="session" value="4" data-label="4 sessions/week (96 total)">
-                  <span><b>4</b><em>/ week · 96 total</em></span>
-                </label>
-                <label class="mv-opt">
-                  <input type="radio" name="session" value="5" data-label="5 sessions/week (120 total)">
-                  <span><b>5</b><em>/ week · 120 total</em></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="mv-group" data-group="couple">
-              <legend>Couple Training <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--2">
-                <label class="mv-opt">
-                  <input type="radio" name="couple" value="no" data-label="No">
-                  <span><b>Solo</b><em>Just me</em></span>
-                </label>
-                <label class="mv-opt">
-                  <input type="radio" name="couple" value="yes" data-label="Yes – same hours">
-                  <span><b>Couple</b><em>Same hours · +₹6,000</em></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="mv-group" data-group="nutrition">
-              <legend>Nutrition Plan <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--2">
-                <label class="mv-opt">
-                  <input type="radio" name="nutrition" value="no" data-label="No">
-                  <span><b>Training only</b><em>No nutrition</em></span>
-                </label>
-                <label class="mv-opt">
-                  <input type="radio" name="nutrition" value="yes" data-label="Yes">
-                  <span><b>Add nutrition</b><em>+₹4,500</em></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="mv-group" data-group="trainer">
-              <legend>Trainer Level <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--1">
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="standard" data-label="Standard">
-                  <span><div><b>Standard</b><em>Certified coach</em></div><strong>Included</strong></span>
-                </label>
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="advanced" data-label="Advanced + Rehab">
-                  <span><div><b>Advanced + Rehab</b><em>Injury &amp; recovery focus</em></div><strong>+₹3,000</strong></span>
-                </label>
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="elite" data-label="Elite">
-                  <span><div><b>Elite</b><em>Senior performance coach</em></div><strong>+₹6,000</strong></span>
-                </label>
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="eliteplus" data-label="Elite +">
-                  <span><div><b>Elite +</b><em>Top-tier coaching</em></div><strong>+₹9,000</strong></span>
-                </label>
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="premium" data-label="Premium">
-                  <span><div><b>Premium</b><em>The full TFI experience</em></div><strong>+₹12,000</strong></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="mv-group" data-group="extension">
-              <legend>Add Extension <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--2">
-                <label class="mv-opt">
-                  <input type="radio" name="extension" value="none" data-label="No Extension">
-                  <span><b>No extension</b><em>6 months</em></span>
-                </label>
-                <label class="mv-opt">
-                  <input type="radio" name="extension" value="1" data-label="+1 Month">
-                  <span><b>+1 Month</b><em>30 days more · +₹2,000</em></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <div class="mv-summary" aria-live="polite">
-              <div class="mv-summary-title">YOUR SELECTION</div>
-              <div class="mv-row"><span>Sessions</span><strong class="empty" id="sumSession">Not selected</strong></div>
-              <div class="mv-row"><span>Couple</span><strong class="empty" id="sumCouple">Not selected</strong></div>
-              <div class="mv-row"><span>Nutrition</span><strong class="empty" id="sumNutrition">Not selected</strong></div>
-              <div class="mv-row"><span>Trainer</span><strong class="empty" id="sumTrainer">Not selected</strong></div>
-              <div class="mv-row"><span>Extension</span><strong class="empty" id="sumExtension">Not selected</strong></div>
-              <div class="mv-total"><span>Total / 6 months</span><strong id="mvTotal">₹14,999</strong></div>
-            </div>
-
-            <button type="submit" class="mv-submit locked" id="mvSubmit">
-              Continue With My Plan <span>→</span>
-            </button>
-
-            <p class="mv-error" id="mvError" role="alert"></p>
-
-            <p class="mv-note">
-              Our team will confirm your final plan and pricing before any payment.
-            </p>
-          </form>
+          <ul class="mvp-meta">
+            <li><b>Category</b><a href="virtual-training.html">Virtual Training</a></li>
+            <li><b>Duration</b>6 months · 24 weeks (+1 month extension optional)</li>
+            <li><b>Confirmation</b>Our team confirms your plan and pricing before any payment</li>
+          </ul>
         </div>
       </div>
-
-      <!-- Roadmap -->
-      <div class="mv-road">
-        <div class="mv-road-head">
-          <div class="mv-kicker">What to expect</div>
-          <h3>Your six-month <span>journey</span></h3>
-        </div>
-        <div class="mv-road-grid">
-        <div class="mv-road-item"><b>01</b><small>MONTHS 1–2</small><h4>Foundation</h4><p>Assessment, technique and routine. We build the base that everything else sits on.</p></div>
-        <div class="mv-road-item"><b>02</b><small>MONTHS 3–4</small><h4>Build</h4><p>Progressive overload, new skills and higher volume. Real strength and stamina gains.</p></div>
-        <div class="mv-road-item"><b>03</b><small>MONTHS 5–6</small><h4>Transform</h4><p>Peak and consolidate. You finish with results, habits and a plan to keep going.</p></div>
-        </div>
-      </div>
-
-      <div class="mv-trust">
-        <div><i class="fa-solid fa-shield-heart"></i> Certified coaches</div>
-        <div><i class="fa-solid fa-calendar-check"></i> Flexible scheduling</div>
-        <div><i class="fa-solid fa-user-check"></i> 100% personalised</div>
-        <div><i class="fa-solid fa-headset"></i> Team confirms before payment</div>
-      </div>
-
     </div>
   </section>
 
-</main>
+  <!-- MARQUEE -->
+  <div class="mvp-marquee" aria-hidden="true">
+    <div class="mvp-marquee-track">
+      <span><i class="fa-solid fa-bolt"></i> Live coaching</span><span><i class="fa-solid fa-bolt"></i> Personalised plans</span><span><i class="fa-solid fa-bolt"></i> Monthly reviews</span><span><i class="fa-solid fa-bolt"></i> Train from anywhere</span><span><i class="fa-solid fa-bolt"></i> Certified coaches</span><span><i class="fa-solid fa-bolt"></i> Flexible scheduling</span>
+      <span><i class="fa-solid fa-bolt"></i> Live coaching</span><span><i class="fa-solid fa-bolt"></i> Personalised plans</span><span><i class="fa-solid fa-bolt"></i> Monthly reviews</span><span><i class="fa-solid fa-bolt"></i> Train from anywhere</span><span><i class="fa-solid fa-bolt"></i> Certified coaches</span><span><i class="fa-solid fa-bolt"></i> Flexible scheduling</span>
+    </div>
+  </div>
 
+  <!-- HOW IT WORKS -->
+  <section class="mvp-how">
+    <div class="mvp-wrap">
+      <div class="mvp-head">
+        <div class="mvp-eyebrow">How it works</div>
+        <h2>Start in <span>four steps</span></h2>
+      </div>
+      <div class="mvp-steps">
+        <div class="mvp-step"><b>01</b><i class="fa-solid fa-sliders"></i><h3>Build</h3><p>Choose sessions, coach level and add-ons.</p></div>
+        <div class="mvp-step"><b>02</b><i class="fa-solid fa-headset"></i><h3>Confirm</h3><p>Our team confirms your plan and price.</p></div>
+        <div class="mvp-step"><b>03</b><i class="fa-solid fa-calendar-check"></i><h3>Schedule</h3><p>Pick the slots that suit your day.</p></div>
+        <div class="mvp-step"><b>04</b><i class="fa-solid fa-video"></i><h3>Train live</h3><p>Join your coach online and start progressing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDER (horizontal) -->
+  <section class="mvp-builder" id="build">
+    <div class="mvp-wrap">
+      <div class="mvp-head">
+        <div class="mvp-eyebrow">Build your plan</div>
+        <h2>Choose your <span>plan</span></h2>
+        <p>Every option and price is shown side by side. Your total updates instantly.</p>
+      </div>
+
+      <form class="mvp-panel" id="mvForm" novalidate>
+
+        <div class="mvp-prog-wrap">
+          <div class="mvp-prog" role="group" aria-label="Plan steps">
+            <button type="button" class="mvp-prog-step current" data-step="session"><b>1</b><span>Sessions</span></button>
+            <button type="button" class="mvp-prog-step" data-step="couple"><b>2</b><span>Couple</span></button>
+            <button type="button" class="mvp-prog-step" data-step="nutrition"><b>3</b><span>Nutrition</span></button>
+            <button type="button" class="mvp-prog-step" data-step="trainer"><b>4</b><span>Trainer</span></button>
+            <button type="button" class="mvp-prog-step" data-step="extension"><b>5</b><span>Extend</span></button>
+          </div>
+        </div>
+
+        <fieldset class="mvp-group" data-group="session">
+          <legend>Sessions per week</legend>
+          <div class="mvp-lab"><b>Sessions per week</b><small>REQUIRED</small></div>
+          <div class="mvp-opts mvp-opts--3">
+            <label class="mvp-opt"><input type="radio" name="session" value="3" data-label="3 sessions/week (72 total)"><span><i class="mvp-ico fa-solid fa-person-walking" aria-hidden="true"></i><b>3 sessions</b><em>per week · 72 total</em><div class="mvp-p">₹14,999 <small>/ 6 mo</small></div></span></label>
+            <label class="mvp-opt mvp-hot"><input type="radio" name="session" value="4" data-label="4 sessions/week (96 total)"><span><i class="mvp-ico fa-solid fa-person-running" aria-hidden="true"></i><b>4 sessions</b><em>per week · 96 total</em><div class="mvp-p">₹18,999 <small>/ 6 mo</small></div></span></label>
+            <label class="mvp-opt"><input type="radio" name="session" value="5" data-label="5 sessions/week (120 total)"><span><i class="mvp-ico fa-solid fa-fire-flame-curved" aria-hidden="true"></i><b>5 sessions</b><em>per week · 120 total</em><div class="mvp-p">₹22,999 <small>/ 6 mo</small></div></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="mvp-group" data-group="couple">
+          <legend>Couple Training</legend>
+          <div class="mvp-lab"><b>Couple Training</b><small>REQUIRED</small></div>
+          <div class="mvp-opts mvp-opts--2">
+            <label class="mvp-opt"><input type="radio" name="couple" value="no" data-label="Solo"><span><i class="mvp-ico fa-solid fa-user" aria-hidden="true"></i><b>Solo</b><em>Just me</em><div class="mvp-p">Included</div></span></label>
+            <label class="mvp-opt"><input type="radio" name="couple" value="yes" data-label="Couple – same hours"><span><i class="mvp-ico fa-solid fa-user-group" aria-hidden="true"></i><b>Couple</b><em>Same hours</em><div class="mvp-p">+₹6,000</div></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="mvp-group" data-group="nutrition">
+          <legend>Nutrition Plan</legend>
+          <div class="mvp-lab"><b>Nutrition Plan</b><small>REQUIRED</small></div>
+          <div class="mvp-opts mvp-opts--2">
+            <label class="mvp-opt"><input type="radio" name="nutrition" value="no" data-label="Training only"><span><i class="mvp-ico fa-solid fa-dumbbell" aria-hidden="true"></i><b>Training only</b><em>No nutrition</em><div class="mvp-p">Included</div></span></label>
+            <label class="mvp-opt"><input type="radio" name="nutrition" value="yes" data-label="With nutrition"><span><i class="mvp-ico fa-solid fa-apple-whole" aria-hidden="true"></i><b>Add nutrition</b><em>Personalised meal plan</em><div class="mvp-p">+₹4,500</div></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="mvp-group" data-group="trainer">
+          <legend>Trainer Level</legend>
+          <div class="mvp-lab"><b>Trainer Level</b><small>REQUIRED</small></div>
+          <div class="mvp-opts mvp-opts--2">
+            <label class="mvp-opt"><input type="radio" name="trainer" value="standard" data-label="Specialised"><span><i class="mvp-ico fa-solid fa-certificate" aria-hidden="true"></i><span class="mvp-tier" aria-hidden="true"></span><b>Specialised</b><em>personal-training</em><div class="mvp-p">Included</div></span></label>
+            <label class="mvp-opt"><input type="radio" name="trainer" value="advanced" data-label="Certified"><span><i class="mvp-ico fa-solid fa-heart-pulse" aria-hidden="true"></i><span class="mvp-tier" aria-hidden="true"></span><b>Certified</b><em>personal-training</em><div class="mvp-p">+₹3,000</div></span></label>
+            <!-- <label class="mvp-opt"><input type="radio" name="trainer" value="elite" data-label="Elite"><span><i class="mvp-ico fa-solid fa-medal" aria-hidden="true"></i><span class="mvp-tier" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><b>Elite</b><em>Senior performance coach</em><div class="mvp-p">+₹6,000</div></span></label>
+            <label class="mvp-opt"><input type="radio" name="trainer" value="eliteplus" data-label="Elite +"><span><i class="mvp-ico fa-solid fa-trophy" aria-hidden="true"></i><span class="mvp-tier" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><b>Elite +</b><em>Top-tier coaching</em><div class="mvp-p">+₹9,000</div></span></label>
+            <label class="mvp-opt"><input type="radio" name="trainer" value="premium" data-label="Premium"><span><i class="mvp-ico fa-solid fa-crown" aria-hidden="true"></i><span class="mvp-tier" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><b>Premium</b><em>The full TFI experience</em><div class="mvp-p">+₹12,000</div></span></label> -->
+          </div>
+        </fieldset>
+
+        <fieldset class="mvp-group" data-group="extension">
+          <legend>Add Extension</legend>
+          <div class="mvp-lab"><b>Add Extension</b><small>REQUIRED</small></div>
+          <div class="mvp-opts mvp-opts--2">
+            <label class="mvp-opt"><input type="radio" name="extension" value="none" data-label="No extension"><span><i class="mvp-ico fa-solid fa-calendar-day" aria-hidden="true"></i><b>No extension</b><em>6 months</em><div class="mvp-p">Included</div></span></label>
+            <label class="mvp-opt"><input type="radio" name="extension" value="1" data-label="+1 Month"><span><i class="mvp-ico fa-solid fa-calendar-plus" aria-hidden="true"></i><b>+1 Month</b><em>30 days more · 7 months in total</em><div class="mvp-p">+₹2,000</div></span></label>
+          </div>
+        </fieldset>
+
+        <div class="mvp-bar" aria-live="polite">
+          <div class="mvp-sum">
+            <div>Sessions<strong class="empty" id="sumSession">Not selected</strong></div>
+            <div>Couple<strong class="empty" id="sumCouple">Not selected</strong></div>
+            <div>Nutrition<strong class="empty" id="sumNutrition">Not selected</strong></div>
+            <div>Trainer<strong class="empty" id="sumTrainer">Not selected</strong></div>
+            <div>Extension<strong class="empty" id="sumExtension">Not selected</strong></div>
+          </div>
+          <div class="mvp-total"><small>Total / 6 months</small><div><strong id="mvTotal">₹14,999</strong><em class="mvp-per" id="mvPerMonth">≈ ₹2,500 / month</em></div></div>
+          <button type="submit" class="mvp-submit locked" id="mvSubmit">Continue With My Plan <span>→</span></button>
+        </div>
+
+        <p class="mvp-error" id="mvError" role="alert"></p>
+        <p class="mvp-note">Our team will confirm your final plan and pricing before any payment.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="mvp-journey">
+    <div class="mvp-wrap">
+      <div class="mvp-head">
+        <div class="mvp-eyebrow">What to expect</div>
+        <h2>Your six-month <span>journey</span></h2>
+      </div>
+      <div class="mvp-road-grid">
+        <div class="mvp-road-item"><b>01</b><small>MONTHS 1–2</small><h3>Foundation</h3><p>Assessment, technique and routine. We build the base that everything else sits on.</p></div>
+        <div class="mvp-road-item"><b>02</b><small>MONTHS 3–4</small><h3>Build</h3><p>Progressive overload, new skills and higher volume. Real strength and stamina gains.</p></div>
+        <div class="mvp-road-item"><b>03</b><small>MONTHS 5–6</small><h3>Transform</h3><p>Peak and consolidate. You finish with results, habits and a plan to keep going.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="mvp-details">
+    <div class="mvp-wrap">
+      <div class="mvp-tablist" role="tablist" aria-label="Programme details">
+        <button class="mvp-tab" role="tab" type="button" aria-selected="true" data-tab="overview"><i class="fa-solid fa-circle-info"></i>Overview</button>
+        <button class="mvp-tab" role="tab" type="button" aria-selected="false" data-tab="faq"><i class="fa-solid fa-circle-question"></i>FAQ</button>
+      </div>
+
+      <div class="mvp-tabpanel active" id="t-overview" role="tabpanel">
+        <div class="mvp-cards">
+          <article class="mvp-card"><i class="fa-solid fa-video"></i><h3>Live Coaching</h3><p>Expert guidance in every session.</p></article>
+          <article class="mvp-card"><i class="fa-solid fa-bullseye"></i><h3>Personalised</h3><p>Plans that evolve as you do.</p></article>
+          <article class="mvp-card"><i class="fa-solid fa-chart-line"></i><h3>Monthly Reviews</h3><p>Deep progress reviews and resets.</p></article>
+          <article class="mvp-card"><i class="fa-solid fa-house-laptop"></i><h3>Flexible</h3><p>Train from wherever you are.</p></article>
+        </div>
+      </div>
+
+      <div class="mvp-tabpanel" id="t-faq" role="tabpanel">
+        <div class="mvp-acc">
+          <details><summary>Do I pay straight away?<i class="fa-solid fa-plus"></i></summary><p>No. Our team confirms your final plan and pricing before any payment.</p></details>
+          <details><summary>How many sessions will I get?<i class="fa-solid fa-plus"></i></summary><p>3 sessions a week is 72 in total, 4 a week is 96 and 5 a week is 120 across the 24 weeks.</p></details>
+          <details><summary>Can I extend the plan?<i class="fa-solid fa-plus"></i></summary><p>Yes. You can add 1 more month (30 days) for ₹2,000.</p></details>
+          <details><summary>Can my partner train with me?<i class="fa-solid fa-plus"></i></summary><p>Yes. Couple training at the same hours is +₹6,000 for the 6 months.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mvp-sticky" id="mvSticky">
+    <div><small>Your total</small><strong id="mvStickyTotal">₹14,999</strong></div>
+    <a href="#build" class="mvp-sticky-btn">Build plan <span>→</span></a>
+  </div>
+
+</main>
 
 
 <footer>
@@ -500,7 +504,22 @@
 })();
 </script>
 
-<!-- Plan configurator -->
+<!-- Tabs -->
+<script>
+(function () {
+  "use strict";
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".mvp-tab"));
+  var panels = Array.prototype.slice.call(document.querySelectorAll(".mvp-tabpanel"));
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      panels.forEach(function (p) { p.classList.toggle("active", p.id === "t-" + t.dataset.tab); });
+    });
+  });
+})();
+</script>
+
+<!-- Half-yearly plan configurator -->
 <script>
 (function () {
   "use strict";
@@ -508,14 +527,23 @@
   var form = document.getElementById("mvForm");
   if (!form) return;
 
-  /* ===== PRICING — placeholder amounts, replace with your final TFI pricing ===== */
-  var CFG = {"base": {"3": 14999, "4": 18999, "5": 22999}, "defaultBase": 14999, "trainer": {"standard": 0, "advanced": 3000, "elite": 6000, "eliteplus": 9000, "premium": 12000}, "couple": 6000, "nutrition": 4500, "ext": 2000, "extValue": "1", "months": 6, "weeks": 24};
+  /* HALF-YEARLY PRICING — change these when you finalise TFI pricing */
+  var CFG = {
+    base: { "3": 14999, "4": 18999, "5": 22999 },
+    defaultBase: 14999,
+    trainer: { standard: 0, advanced: 3000, elite: 6000, eliteplus: 9000, premium: 12000 },
+    couple: 6000,
+    nutrition: 4500,
+    ext: 2000,
+    extValue: "1",
+    months: 6
+  };
 
   var GROUPS = ["session", "couple", "nutrition", "trainer", "extension"];
 
-  var priceEl = document.getElementById("mvPrice");
   var totalEl = document.getElementById("mvTotal");
   var perMonthEl = document.getElementById("mvPerMonth");
+  var stickyEl = document.getElementById("mvStickyTotal");
   var submit = document.getElementById("mvSubmit");
   var errorEl = document.getElementById("mvError");
 
@@ -529,7 +557,7 @@
 
   function checked(name) { return form.querySelector('input[name="' + name + '"]:checked'); }
   function val(name) { var el = checked(name); return el ? el.value : ""; }
-  function money(n) { return "\u20B9" + Number(n).toLocaleString("en-IN"); }
+  function money(n) { return "₹" + Number(n).toLocaleString("en-IN"); }
 
   function total() {
     var t = CFG.base[val("session")] || CFG.defaultBase;
@@ -546,35 +574,49 @@
     GROUPS.forEach(function (g) {
       var el = checked(g);
       var out = sum[g];
-      var step = document.querySelector('.mv-step[data-step="' + g + '"]');
-      var group = form.querySelector('.mv-group[data-group="' + g + '"]');
+      var group = form.querySelector('.mvp-group[data-group="' + g + '"]');
 
       if (el) {
         out.textContent = el.getAttribute("data-label");
         out.classList.remove("empty");
-        if (step) step.classList.add("done");
         if (group) group.classList.remove("invalid");
         done++;
       } else {
         out.textContent = "Not selected";
         out.classList.add("empty");
-        if (step) step.classList.remove("done");
       }
     });
 
+    var firstOpen = true;
+    GROUPS.forEach(function (g) {
+      var s = document.querySelector('.mvp-prog-step[data-step="' + g + '"]');
+      if (!s) return;
+      var d = !!checked(g);
+      s.classList.toggle("done", d);
+      s.classList.toggle("current", !d && firstOpen);
+      if (!d) firstOpen = false;
+    });
+
     var t = total();
-    priceEl.textContent = money(t);
     totalEl.textContent = money(t);
-    if (perMonthEl) perMonthEl.textContent = "\u2248 " + money(Math.round(t / CFG.months)) + " / month";
-    priceEl.classList.remove("pop");
-    void priceEl.offsetWidth;
-    priceEl.classList.add("pop");
+    if (stickyEl) stickyEl.textContent = money(t);
+    if (perMonthEl) perMonthEl.textContent = "≈ " + money(Math.round(t / CFG.months)) + " / month";
+    totalEl.classList.remove("pop");
+    void totalEl.offsetWidth;
+    totalEl.classList.add("pop");
 
     submit.classList.toggle("locked", done < GROUPS.length);
     if (done === GROUPS.length) errorEl.classList.remove("show");
   }
 
   form.addEventListener("change", update);
+
+  Array.prototype.forEach.call(document.querySelectorAll(".mvp-prog-step"), function (b) {
+    b.addEventListener("click", function () {
+      var g = form.querySelector('.mvp-group[data-group="' + b.getAttribute("data-step") + '"]');
+      if (g) g.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -583,7 +625,7 @@
 
     if (missing.length) {
       GROUPS.forEach(function (g) {
-        var group = form.querySelector('.mv-group[data-group="' + g + '"]');
+        var group = form.querySelector('.mvp-group[data-group="' + g + '"]');
         if (group) group.classList.toggle("invalid", missing.indexOf(g) !== -1);
       });
 
@@ -592,7 +634,7 @@
       void errorEl.offsetWidth;
       errorEl.classList.add("show");
 
-      var first = form.querySelector('.mv-group[data-group="' + missing[0] + '"]');
+      var first = form.querySelector('.mvp-group[data-group="' + missing[0] + '"]');
       if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
