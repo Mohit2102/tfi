@@ -13142,6 +13142,28 @@ html.dark-mode .mvp-page {
 }
 
 
+.mvp-sum > div {
+  flex: 1 1 auto;
+  min-width: 0;
+  font: 600 15px "Oswald", sans-serif;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.mvp-sum > div strong {
+  display: block;
+  margin-top: 5px;
+
+  font: 500 13px "Inter", sans-serif;
+  letter-spacing: .02em;
+  text-transform: none;
+
+  color: #ffffff;
+}
+
+
+
 /* =========================================================
    TABLET
    ========================================================= */
@@ -13167,6 +13189,7 @@ html.dark-mode .mvp-page {
   }
 
 }
+
 
 
 /* =========================================================
@@ -14336,3 +14359,53 @@ html.dark-mode .cx-page {
   .mvp-flow-item { padding: 10px 12px; }
   .mvp-flow-txt small { font-size: 11.5px; }
 }
+
+
+/* =========================================================
+   SUMMARY CARD — better contrast (dark mode), bigger "Your plan",
+   highlighted payment note
+========================================================= */
+.mvp-page .mvp-bar {
+  border-color: var(--mv-gold);
+  background:
+    linear-gradient(170deg, color-mix(in srgb, var(--mv-gold) 14%, var(--mv-card)), var(--mv-card) 62%);
+}
+html.dark-mode .mvp-page .mvp-bar {
+  background: linear-gradient(170deg, #241d0e 0%, #14110b 65%);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(243, 217, 139, .12);
+}
+
+/* "Your plan" heading: bigger, with a gold underline */
+.mvp-page .mvp-bar::before {
+  content: "Your plan";
+  display: block; margin-bottom: 16px; padding-bottom: 14px;
+  font: 700 22px "Oswald", sans-serif; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mv-gold);
+  border-bottom: 2px solid color-mix(in srgb, var(--mv-gold) 45%, transparent);
+}
+html.dark-mode .mvp-page .mvp-bar::before { color: #f3d98b; }
+
+/* rows: clearer labels and values */
+.mvp-page .mvp-sum > div { padding: 12px 0; font-size: 14px; font-weight: 600; color: var(--mv-text); opacity: 1; }
+.mvp-page .mvp-sum strong { font-size: 14.5px; font-weight: 700; color: var(--mv-text); }
+.mvp-page .mvp-sum strong.empty { color: var(--mv-muted); opacity: 1; font-weight: 500; font-style: italic; }
+html.dark-mode .mvp-page .mvp-sum > div { color: #e9e2cf; border-bottom-color: rgba(243, 217, 139, .22); }
+html.dark-mode .mvp-page .mvp-sum strong { color: #fffaf0; }
+html.dark-mode .mvp-page .mvp-sum strong.empty { color: #b9ae94; }
+html.dark-mode .mvp-page .mvp-sum > div:has(strong:not(.empty)) strong { color: #f3d98b; }
+.mvp-page .mvp-total small { font-size: 12.5px; color: var(--mv-text); letter-spacing: .1em; }
+html.dark-mode .mvp-page .mvp-total small { color: #e9e2cf; }
+
+/* payment note: highlighted callout inside the card */
+.mvp-page .mvp-bar .mvp-note,
+.mvp-page .mvp-note {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin: 14px 0 0; padding: 13px 16px; text-align: left;
+  border: 1.5px solid var(--mv-gold); border-radius: 14px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--mv-gold) 24%, transparent), color-mix(in srgb, var(--mv-gold) 8%, transparent));
+  color: var(--mv-text); font: 700 14px "Inter", sans-serif; line-height: 1.4; letter-spacing: .01em;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mv-gold) 12%, transparent);
+}
+.mvp-page .mvp-note i { flex: 0 0 auto; font-size: 18px; color: var(--mv-gold); }
+html.dark-mode .mvp-page .mvp-note { color: #fff3cf; }
+html.dark-mode .mvp-page .mvp-note i { color: #f3d98b; }
