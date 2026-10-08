@@ -32,6 +32,31 @@
   <!-- Page styles: load AFTER style.css -->
   <!-- <link rel="stylesheet" href="monthly-virtual-training.css"> -->
 
+  <style>
+    .mvp-reset {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(128, 128, 128, .5);
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: .85;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .mvp-reset:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+  </style>
+
 </head>
 
 
@@ -1247,36 +1272,6 @@
 
               <input type="radio"
                      name="trainer"
-                     value="specialized"
-                     data-label="Specialized Personal Training">
-
-
-              <span>
-
-                <i class="mvp-ico fa-solid fa-star"
-                   aria-hidden="true">
-                </i>
-
-                <b>
-                  Specialized Personal Training
-                </b>
-
-                <em>
-                  Condition-focused coaching
-                </em>
-
-                <!-- PRICE (re-enable later): <div class="mvp-p">Add price</div> -->
-
-              </span>
-
-            </label>
-
-
-
-            <label class="mvp-opt">
-
-              <input type="radio"
-                     name="trainer"
                      value="certified"
                      data-label="Certified Personal Training">
 
@@ -1293,6 +1288,36 @@
 
                 <em>
                   Certified coach
+                </em>
+
+                <!-- PRICE (re-enable later): <div class="mvp-p">Add price</div> -->
+
+              </span>
+
+            </label>
+
+
+
+            <label class="mvp-opt">
+
+              <input type="radio"
+                     name="trainer"
+                     value="specialized"
+                     data-label="Specialized Personal Training">
+
+
+              <span>
+
+                <i class="mvp-ico fa-solid fa-star"
+                   aria-hidden="true">
+                </i>
+
+                <b>
+                  Specialized Personal Training
+                </b>
+
+                <em>
+                  Condition-focused coaching
                 </em>
 
                 <!-- PRICE (re-enable later): <div class="mvp-p">Add price</div> -->
@@ -1632,6 +1657,23 @@
           </button>
 
 
+          <!-- Reset -->
+
+          <button type="button"
+                  class="mvp-reset"
+                  id="mvReset">
+
+            <i class="fa-solid fa-rotate-left"
+               aria-hidden="true">
+            </i>
+
+            <span>
+              Reset Price
+            </span>
+
+          </button>
+
+
           <!-- WhatsApp Enquiry -->
 
           <a href="#"
@@ -1882,6 +1924,7 @@
       </span>
 
     </a>
+
 
   </div>
 
@@ -2344,20 +2387,40 @@
 
 
   /* =========================================================
-     BASE TRAINING PRICE
+     BASE TRAINING PRICE (1 month, Solo) — depends on trainer level
 
-     12 Sessions = ₹9,999
-     16 Sessions = ₹13,332
-     20 Sessions = ₹16,665
+     Specialized Personal Training
+       12 Sessions = ₹15,000
+       16 Sessions = ₹20,000
+       20 Sessions = ₹25,000
+
+     Certified Personal Training
+       12 Sessions = ₹9,999
+       16 Sessions = ₹13,332
+       20 Sessions = ₹16,665
   ========================================================== */
 
   var BASE = {
 
-    "12": 9999,
+    specialized: {
 
-    "16": 13332,
+      "12": 15000,
 
-    "20": 16665
+      "16": 20000,
+
+      "20": 25000
+
+    },
+
+    certified: {
+
+      "12": 9999,
+
+      "16": 13332,
+
+      "20": 16665
+
+    }
 
   };
 
@@ -2369,6 +2432,8 @@
      1 Month  = 0%
      3 Months = 10%
      6 Months = 20%
+
+     (Not used on the monthly page; kept for reference.)
   ========================================================== */
 
   var DISCOUNT = {
@@ -2394,23 +2459,6 @@
 
      No package discount.
   ========================================================== */
-
-  /* =========================================================
-     TRAINER LEVEL ADD-ON (₹ per month, optional)
-
-     Both levels are 0 for now. Set a value here later if one
-     trainer level should cost more, e.g. specialized: 2000.
-  ========================================================== */
-
-  var TRAINER_ADDON = {
-
-    specialized: 0,
-
-    certified: 0
-
-  };
-
-
 
   var NUTRITION_PER_PERSON_PER_MONTH =
     499;
@@ -2569,15 +2617,17 @@
 
   /* =========================================================
      TRAINING PRICE
-     
-     Training receives package discount.
+
+     Base price depends on trainer level + session count.
+     Monthly plan = 1 month, no package discount.
 
      Formula:
 
-     Base Session Price
-     × Number of Months
-     × Discount
-     × Couple Multiplier
+     BASE[trainer][session]
+     × Couple Multiplier (1.5 if couple)
+
+     Total stays ₹0 until a trainer level AND a session
+     count are both selected.
   ========================================================== */
 
   function calculateTraining() {
@@ -2586,21 +2636,23 @@
       val("session");
 
 
-    if (!BASE[session]) {
+    var trainer =
+      val("trainer");
+
+
+    if (
+      !trainer ||
+      !BASE[trainer] ||
+      !BASE[trainer][session]
+    ) {
 
       return 0;
 
     }
 
 
-    /* Monthly plan = 1 month, no package discount */
-
     var training =
-      BASE[session] +
-      (
-        TRAINER_ADDON[val("trainer")] ||
-        0
-      );
+      BASE[trainer][session];
 
 
     /* Couple = 1.5 × Solo */
@@ -3270,6 +3322,12 @@ Thank you!`;
        WHATSAPP VALIDATION
     ====================================================== */
 
+    document.getElementById("mvForm").addEventListener(
+      "change",
+      updateWhatsAppLink
+    );
+
+
     whatsappBtn.addEventListener(
       "click",
       function (e) {
@@ -3585,6 +3643,35 @@ Thank you!`;
     groups.forEach(function (g) { setOpen(g, false); });
 
   });
+
+
+  /* Reset button: clear every choice and start again */
+
+  var resetBtn = document.getElementById("mvReset");
+
+  if (resetBtn) {
+
+    resetBtn.addEventListener("click", function () {
+
+      form.reset();
+
+      groups.forEach(function (g) {
+
+        g.classList.remove("invalid");
+
+      });
+
+      var err = document.getElementById("mvError");
+
+      if (err) err.classList.remove("show");
+
+      form.dispatchEvent(new Event("change", { bubbles: true }));
+
+      openOnly(groups[0]);
+
+    });
+
+  }
 
 
   /* Start: first step open */
