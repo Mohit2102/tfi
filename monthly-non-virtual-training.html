@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="TFI — Time To Fit India. Build your monthly virtual training plan.">
+  <meta name="description" content="TFI — Time To Fit India. A monthly in-person training plan that combines a personalised workout plan with nutrition, weekly nutritionist check-ins and coach calls.">
   <title>Monthly Non-Virtual Training | TFI — Time To Fit India</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <!-- Plan page styles: keep AFTER style.css -->
+  <link rel="stylesheet" href="plan-showcase.css">
 </head>
 
 <body>
@@ -163,208 +165,229 @@
 </header>
 
 
-<main id="top" class="mv-page">
+<!-- To change this page's price, edit data-price below. Everything else follows it. -->
+<main id="top" class="ps-page"
+      data-plan="monthly-nv"
+      data-plan-name="Monthly Non-Virtual Training"
+      data-price="5999"
+      data-whatsapp="918951077599">
 
-  <section class="mv-section">
-    <div class="mv-orb mv-orb--1"></div>
-    <div class="mv-orb mv-orb--2"></div>
-    <div class="mv-dot"></div>
-    <div class="mv-dot"></div>
-    <div class="mv-dot"></div>
+  <!-- ===================== HERO ===================== -->
+  <section class="ps-hero">
+    <span class="ps-orb ps-orb--a" aria-hidden="true"></span>
+    <span class="ps-orb ps-orb--b" aria-hidden="true"></span>
 
-    <div class="wrap">
+    <div class="ps-wrap">
 
-      <div class="mv-head">
-        <div class="mv-kicker">Monthly Non-Virtual Training</div>
-        <h1>Build your plan.<span>Train in person.</span></h1>
-        <p>Choose your sessions, coaching level, nutrition and extension for face-to-face training with your coach. Your price updates instantly.</p>
-      </div>
+      <nav class="ps-crumbs ps-rise" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        <a href="non-virtual-training.html">Non-Virtual</a><i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        <b>Monthly</b>
+      </nav>
 
-      <div class="mv-layout">
+      <div class="ps-grid">
 
-        <div class="mv-visual">
-          <div class="mv-video">
-            <video autoplay muted loop playsinline preload="metadata">
-              <source src="videos/monthly-non-virtual.mp4" type="video/mp4">
-            </video>
-            <div class="mv-video-shade"></div>
-            <div class="mv-video-shine"></div>
-            <span class="mv-live">TFI STUDIO · IN PERSON</span>
-            <div class="mv-video-copy">
-              <h2>Real coaching.<br><span>Real results.</span></h2>
-              <p>Hands-on guidance, perfect form and a coach beside you for every rep.</p>
-            </div>
-          </div>
+        <div class="ps-info">
+          <span class="ps-kicker ps-rise">TFI Studio · Monthly · In person</span>
 
-          <div class="mv-benefits">
-            <div class="mv-benefit">
-              <i class="fa-solid fa-dumbbell"></i>
-              <strong>Hands-on Coaching</strong>
-              <small>Face-to-face guidance every session</small>
-            </div>
-            <div class="mv-benefit">
-              <i class="fa-solid fa-bullseye"></i>
-              <strong>Personalised</strong>
-              <small>Training built around your goals</small>
-            </div>
-            <div class="mv-benefit">
-              <i class="fa-solid fa-chart-line"></i>
-              <strong>Progress Tracking</strong>
-              <small>Measured results you can see</small>
-            </div>
-            <div class="mv-benefit">
-              <i class="fa-solid fa-location-dot"></i>
-              <strong>Studio Training</strong>
-              <small>Full equipment, real environment</small>
-            </div>
-          </div>
+          <h1 class="ps-title ps-rise" style="--d:.08s">Monthly Non-Virtual <span>Training</span></h1>
+
+          <p class="ps-lead ps-rise" style="--d:.16s"><strong>How much can you change your body in a month?</strong> More than you think – but only if you have three things: a good exercise plan, smart eating rules, and the right attitude to follow both with focus and determination.</p>
+          <p class="ps-copy ps-rise" style="--d:.24s">A combination of nutrition &amp; workout, this plan gives you an added advantage of weekly check-ins with the nutritionist, and you can book a call with your coach as well.</p>
+
+          <ul class="ps-pills ps-rise" style="--d:.32s">
+            <li><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Certified coaches</li>
+            <li><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Flexible scheduling</li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> In person at the studio</li>
+          </ul>
         </div>
 
-        <div class="mv-card">
+        <aside class="ps-buy ps-rise" style="--d:.18s" aria-label="Plan price">
+          <span class="ps-buy-label">Monthly plan</span>
 
-          <div class="mv-card-top">
-            <div>
-              <span class="mv-mini">CONFIGURE YOUR PLAN</span>
-              <h2>Monthly In-Person Plan</h2>
-            </div>
-            <div class="mv-price">
-              <small>Your price</small>
-              <strong id="mvPrice">₹5,999</strong>
-              <em>/ month</em>
-            </div>
+          <div class="ps-price" data-ps-price><span class="ps-sr">₹₹3,999.00</span><span class="ps-cur" aria-hidden="true">₹</span><span class="ps-amt" aria-hidden="true">₹3,999</span><span class="ps-dec" aria-hidden="true">.00</span></div>
+          <p class="ps-per">for one month · workout and nutrition included</p>
+
+          <div class="ps-rule"></div>
+
+          <ul class="ps-incl">
+            <li><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Personalised workout schedule</li>
+            <li><i class="fa-solid fa-utensils" aria-hidden="true"></i> Diet plan built around your goal</li>
+            <li><i class="fa-solid fa-comments" aria-hidden="true"></i> Weekly check-ins with the nutritionist</li>
+            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> Book a call with your coach</li>
+          </ul>
+
+          <div class="ps-actions">
+            <a class="ps-btn ps-btn--primary" data-ps-continue href="index.html?plan=monthly-nv&amp;total=5999#contact">Continue With My Plan <span aria-hidden="true">→</span></a>
+            <a class="ps-btn ps-btn--wa" data-ps-wa href="https://wa.me/918951077599?text=Hello%20TFI%20%F0%9F%91%8B%0A%0AI%20am%20interested%20in%20the%20Monthly%20Non-Virtual%20Training%20plan%20%28%E2%82%B95%2C999.00%29.%0A%0APlease%20share%20the%20details%20and%20next%20steps.%20Thank%20you%21" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Enquire on WhatsApp</a>
           </div>
 
-          <div class="mv-steps" aria-hidden="true">
-            <div class="mv-step" data-step="session"><b>1</b><span>Sessions</span></div>
-            <div class="mv-step" data-step="couple"><b>2</b><span>Couple</span></div>
-            <div class="mv-step" data-step="nutrition"><b>3</b><span>Nutrition</span></div>
-            <div class="mv-step" data-step="trainer"><b>4</b><span>Trainer</span></div>
-            <div class="mv-step" data-step="extension"><b>5</b><span>Extend</span></div>
-          </div>
+          <p class="ps-note"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Your plan is confirmed after payment.</p>
+        </aside>
 
-          <form id="mvForm" class="mv-form" novalidate>
-
-            <fieldset class="mv-group" data-group="session">
-              <legend>Sessions <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--3">
-                <label class="mv-opt">
-                  <input type="radio" name="session" value="12" data-label="12 Sessions">
-                  <span><b>12</b><em>Sessions</em></span>
-                </label>
-                <label class="mv-opt mv-opt--hot">
-                  <input type="radio" name="session" value="16" data-label="16 Sessions">
-                  <span><b>16</b><em>Sessions</em></span>
-                </label>
-                <label class="mv-opt">
-                  <input type="radio" name="session" value="20" data-label="20 Sessions">
-                  <span><b>20</b><em>Sessions</em></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="mv-group" data-group="couple">
-              <legend>Couple Training <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--2">
-                <label class="mv-opt">
-                  <input type="radio" name="couple" value="no" data-label="No">
-                  <span><b>Solo</b><em>Just me</em></span>
-                </label>
-                <label class="mv-opt">
-                  <input type="radio" name="couple" value="yes" data-label="Yes – same hours">
-                  <span><b>Couple</b><em>Same hours · +₹2,000</em></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="mv-group" data-group="nutrition">
-              <legend>Nutrition Plan <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--2">
-                <label class="mv-opt">
-                  <input type="radio" name="nutrition" value="no" data-label="No">
-                  <span><b>Training only</b><em>No nutrition</em></span>
-                </label>
-                <label class="mv-opt">
-                  <input type="radio" name="nutrition" value="yes" data-label="Yes">
-                  <span><b>Add nutrition</b><em>+₹750</em></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="mv-group" data-group="trainer">
-              <legend>Trainer Level <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--1">
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="standard" data-label="Standard">
-                  <span><div><b>Standard</b><em>Certified coach</em></div><strong>Included</strong></span>
-                </label>
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="advanced" data-label="Advanced + Rehab">
-                  <span><div><b>Advanced + Rehab</b><em>Injury &amp; recovery focus</em></div><strong>+₹1,000</strong></span>
-                </label>
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="elite" data-label="Elite">
-                  <span><div><b>Elite</b><em>Senior performance coach</em></div><strong>+₹2,000</strong></span>
-                </label>
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="eliteplus" data-label="Elite +">
-                  <span><div><b>Elite +</b><em>Top-tier coaching</em></div><strong>+₹3,000</strong></span>
-                </label>
-                <label class="mv-opt mv-opt--row">
-                  <input type="radio" name="trainer" value="premium" data-label="Premium">
-                  <span><div><b>Premium</b><em>The full TFI experience</em></div><strong>+₹4,000</strong></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="mv-group" data-group="extension">
-              <legend>Add Extension <small>REQUIRED</small></legend>
-              <div class="mv-opts mv-opts--2">
-                <label class="mv-opt">
-                  <input type="radio" name="extension" value="none" data-label="No Extension">
-                  <span><b>No extension</b><em>30 days</em></span>
-                </label>
-                <label class="mv-opt">
-                  <input type="radio" name="extension" value="10" data-label="+10 Days">
-                  <span><b>+10 Days</b><em>10 days more · +₹1,000</em></span>
-                </label>
-              </div>
-            </fieldset>
-
-            <div class="mv-summary" aria-live="polite">
-              <div class="mv-summary-title">YOUR SELECTION</div>
-              <div class="mv-row"><span>Sessions</span><strong class="empty" id="sumSession">Not selected</strong></div>
-              <div class="mv-row"><span>Couple</span><strong class="empty" id="sumCouple">Not selected</strong></div>
-              <div class="mv-row"><span>Nutrition</span><strong class="empty" id="sumNutrition">Not selected</strong></div>
-              <div class="mv-row"><span>Trainer</span><strong class="empty" id="sumTrainer">Not selected</strong></div>
-              <div class="mv-row"><span>Extension</span><strong class="empty" id="sumExtension">Not selected</strong></div>
-              <div class="mv-total"><span>Total / month</span><strong id="mvTotal">₹5,999</strong></div>
-            </div>
-
-            <button type="submit" class="mv-submit locked" id="mvSubmit">
-              Continue With My Plan <span>→</span>
-            </button>
-
-            <p class="mv-error" id="mvError" role="alert"></p>
-
-            <p class="mv-note">
-              Our team will confirm your final plan, schedule and pricing before any payment.
-            </p>
-          </form>
-        </div>
       </div>
 
-      <div class="mv-trust">
-        <div><i class="fa-solid fa-shield-heart"></i> Certified coaches</div>
-        <div><i class="fa-solid fa-calendar-check"></i> Flexible scheduling</div>
-        <div><i class="fa-solid fa-user-check"></i> 100% personalised</div>
-        <div><i class="fa-solid fa-headset"></i> Team confirms before payment</div>
+      <div class="ps-benefits ps-rise" style="--d:.4s">
+        <div class="ps-benefit"><i class="fa-solid fa-dumbbell" aria-hidden="true"></i><div><b>Hands-on Coaching</b><small>Face-to-face guidance every session</small></div></div>
+        <div class="ps-benefit"><i class="fa-solid fa-bullseye" aria-hidden="true"></i><div><b>Personalised</b><small>Training built around your goals</small></div></div>
+        <div class="ps-benefit"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><div><b>Progress Tracking</b><small>Measured results you can see</small></div></div>
+        <div class="ps-benefit"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><b>Studio Training</b><small>Full equipment, real environment</small></div></div>
       </div>
 
     </div>
   </section>
 
-</main>
 
+  <!-- ===================== INSIDE YOUR PLAN (2 images + 1 GIF) ===================== -->
+  <section class="ps-section" id="inside">
+    <div class="ps-wrap">
+
+      <header class="ps-head" data-reveal>
+        <span class="ps-eyebrow">What you get</span>
+        <h2>Inside your <span>plan</span></h2>
+        <p>A personalised diet plan, a day-wise workout schedule and exercise demos, built around you.</p>
+      </header>
+
+      <div class="ps-triptych">
+
+        <figure class="ps-card ps-card--poster" data-reveal>
+          <button class="ps-media" type="button" aria-label="Enlarge: Personalised diet plan">
+            <img src="images/plan-diet.jpg" alt="Sample personalised diet plan with meals, macros and hydration" loading="lazy" decoding="async">
+            <span class="ps-tag">Sample</span>
+            <span class="ps-zoom" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+          </button>
+          <figcaption><span class="ps-idx">01</span><b>Personalised diet plan</b><small>Meals, macros and hydration mapped to your goal.</small></figcaption>
+        </figure>
+
+        <figure class="ps-card ps-card--poster" style="--d:.12s" data-reveal>
+          <button class="ps-media" type="button" aria-label="Enlarge: Day-wise workout schedule">
+            <img src="images/plan-workout.jpg" alt="Sample day-wise workout schedule with warm-up, main workout, sets and reps" loading="lazy" decoding="async">
+            <span class="ps-tag">Sample</span>
+            <span class="ps-zoom" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+          </button>
+          <figcaption><span class="ps-idx">02</span><b>Day-wise workout schedule</b><small>Warm-up, main workout, sets, reps and cool-down.</small></figcaption>
+        </figure>
+
+        <figure class="ps-card ps-card--gif" style="--d:.24s" data-reveal>
+          <button class="ps-media" type="button" aria-label="Enlarge: Exercise demo">
+            <img src="images/plan-exercise.gif" alt="Exercise demo" loading="lazy" decoding="async">
+            <span class="ps-tag">Demo</span>
+            <span class="ps-zoom" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+          </button>
+          <figcaption><span class="ps-idx">03</span><b>Exercise demos</b><small>See the movement before you do it.</small></figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== THREE THINGS ===================== -->
+  <section class="ps-section">
+    <div class="ps-wrap">
+
+      <header class="ps-head" data-reveal>
+        <span class="ps-eyebrow">The formula</span>
+        <h2>Three things. <span>One plan.</span></h2>
+        <p>Your body changes when all three work together, and this plan puts them in one place.</p>
+      </header>
+
+      <div class="ps-three">
+        <article class="ps-tile" data-reveal>
+          <span class="ps-num" aria-hidden="true">01</span>
+          <div class="ps-ico"><i class="fa-solid fa-dumbbell" aria-hidden="true"></i></div>
+          <h3>A good exercise plan</h3>
+          <p>A structured, day-wise schedule with sets, reps and intensity, built around your goal.</p>
+        </article>
+        <article class="ps-tile" style="--d:.12s" data-reveal>
+          <span class="ps-num" aria-hidden="true">02</span>
+          <div class="ps-ico"><i class="fa-solid fa-apple-whole" aria-hidden="true"></i></div>
+          <h3>Smart eating rules</h3>
+          <p>A personalised diet plan, with weekly check-ins with the nutritionist to keep you on track.</p>
+        </article>
+        <article class="ps-tile" style="--d:.24s" data-reveal>
+          <span class="ps-num" aria-hidden="true">03</span>
+          <div class="ps-ico"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+          <h3>The right attitude</h3>
+          <p>Focus and determination to follow both. Your coach is beside you for every rep, and you can book a call with your coach as well.</p>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="ps-section">
+    <div class="ps-wrap">
+
+      <header class="ps-head" data-reveal>
+        <span class="ps-eyebrow">Questions</span>
+        <h2>Good to <span>know</span></h2>
+      </header>
+
+      <div class="ps-faq" data-reveal>
+        <details>
+          <summary>What is included in the plan?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+          <p>A personalised workout schedule and diet plan, weekly check-ins with the nutritionist, and the option to book a call with your coach.</p>
+        </details>
+        <details>
+          <summary>Is the training in person?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+          <p>Yes. This is a non-virtual plan, so you train face-to-face with your coach at the TFI studio.</p>
+        </details>
+        <details>
+          <summary>Do I pay straight away?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+          <p>No. Your plan is confirmed after payment.</p>
+        </details>
+        <details>
+          <summary>How do I get started?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+          <p>Tap Continue With My Plan and our team will take it from there. If you have questions first, use Enquire on WhatsApp.</p>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== CLOSING CTA ===================== -->
+  <section class="ps-cta">
+    <div class="ps-wrap ps-cta-inner" data-reveal>
+      <div>
+        <h2>Ready to change your body in a month?</h2>
+        <p><strong data-ps-price-text>₹₹3,999.00</strong> · workout and nutrition, with your coach beside you.</p>
+      </div>
+      <div class="ps-actions">
+        <a class="ps-btn ps-btn--primary" data-ps-continue href="index.html?plan=monthly-nv&amp;total=5999#contact">Continue With My Plan <span aria-hidden="true">→</span></a>
+        <a class="ps-btn ps-btn--wa" data-ps-wa href="https://wa.me/918951077599?text=Hello%20TFI%20%F0%9F%91%8B%0A%0AI%20am%20interested%20in%20the%20Monthly%20Non-Virtual%20Training%20plan%20%28%E2%82%B95%2C999.00%29.%0A%0APlease%20share%20the%20details%20and%20next%20steps.%20Thank%20you%21" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Enquire on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== STICKY PRICE BAR ===================== -->
+  <div class="ps-sticky" id="psSticky">
+    <div class="ps-wrap ps-sticky-in">
+      <div>
+        <small>Monthly plan</small>
+        <strong data-ps-price-text>₹₹3,999.00</strong>
+      </div>
+      <a class="ps-btn ps-btn--primary" data-ps-continue href="index.html?plan=monthly-nv&amp;total=5999#contact">Continue With My Plan <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div class="ps-lb" id="psLb" role="dialog" aria-modal="true" aria-label="Plan preview" hidden>
+    <button class="ps-lb-btn ps-lb-close" type="button" aria-label="Close preview"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <button class="ps-lb-btn ps-lb-prev" type="button" aria-label="Previous"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+    <button class="ps-lb-btn ps-lb-next" type="button" aria-label="Next"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+    <figure class="ps-lb-fig">
+      <img class="ps-lb-img" alt="">
+      <figcaption class="ps-lb-cap"><b></b><small></small></figcaption>
+    </figure>
+  </div>
+
+</main>
 
 
 <footer>
@@ -482,121 +505,7 @@
 })();
 </script>
 
-<!-- Plan configurator -->
-<!-- Plan configurator -->
-<script>
-(function () {
-  "use strict";
-
-  var form = document.getElementById("mvForm");
-  if (!form) return;
-
-  /* ===== PRICING — placeholder amounts, replace with your final TFI pricing ===== */
-  var CFG = {"base": {"12": 5999, "16": 7499, "20": 8999}, "defaultBase": 5999, "trainer": {"standard": 0, "advanced": 1000, "elite": 2000, "eliteplus": 3000, "premium": 4000}, "couple": 2000, "nutrition": 750, "ext": 1000, "extValue": "10", "months": 1};
-
-  var GROUPS = ["session", "couple", "nutrition", "trainer", "extension"];
-
-  var priceEl = document.getElementById("mvPrice");
-  var totalEl = document.getElementById("mvTotal");
-  var perMonthEl = document.getElementById("mvPerMonth");
-  var submit = document.getElementById("mvSubmit");
-  var errorEl = document.getElementById("mvError");
-
-  var sum = {
-    session: document.getElementById("sumSession"),
-    couple: document.getElementById("sumCouple"),
-    nutrition: document.getElementById("sumNutrition"),
-    trainer: document.getElementById("sumTrainer"),
-    extension: document.getElementById("sumExtension")
-  };
-
-  function checked(name) { return form.querySelector('input[name="' + name + '"]:checked'); }
-  function val(name) { var el = checked(name); return el ? el.value : ""; }
-  function money(n) { return "₹" + Number(n).toLocaleString("en-IN"); }
-
-  function total() {
-    var t = CFG.base[val("session")] || CFG.defaultBase;
-    t += CFG.trainer[val("trainer")] || 0;
-    if (val("couple") === "yes") t += CFG.couple;
-    if (val("nutrition") === "yes") t += CFG.nutrition;
-    if (val("extension") === CFG.extValue) t += CFG.ext;
-    return t;
-  }
-
-  function update() {
-    var done = 0;
-
-    GROUPS.forEach(function (g) {
-      var el = checked(g);
-      var out = sum[g];
-      var step = document.querySelector('.mv-step[data-step="' + g + '"]');
-      var group = form.querySelector('.mv-group[data-group="' + g + '"]');
-
-      if (el) {
-        out.textContent = el.getAttribute("data-label");
-        out.classList.remove("empty");
-        if (step) step.classList.add("done");
-        if (group) group.classList.remove("invalid");
-        done++;
-      } else {
-        out.textContent = "Not selected";
-        out.classList.add("empty");
-        if (step) step.classList.remove("done");
-      }
-    });
-
-    var t = total();
-    priceEl.textContent = money(t);
-    totalEl.textContent = money(t);
-    if (perMonthEl) perMonthEl.textContent = "≈ " + money(Math.round(t / CFG.months)) + " / month";
-    priceEl.classList.remove("pop");
-    void priceEl.offsetWidth;
-    priceEl.classList.add("pop");
-
-    submit.classList.toggle("locked", done < GROUPS.length);
-    if (done === GROUPS.length) errorEl.classList.remove("show");
-  }
-
-  form.addEventListener("change", update);
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    var missing = GROUPS.filter(function (g) { return !checked(g); });
-
-    if (missing.length) {
-      GROUPS.forEach(function (g) {
-        var group = form.querySelector('.mv-group[data-group="' + g + '"]');
-        if (group) group.classList.toggle("invalid", missing.indexOf(g) !== -1);
-      });
-
-      errorEl.textContent = "Please complete every step to continue.";
-      errorEl.classList.remove("show");
-      void errorEl.offsetWidth;
-      errorEl.classList.add("show");
-
-      var first = form.querySelector('.mv-group[data-group="' + missing[0] + '"]');
-      if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
-      return;
-    }
-
-    var params = new URLSearchParams({
-      plan: "monthly-nv",
-      session: val("session"),
-      couple: val("couple"),
-      nutrition: val("nutrition"),
-      trainer: val("trainer"),
-      extension: val("extension"),
-      total: total()
-    });
-
-    /* Change this URL later to your checkout / contact / payment page. */
-    window.location.href = "index.html?" + params.toString() + "#contact";
-  });
-
-  update();
-})();
-</script>
+<script src="plan-showcase.js" defer></script>
 
 </body>
 </html>

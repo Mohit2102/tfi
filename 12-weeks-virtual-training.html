@@ -13,31 +13,6 @@
   <link rel="stylesheet" href="style.css">
   <!-- Page styles: load AFTER style.css -->
   <!-- <link rel="stylesheet" href="monthly-virtual-training.css"> -->
-  <style>
-    .mvp-reset {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      margin-top: 10px;
-      padding: 12px 18px;
-      border-radius: 12px;
-      border: 1px solid rgba(128, 128, 128, .5);
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      font-weight: 600;
-      cursor: pointer;
-      opacity: .85;
-      transition: opacity .2s ease, transform .2s ease;
-    }
-    .mvp-reset:hover {
-      opacity: 1;
-      transform: translateY(-1px);
-    }
-  </style>
-
 </head>
 
 <body>
@@ -238,7 +213,7 @@
           </ul>
           <div class="mvp-hero-cta">
             <a href="#build" class="mvp-hero-btn">Build my plan <span>↓</span></a>
-            <!-- <span class="mvp-hero-note">Team confirms pricing before any payment</span> -->
+            <!-- <span class="mvp-hero-note">Your plan is confirmed after payment.</span> -->
           </div>
 
           <!-- <div class="mvp-from"><small>Starting from</small><strong>₹7,999</strong><em>/ 12 weeks · ≈ ₹2,666 / month</em></div>
@@ -276,19 +251,19 @@
       <ol class="mvp-flow" id="mvFlow">
         <li class="mvp-flow-item is-current">
           <span class="mvp-flow-num"><b>1</b><i class="fa-solid fa-check"></i></span>
-          <span class="mvp-flow-txt"><strong>Build</strong><small>Choose sessions, trainer level and add-ons.</small></span>
+          <span class="mvp-flow-txt"><strong>Build</strong><small>Choose your sessions, trainer level, and optional add-ons.</small></span>
         </li>
         <li class="mvp-flow-item">
           <span class="mvp-flow-num"><b>2</b><i class="fa-solid fa-check"></i></span>
-          <span class="mvp-flow-txt"><strong>Confirm</strong><small>Your plan is confirmed after payment.</small></span>
+          <span class="mvp-flow-txt"><strong>Review Your Plan</strong><small>Check your selected options and final price.</small></span>
         </li>
         <li class="mvp-flow-item">
           <span class="mvp-flow-num"><b>3</b><i class="fa-solid fa-check"></i></span>
-          <span class="mvp-flow-txt"><strong>Schedule</strong><small>Pick the slots that suit your day.</small></span>
+          <span class="mvp-flow-txt"><strong>Confirm & Pay</strong><small>Complete your payment to confirm your plan.</small></span>
         </li>
         <li class="mvp-flow-item">
           <span class="mvp-flow-num"><b>4</b><i class="fa-solid fa-check"></i></span>
-          <span class="mvp-flow-txt"><strong>Train live</strong><small>Join your coach online and start.</small></span>
+          <span class="mvp-flow-txt"><strong>Get Started</strong><small>Receive your confirmation and prepare for your fitness journey.</small></span>
         </li>
       </ol>
     </div>
@@ -342,8 +317,8 @@
           <legend>Trainer Level</legend>
           <div class="mvp-lab"><b>Trainer Level</b><small>REQUIRED</small></div>
           <div class="mvp-opts mvp-opts--2">
-            <label class="mvp-opt"><input type="radio" name="trainer" value="advanced" data-label="Certified Personal Training"><span><i class="mvp-ico fa-solid fa-certificate" aria-hidden="true"></i><b>Certified Personal Training</b><em>Certified coach</em><!-- PRICE (re-enable later): <div class="mvp-p">+₹1,500</div> --></span></label>
             <label class="mvp-opt"><input type="radio" name="trainer" value="standard" data-label="Specialized Personal Training"><span><i class="mvp-ico fa-solid fa-star" aria-hidden="true"></i><b>Specialized Personal Training</b><em>Condition-focused coaching</em><!-- PRICE (re-enable later): <div class="mvp-p">Included</div> --></span></label>
+            <label class="mvp-opt"><input type="radio" name="trainer" value="advanced" data-label="Certified Personal Training"><span><i class="mvp-ico fa-solid fa-certificate" aria-hidden="true"></i><b>Certified Personal Training</b><em>Certified coach</em><!-- PRICE (re-enable later): <div class="mvp-p">+₹1,500</div> --></span></label>
           </div>
         </fieldset>
 
@@ -364,15 +339,9 @@
             <div>Trainer Level<strong class="empty" id="sumTrainer">Not selected</strong></div>
             <div>Extension<strong class="empty" id="sumExtension">Not selected</strong></div>
           </div>
-          <div class="mvp-total"><small>Total / 12 weeks</small><div><strong id="mvTotal">₹0</strong><em class="mvp-per" id="mvPerMonth"></em></div></div>
+          <div class="mvp-total"><small>Total / 12 weeks</small><div><strong id="mvTotal">₹7,999</strong><em class="mvp-per" id="mvPerMonth">≈ ₹2,666 / month</em></div></div>
           <button type="submit" class="mvp-submit locked" id="mvSubmit">Continue With My Plan <span>→</span></button>
-       <!-- Reset -->
-          <button type="button" class="mvp-reset" id="mvReset">
-            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
-            <span>Reset Price</span>
-          </button>
-
-          <!-- WhatsApp Enquiry -->
+       <!-- WhatsApp Enquiry -->
 
           <a href="#"
              class="mvp-whatsapp"
@@ -448,14 +417,14 @@
           <details><summary>Do I pay straight away?<i class="fa-solid fa-plus"></i></summary><p>Your plan is confirmed after payment. You can build your plan and see the total before you commit.</p></details>
           <details><summary>How many sessions will I get?<i class="fa-solid fa-plus"></i></summary><p>3 sessions a week is 36 in total, 4 a week is 48 and 5 a week is 60 across the 12 weeks.</p></details>
           <details><summary>Can I extend the plan?<i class="fa-solid fa-plus"></i></summary><p>Yes. You can add 1 more month (30 days) for ₹1,000.</p></details>
-          <details><summary>Can my partner train with me?<i class="fa-solid fa-plus"></i></summary><p>Yes. Couple training is priced at 1.5× the Solo training price.</p></details>
+          <details><summary>Can my partner train with me?<i class="fa-solid fa-plus"></i></summary><p>Yes. Couple training at the same hours is +₹3,000 for the 12 weeks.</p></details>
         </div>
       </div>
     </div>
   </section>
 
   <div class="mvp-sticky" id="mvSticky">
-    <div><small>Your total</small><strong id="mvStickyTotal">₹0</strong></div>
+    <div><small>Your total</small><strong id="mvStickyTotal">₹7,999</strong></div>
     <a href="#build" class="mvp-sticky-btn">Build plan <span>→</span></a>
   </div>
 
@@ -600,19 +569,12 @@
   var form = document.getElementById("mvForm");
   if (!form) return;
 
-  /* 12-WEEK PRICING
-     Monthly Solo price per trainer level and sessions per week.
-     3 / 4 / 5 sessions a week = 12 / 16 / 20 sessions a month.
-     standard = Specialized Personal Training
-     advanced = Certified Personal Training
-     Package discount (10% off) applies to training only. */
+  /* 12-WEEK PRICING — change these when you finalise TFI pricing */
   var CFG = {
-    monthly: {
-      standard: { "3": 15000, "4": 20000, "5": 25000 },
-      advanced: { "3": 9999, "4": 13332, "5": 16665 }
-    },
-    discount: 0.1,
-    couple: 1.5,
+    base: { "3": 7999, "4": 9999, "5": 11999 },
+    defaultBase: 7999,
+    trainer: { standard: 0, advanced: 1500, elite: 3000, eliteplus: 4500, premium: 6000 },
+    couple: 3000,
     nutrition: 2500,
     ext: 1000,
     extValue: "1",
@@ -639,19 +601,10 @@
   function val(name) { var el = checked(name); return el ? el.value : ""; }
   function money(n) { return "₹" + Number(n).toLocaleString("en-IN"); }
 
-  /* Training price = monthly price x months x (1 - discount); Couple = 1.5x.
-     Stays 0 until BOTH a trainer level and a session count are chosen. */
-  function training() {
-    var level = CFG.monthly[val("trainer")];
-    var monthly = level && level[val("session")];
-    if (!monthly) return 0;
-    var t = Math.round(monthly * CFG.months * (1 - CFG.discount));
-    if (val("couple") === "yes") t = Math.round(t * CFG.couple);
-    return t;
-  }
-
   function total() {
-    var t = training();
+    var t = CFG.base[val("session")] || CFG.defaultBase;
+    t += CFG.trainer[val("trainer")] || 0;
+    if (val("couple") === "yes") t += CFG.couple;
     if (val("nutrition") === "yes") t += CFG.nutrition;
     if (val("extension") === CFG.extValue) t += CFG.ext;
     return t;
@@ -689,7 +642,7 @@
     var t = total();
     totalEl.textContent = money(t);
     if (stickyEl) stickyEl.textContent = money(t);
-    if (perMonthEl) perMonthEl.textContent = training() ? "≈ " + money(Math.round(t / CFG.months)) + " / month" : "";
+    if (perMonthEl) perMonthEl.textContent = "≈ " + money(Math.round(t / CFG.months)) + " / month";
     totalEl.classList.remove("pop");
     void totalEl.offsetWidth;
     totalEl.classList.add("pop");
@@ -984,31 +937,6 @@
     groups.forEach(function (g) { setOpen(g, false); });
 
   });
-
-
-  /* Reset button: clear every choice and start again */
-
-  var resetBtn = document.getElementById("mvReset");
-
-  if (resetBtn) {
-
-    resetBtn.addEventListener("click", function () {
-
-      form.reset();
-
-      groups.forEach(function (g) { g.classList.remove("invalid"); });
-
-      var err = document.getElementById("mvError");
-
-      if (err) err.classList.remove("show");
-
-      form.dispatchEvent(new Event("change", { bubbles: true }));
-
-      openOnly(groups[0]);
-
-    });
-
-  }
 
 
   /* Start: first step open */
