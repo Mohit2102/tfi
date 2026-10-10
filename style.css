@@ -13163,7 +13163,291 @@ html.dark-mode .mvp-page {
 }
 
 
+/* =====================================================================
+   TFI — Personal-training condition pages (mvp design)
+   Load AFTER style.css. Only adds what the virtual-training design does
+   not already have: the 3-up journey row, the safety panel and the
+   related-programs grid. Everything is scoped under .mvp-page.
+   ===================================================================== */
 
+.mvp-page {
+  --mx-gold: #d9ad45;
+  --mx-gold-hi: #f4d98a;
+  --mx-line: rgba(217, 173, 69, .32);
+  --mx-soft: rgba(128, 128, 128, .22);
+  --mx-card: rgba(255, 255, 255, .045);
+  --mx-card-hi: rgba(255, 255, 255, .08);
+  --mx-mute: .78;
+}
+html:not(.dark-mode) .mvp-page {
+  --mx-gold: #a87818;
+  --mx-gold-hi: #cfa23a;
+  --mx-line: rgba(168, 120, 24, .4);
+  --mx-soft: rgba(28, 24, 16, .14);
+  --mx-card: #ffffff;
+  --mx-card-hi: #fbf7ee;
+}
+
+/* ---- Panel headings and spacing ----------------------------------- */
+.mvp-page .mvp-x-head { margin-bottom: 28px; }
+.mvp-page .mvp-x-head--sub { margin-top: clamp(40px, 6vw, 64px); }
+
+.mvp-page .mvp-cards--3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.mvp-page .mvp-card .mvp-x-tag {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--mx-gold);
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+.mvp-page .mvp-cards > .mvp-card > p:only-of-type:not(:first-of-type) { margin-top: 0; }
+
+/* ---- Safety panel -------------------------------------------------- */
+.mvp-page .mvp-safe {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+  padding: clamp(24px, 4vw, 44px);
+  border: 1px solid var(--mx-line);
+  border-radius: 26px;
+  background: linear-gradient(160deg, var(--mx-card-hi), var(--mx-card));
+}
+.mvp-page .mvp-safe-shield {
+  display: grid;
+  place-items: center;
+  width: 64px; height: 64px;
+  margin-bottom: 22px;
+  border: 1px solid var(--mx-line);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(244, 217, 138, .28), rgba(217, 173, 69, .08));
+  color: var(--mx-gold);
+  font-size: 26px;
+}
+.mvp-page .mvp-safe-title {
+  margin: 0;
+  font-family: "Oswald", "Inter", sans-serif;
+  font-size: clamp(30px, 3.6vw, 44px);
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+.mvp-page .mvp-safe-list { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.mvp-page .mvp-safe-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.mvp-page .mvp-safe-list i { margin-top: 3px; color: var(--mx-gold); font-size: 18px; }
+.mvp-page .mvp-safe-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px dashed var(--mx-line);
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: .88;
+}
+.mvp-page .mvp-safe-note b { color: var(--mx-gold); }
+
+/* ---- Related programs --------------------------------------------- */
+.mvp-page .mvp-related { padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 110px); }
+.mvp-page .mvp-rel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.mvp-page .mvp-rel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 20px;
+  border: 1px solid var(--mx-soft);
+  border-radius: 20px;
+  background: var(--mx-card);
+  color: inherit;
+  text-decoration: none;
+  transition: transform .3s cubic-bezier(.2, .7, .2, 1), border-color .25s, box-shadow .3s;
+}
+.mvp-page .mvp-rel > i:first-child {
+  display: grid;
+  place-items: center;
+  width: 46px; height: 46px;
+  margin-bottom: 8px;
+  border: 1px solid var(--mx-line);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(244, 217, 138, .26), rgba(217, 173, 69, .08));
+  color: var(--mx-gold);
+  font-size: 19px;
+}
+.mvp-page .mvp-rel strong { font-size: 16.5px; line-height: 1.3; }
+.mvp-page .mvp-rel span { margin-top: auto; color: var(--mx-gold); font-size: 14px; font-weight: 700; }
+.mvp-page .mvp-rel span i { margin-left: 4px; transition: transform .25s; }
+.mvp-page .mvp-rel:hover,
+.mvp-page .mvp-rel:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--mx-line);
+  box-shadow: 0 22px 44px -26px rgba(0, 0, 0, .6);
+}
+.mvp-page .mvp-rel:hover span i { transform: translateX(4px); }
+.mvp-page .mvp-rel:focus-visible { outline: 2px solid var(--mx-gold-hi); outline-offset: 3px; }
+
+/* ---- Responsive ----------------------------------------------------- */
+@media (max-width: 980px) {
+  .mvp-page .mvp-rel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mvp-page .mvp-safe { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .mvp-page .mvp-cards--3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 460px) {
+  .mvp-page .mvp-rel-grid { grid-template-columns: 1fr; }
+}
+
+
+/* =====================================================================
+   Enhancement layer
+   ===================================================================== */
+
+@keyframes mx-shine { to { background-position: 220% 0; } }
+@keyframes mx-bob   { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+
+/* ---- Fixed choices: Virtual + Specialized -------------------------- */
+.mvp-page .mvp-x-fixed {
+  /* display: grid; */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 0 18px;
+}
+.mvp-page .mvp-x-chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 14px;
+  padding: 16px 18px;
+  overflow: hidden;
+  border: 1px solid var(--mx-line);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(244, 217, 138, .16), rgba(217, 173, 69, .04) 60%);
+}
+.mvp-page .mvp-x-chip::after {            /* slow gold sheen */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(244, 217, 138, .22) 50%, transparent 65%) 0 0 / 220% 100%;
+  background-position: -120% 0;
+  animation: mx-shine 6s ease-in-out infinite;
+  pointer-events: none;
+}
+.mvp-page .mvp-x-chip > i:first-child {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px; height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, var(--mx-gold-hi), var(--mx-gold));
+  color: #19130a;
+  font-size: 18px;
+  box-shadow: 0 10px 22px -12px rgba(217, 173, 69, .9);
+}
+.mvp-page .mvp-x-chip small {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .65;
+}
+.mvp-page .mvp-x-chip b { display: block; font-size: 16px; line-height: 1.25; }
+.mvp-page .mvp-x-lock { margin-left: auto; color: var(--mx-gold); font-size: 14px; opacity: .8; }
+
+/* ---- Cards: gold hairline, lift, richer icon chip ------------------- */
+.mvp-page .mvp-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1), border-color .3s, box-shadow .35s;
+}
+.mvp-page .mvp-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--mx-gold-hi), transparent);
+  opacity: 0;
+  transition: opacity .35s;
+}
+.mvp-page .mvp-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--mx-line);
+  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, .7), 0 0 56px -30px rgba(217, 173, 69, .7);
+}
+.mvp-page .mvp-card:hover::before { opacity: 1; }
+.mvp-page .mvp-card > i:first-child {
+  display: inline-grid;
+  place-items: center;
+  width: 52px; height: 52px;
+  margin-bottom: 14px;
+  border: 1px solid var(--mx-line);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(244, 217, 138, .3), rgba(217, 173, 69, .08));
+  color: var(--mx-gold);
+  font-size: 21px;
+  box-shadow: 0 10px 24px -14px rgba(217, 173, 69, .8);
+}
+
+/* ---- Gallery floats drift gently --------------------------------- */
+.mvp-page .mvp-float--a { animation: mx-bob 6s ease-in-out infinite; }
+.mvp-page .mvp-float--b { animation: mx-bob 7s ease-in-out -2s infinite; }
+.mvp-page .mvp-float--c { animation: mx-bob 8s ease-in-out -4s infinite; }
+
+/* ---- Safety: gold rail + richer panel ----------------------------- */
+.mvp-page .mvp-safe {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -36px rgba(0, 0, 0, .7), 0 0 90px -50px rgba(217, 173, 69, .8);
+}
+.mvp-page .mvp-safe::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--mx-gold-hi), var(--mx-gold), transparent);
+}
+.mvp-page .mvp-safe-list li {
+  padding: 14px 16px;
+  border: 1px solid var(--mx-soft);
+  border-radius: 16px;
+  background: var(--mx-card);
+  transition: border-color .25s, transform .25s;
+}
+.mvp-page .mvp-safe-list li:hover { border-color: var(--mx-line); transform: translateX(4px); }
+
+/* ---- Related: icon fills gold on hover ----------------------------- */
+.mvp-page .mvp-rel:hover > i:first-child {
+  background: linear-gradient(145deg, var(--mx-gold-hi), var(--mx-gold));
+  color: #19130a;
+}
+
+@media (max-width: 640px) {
+  .mvp-page .mvp-x-fixed { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mvp-page .mvp-x-chip::after,
+  .mvp-page .mvp-float--a,
+  .mvp-page .mvp-float--b,
+  .mvp-page .mvp-float--c { animation: none; }
+  .mvp-page .mvp-card,
+  .mvp-page .mvp-rel,
+  .mvp-page .mvp-safe-list li { transition: none; }
+}
 /* =========================================================
    TABLET
    ========================================================= */
@@ -15251,3 +15535,156 @@ html.ps-lock { overflow: hidden; }
   }
 }
 
+
+/* =====================================================================
+   Enhancement layer — richer depth, one signature moment
+   (appended last so it refines the rules above)
+   ===================================================================== */
+
+/* Price card: a slow band of light travels around the gold border */
+@property --ps-ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes ps-orbit { to { --ps-ang: 360deg; } }
+@keyframes ps-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 173, 69, .55); }
+  60%      { box-shadow: 0 0 0 9px rgba(217, 173, 69, 0); }
+}
+@keyframes ps-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -7px; }
+}
+
+.ps-buy {
+  box-shadow: var(--ps-shadow), 0 0 80px -34px rgba(217, 173, 69, .55);
+}
+.ps-buy::before {
+  padding: 1.5px;
+  background: conic-gradient(from var(--ps-ang),
+    rgba(217, 173, 69, .25) 0deg,
+    rgba(244, 217, 138, .95) 70deg,
+    rgba(217, 173, 69, .25) 140deg,
+    rgba(217, 173, 69, .25) 360deg);
+  animation: ps-orbit 7s linear infinite;
+}
+.ps-price .ps-amt {
+  background: linear-gradient(180deg, var(--ps-ink) 35%, var(--ps-gold-hi) 140%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Hero: a faint gold dot-grid that fades out toward the edges */
+.ps-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(217, 173, 69, .22) 1px, transparent 1.4px);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000, transparent 75%);
+  opacity: .55;
+  pointer-events: none;
+}
+
+/* Benefit strip: gold-filled icon chips */
+.ps-benefit:hover { border-color: var(--ps-line); }
+.ps-benefit i,
+.ps-benefit .ps-ico {
+  background: linear-gradient(145deg, rgba(244, 217, 138, .28), rgba(217, 173, 69, .1));
+  box-shadow: inset 0 0 0 1px var(--ps-line);
+}
+
+/* ---- Signature moment: the three samples fan out like cards in hand ---- */
+@media (min-width: 761px) {
+  .ps-triptych { padding-block: 26px 10px; }
+  .ps-card {
+    position: relative;
+    top: 0;
+    transition: rotate .45s cubic-bezier(.2, .7, .2, 1), top .45s cubic-bezier(.2, .7, .2, 1),
+                transform .35s cubic-bezier(.2, .7, .2, 1), border-color .3s, box-shadow .35s;
+    background: linear-gradient(170deg, var(--ps-card-hi), var(--ps-card));
+  }
+  .ps-card:nth-child(1) { rotate: -2.2deg; top: 10px; }
+  .ps-card:nth-child(2) { rotate: 0deg;    top: -18px; box-shadow: var(--ps-shadow); border-color: var(--ps-line); }
+  .ps-card:nth-child(3) { rotate: 2.2deg;  top: 10px; }
+  .ps-card:hover { rotate: 0deg; z-index: 3; }
+  .ps-card:nth-child(1):hover,
+  .ps-card:nth-child(3):hover { top: -2px; }
+  .ps-card:nth-child(2):hover { top: -26px; }
+}
+.ps-media::before {            /* soft gold vignette so samples sit in the page */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(10, 8, 4, .16), transparent 30%);
+  pointer-events: none;
+}
+.ps-card--gif .ps-tag::before {  /* live dot on the animated demo */
+  content: "";
+  display: inline-block;
+  width: 7px; height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--ps-gold-hi);
+  vertical-align: 1px;
+  animation: ps-pulse 1.8s ease-out infinite;
+}
+.ps-idx { display: none; }      /* these three are not a sequence */
+.ps-card figcaption b {
+  margin: 4px 0 6px;
+  font: 700 21px/1.15 var(--ps-display);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+/* Tiles: gold hairline + glow on hover, sturdier icon */
+.ps-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ps-gold-hi), transparent);
+  opacity: 0;
+  transition: opacity .35s;
+}
+.ps-tile:hover::before { opacity: 1; }
+.ps-tile:hover { box-shadow: var(--ps-shadow), 0 0 60px -30px rgba(217, 173, 69, .6); }
+.ps-ico {
+  background: linear-gradient(145deg, rgba(244, 217, 138, .3), rgba(217, 173, 69, .08));
+  box-shadow: 0 10px 24px -12px rgba(217, 173, 69, .65);
+}
+.ps-num { color: rgba(217, 173, 69, .2); }
+
+/* Journey: highlight the first step so the path has a start */
+.ps-step { transition: transform .35s cubic-bezier(.2, .7, .2, 1), border-color .3s; }
+.ps-step:hover { transform: translateY(-5px); border-color: var(--ps-line); }
+.ps-step > b {
+  background: linear-gradient(180deg, var(--ps-gold-hi), var(--ps-gold-lo));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Section rhythm: a thin gold line between major sections */
+.ps-section + .ps-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  width: min(520px, 70%);
+  height: 1px;
+  translate: -50% 0;
+  background: linear-gradient(90deg, transparent, var(--ps-line), transparent);
+}
+
+/* Primary button: gentle breathing glow */
+.ps-btn--primary { box-shadow: 0 14px 34px -14px rgba(217, 173, 69, .8); }
+.ps-btn--primary:hover { box-shadow: 0 18px 44px -12px rgba(217, 173, 69, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-buy::before,
+  .ps-card--gif .ps-tag::before { animation: none; }
+}
