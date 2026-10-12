@@ -3,10 +3,10 @@
    Used by the 8 condition pages. The programme name is read from the
    page <title> (text before the "|").
 
-   Plan type is always Virtual and trainer level is always Specialized,
-   so the builder only asks for Training Sessions, Nutrition and Extension.
-   Prices follow the Specialized monthly virtual pricing: edit BASE,
-   NUTRITION and EXTENSION below.
+   12-week virtual plan. Steps: Training Sessions, Training Type, Trainer
+   Level, Nutrition Plan, Extension.
+   Prices follow the 12-week virtual page: edit CFG below. If you change
+   the extension or couple price, update the FAQ text on the pages too.
    ===================================================================== */
 (function () {
   "use strict";
@@ -17,20 +17,25 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  /* ---- Pricing (Specialized Personal Training, Virtual, Solo, 1 month) ---- */
-  var BASE = { "12": 15000, "16": 20000, "20": 25000 };
-  var NUTRITION = 499;                                   /* per month */
-  var EXTENSION = { "none": 0, "10": 999 };
+  /* ---- 12-week pricing (same as the 12-week virtual page) ---- */
+  var CFG = {
+    base: { "3": 7999, "4": 9999, "5": 11999 },
+    defaultBase: 7999,
+    trainer: { standard: 0, advanced: 1500 },   /* standard = Specialized, advanced = Certified */
+    couple: 3000,
+    nutrition: 2500,
+    ext: 1000,
+    extValue: "1",
+    months: 3
+  };
 
-  var GROUPS = ["session", "nutrition", "extension"];
+  var GROUPS = ["session", "couple", "trainer", "nutrition", "extension"];
   var WA_NUMBER = "918951077599";
-  var PLAN_LABEL = "Virtual Training";
-  var TRAINER_LABEL = "Specialized Personal Training";
   var cond = document.title.split("|")[0].trim();
 
-  var totalEl = $("#mvTotal"), stickyEl = $("#mvStickyTotal");
+  var totalEl = $("#mvTotal"), stickyEl = $("#mvStickyTotal"), perMonthEl = $("#mvPerMonth");
   var submit = $("#mvSubmit"), errorEl = $("#mvError"), wa = $("#mvWhatsapp");
-  var sum = { session: $("#sumSession"), nutrition: $("#sumNutrition"), extension: $("#sumExtension") };
+  var sum = { session: $("#sumSession"), couple: $("#sumCouple"), trainer: $("#sumTrainer"), nutrition: $("#sumNutrition"), extension: $("#sumExtension") };
 
   function checked(name) { return form.querySelector('input[name="' + name + '"]:checked'); }
   function val(name) { var el = checked(name); return el ? el.value : ""; }
@@ -38,24 +43,88 @@
   function money(n) { return "₹" + Math.round(Number(n)).toLocaleString("en-IN"); }
 
   function total() {
-    var session = val("session");
-    if (!BASE[session]) return 0;
-    return BASE[session] +
-      (val("nutrition") === "yes" ? NUTRITION : 0) +
-      (EXTENSION[val("extension") || "none"] || 0);
+    var t = CFG.base[val("session")] || 0;
+    t += CFG.trainer[val("trainer")] || 0;
+    if (val("couple") === "yes") t += CFG.couple;
+    if (val("nutrition") === "yes") t += CFG.nutrition;
+    if (val("extension") === CFG.extValue) t += CFG.ext;
+    return t;
   }
 
   function whatsappLink() {
-    var msg = "Hello TFI \uD83D\uDC4B\n\nI would like to enquire about " + cond + ".";
-    msg += "\n\n\uD83C\uDFCB\uFE0F *My Selected Plan*\n\n" +
-      "\u2022 Plan Type: " + PLAN_LABEL + "\n" +
-      "\u2022 Trainer Level: " + TRAINER_LABEL + "\n" +
-      "\u2022 Training Sessions: " + (label("session") || "Not selected") + "\n" +
+    var msg = "Hello TFI \uD83D\uDC4B\n\nI am interested in the " + cond + " plan (12 Weeks Virtual Training).\n\n" +
+      "*My Selected Plan*\n" +
+      "\u2022 Sessions: " + (label("session") || "Not selected") + "\n" +
+      "\u2022 Training Type: " + (label("couple") || "Not selected") + "\n" +
+      "\u2022 Trainer Level: " + (label("trainer") || "Not selected") + "\n" +
       "\u2022 Nutrition: " + (label("nutrition") || "Not selected") + "\n" +
-      "\u2022 Extension: " + (label("extension") || "Not selected");
-    if (total() > 0) msg += "\n\n\uD83D\uDCB0 *Final Total: " + money(total()) + "*";
-    msg += "\n\nPlease share the final plan details and pricing. Thank you!";
+      "\u2022 Extension: " + (label("extension") || "Not selected") + "\n\n" +
+      "*Final Total: " + money(total()) + "*\n\n" +
+      "Please share the final plan details and pricing. Thank you!";
     return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+  }
+
+  /* ---- "Your plan" panel: sticky fix, meter, row flashes, count-up ---- */
+  var bar = $(".mvp-bar");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var meter = null, meterTxt = null, lastLabels = {}, shown = null, raf = 0, firstPaint = true;
+
+  if (bar) {
+    /* position: sticky fails if an ancestor clips with overflow:hidden, so
+       use overflow:clip (same look, no scroll container) */
+    for (var n = bar.parentElement; n && n !== document.body; n = n.parentElement) {
+      var cs = window.getComputedStyle(n);
+      if (/(hidden|auto|scroll)/.test(cs.overflowX + " " + cs.overflowY)) n.style.overflow = "clip";
+    }
+    meter = document.createElement("div");
+    meter.className = "mx-meter";
+    meter.setAttribute("aria-hidden", "true");
+    // meter.innerHTML = "<i></i><b>0 of " + GROUPS.length + "</b>";
+    meterTxt = meter.querySelector("b");
+    bar.insertBefore(meter, bar.firstChild);
+  }
+
+  function setText(el, txt) { if (el) el.textContent = txt; }
+
+  function showTotal(to) {
+    var from = shown === null ? to : shown;
+    shown = to;
+    window.cancelAnimationFrame(raf);
+    if (reduce || firstPaint || from === to) {
+      setText(totalEl, money(to)); setText(stickyEl, money(to));
+      return;
+    }
+    totalEl.classList.remove("mx-count"); void totalEl.offsetWidth; totalEl.classList.add("mx-count");
+    var start = null, dur = 420;
+    (function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / dur), e = 1 - Math.pow(1 - p, 3);
+      var v = Math.round(from + (to - from) * e);
+      setText(totalEl, money(v)); setText(stickyEl, money(v));
+      if (p < 1) raf = window.requestAnimationFrame(step);
+    })(performance.now());
+  }
+
+  function animatePanel(done) {
+    if (!bar) return;
+    bar.style.setProperty("--mx-p", done / GROUPS.length);
+    bar.classList.toggle("is-ready", done === GROUPS.length);
+    setText(meterTxt, done === GROUPS.length ? "Ready" : done + " of " + GROUPS.length);
+
+    var nextSet = false;
+    GROUPS.forEach(function (g) {
+      var row = sum[g] && sum[g].parentElement;
+      if (!row) return;
+      var now = label(g);
+      if (!firstPaint && now && now !== lastLabels[g]) {
+        row.classList.remove("mx-flash"); void row.offsetWidth; row.classList.add("mx-flash");
+      }
+      lastLabels[g] = now;
+      var isNext = !now && !nextSet;
+      if (isNext) nextSet = true;
+      row.classList.toggle("mx-next", isNext);
+    });
+    firstPaint = false;
   }
 
   function update() {
@@ -87,12 +156,14 @@
     });
 
     var t = total();
-    totalEl.textContent = money(t);
-    if (stickyEl) stickyEl.textContent = money(t);
+    showTotal(t);
+    if (perMonthEl) { perMonthEl.textContent = t ? "\u2248 " + money(Math.round(t / CFG.months)) + " / month" : ""; perMonthEl.style.display = t ? "" : "none"; }
 
     totalEl.classList.remove("pop");
     void totalEl.offsetWidth;
     totalEl.classList.add("pop");
+
+    animatePanel(done);
 
     submit.classList.toggle("locked", done < GROUPS.length);
     if (done === GROUPS.length) errorEl.classList.remove("show");
@@ -121,20 +192,32 @@
     }
 
     var q = "?" + new URLSearchParams({
+      plan: "12-weeks",
       program: cond,
-      plan: "Virtual",
-      trainer: "specialized",
       session: val("session"),
-      sessions: val("session") + " sessions",
-      couple: "no",
+      couple: val("couple"),
       nutrition: val("nutrition"),
+      trainer: val("trainer"),
       extension: val("extension"),
-      duration: "1 month",
-      total: Math.round(total()),
-      price: money(total())
+      total: total()
     }).toString();
     window.location.href = "index.html" + q + "#contact";
   });
+
+  /* WhatsApp: ask for every option first (same as the virtual pages) */
+  if (wa) {
+    wa.addEventListener("click", function (e) {
+      if (GROUPS.some(function (g) { return !checked(g); })) {
+        e.preventDefault();
+        errorEl.textContent = "Please select all plan options before sending your enquiry.";
+        errorEl.classList.remove("show");
+        void errorEl.offsetWidth;
+        errorEl.classList.add("show");
+        return;
+      }
+      wa.href = whatsappLink();
+    });
+  }
 
   /* ---- Compact dropdown steps ------------------------------------ */
   var groups = $$(".mvp-group", form);

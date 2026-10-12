@@ -96,9 +96,7 @@
 
             <a href="virtual-training.html">
 
-              <span>
-                Virtual
-              </span>
+              <span>Live 1-on-1 Personal Training</span>
 
               <span class="dropdown-arrow"
                     aria-hidden="true">
@@ -131,9 +129,7 @@
 
             <a href="non-virtual-training.html">
 
-              <span>
-                Non-Virtual
-              </span>
+              <span>Workout & Nutrition Plans</span>
 
               <span class="dropdown-arrow"
                     aria-hidden="true">
@@ -166,9 +162,7 @@
 
             <a href="personal-training.html">
 
-              <span>
-                Personal Training
-              </span>
+              <span>Specialized Live Personal Training</span>
 
               <span class="dropdown-arrow"
                     aria-hidden="true">
@@ -500,7 +494,7 @@
         <!-- Gallery -->
         <div class="mvp-gallery">
           <div class="mvp-stage" aria-hidden="true">
-            <span class="mvp-tag">PERSONAL TRAINING</span>
+            <span class="mvp-tag">Specialized Live Personal Training</span>
             <div class="mvp-ring mvp-ring--1"></div>
             <div class="mvp-ring mvp-ring--2"></div>
             <div class="mvp-core"><i class="fa-solid fa-bone"></i></div>
@@ -580,13 +574,13 @@
       <div class="mvp-head">
         <div class="mvp-eyebrow">How it works</div>
         <h2>Start in <span>four steps</span></h2>
-        <p>Pick your options below and your total updates instantly. Every plan is Virtual with a Specialized trainer.</p>
+        <p>Pick your options below and your total updates instantly.</p>
       </div>
 
       <ol class="mvp-flow" id="mvFlow">
         <li class="mvp-flow-item is-current">
           <span class="mvp-flow-num"><b>1</b><i class="fa-solid fa-check"></i></span>
-          <span class="mvp-flow-txt"><strong>Build</strong><small>Choose your training sessions, nutrition plan and extension.</small></span>
+          <span class="mvp-flow-txt"><strong>Build</strong><small>Choose your sessions, trainer level, and optional add-ons.</small></span>
         </li>
         <li class="mvp-flow-item">
           <span class="mvp-flow-num"><b>2</b><i class="fa-solid fa-check"></i></span>
@@ -616,17 +610,15 @@
         <!-- PROGRESS -->
         <div class="mvp-prog-wrap">
           <div class="mvp-prog" role="group" aria-label="Plan steps">
-            <button type="button" class="mvp-prog-step current" data-step="session"><b>1</b><span>Training Sessions</span></button>
-            <button type="button" class="mvp-prog-step" data-step="nutrition"><b>2</b><span>Nutrition</span></button>
-            <button type="button" class="mvp-prog-step" data-step="extension"><b>3</b><span>Extension</span></button>
+            <button type="button" class="mvp-prog-step current" data-step="session"><b>1</b><span>Sessions</span></button>
+            <button type="button" class="mvp-prog-step" data-step="couple"><b>2</b><span>Couple</span></button>
+            <button type="button" class="mvp-prog-step" data-step="trainer"><b>3</b><span>Trainer</span></button>
+            <button type="button" class="mvp-prog-step" data-step="nutrition"><b>4</b><span>Nutrition</span></button>
+            <button type="button" class="mvp-prog-step" data-step="extension"><b>5</b><span>Extend</span></button>
           </div>
         </div>
 
-        <!-- FIXED FOR THIS PROGRAMME -->
-        <div class="mvp-x-fixed" aria-label="Included with every plan">
-          <span class="mvp-x-chip"><i class="fa-solid fa-video" aria-hidden="true"></i><span><small>Plan Type</small><b>Virtual Training</b></span><i class="fa-solid fa-lock mvp-x-lock" aria-hidden="true"></i></span>
-          <span class="mvp-x-chip"><i class="fa-solid fa-star" aria-hidden="true"></i><span><small>Trainer Level</small><b>Specialized Personal Training</b></span><i class="fa-solid fa-lock mvp-x-lock" aria-hidden="true"></i></span>
-        </div>
+
 
         <fieldset class="mvp-group" data-group="session">
           <legend>Training Sessions</legend>
@@ -634,29 +626,81 @@
           <div class="mvp-opts mvp-opts--3">
 
             <label class="mvp-opt">
-              <input type="radio" name="session" value="12" data-label="12 Sessions">
+              <input type="radio" name="session" value="3" data-label="3 sessions">
               <span>
                 <i class="mvp-ico fa-solid fa-person-walking" aria-hidden="true"></i>
-                <b>12 Sessions</b>
-                <em>Steady pace</em>
+                <b>3 sessions</b>
+                <em>per week · 36 total</em>
               </span>
             </label>
 
             <label class="mvp-opt mvp-hot">
-              <input type="radio" name="session" value="16" data-label="16 Sessions">
+              <input type="radio" name="session" value="4" data-label="4 sessions">
               <span>
                 <i class="mvp-ico fa-solid fa-person-running" aria-hidden="true"></i>
-                <b>16 Sessions</b>
-                <em>Most chosen</em>
+                <b>4 sessions</b>
+                <em>per week · 48 total</em>
               </span>
             </label>
 
             <label class="mvp-opt">
-              <input type="radio" name="session" value="20" data-label="20 Sessions">
+              <input type="radio" name="session" value="5" data-label="5 sessions">
               <span>
                 <i class="mvp-ico fa-solid fa-fire-flame-curved" aria-hidden="true"></i>
-                <b>20 Sessions</b>
-                <em>Fast results</em>
+                <b>5 sessions</b>
+                <em>per week · 60 total</em>
+              </span>
+            </label>
+
+          </div>
+        </fieldset>
+
+        <fieldset class="mvp-group" data-group="couple">
+          <legend>Training Type</legend>
+          <div class="mvp-lab"><b>Training Type</b><small>REQUIRED</small></div>
+          <div class="mvp-opts mvp-opts--2">
+
+            <label class="mvp-opt">
+              <input type="radio" name="couple" value="no" data-label="Solo">
+              <span>
+                <i class="mvp-ico fa-solid fa-user" aria-hidden="true"></i>
+                <b>Solo</b>
+                <em>Just me</em>
+              </span>
+            </label>
+
+            <label class="mvp-opt">
+              <input type="radio" name="couple" value="yes" data-label="Couple – same hours">
+              <span>
+                <i class="mvp-ico fa-solid fa-user-group" aria-hidden="true"></i>
+                <b>Couple</b>
+                <em>Same hours</em>
+              </span>
+            </label>
+
+          </div>
+        </fieldset>
+
+        <fieldset class="mvp-group" data-group="trainer">
+          <legend>Trainer Level</legend>
+          <div class="mvp-lab"><b>Trainer Level</b><small>REQUIRED</small></div>
+          <div class="mvp-opts mvp-opts--2">
+
+            <label class="mvp-opt">
+              <input type="radio" name="trainer" value="advanced" data-label="Certified Personal Training">
+              <span>
+                <i class="mvp-ico fa-solid fa-certificate" aria-hidden="true"></i>
+                <b>Certified Personal Training</b>
+                <em>Certified coach</em>
+              </span>
+            </label>
+
+            <label class="mvp-opt">
+              <input type="radio" name="trainer" value="standard" data-label="Specialized Personal Training">
+              <span>
+                <i class="mvp-ico fa-solid fa-star" aria-hidden="true"></i>
+                <b>Specialized Personal Training</b>
+                <em>Condition-focused coaching</em>
               </span>
             </label>
 
@@ -669,20 +713,20 @@
           <div class="mvp-opts mvp-opts--2">
 
             <label class="mvp-opt">
-              <input type="radio" name="nutrition" value="no" data-label="Without Nutrition">
+              <input type="radio" name="nutrition" value="no" data-label="Training only">
               <span>
                 <i class="mvp-ico fa-solid fa-dumbbell" aria-hidden="true"></i>
-                <b>Without Nutrition</b>
-                <em>Training only</em>
+                <b>Training only</b>
+                <em>No nutrition</em>
               </span>
             </label>
 
             <label class="mvp-opt">
-              <input type="radio" name="nutrition" value="yes" data-label="With Nutrition">
+              <input type="radio" name="nutrition" value="yes" data-label="With nutrition">
               <span>
                 <i class="mvp-ico fa-solid fa-apple-whole" aria-hidden="true"></i>
-                <b>With Nutrition</b>
-                <em>Nutrition add-on</em>
+                <b>Add nutrition</b>
+                <em>Personalised meal plan</em>
               </span>
             </label>
 
@@ -695,20 +739,20 @@
           <div class="mvp-opts mvp-opts--2">
 
             <label class="mvp-opt">
-              <input type="radio" name="extension" value="none" data-label="No Extension">
+              <input type="radio" name="extension" value="none" data-label="No extension">
               <span>
                 <i class="mvp-ico fa-solid fa-calendar-day" aria-hidden="true"></i>
-                <b>No Extension</b>
-                <em>Package only</em>
+                <b>No extension</b>
+                <em>12 weeks</em>
               </span>
             </label>
 
             <label class="mvp-opt">
-              <input type="radio" name="extension" value="10" data-label="10-Day Extension">
+              <input type="radio" name="extension" value="1" data-label="+1 Month">
               <span>
                 <i class="mvp-ico fa-solid fa-calendar-plus" aria-hidden="true"></i>
-                <b>10 Days</b>
-                <em>Optional extension</em>
+                <b>+1 Month</b>
+                <em>30 days more · 16 weeks in total</em>
               </span>
             </label>
 
@@ -720,16 +764,16 @@
         <div class="mvp-bar" aria-live="polite">
 
           <div class="mvp-sum">
-            <div>Plan Type <strong>Virtual Training</strong></div>
-            <div>Trainer Level <strong>Specialized Personal Training</strong></div>
             <div>Training Sessions <strong class="empty" id="sumSession">Not selected</strong></div>
+            <div>Training Type <strong class="empty" id="sumCouple">Not selected</strong></div>
+            <div>Trainer Level <strong class="empty" id="sumTrainer">Not selected</strong></div>
             <div>Nutrition Plan <strong class="empty" id="sumNutrition">Not selected</strong></div>
             <div>Extension <strong class="empty" id="sumExtension">Not selected</strong></div>
           </div>
 
           <div class="mvp-total">
             <small>Final Total</small>
-            <strong id="mvTotal">₹0</strong>
+            <div><strong id="mvTotal">₹0</strong></div>
           </div>
 
           <button type="submit" class="mvp-submit locked" id="mvSubmit">
@@ -753,6 +797,24 @@
         <p class="mvp-note">Our team will connect with you after payment.</p>
 
       </form>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       JOURNEY
+  ========================================================== -->
+  <section class="mvp-journey">
+    <div class="mvp-wrap">
+      <div class="mvp-head">
+        <div class="mvp-eyebrow">What to expect</div>
+        <h2>Your <span>journey</span></h2>
+      </div>
+      <div class="mvp-road-grid">
+        <div class="mvp-road-item"><b>01</b><small>WEEK 1</small><h3>Assess</h3><p>Posture, movement patterns, history and what aggravates your back.</p></div>
+        <div class="mvp-road-item"><b>02</b><small>WEEKS 2–6</small><h3>Build</h3><p>Mobility, stability and strength that progress as you feel better.</p></div>
+        <div class="mvp-road-item"><b>03</b><small>ONGOING</small><h3>Sustain</h3><p>Habits and strength that keep you moving well long term.</p></div>
+      </div>
     </div>
   </section>
 
@@ -797,15 +859,6 @@
           <article class="mvp-card"><i class="fa-solid fa-fire"></i><h3>Glute & posterior chain</h3><p>Stronger glutes and back muscles that take pressure off your lower back.</p></article>
           <article class="mvp-card"><i class="fa-solid fa-laptop"></i><h3>Daily habits</h3><p>Desk set-up, movement breaks and simple routines for all-day comfort.</p></article>
         </div>
-
-        <div class="mvp-head mvp-x-head mvp-x-head--sub">
-          <h2>Your journey in <span>three steps</span></h2>
-        </div>
-        <div class="mvp-cards mvp-cards--3">
-          <article class="mvp-card"><i class="fa-solid fa-flag-checkered"></i><h3>Assess</h3><p><strong class="mvp-x-tag">WEEK 1.</strong>Posture, movement patterns, history and what aggravates your back.</p></article>
-          <article class="mvp-card"><i class="fa-solid fa-flag-checkered"></i><h3>Build</h3><p><strong class="mvp-x-tag">WEEKS 2–6.</strong>Mobility, stability and strength that progress as you feel better.</p></article>
-          <article class="mvp-card"><i class="fa-solid fa-flag-checkered"></i><h3>Sustain</h3><p><strong class="mvp-x-tag">ONGOING.</strong>Habits and strength that keep you moving well long term.</p></article>
-        </div>
       </div>
 
       <!-- Safety -->
@@ -832,6 +885,9 @@
           <details><summary>Can you fix my back pain?<i class="fa-solid fa-plus"></i></summary><p>We cannot diagnose or treat medical conditions. We can help you build the mobility and strength that often reduce everyday discomfort.</p></details>
           <details><summary>What if I have a diagnosed condition?<i class="fa-solid fa-plus"></i></summary><p>Please share your doctor's or physio's guidance, and we will plan within those limits.</p></details>
           <details><summary>Can I do this at home?<i class="fa-solid fa-plus"></i></summary><p>Yes. Most of the programme works well virtually with minimal equipment.</p></details>
+          <details><summary>Do I pay straight away?<i class="fa-solid fa-plus"></i></summary><p>Your plan is confirmed after payment. You can build your plan and see the total before you commit.</p></details>
+          <details><summary>Can I extend the plan?<i class="fa-solid fa-plus"></i></summary><p>Yes. You can add 1 more month (30 days) for ₹1,000.</p></details>
+          <details><summary>Can my partner train with me?<i class="fa-solid fa-plus"></i></summary><p>Yes. Couple training at the same hours is +₹3,000 for the 12 weeks.</p></details>
         </div>
       </div>
 

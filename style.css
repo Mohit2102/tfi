@@ -14809,8 +14809,11 @@ html:not(.dark-mode) .ps-page {
 .ps-hero {
   position: relative;
   isolation: isolate;
-  padding: clamp(96px, 11vw, 130px) 0 clamp(36px, 5vw, 64px);
+  margin-top: -40px;
+  padding: 20px 0 36px;
+  box-sizing: border-box;
 }
+
 .ps-orb {
   position: absolute;
   z-index: -1;
