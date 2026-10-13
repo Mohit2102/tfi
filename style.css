@@ -5209,189 +5209,507 @@ html.dark-mode .who-icon {
   }
 
 }
-
-
-/* =========================================================
-   18. TFI EDGE / WHY
-========================================================= */
-
 #why {
-  padding: 110px 0;
-  background: var(--bg);
-  transition: background 0.4s ease;
+  --why-card-bg: var(--surface, #fff);
+  --why-heading: var(--text, #17130a);
+  --why-copy: var(--text-secondary, #2e2103);
+  --why-border: var(--line, rgba(23,19,10,.12));
+  --why-glow: var(--primary-glow, rgba(201,154,46,.22));
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(58px, 7vw, 94px) 0;
+  color: var(--why-heading);
+  background:
+    radial-gradient(ellipse at 50% 0%, var(--why-glow), transparent 48%),
+    var(--bg, #f7f4ed);
+  transition: background .35s ease, color .35s ease;
 }
 
-#why .sec-head {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto 70px;
+#why,
+#why * { box-sizing: border-box; }
+
+#why .wrap {
+  position: relative;
+  z-index: 1;
+  width: min(1480px, calc(100% - 44px));
+  margin-inline: auto;
+}
+
+#why::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -180px;
+  left: 50%;
+  width: min(850px, 100vw);
+  height: 430px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, var(--why-glow), transparent 70%);
+  filter: blur(48px);
+  opacity: .55;
+  pointer-events: none;
+  animation: whyAmbient 9s ease-in-out infinite alternate;
+}
+
+/* Heading */
+#why .why-heading {
+  max-width: 980px;
+  margin: 0 auto clamp(28px, 3vw, 40px);
   text-align: center;
 }
 
-#why .sec-kicker {
+#why .why-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
   margin-bottom: 12px;
-  color: var(--gold);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
+  color: var(--gold, #c99a2e);
+  font: 600 12px/1.4 "Inter", sans-serif;
+  letter-spacing: .24em;
   text-transform: uppercase;
 }
 
-#why .sec-head h2 {
-  max-width: 1000px;
-  margin: 0 auto;
-  color: var(--text);
-  text-align: center;
+#why .why-kicker::before,
+#why .why-kicker::after {
+  content: "";
+  width: 25px;
+  height: 1px;
+  background: currentColor;
 }
 
-.why-grid {
+#why .why-heading h2 {
+  margin: 0;
+  color: var(--why-heading);
+  font: 700 clamp(34px, 4.3vw, 60px)/1.1 "Oswald", sans-serif;
+  letter-spacing: -.035em;
+}
+
+#why .why-heading h2 span {
+  background: linear-gradient(105deg, var(--gold-deep, #8f6819), var(--gold, #c99a2e), var(--gold-bright, #f3d98b), var(--gold-light, #e2bd5b));
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: whyShimmer 7s linear infinite;
+}
+
+#why .why-subtitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  margin-top: 13px;
+}
+
+#why .why-subtitle span {
+  width: 38px;
+  height: 2px;
+  flex: 0 0 auto;
+  border-radius: 9px;
+  background: var(--gold, #c99a2e);
+}
+
+#why .why-subtitle p {
+  margin: 0;
+  color: var(--why-copy);
+  font: 400 clamp(13px, 1.5vw, 18px)/1.6 "Inter", sans-serif;
+}
+
+/* Cards grid */
+#why .why-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 14px;
 }
 
-.why-cell {
+#why .why-card {
   position: relative;
-  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--why-border);
+  border-radius: 10px;
+  background: var(--why-card-bg);
+  box-shadow: var(--shadow-sm, 0 10px 28px rgba(23,19,10,.07));
+  opacity: 0;
+  animation: whyRise .7s ease forwards;
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+#why .why-card:nth-child(1) { animation-delay: .04s; }
+#why .why-card:nth-child(2) { animation-delay: .12s; }
+#why .why-card:nth-child(3) { animation-delay: .20s; }
+#why .why-card:nth-child(4) { animation-delay: .28s; }
+#why .why-card:nth-child(5) { animation-delay: .36s; }
+
+#why .why-card::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-color .35s ease, box-shadow .35s ease;
+}
+
+#why .why-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold, #c99a2e);
+  box-shadow: 0 18px 40px rgba(23,19,10,.13), 0 0 24px var(--why-glow);
+}
+
+#why .why-card:hover::after {
+  border-color: var(--gold, #c99a2e);
+}
+
+/* Image panel: identical height on all cards */
+#why .why-image {
+  position: relative;
+  isolation: isolate;
   display: flex;
   align-items: flex-end;
+  flex: 0 0 300px;
+  height: 300px;
+  min-height: 0;
   overflow: hidden;
-  isolation: isolate;
-  border-radius: 18px;
-  background-size: cover;
+  background-color: #15130f;
   background-position: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.14);
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.why-cell:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.22);
-}
-
-.why-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    to top,
-    rgba(5, 8, 12, 0.97) 0%,
-    rgba(5, 8, 12, 0.78) 38%,
-    rgba(5, 8, 12, 0.22) 72%,
-    rgba(5, 8, 12, 0.05) 100%
-  );
-}
-
-.why-cell:hover .why-overlay {
-  background: linear-gradient(
-    to top,
-    rgba(5, 8, 12, 0.98) 0%,
-    rgba(5, 8, 12, 0.72) 45%,
-    rgba(184, 144, 26, 0.12) 100%
-  );
-}
-
-.why-content {
-  width: 100%;
-  padding: 30px;
-  color: #fff;
-}
-
-.why-content svg {
-  width: 44px;
-  height: 44px;
-  margin-bottom: 18px;
-  color: var(--gold);
-  transition:
-    transform 0.4s ease,
-    color 0.4s ease;
-}
-
-.why-cell:hover .why-content svg {
-  transform: scale(1.12);
-  color: var(--gold-light);
-}
-
-.why-content h4 {
-  margin: 0 0 12px;
-  color: #fff;
-  font-family: "Oswald", sans-serif;
-  font-size: 27px;
-  font-weight: 600;
-}
-
-.why-content h4::after {
+#why .why-image::before {
   content: "";
-  display: block;
-  width: 42px;
-  height: 2px;
-  margin-top: 12px;
-  background: var(--gold);
-  transition: width 0.4s ease;
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background-image: inherit;
+  background-position: inherit;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1);
+  transition: transform .75s cubic-bezier(.2,.7,.2,1);
 }
 
-.why-cell:hover .why-content h4::after {
-  width: 70px;
+#why .why-card:hover .why-image::before { transform: scale(1.075); }
+
+#why .why-image-overlay {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6,7,7,.98) 0%, rgba(6,7,7,.83) 34%, rgba(6,7,7,.34) 68%, rgba(6,7,7,.04) 100%);
+  transition: background .35s ease;
 }
 
-.why-content p {
-  max-width: 430px;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 15px;
-  line-height: 1.7;
+#why .why-card:hover .why-image-overlay {
+  background: linear-gradient(to top, rgba(6,7,7,.98), rgba(6,7,7,.78) 42%, rgba(143,104,25,.15));
 }
 
-@media (max-width: 1000px) {
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .why-cell {
-    min-height: 370px;
-  }
+#why .why-image-content {
+  width: 100%;
+  padding: 17px 15px 18px;
+  color: #fff;
 }
 
-@media (max-width: 650px) {
-  #why {
-    padding: 75px 0;
-  }
-
-  #why .sec-head {
-    margin-bottom: 35px;
-  }
-
-  #why .sec-head h2 {
-    font-size: 38px;
-  }
-
-  .why-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .why-cell {
-    min-height: 360px;
-    border-radius: 15px;
-  }
-
-  .why-content {
-    padding: 25px;
-  }
-
-  .why-content h4 {
-    font-size: 25px;
-  }
-
-  .why-content p {
-    font-size: 14px;
-  }
+#why .why-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50%;
+  color: #17130a;
+  background: linear-gradient(135deg, var(--gold-bright, #f3d98b), var(--gold, #c99a2e), var(--gold-deep, #8f6819));
+  font-size: 19px;
+  box-shadow: 0 5px 22px var(--why-glow);
+  transition: transform .35s ease, box-shadow .35s ease;
 }
 
+#why .why-card:hover .why-icon {
+  transform: translateY(-3px) scale(1.07);
+  box-shadow: 0 8px 27px var(--why-glow);
+}
 
+/* Fixed headline region makes every card line up */
+#why .why-image-content h3 {
+  min-height: 3.84em;
+  margin: 0;
+  color: #fff;
+  font: 700 clamp(16px, 1.28vw, 21px)/1.28 "Oswald", sans-serif;
+  letter-spacing: -.015em;
+  overflow-wrap: anywhere;
+}
+
+#why .why-image-content h3 span { color: var(--gold-light, #e2bd5b); }
+
+/* Equal description panels */
+#why .why-description {
+  flex: 1 0 150px;
+  min-height: 150px;
+  padding: 17px 16px 19px;
+  color: var(--why-copy);
+  background: var(--why-card-bg);
+  font: 400 14px/1.75 "Inter", sans-serif;
+  transition: color .3s ease, background .3s ease;
+}
+
+#why .why-card:hover .why-description { color: var(--why-heading); }
+
+/* Trainers banner */
+#why .why-team {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  width: min(1135px, 100%);
+  margin: 24px auto 0;
+  overflow: hidden;
+  border: 1px solid var(--why-border);
+  border-radius: 11px;
+  background: var(--why-card-bg);
+  box-shadow: var(--shadow-md, 0 18px 42px rgba(23,19,10,.1));
+  opacity: 0;
+  animation: whyRise .8s .3s ease forwards;
+  transition: border-color .35s ease, box-shadow .35s ease;
+}
+
+#why .why-team:hover {
+  border-color: var(--gold, #c99a2e);
+  box-shadow: 0 18px 45px rgba(23,19,10,.12), 0 0 22px var(--why-glow);
+}
+
+#why .why-team-image {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+  min-height: 285px;
+  overflow: hidden;
+  background-color: #15130f;
+  background-position: center;
+  background-size: cover;
+}
+
+#why .why-team-image::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background-image: inherit;
+  background-position: inherit;
+  background-size: cover;
+  transition: transform .7s ease;
+}
+
+#why .why-team:hover .why-team-image::before { transform: scale(1.045); }
+
+#why .why-team-overlay {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(to top, rgba(4,6,7,.94), rgba(4,6,7,.22) 70%, transparent);
+}
+
+#why .why-team-caption {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 22px 24px;
+}
+
+#why .why-team-icon {
+  display: flex;
+  flex: 0 0 54px;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  color: #17130a;
+  background: linear-gradient(135deg, var(--gold-bright, #f3d98b), var(--gold, #c99a2e), var(--gold-deep, #8f6819));
+  font-size: 22px;
+}
+
+#why .why-team-caption h3 {
+  margin: 0;
+  color: #fff;
+  font: 700 clamp(23px, 2.4vw, 37px)/1.2 "Oswald", sans-serif;
+}
+
+#why .why-team-caption h3 span { color: var(--gold-light, #e2bd5b); }
+
+#why .why-team-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(24px, 3vw, 38px);
+  background: radial-gradient(circle at 100% 0%, var(--why-glow), transparent 65%), var(--why-card-bg);
+}
+
+#why .why-team-eyebrow {
+  margin-bottom: 10px;
+  color: var(--gold, #c99a2e);
+  font: 600 10px/1.5 "Inter", sans-serif;
+  letter-spacing: .16em;
+}
+
+#why .why-team-info h3 {
+  margin: 0 0 12px;
+  color: var(--why-heading);
+  font: 700 clamp(24px, 2.1vw, 31px)/1.23 "Oswald", sans-serif;
+}
+
+#why .why-team-info p {
+  max-width: 380px;
+  margin: 0 0 21px;
+  color: var(--why-copy);
+  font: 400 14px/1.8 "Inter", sans-serif;
+}
+
+#why .why-team-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 24px;
+  overflow: hidden;
+  border: 1px solid var(--gold, #c99a2e);
+  border-radius: 5px;
+  color: #17130a;
+  background: linear-gradient(115deg, var(--gold-bright, #f3d98b), var(--gold, #c99a2e), var(--gold-deep, #8f6819));
+  font: 700 13px/1 "Oswald", sans-serif;
+  letter-spacing: .06em;
+  text-decoration: none;
+  box-shadow: 0 6px 20px var(--why-glow);
+  transition: transform .3s ease, box-shadow .3s ease, color .3s ease, background .3s ease;
+}
+
+#why .why-team-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 70%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+  transition: left .65s ease;
+}
+
+#why .why-team-button:hover::before { left: 150%; }
+
+#why .why-team-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px var(--why-glow);
+}
+
+#why .why-team-button i { transition: transform .3s ease; }
+#why .why-team-button:hover i { transform: translateX(4px); }
+#why .why-team-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+/* Animations */
+@keyframes whyRise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes whyShimmer {
+  from { background-position: 100% 50%; }
+  to { background-position: -120% 50%; }
+}
+
+@keyframes whyAmbient {
+  from { opacity: .28; transform: translateX(-50%) scale(.92); }
+  to { opacity: .55; transform: translateX(-50%) scale(1.08); }
+}
+
+/* Tablet: 3 cards per row */
+@media (max-width: 1150px) {
+  #why .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  #why .why-image { flex-basis: 290px; height: 290px; }
+  #why .why-image-content h3 { font-size: 20px; }
+  #why .why-description { min-height: 135px; flex-basis: 135px; }
+}
+
+/* Mobile/tablet: 2 cards per row */
+@media (max-width: 760px) {
+  #why { padding: 58px 0; }
+  #why .wrap { width: calc(100% - 30px); }
+  #why .why-heading { margin-bottom: 28px; }
+  #why .why-heading h2 { font-size: clamp(30px, 6vw, 43px); }
+  #why .why-subtitle { gap: 8px; }
+  #why .why-subtitle span { width: 20px; }
+  #why .why-subtitle p { font-size: 13px; }
+  #why .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+  #why .why-image { flex-basis: 270px; height: 270px; }
+  #why .why-image-content { padding: 14px 12px 15px; }
+  #why .why-icon { width: 43px; height: 43px; margin-bottom: 10px; font-size: 17px; }
+  #why .why-image-content h3 { min-height: 3.84em; font-size: clamp(16px, 2.7vw, 20px); }
+  #why .why-description { min-height: 145px; flex-basis: 145px; padding: 14px 12px; font-size: 13px; line-height: 1.7; }
+  #why .why-team { grid-template-columns: 1fr; }
+  #why .why-team-image { min-height: 250px; }
+  #why .why-team-info { padding: 26px 23px; }
+  #why .why-team-info h3 { font-size: 28px; }
+}
+
+/* Small phones: 1 card per row */
+@media (max-width: 480px) {
+  #why { padding: 46px 0; }
+  #why .wrap { width: calc(100% - 24px); }
+  #why .why-heading h2 { font-size: clamp(28px, 8vw, 36px); }
+  #why .why-kicker { font-size: 10px; letter-spacing: .2em; }
+  #why .why-grid { grid-template-columns: 1fr; gap: 16px; }
+  #why .why-image { flex-basis: 290px; height: 290px; }
+  #why .why-image-content { padding: 18px; }
+  #why .why-icon { width: 46px; height: 46px; font-size: 19px; }
+  #why .why-image-content h3 { font-size: 22px; }
+  #why .why-description { min-height: 0; flex-basis: auto; padding: 16px 18px 19px; font-size: 14px; }
+  #why .why-team-image { min-height: 215px; }
+  #why .why-team-caption { gap: 12px; padding: 16px; }
+  #why .why-team-icon { flex-basis: 44px; width: 44px; height: 44px; font-size: 18px; }
+  #why .why-team-caption h3 { font-size: 25px; }
+  #why .why-team-info { padding: 22px 18px; }
+  #why .why-team-info h3 { font-size: 26px; }
+  #why .why-team-button { width: 100%; }
+}
+
+/* Dark mode is inherited from html.dark-mode theme tokens */
+html.dark-mode #why .why-card,
+html.dark-mode #why .why-team {
+  box-shadow: 0 12px 35px rgba(0,0,0,.28);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  #why::before,
+  #why .why-heading h2 span,
+  #why .why-card,
+  #why .why-team {
+    animation: none !important;
+  }
+  #why .why-card,
+  #why .why-team {
+    opacity: 1;
+    transform: none;
+  }
+  #why *,
+  #why *::before,
+  #why *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
 /* =========================================================
    19. FITNESS JOURNEY
 ========================================================= */
