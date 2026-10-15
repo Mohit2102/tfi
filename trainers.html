@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Meet the TFI — Time To Fit India trainers. Explore certifications, experience and coaching specializations.">
+  <title>Meet Our Trainers | TFI — Time To Fit India</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Trainers page styles (uses the global theme variables from style.css) -->
+  <style>
+    /* =========================================================
+       TRAINERS PAGE
+    ========================================================= */
+
+    .tr-page {
+      background:
+        radial-gradient(circle at 85% 8%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 34%),
+        radial-gradient(circle at 5% 55%, color-mix(in srgb, var(--gold) 9%, transparent), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: clip;
+    }
+
+    .tr-page section { padding: 0; }
+
+    /* ---------- Hero ---------- */
+    .tr-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 70px !important;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .tr-hero::before {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      top: -200px;
+      right: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--gold) 22%, transparent), transparent 70%);
+      pointer-events: none;
+    }
+
+    .tr-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .28;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 60px 60px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000, transparent 70%);
+      mask-image: radial-gradient(ellipse at 50% 0%, #000, transparent 70%);
+    }
+
+    .tr-hero .wrap { position: relative; z-index: 2; }
+
+    .tr-crumbs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .tr-crumbs a { transition: color .2s ease; }
+    .tr-crumbs a:hover { color: var(--gold); }
+    .tr-crumbs i { font-size: 9px; color: var(--gold); }
+    .tr-crumbs b { color: var(--gold); font-weight: 600; }
+
+    .tr-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Oswald", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .tr-kicker::before,
+    .tr-kicker::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .tr-kicker::after { background: linear-gradient(90deg, var(--gold), transparent); }
+
+    .tr-hero h1 {
+      max-width: 900px;
+      margin: 18px auto 0;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: .98;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+    }
+
+    .tr-hero h1 span {
+      display: block;
+      background: linear-gradient(100deg, var(--gold-deep), var(--gold), var(--gold-bright), var(--gold), var(--gold-deep));
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: trShimmer 6s linear infinite;
+    }
+
+    .tr-hero p {
+      max-width: 620px;
+      margin: 24px auto 0;
+      color: var(--text-secondary);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .tr-hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .tr-hero-stat {
+      min-width: 150px;
+      padding: 16px 22px;
+      border: 1px solid var(--line-strong);
+      border-radius: 14px;
+      background: var(--surface);
+      transition: transform .3s ease, border-color .3s ease;
+    }
+
+    .tr-hero-stat:hover { transform: translateY(-4px); border-color: var(--gold); }
+
+    .tr-hero-stat strong {
+      display: block;
+      font-family: "Oswald", sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .tr-hero-stat small {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--text-muted);
+    }
+
+    /* ---------- Grid ---------- */
+    .tr-section { padding: 90px 0 100px !important; }
+
+    .tr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    /* ---------- Card ---------- */
+    .tr-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+      transition: transform .4s cubic-bezier(.2, .8, .2, 1), border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .tr-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 6;
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      transition: width .45s ease;
+    }
+
+    .tr-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--gold);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .tr-card:hover::before { width: 100%; }
+
+    /* Photo: replace images/trainer-X.jpg with real photos (gradient is the fallback) */
+    .tr-photo {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      background-size: cover;
+      background-position: center top;
+    }
+
+    .tr-photo::before {
+      content: "\f007";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 96px;
+      color: rgba(255, 255, 255, .14);
+    }
+
+    .tr-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9, 8, 6, .92) 0%, rgba(9, 8, 6, .25) 55%, transparent 100%);
+    }
+
+    .tr-p1 { background-image: url('images/trainer-1.jpg'), linear-gradient(135deg, #c99a2e, #3a2a08); }
+    .tr-p2 { background-image: url('images/trainer-2.jpg'), linear-gradient(135deg, #e2bd5b, #5a3d0a); }
+    .tr-p3 { background-image: url('images/trainer-3.jpg'), linear-gradient(135deg, #a8791c, #1f1608); }
+    .tr-p4 { background-image: url('images/trainer-4.jpg'), linear-gradient(135deg, #d4a83a, #2e2209); }
+    .tr-p5 { background-image: url('images/trainer-5.jpg'), linear-gradient(135deg, #f3d98b, #6b4a0e); }
+    .tr-p6 { background-image: url('images/trainer-6.jpg'), linear-gradient(135deg, #8f6819, #17110a); }
+
+    .tr-exp {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 13px;
+      border-radius: 30px;
+      border: 1px solid rgba(243, 217, 139, .5);
+      background: rgba(0, 0, 0, .45);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      color: #f7df9a;
+      font-family: "Oswald", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+    }
+
+    .tr-photo-name {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      padding: 0 24px 20px;
+    }
+
+    .tr-photo-name span {
+      display: block;
+      margin-bottom: 4px;
+      font-family: "Oswald", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #f3d98b;
+    }
+
+    .tr-photo-name h3 {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.05;
+      text-transform: uppercase;
+      color: #fffaf0;
+    }
+
+    .tr-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 24px 24px 24px;
+    }
+
+    .tr-bio {
+      margin: 0 0 18px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .tr-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tr-tags span {
+      padding: 6px 12px;
+      border-radius: 30px;
+      border: 1px solid var(--line-strong);
+      background: color-mix(in srgb, var(--gold) 9%, transparent);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      transition: background .25s ease, color .25s ease, border-color .25s ease;
+    }
+
+    .tr-card:hover .tr-tags span { border-color: var(--gold); }
+
+    .tr-meta {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 22px;
+      padding: 18px 0 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .tr-meta li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .tr-meta i {
+      display: grid;
+      place-items: center;
+      flex: 0 0 32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--gold) 13%, transparent);
+      border: 1px solid var(--line-strong);
+      color: var(--gold);
+      font-size: 13px;
+      transition: background .3s ease, color .3s ease;
+    }
+
+    .tr-card:hover .tr-meta i { background: var(--gold); color: #17130a; }
+
+    .tr-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .tr-socials { display: flex; gap: 8px; }
+
+    .tr-socials a {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+    }
+
+    .tr-socials a:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #17130a;
+      transform: translateY(-3px);
+    }
+
+    .tr-book {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .tr-book span { font-size: 16px; transition: transform .25s ease; }
+    .tr-book:hover span { transform: translateX(4px); }
+
+    /* ---------- CTA ---------- */
+    .tr-cta {
+      padding: 0 0 100px !important;
+    }
+
+    .tr-cta-inner {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 48px 50px;
+      border: 1px solid var(--line-strong);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 55%),
+        var(--surface);
+      box-shadow: var(--shadow-md);
+    }
+
+    .tr-cta-inner::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold-bright), var(--gold), transparent);
+    }
+
+    .tr-cta h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      text-transform: uppercase;
+    }
+
+    .tr-cta h2 span { color: var(--gold); }
+
+    .tr-cta p {
+      max-width: 520px;
+      margin-top: 12px;
+      color: var(--text-secondary);
+    }
+
+    .tr-cta .btn { flex-shrink: 0; min-height: 54px; padding: 0 30px; }
+
+    @keyframes trShimmer { to { background-position: 220% center; } }
+
+    /* ---------- Reveal ---------- */
+    .tr-js .tr-card,
+    .tr-js .tr-hero-stat {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .8s ease, transform .9s cubic-bezier(.2, .7, .2, 1), border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .tr-js .tr-card.in,
+    .tr-js .tr-hero-stat.in { opacity: 1; transform: none; }
+
+    .tr-js .tr-card.in:hover { transform: translateY(-10px); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1050px) {
+      .tr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 700px) {
+      .tr-hero { padding: 70px 0 54px !important; }
+      .tr-hero p { font-size: 15.5px; }
+      .tr-hero-stat { min-width: 0; flex: 1 1 calc(50% - 14px); }
+      .tr-section { padding: 60px 0 70px !important; }
+      .tr-grid { grid-template-columns: 1fr; gap: 20px; }
+      .tr-photo { height: 280px; }
+      .tr-cta { padding-bottom: 70px !important; }
+      .tr-cta-inner { flex-direction: column; align-items: flex-start; padding: 34px 24px; gap: 24px; }
+      .tr-cta .btn { width: 100%; }
+    }
+
+    @media (max-width: 400px) {
+      .tr-foot { flex-direction: column; align-items: stretch; }
+      .tr-socials { justify-content: center; }
+      .tr-book { justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tr-hero h1 span { animation: none; }
+      .tr-js .tr-card, .tr-js .tr-hero-stat { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================== -->
+
+<header class="site-header" id="site-header">
+
+  <div class="wrap navrow">
+
+    <a class="logo" href="index.html#top" aria-label="Time to Fit India Home">
+      <img src="logo/logo.png" alt="TFI — Time To Fit India">
+      <span class="word">Time to Fit India</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+
+      <a href="index.html#top">Home</a>
+      <a href="about.html">About</a>
+
+      <div class="nav-dropdown">
+
+        <a href="index.html#programs" class="nav-dropdown-trigger">
+          Programs
+          <span class="nav-arrow" aria-hidden="true">⌄</span>
+        </a>
+
+        <div class="dropdown-menu">
+
+          <div class="nav-dropdown nav-dropdown--nested">
+            <a href="virtual-training.html">
+              <span>Live 1-on-1 Personal Training</span>
+              <span class="dropdown-arrow" aria-hidden="true">›</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu--nested">
+              <a href="monthly-virtual-training.html">Monthly Virtual Training Plan</a>
+              <a href="12-weeks-virtual-training.html">12 Weeks Virtual Training Transformation Plan</a>
+              <a href="half-yearly-virtual-training.html">Half Yearly Virtual Training Transformation Plan</a>
+            </div>
+          </div>
+
+          <div class="nav-dropdown nav-dropdown--nested">
+            <a href="non-virtual-training.html">
+              <span>Workout &amp; Nutrition Plans</span>
+              <span class="dropdown-arrow" aria-hidden="true">›</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu--nested">
+              <a href="monthly-non-virtual-training.html">Monthly Non Virtual Training Plan</a>
+              <a href="12-weeks-non-virtual-training.html">12 Weeks Non Virtual Training Transformation Plan</a>
+              <a href="half-yearly-non-virtual-training.html">Half Yearly Non Virtual Training Transformation Plan</a>
+            </div>
+          </div>
+
+          <div class="nav-dropdown nav-dropdown--nested">
+            <a href="personal-training.html">
+              <span>Specialized Live Personal Training</span>
+              <span class="dropdown-arrow" aria-hidden="true">›</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu--nested">
+              <a href="diabetes-management.html">Diabetes Management / Blood Sugar Control</a>
+              <a href="pcos-pcod-nutrition.html">PCOS/PCOD Balanced Nutrition</a>
+              <a href="hypertension-heart-healthy.html">Hypertension Heart-Healthy Workouts</a>
+              <a href="prenatal-postnatal-fitness.html">Pre and Post Natal Fitness Safe Workouts</a>
+              <a href="back-spine-posture.html">Lower Back and Spine Pain / Posture Correction</a>
+              <a href="cardiovascular-conditioning.html">Cardiovascular Health / Cardio Conditioning</a>
+              <a href="thyroid-metabolic-support.html">Thyroid Management / Metabolic Support</a>
+              <a href="gerd-support.html">GERD (Gastroesophageal Reflux Disease)</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <a href="index.html#who-we-train">Who We Train</a>
+      <a href="index.html#why">Why TFI</a>
+      <a href="trainers.html">Trainers</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#contact">Contact</a>
+
+    </nav>
+
+    <div class="navcta">
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-13.435l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414 2.121-2.121-1.414-1.414-2.121 2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2 1 1 0 0 0-.35-1 10 10 0 1 0 13.71 10.68z" />
+        </svg>
+      </button>
+
+      <a class="btn btn-solid nav-book-btn" href="index.html#contact">Login/Signup</a>
+
+      <button class="navtoggle" id="navtoggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobilemenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+  </div>
+
+  <div id="mobilemenu">
+
+    <a href="index.html#top">Home</a>
+    <a href="about.html">About</a>
+
+    <div class="m-dropdown">
+      <button class="m-toggle" type="button" aria-expanded="false">
+        <span>Programs</span>
+        <span class="m-chevron"></span>
+      </button>
+
+      <div class="m-submenu">
+
+        <div class="m-dropdown">
+          <button class="m-toggle" type="button" aria-expanded="false">
+            <span>Virtual</span>
+            <span class="m-chevron"></span>
+          </button>
+          <div class="m-submenu m-submenu--l2">
+            <a href="monthly-virtual-training.html">Monthly Virtual Training Plan</a>
+            <a href="12-weeks-virtual-training.html">12 Weeks Virtual Training Transformation Plan</a>
+            <a href="half-yearly-virtual-training.html">Half Yearly Virtual Training Transformation Plan</a>
+          </div>
+        </div>
+
+        <div class="m-dropdown">
+          <button class="m-toggle" type="button" aria-expanded="false">
+            <span>Non-Virtual</span>
+            <span class="m-chevron"></span>
+          </button>
+          <div class="m-submenu m-submenu--l2">
+            <a href="monthly-non-virtual-training.html">Monthly Non Virtual Training Plan</a>
+            <a href="12-weeks-non-virtual-training.html">12 Weeks Non Virtual Training Transformation Plan</a>
+            <a href="half-yearly-non-virtual-training.html">Half Yearly Non Virtual Training Transformation Plan</a>
+          </div>
+        </div>
+
+        <div class="m-dropdown">
+          <button class="m-toggle" type="button" aria-expanded="false">
+            <span>Personal Training</span>
+            <span class="m-chevron"></span>
+          </button>
+          <div class="m-submenu m-submenu--l2">
+            <a href="diabetes-management.html">Diabetes Management / Blood Sugar Control</a>
+            <a href="pcos-pcod-nutrition.html">PCOS/PCOD Balanced Nutrition</a>
+            <a href="hypertension-heart-healthy.html">Hypertension Heart-Healthy Workouts</a>
+            <a href="prenatal-postnatal-fitness.html">Pre and Post Natal Fitness Safe Workouts</a>
+            <a href="back-spine-posture.html">Lower Back and Spine Pain / Posture Correction</a>
+            <a href="cardiovascular-conditioning.html">Cardiovascular Health / Cardio Conditioning</a>
+            <a href="thyroid-metabolic-support.html">Thyroid Management / Metabolic Support</a>
+            <a href="gerd-support.html">GERD (Gastroesophageal Reflux Disease)</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <a href="index.html#who-we-train">Who We Train</a>
+    <a href="index.html#why">Why TFI</a>
+    <a href="trainers.html">Trainers</a>
+    <a href="index.html#testimonials">Testimonials</a>
+    <a href="index.html#contact">Contact</a>
+
+    <a class="btn btn-solid mobile-book-btn" href="index.html#contact">Login/Signup</a>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================== -->
+
+<main id="top" class="tr-page">
+
+  <!-- HERO -->
+  <section class="tr-hero">
+    <div class="wrap">
+
+      <nav class="tr-crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <b>Trainers</b>
+      </nav>
+
+      <span class="tr-kicker">Your Goals. Our Expertise.</span>
+
+      <h1>
+        Meet Our
+        <span>Trainers</span>
+      </h1>
+
+      <p>
+        Qualified people. Professional coaching. Explore each coach's certifications, experience and specialization to find the right fit for your fitness journey.
+      </p>
+
+      <div class="tr-hero-stats">
+        <div class="tr-hero-stat"><strong>6</strong><small>Expert Coaches</small></div>
+        <div class="tr-hero-stat"><strong>50+</strong><small>Years Combined Experience</small></div>
+        <div class="tr-hero-stat"><strong>1500+</strong><small>Clients Trained</small></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- TRAINER CARDS -->
+  <section class="tr-section" id="team">
+    <div class="wrap">
+
+      <div class="tr-grid">
+
+        <!-- 1 -->
+        <article class="tr-card">
+          <div class="tr-photo tr-p1">
+            <span class="tr-exp"><i class="fa-solid fa-medal"></i>8+ YEARS</span>
+            <div class="tr-photo-name">
+              <span>Strength &amp; Conditioning</span>
+              <h3>Arjun Mehta</h3>
+            </div>
+          </div>
+          <div class="tr-body">
+            <p class="tr-bio">Builds raw strength and athletic power with structured, progressive programming.</p>
+            <div class="tr-tags">
+              <span>Strength Training</span>
+              <span>Powerlifting</span>
+              <span>Athletic Performance</span>
+            </div>
+            <ul class="tr-meta">
+              <li><i class="fa-solid fa-certificate"></i>NSCA-CSCS Certified</li>
+              <li><i class="fa-solid fa-user-group"></i>300+ clients trained</li>
+              <li><i class="fa-solid fa-language"></i>English, Hindi</li>
+            </ul>
+            <div class="tr-foot">
+              <div class="tr-socials">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+              <a href="index.html#contact" class="btn btn-solid tr-book">Book Now <span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="tr-card">
+          <div class="tr-photo tr-p2">
+            <span class="tr-exp"><i class="fa-solid fa-medal"></i>6+ YEARS</span>
+            <div class="tr-photo-name">
+              <span>Fat Loss &amp; Nutrition</span>
+              <h3>Priya Sharma</h3>
+            </div>
+          </div>
+          <div class="tr-body">
+            <p class="tr-bio">Helps clients lose fat sustainably with smart training and practical nutrition habits.</p>
+            <div class="tr-tags">
+              <span>Weight Loss</span>
+              <span>Diet Planning</span>
+              <span>Body Recomposition</span>
+            </div>
+            <ul class="tr-meta">
+              <li><i class="fa-solid fa-certificate"></i>ACE CPT &amp; Nutrition Coach</li>
+              <li><i class="fa-solid fa-user-group"></i>250+ transformations</li>
+              <li><i class="fa-solid fa-language"></i>English, Hindi, Kannada</li>
+            </ul>
+            <div class="tr-foot">
+              <div class="tr-socials">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+              <a href="index.html#contact" class="btn btn-solid tr-book">Book Now <span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="tr-card">
+          <div class="tr-photo tr-p3">
+            <span class="tr-exp"><i class="fa-solid fa-medal"></i>10+ YEARS</span>
+            <div class="tr-photo-name">
+              <span>Yoga &amp; Mobility</span>
+              <h3>Kavya Nair</h3>
+            </div>
+          </div>
+          <div class="tr-body">
+            <p class="tr-bio">Improves flexibility, posture and mental calm through mindful movement.</p>
+            <div class="tr-tags">
+              <span>Yoga</span>
+              <span>Mobility</span>
+              <span>Stress Relief</span>
+            </div>
+            <ul class="tr-meta">
+              <li><i class="fa-solid fa-certificate"></i>RYT-500 Certified Yoga Teacher</li>
+              <li><i class="fa-solid fa-user-group"></i>500+ sessions led</li>
+              <li><i class="fa-solid fa-language"></i>English, Malayalam</li>
+            </ul>
+            <div class="tr-foot">
+              <div class="tr-socials">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+              <a href="index.html#contact" class="btn btn-solid tr-book">Book Now <span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="tr-card">
+          <div class="tr-photo tr-p4">
+            <span class="tr-exp"><i class="fa-solid fa-medal"></i>9+ YEARS</span>
+            <div class="tr-photo-name">
+              <span>Bodybuilding &amp; Physique</span>
+              <h3>Rohan Kapoor</h3>
+            </div>
+          </div>
+          <div class="tr-body">
+            <p class="tr-bio">Sculpts muscle and physique with hypertrophy-focused plans and contest-style prep.</p>
+            <div class="tr-tags">
+              <span>Muscle Gain</span>
+              <span>Hypertrophy</span>
+              <span>Contest Prep</span>
+            </div>
+            <ul class="tr-meta">
+              <li><i class="fa-solid fa-certificate"></i>ISSA Certified Trainer</li>
+              <li><i class="fa-solid fa-trophy"></i>State-level competitor</li>
+              <li><i class="fa-solid fa-language"></i>English, Hindi</li>
+            </ul>
+            <div class="tr-foot">
+              <div class="tr-socials">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+              <a href="index.html#contact" class="btn btn-solid tr-book">Book Now <span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="tr-card">
+          <div class="tr-photo tr-p5">
+            <span class="tr-exp"><i class="fa-solid fa-medal"></i>5+ YEARS</span>
+            <div class="tr-photo-name">
+              <span>HIIT &amp; Functional Fitness</span>
+              <h3>Sneha Reddy</h3>
+            </div>
+          </div>
+          <div class="tr-body">
+            <p class="tr-bio">High-energy sessions that boost endurance, burn calories and keep workouts fun.</p>
+            <div class="tr-tags">
+              <span>HIIT</span>
+              <span>Functional Training</span>
+              <span>Endurance</span>
+            </div>
+            <ul class="tr-meta">
+              <li><i class="fa-solid fa-certificate"></i>CrossFit Level 2 Trainer</li>
+              <li><i class="fa-solid fa-user-group"></i>200+ group classes</li>
+              <li><i class="fa-solid fa-language"></i>English, Telugu, Hindi</li>
+            </ul>
+            <div class="tr-foot">
+              <div class="tr-socials">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+              <a href="index.html#contact" class="btn btn-solid tr-book">Book Now <span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="tr-card">
+          <div class="tr-photo tr-p6">
+            <span class="tr-exp"><i class="fa-solid fa-medal"></i>12+ YEARS</span>
+            <div class="tr-photo-name">
+              <span>Rehab &amp; Senior Fitness</span>
+              <h3>Vikram Iyer</h3>
+            </div>
+          </div>
+          <div class="tr-body">
+            <p class="tr-bio">Safe, gentle coaching for injury recovery, back pain and active ageing.</p>
+            <div class="tr-tags">
+              <span>Injury Recovery</span>
+              <span>Posture Correction</span>
+              <span>Senior Fitness</span>
+            </div>
+            <ul class="tr-meta">
+              <li><i class="fa-solid fa-certificate"></i>BPT &amp; Corrective Exercise Specialist</li>
+              <li><i class="fa-solid fa-user-group"></i>400+ rehab clients</li>
+              <li><i class="fa-solid fa-language"></i>English, Tamil, Hindi</li>
+            </ul>
+            <div class="tr-foot">
+              <div class="tr-socials">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+              <a href="index.html#contact" class="btn btn-solid tr-book">Book Now <span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="tr-cta">
+    <div class="wrap">
+      <div class="tr-cta-inner">
+        <div>
+          <h2>Not sure which <span>trainer</span> is right for you?</h2>
+          <p>Tell us your goal and our team will match you with the perfect coach.</p>
+        </div>
+        <a href="index.html#contact" class="btn btn-solid">Get Matched →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+
+<footer>
+
+  <div class="wrap">
+
+    <div class="foot-grid">
+
+      <div>
+        <a class="foot-logo" href="index.html#top">
+          <img src="logo/logo.png" alt="TFI logo">
+        </a>
+        <p style="max-width: 280px;">
+          Personal training and fitness programs that build strength — and confident people.
+        </p>
+      </div>
+
+      <div>
+        <h5>Quick links</h5>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#programs">Programs</a></li>
+          <li><a href="trainers.html">Trainers</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="index.html#programs">Personal Training</a></li>
+          <li><a href="index.html#programs">Weight Loss</a></li>
+          <li><a href="index.html#programs">Strength &amp; Conditioning</a></li>
+          <li><a href="index.html#programs">Group Fitness</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>[Studio address]</li>
+          <li>[Phone number]</li>
+          <li>info@tfiindia.com</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 TFI — Time To Fit India. All rights reserved.</span>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =========================================================
+     THEME + NAVIGATION
+========================================================== -->
+
+<script>
+(function () {
+  "use strict";
+
+  function initTheme() {
+    var button = document.getElementById("themeToggle");
+    var root = document.documentElement;
+
+    function save(value) {
+      try { localStorage.setItem("tfi-theme", value); } catch (e) {}
+    }
+
+    function setTheme(dark) {
+      root.classList.toggle("dark-mode", dark);
+      save(dark ? "dark" : "light");
+    }
+
+    try {
+      if (localStorage.getItem("tfi-theme") === "light") {
+        root.classList.remove("dark-mode");
+      }
+    } catch (e) {}
+
+    if (button) {
+      button.addEventListener("click", function () {
+        setTheme(!root.classList.contains("dark-mode"));
+      });
+    }
+  }
+
+  function initNavigation() {
+    var toggle = document.getElementById("navtoggle");
+    var menu = document.getElementById("mobilemenu");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      var open = menu.classList.toggle("open");
+      toggle.classList.toggle("active", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+
+    Array.prototype.forEach.call(menu.querySelectorAll("a"), function (link) {
+      link.addEventListener("click", function () {
+        menu.classList.remove("open");
+        toggle.classList.remove("active");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    Array.prototype.forEach.call(menu.querySelectorAll(".m-toggle"), function (button) {
+      button.addEventListener("click", function () {
+        var expanded = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", String(!expanded));
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initTheme();
+    initNavigation();
+  });
+})();
+</script>
+
+
+<!-- =========================================================
+     SCROLL REVEAL (cards stay visible if JavaScript is off)
+========================================================== -->
+
+<script>
+(function () {
+  "use strict";
+
+  var items = document.querySelectorAll(".tr-card, .tr-hero-stat");
+  if (!items.length || !("IntersectionObserver" in window)) return;
+
+  document.documentElement.classList.add("tr-js");
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  Array.prototype.forEach.call(items, function (el, i) {
+    el.style.transitionDelay = ((i % 3) * 0.09) + "s";
+    io.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
