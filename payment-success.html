@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Payment Successful | TFI — Time To Fit India</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .ps { min-height: 100vh; display: grid; place-items: center; padding: 24px; text-align: center; }
+    .ps-card { max-width: 480px; }
+    .ps-card h1 { font-family: "Oswald", sans-serif; font-size: 2rem; margin: 12px 0; }
+    .ps-card p { opacity: .85; line-height: 1.6; margin: 8px 0; }
+    .ps-id { font-family: monospace; font-size: .9rem; opacity: .7; word-break: break-all; }
+    .ps-card .btn { display: inline-block; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <main class="ps">
+    <div class="ps-card">
+      <div style="font-size:3rem" aria-hidden="true">✅</div>
+      <h1>Payment successful</h1>
+      <p>Thank you! Your monthly virtual training plan is confirmed. Our team will contact you shortly to schedule your first session.</p>
+      <p class="ps-id" id="pid"></p>
+      <a class="btn btn-solid" href="index.html">Back to home</a>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var id = new URLSearchParams(location.search).get("payment_id");
+      if (id) document.getElementById("pid").textContent = "Payment ID: " + id;
+    })();
+  </script>
+</body>
+</html>

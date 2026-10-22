@@ -29,6 +29,9 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <!-- Razorpay Checkout -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
   <!-- Page styles: load AFTER style.css -->
   <!-- <link rel="stylesheet" href="monthly-virtual-training.css"> -->
 
@@ -1843,7 +1846,7 @@
             </summary>
 
             <p>
-              No. Our team confirms your final plan and pricing before any payment.
+              Yes. You choose your plan, review the final total, and pay securely online with Razorpay (UPI, cards, netbanking, wallets). Your plan is confirmed once the payment succeeds.
             </p>
 
           </details>
@@ -3102,42 +3105,353 @@
 
 
       /* =====================================================
-         SEND TO CONTACT PAGE
+         PAY WITH RAZORPAY
+
+         1. Send ONLY the selected options to our server.
+            The server recalculates the price itself, so the
+            amount can never be changed from the browser.
+         2. Server creates a Razorpay order and returns its id.
+         3. Open Razorpay Checkout for that order.
+         4. After payment, the server verifies the signature.
       ====================================================== */
 
-      var params =
-        new URLSearchParams({
-
-          session:
-            val("session"),
-
-          couple:
-            val("couple"),
-
-          trainer:
-            val("trainer"),
-
-          nutrition:
-            val("nutrition"),
-
-          extension:
-            val("extension"),
-
-          total:
-            Math.round(
-              total()
-            )
-
-        });
-
-
-      window.location.href =
-        "index.html?" +
-        params.toString() +
-        "#contact";
+      startPayment();
 
     }
   );
+
+
+
+  /* =========================================================
+     RAZORPAY PAYMENT FLOW
+  ========================================================== */
+
+  /* Leave "" if the server serves this site (same origin).
+     If the API lives elsewhere, e.g. "https://api.tfiindia.com" */
+
+  var API_BASE = "";
+
+  /* ---------------------------------------------------------
+     PAYMENT MODE
+
+     false = HTML-only. No server needed. The browser opens
+             Razorpay Checkout directly with your PUBLIC key id.
+             (Simple, but see the note in the chat about the
+             amount not being enforced server-side.)
+
+     true  = Secure mode. Needs the Node server (server.js),
+             which recalculates the price and verifies payment.
+  --------------------------------------------------------- */
+
+  var USE_SERVER = false;
+
+  /* Razorpay Dashboard -> API Keys. Only the KEY ID goes here
+     (starts with rzp_test_ or rzp_live_). NEVER the Key Secret. */
+
+  var RAZORPAY_KEY_ID = "rzp_live_TqqyC8hsSy3a6F";
+
+  var SUCCESS_PAGE = "payment-success.html";
+
+  var paying = false;
+
+
+  function showError(message) {
+
+    errorEl.textContent = message;
+
+    errorEl.classList.remove("show");
+
+    void errorEl.offsetWidth;
+
+    errorEl.classList.add("show");
+
+  }
+
+
+  function setPaying(state) {
+
+    paying = state;
+
+    submit.disabled = state;
+
+    submit.classList.toggle("is-loading", state);
+
+    submit.firstChild.textContent =
+      state
+        ? "Processing… "
+        : "Continue With My Plan ";
+
+  }
+
+
+  function postJSON(path, body) {
+
+    return fetch(API_BASE + path, {
+
+      method: "POST",
+
+      headers: { "Content-Type": "application/json" },
+
+      body: JSON.stringify(body)
+
+    }).then(function (res) {
+
+      return res.json().catch(function () {
+
+        return {};
+
+      }).then(function (data) {
+
+        if (!res.ok) {
+
+          throw new Error(
+            data.error ||
+            "Something went wrong. Please try again."
+          );
+
+        }
+
+        return data;
+
+      });
+
+    });
+
+  }
+
+
+  function startPayment() {
+
+    if (paying) return;
+
+    if (typeof window.Razorpay === "undefined") {
+
+      showError(
+        "Payment service could not load. Please check your connection and try again."
+      );
+
+      return;
+
+    }
+
+    errorEl.classList.remove("show");
+
+    setPaying(true);
+
+
+    /* ---------- HTML-only mode: open Checkout directly ---------- */
+
+    if (!USE_SERVER) {
+
+      if (!/^rzp_(test|live)_/.test(RAZORPAY_KEY_ID) || /X{6}/.test(RAZORPAY_KEY_ID)) {
+
+        setPaying(false);
+
+        showError("Payments are not set up yet. Please add the Razorpay Key ID.");
+
+        return;
+
+      }
+
+      var rupees = Math.round(total());
+
+      if (!rupees) {
+
+        setPaying(false);
+
+        return;
+
+      }
+
+      var direct = new window.Razorpay({
+
+        key: RAZORPAY_KEY_ID,
+
+        amount: rupees * 100,
+
+        currency: "INR",
+
+        name: "TFI — Time To Fit India",
+
+        description:
+          "Monthly Virtual Training — " +
+          checked("session").getAttribute("data-label") + ", " +
+          checked("couple").getAttribute("data-label"),
+
+        image: "logo/logo.png",
+
+        theme: { color: "#e63946" },
+
+        notes: {
+
+          plan: "Monthly Virtual Training",
+
+          sessions: checked("session").getAttribute("data-label"),
+
+          training_type: checked("couple").getAttribute("data-label"),
+
+          trainer_level: checked("trainer").getAttribute("data-label"),
+
+          nutrition: checked("nutrition").getAttribute("data-label"),
+
+          extension: checked("extension").getAttribute("data-label"),
+
+          total_shown_inr: String(rupees)
+
+        },
+
+        modal: {
+
+          ondismiss: function () {
+
+            setPaying(false);
+
+          }
+
+        },
+
+        handler: function (response) {
+
+          window.location.href =
+            SUCCESS_PAGE +
+            "?payment_id=" +
+            encodeURIComponent(response.razorpay_payment_id);
+
+        }
+
+      });
+
+
+      direct.on("payment.failed", function (resp) {
+
+        setPaying(false);
+
+        showError(
+          (resp && resp.error && resp.error.description) ||
+          "Payment failed. Please try again."
+        );
+
+      });
+
+
+      direct.open();
+
+      return;
+
+    }
+
+
+    /* ---------- Secure mode: order created by the server ---------- */
+
+    postJSON("/api/razorpay/create-order", {
+
+      session: val("session"),
+
+      couple: val("couple"),
+
+      trainer: val("trainer"),
+
+      nutrition: val("nutrition"),
+
+      extension: val("extension")
+
+    }).then(function (order) {
+
+      var options = {
+
+        key: order.key_id,
+
+        amount: order.amount,
+
+        currency: order.currency,
+
+        order_id: order.order_id,
+
+        name: "TFI — Time To Fit India",
+
+        description: order.description,
+
+        image: "logo/logo.png",
+
+        theme: { color: "#e63946" },
+
+        modal: {
+
+          ondismiss: function () {
+
+            setPaying(false);
+
+          }
+
+        },
+
+        handler: function (response) {
+
+          verifyPayment(response);
+
+        }
+
+      };
+
+
+      var rzp = new window.Razorpay(options);
+
+
+      rzp.on("payment.failed", function (resp) {
+
+        setPaying(false);
+
+        showError(
+          (resp && resp.error && resp.error.description) ||
+          "Payment failed. Please try again."
+        );
+
+      });
+
+
+      rzp.open();
+
+    }).catch(function (err) {
+
+      setPaying(false);
+
+      showError(err.message);
+
+    });
+
+  }
+
+
+  function verifyPayment(response) {
+
+    postJSON("/api/razorpay/verify", {
+
+      razorpay_order_id: response.razorpay_order_id,
+
+      razorpay_payment_id: response.razorpay_payment_id,
+
+      razorpay_signature: response.razorpay_signature
+
+    }).then(function () {
+
+      window.location.href =
+        SUCCESS_PAGE +
+        "?payment_id=" +
+        encodeURIComponent(response.razorpay_payment_id);
+
+    }).catch(function () {
+
+      setPaying(false);
+
+      showError(
+        "We received your payment but could not confirm it automatically. " +
+        "Please do not pay again — contact us with payment ID " +
+        response.razorpay_payment_id + "."
+      );
+
+    });
+
+  }
 
 
 
