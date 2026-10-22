@@ -1,0 +1,7 @@
+/laravel/vendor
+/laravel/node_modules
+/laravel/.env
+/laravel/storage/app/paid-orders.jsonl
+/node_modules
+.env
+paid-orders.jsonl

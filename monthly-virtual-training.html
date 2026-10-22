@@ -1859,7 +1859,7 @@
               <i class="fa-solid fa-plus"></i>
             </summary>
 
-            <p>
+            <p id="faqExtension">
               It is an optional add-on charged separately: 10 days are ₹999 for Solo / ₹1,499 for Couple, and 30 days are ₹2,499 for Solo / ₹3,499 for Couple.
             </p>
 
@@ -2350,7 +2350,7 @@
 
 
 <!-- =========================================================
-     MONTHLY PLAN CONFIGURATOR
+     MONTHLY PLAN CONFIGURATOR  (with IP-based currency: INR / USD)
 ========================================================== -->
 
 <script>
@@ -2360,145 +2360,205 @@
   "use strict";
 
 
-  var form =
-    document.getElementById(
-      "mvForm"
-    );
-
+  var form = document.getElementById("mvForm");
 
   if (!form) return;
 
 
-  /* =========================================================
-     REQUIRED GROUPS
-  ========================================================== */
-
-  var GROUPS = [
-    "session",
-    "couple",
-    "trainer",
-    "nutrition",
-    "extension"
-  ];
-
+  var GROUPS = ["session", "couple", "trainer", "nutrition", "extension"];
 
 
   /* =========================================================
-     BASE TRAINING PRICE (1 month, Solo) — depends on trainer level
+     PRICE TABLES  — EDIT THE USD NUMBERS TO YOUR OWN PRICES
 
-     Specialized Personal Training
-       12 Sessions = ₹15,000
-       16 Sessions = ₹20,000
-       20 Sessions = ₹25,000
-
-     Certified Personal Training
-       12 Sessions = ₹9,999
-       16 Sessions = ₹13,332
-       20 Sessions = ₹16,665
+     INR values are your existing prices.
+     USD values are PLACEHOLDERS (about the INR price / 84,
+     rounded) — set the ones you actually want to charge.
   ========================================================== */
 
-  var BASE = {
+  var CURRENCIES = {
 
-    specialized: {
+    INR: {
 
-      "12": 15000,
+      symbol: "₹",
 
-      "16": 20000,
+      locale: "en-IN",
 
-      "20": 25000
+      base: {
+
+        specialized: { "12": 15000, "16": 20000, "20": 25000 },
+
+        certified:   { "12": 9999,  "16": 13332, "20": 16665 }
+
+      },
+
+      nutritionPerPersonPerMonth: 499,
+
+      extension: {
+
+        solo:   { none: 0, "10": 999,  "30": 2499 },
+
+        couple: { none: 0, "10": 1499, "30": 3499 }
+
+      }
 
     },
 
-    certified: {
 
-      "12": 9999,
+    USD: {
 
-      "16": 13332,
+      symbol: "$",
 
-      "20": 16665
+      locale: "en-US",
+
+      base: {
+
+        specialized: { "12": 179, "16": 239, "20": 299 },
+
+        certified:   { "12": 119, "16": 159, "20": 199 }
+
+      },
+
+      nutritionPerPersonPerMonth: 9,
+
+      extension: {
+
+        solo:   { none: 0, "10": 12, "30": 29 },
+
+        couple: { none: 0, "10": 18, "30": 41 }
+
+      }
 
     }
 
   };
 
 
+  /* Let visitors switch currency manually (useful for VPN users
+     and travellers). Set to false to lock the currency to the
+     detected country. */
 
-  /* =========================================================
-     PACKAGE DISCOUNTS
+  var ALLOW_SWITCH = false;
 
-     1 Month  = 0%
-     3 Months = 10%
-     6 Months = 20%
 
-     (Not used on the monthly page; kept for reference.)
-  ========================================================== */
-
-  var DISCOUNT = {
-
-    "1": 0,
-
-    "3": 0.10,
-
-    "6": 0.20
-
-  };
+  var currency = "INR";
 
 
 
   /* =========================================================
-     NUTRITION
+     COUNTRY DETECTION (IP address)
 
-     Solo:
-     ₹499 / person / month
-
-     Couple:
-     ₹998 / month
-
-     No package discount.
+     1. Instant guess from the browser time zone (no flicker).
+     2. Confirm with an IP lookup (ipapi.co, free tier).
+     3. Cache the answer for 24h so we don't call the API on
+        every page view.
+     4. A manual choice by the visitor always wins.
   ========================================================== */
 
-  var NUTRITION_PER_PERSON_PER_MONTH =
-    499;
+  var GEO_KEY = "tfi-geo";
+
+  var PREF_KEY = "tfi-currency";
+
+  var GEO_TTL = 24 * 60 * 60 * 1000;
 
 
+  function readStore(key) {
 
-  /* =========================================================
-     EXTENSION
+    try { return localStorage.getItem(key); } catch (e) { return null; }
 
-     Solo:
-     10 Days = ₹999
-     30 Days = ₹2,499
+  }
 
-     Couple:
-     10 Days = ₹1,499
-     30 Days = ₹3,499
 
-     No package discount.
-  ========================================================== */
+  function writeStore(key, value) {
 
-  var EXTENSION = {
+    try { localStorage.setItem(key, value); } catch (e) {}
 
-    solo: {
+  }
 
-      none: 0,
 
-      "10": 999,
+  function currencyForCountry(code) {
 
-      "30": 2499
+    return code === "IN" ? "INR" : "USD";
 
-    },
+  }
 
-    couple: {
 
-      none: 0,
+  function guessFromTimezone() {
 
-      "10": 1499,
+    try {
 
-      "30": 3499
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+      if (!tz) return "INR";
+
+      return (tz === "Asia/Calcutta" || tz === "Asia/Kolkata")
+        ? "INR"
+        : "USD";
+
+    } catch (e) {
+
+      return "INR";
 
     }
 
-  };
+  }
+
+
+  function lookupCountry(done) {
+
+    var cached = null;
+
+    try { cached = JSON.parse(readStore(GEO_KEY) || "null"); } catch (e) {}
+
+    if (cached && cached.c && Date.now() - cached.t < GEO_TTL) {
+
+      done(cached.c);
+
+      return;
+
+    }
+
+    var timer = null;
+
+    var controller = (typeof AbortController !== "undefined")
+      ? new AbortController()
+      : null;
+
+    if (controller) {
+
+      timer = setTimeout(function () { controller.abort(); }, 4000);
+
+    }
+
+    fetch("https://ipapi.co/json/", controller ? { signal: controller.signal } : {})
+
+      .then(function (res) { return res.json(); })
+
+      .then(function (data) {
+
+        if (timer) clearTimeout(timer);
+
+        var code = data && (data.country_code || data.country);
+
+        if (code) {
+
+          writeStore(GEO_KEY, JSON.stringify({ c: code, t: Date.now() }));
+
+          done(code);
+
+        }
+
+      })
+
+      .catch(function () {
+
+        if (timer) clearTimeout(timer);
+
+        /* keep the time-zone guess */
+
+      });
+
+  }
 
 
 
@@ -2506,254 +2566,205 @@
      ELEMENTS
   ========================================================== */
 
-  var totalEl =
-    document.getElementById(
-      "mvTotal"
-    );
+  var totalEl = document.getElementById("mvTotal");
 
+  var stickyTotalEl = document.getElementById("mvStickyTotal");
 
-  var stickyTotalEl =
-    document.getElementById(
-      "mvStickyTotal"
-    );
+  var submit = document.getElementById("mvSubmit");
 
+  var errorEl = document.getElementById("mvError");
 
-  var submit =
-    document.getElementById(
-      "mvSubmit"
-    );
-
-
-  var errorEl =
-    document.getElementById(
-      "mvError"
-    );
+  var faqExtension = document.getElementById("faqExtension");
 
 
   var sum = {
 
-    session:
-      document.getElementById(
-        "sumSession"
-      ),
+    session:   document.getElementById("sumSession"),
 
-    couple:
-      document.getElementById(
-        "sumCouple"
-      ),
+    couple:    document.getElementById("sumCouple"),
 
-    trainer:
-      document.getElementById(
-        "sumTrainer"
-      ),
+    trainer:   document.getElementById("sumTrainer"),
 
-    nutrition:
-      document.getElementById(
-        "sumNutrition"
-      ),
+    nutrition: document.getElementById("sumNutrition"),
 
-    extension:
-      document.getElementById(
-        "sumExtension"
-      )
+    extension: document.getElementById("sumExtension")
 
   };
 
 
+  function C() { return CURRENCIES[currency]; }
 
-  /* =========================================================
-     CHECKED RADIO
-  ========================================================== */
 
   function checked(name) {
 
-    return form.querySelector(
-      'input[name="' +
-      name +
-      '"]:checked'
-    );
+    return form.querySelector('input[name="' + name + '"]:checked');
 
   }
 
-
-
-  /* =========================================================
-     VALUE
-  ========================================================== */
 
   function val(name) {
 
-    var el =
-      checked(name);
+    var el = checked(name);
+
+    return el ? el.value : "";
+
+  }
 
 
-    return el
-      ? el.value
-      : "";
+  function money(n, code) {
+
+    var c = CURRENCIES[code || currency];
+
+    return c.symbol + Math.round(Number(n)).toLocaleString(c.locale);
 
   }
 
 
 
   /* =========================================================
-     MONEY FORMAT
-  ========================================================== */
-
-  function money(n) {
-
-    return "₹" +
-      Math.round(
-        Number(n)
-      ).toLocaleString(
-        "en-IN"
-      );
-
-  }
-
-
-
-  /* =========================================================
-     TRAINING PRICE
-
-     Base price depends on trainer level + session count.
-     Monthly plan = 1 month, no package discount.
-
-     Formula:
-
-     BASE[trainer][session]
-     × Couple Multiplier (1.5 if couple)
-
-     Total stays ₹0 until a trainer level AND a session
-     count are both selected.
+     PRICE CALCULATION  (same rules as before)
   ========================================================== */
 
   function calculateTraining() {
 
-    var session =
-      val("session");
+    var session = val("session");
 
+    var trainer = val("trainer");
 
-    var trainer =
-      val("trainer");
+    var base = C().base;
 
+    if (!trainer || !base[trainer] || !base[trainer][session]) return 0;
 
-    if (
-      !trainer ||
-      !BASE[trainer] ||
-      !BASE[trainer][session]
-    ) {
+    var training = base[trainer][session];
 
-      return 0;
+    if (val("couple") === "yes") training *= 1.5;
 
-    }
-
-
-    var training =
-      BASE[trainer][session];
-
-
-    /* Couple = 1.5 × Solo */
-
-    if (
-      val("couple") ===
-      "yes"
-    ) {
-
-      training *= 1.5;
-
-    }
-
-
-    return training;
+    return Math.round(training);
 
   }
 
-
-
-  /* =========================================================
-     NUTRITION PRICE
-
-     Nutrition gets NO package discount.
-  ========================================================== */
 
   function calculateNutrition() {
 
-    var duration = 1; /* monthly plan */
+    if (val("nutrition") !== "yes") return 0;
 
+    var people = val("couple") === "yes" ? 2 : 1;
 
-    if (
-      val("nutrition") !==
-      "yes"
-    ) {
-
-      return 0;
-
-    }
-
-
-    var people =
-      val("couple") ===
-      "yes"
-        ? 2
-        : 1;
-
-
-    return (
-      NUTRITION_PER_PERSON_PER_MONTH *
-      people *
-      duration
-    );
+    return C().nutritionPerPersonPerMonth * people;
 
   }
 
-
-
-  /* =========================================================
-     EXTENSION PRICE
-
-     Extension gets NO package discount.
-  ========================================================== */
 
   function calculateExtension() {
 
-    var extension =
-      val("extension") ||
-      "none";
+    var extension = val("extension") || "none";
+
+    var type = val("couple") === "yes" ? "couple" : "solo";
+
+    return C().extension[type][extension] || 0;
+
+  }
 
 
-    var type =
-      val("couple") ===
-      "yes"
-        ? "couple"
-        : "solo";
+  function total() {
 
-
-    return (
-      EXTENSION[type][extension] ||
-      0
-    );
+    return calculateTraining() + calculateNutrition() + calculateExtension();
 
   }
 
 
 
   /* =========================================================
-     FINAL TOTAL
-
-     Training
-     +
-     Nutrition
-     +
-     Extension
+     CURRENCY SWITCHER (small INR | USD toggle by the total)
   ========================================================== */
 
-  function total() {
+  var switcher = null;
 
-    return (
-      calculateTraining() +
-      calculateNutrition() +
-      calculateExtension()
-    );
+
+  function buildSwitcher() {
+
+    var host = form.querySelector(".mvp-total");
+
+    if (!host || !ALLOW_SWITCH) return;
+
+
+    var style = document.createElement("style");
+
+    style.textContent =
+      ".mvp-cur{display:inline-flex;gap:4px;margin-top:8px;padding:3px;" +
+      "border:1px solid rgba(128,128,128,.4);border-radius:999px}" +
+      ".mvp-cur button{border:0;background:transparent;color:inherit;" +
+      "font:inherit;font-size:.8rem;font-weight:600;padding:4px 12px;" +
+      "border-radius:999px;cursor:pointer;opacity:.7}" +
+      ".mvp-cur button.on{background:#e63946;color:#fff;opacity:1}";
+
+    document.head.appendChild(style);
+
+
+    switcher = document.createElement("div");
+
+    switcher.className = "mvp-cur";
+
+    switcher.setAttribute("role", "group");
+
+    switcher.setAttribute("aria-label", "Currency");
+
+    switcher.innerHTML =
+      '<button type="button" data-cur="INR">₹ INR</button>' +
+      '<button type="button" data-cur="USD">$ USD</button>';
+
+    host.appendChild(switcher);
+
+
+    switcher.addEventListener("click", function (event) {
+
+      var btn = event.target.closest("button[data-cur]");
+
+      if (!btn) return;
+
+      writeStore(PREF_KEY, btn.getAttribute("data-cur"));
+
+      setCurrency(btn.getAttribute("data-cur"));
+
+    });
+
+  }
+
+
+  function setCurrency(code) {
+
+    if (!CURRENCIES[code]) return;
+
+    currency = code;
+
+    if (switcher) {
+
+      Array.prototype.forEach.call(
+        switcher.querySelectorAll("button"),
+        function (b) {
+
+          b.classList.toggle("on", b.getAttribute("data-cur") === code);
+
+        }
+      );
+
+    }
+
+    if (faqExtension) {
+
+      var e = CURRENCIES[code].extension;
+
+      faqExtension.textContent =
+        "It is an optional add-on charged separately: 10 days are " +
+        money(e.solo["10"]) + " for Solo / " + money(e.couple["10"]) +
+        " for Couple, and 30 days are " + money(e.solo["30"]) +
+        " for Solo / " + money(e.couple["30"]) + " for Couple.";
+
+    }
+
+    /* "change" refreshes the total, summary, stepper and WhatsApp link */
+
+    form.dispatchEvent(new Event("change", { bubbles: true }));
 
   }
 
@@ -2768,189 +2779,77 @@
     var done = 0;
 
 
-    GROUPS.forEach(
-      function (g) {
+    GROUPS.forEach(function (g) {
 
-        var el =
-          checked(g);
+      var el = checked(g);
 
+      var out = sum[g];
 
-        var out =
-          sum[g];
+      var group = form.querySelector('.mvp-group[data-group="' + g + '"]');
 
 
-        var group =
-          form.querySelector(
-            '.mvp-group[data-group="' +
-            g +
-            '"]'
-          );
+      if (el) {
 
+        out.textContent = el.getAttribute("data-label");
 
-        if (el) {
+        out.classList.remove("empty");
 
-          out.textContent =
-            el.getAttribute(
-              "data-label"
-            );
+        if (group) group.classList.remove("invalid");
 
+        done++;
 
-          out.classList.remove(
-            "empty"
-          );
+      } else {
 
+        out.textContent = "Not selected";
 
-          if (group) {
-
-            group.classList.remove(
-              "invalid"
-            );
-
-          }
-
-
-          done++;
-
-        } else {
-
-          out.textContent =
-            "Not selected";
-
-
-          out.classList.add(
-            "empty"
-          );
-
-        }
+        out.classList.add("empty");
 
       }
-    );
+
+    });
 
 
+    var firstOpen = true;
 
-    /* =====================================================
-       UPDATE PROGRESS
-    ====================================================== */
+    GROUPS.forEach(function (g) {
 
-    var firstOpen =
-      true;
+      var step = document.querySelector('.mvp-prog-step[data-step="' + g + '"]');
 
+      if (!step) return;
 
-    GROUPS.forEach(
-      function (g) {
+      var selected = !!checked(g);
 
-        var step =
-          document.querySelector(
-            '.mvp-prog-step[data-step="' +
-            g +
-            '"]'
-          );
+      step.classList.toggle("done", selected);
 
+      step.classList.toggle("current", !selected && firstOpen);
 
-        if (!step) return;
+      if (!selected) firstOpen = false;
+
+    });
 
 
-        var selected =
-          !!checked(g);
+    var finalTotal = total();
+
+    totalEl.textContent = money(finalTotal);
+
+    if (stickyTotalEl) stickyTotalEl.textContent = money(finalTotal);
 
 
-        step.classList.toggle(
-          "done",
-          selected
-        );
-
-
-        step.classList.toggle(
-          "current",
-          !selected &&
-          firstOpen
-        );
-
-
-        if (!selected) {
-
-          firstOpen =
-            false;
-
-        }
-
-      }
-    );
-
-
-
-    /* =====================================================
-       UPDATE TOTAL
-    ====================================================== */
-
-    var finalTotal =
-      total();
-
-
-    totalEl.textContent =
-      money(finalTotal);
-
-
-    if (stickyTotalEl) {
-
-      stickyTotalEl.textContent =
-        money(finalTotal);
-
-    }
-
-
-    /* =====================================================
-       PRICE ANIMATION
-    ====================================================== */
-
-    totalEl.classList.remove(
-      "pop"
-    );
-
+    totalEl.classList.remove("pop");
 
     void totalEl.offsetWidth;
 
-
-    totalEl.classList.add(
-      "pop"
-    );
+    totalEl.classList.add("pop");
 
 
+    submit.classList.toggle("locked", done < GROUPS.length);
 
-    /* =====================================================
-       SUBMIT LOCK
-    ====================================================== */
-
-    submit.classList.toggle(
-      "locked",
-      done <
-      GROUPS.length
-    );
-
-
-    if (
-      done ===
-      GROUPS.length
-    ) {
-
-      errorEl.classList.remove(
-        "show"
-      );
-
-    }
+    if (done === GROUPS.length) errorEl.classList.remove("show");
 
   }
 
 
-
-  /* =========================================================
-     CHANGE EVENT
-  ========================================================== */
-
-  form.addEventListener(
-    "change",
-    update
-  );
+  form.addEventListener("change", update);
 
 
 
@@ -2960,42 +2859,23 @@
 
   Array.prototype.forEach.call(
 
-    document.querySelectorAll(
-      ".mvp-prog-step"
-    ),
+    document.querySelectorAll(".mvp-prog-step"),
 
     function (button) {
 
-      button.addEventListener(
-        "click",
-        function () {
+      button.addEventListener("click", function () {
 
-          var group =
-            form.querySelector(
-              '.mvp-group[data-group="' +
-              button.getAttribute(
-                "data-step"
-              ) +
-              '"]'
-            );
+        var group = form.querySelector(
+          '.mvp-group[data-group="' + button.getAttribute("data-step") + '"]'
+        );
 
+        if (group) {
 
-          if (group) {
-
-            group.scrollIntoView({
-
-              behavior:
-                "smooth",
-
-              block:
-                "center"
-
-            });
-
-          }
+          group.scrollIntoView({ behavior: "smooth", block: "center" });
 
         }
-      );
+
+      });
 
     }
 
@@ -3007,118 +2887,48 @@
      SUBMIT
   ========================================================== */
 
-  form.addEventListener(
-    "submit",
-    function (event) {
+  form.addEventListener("submit", function (event) {
 
-      event.preventDefault();
+    event.preventDefault();
 
 
-      var missing =
-        GROUPS.filter(
-          function (g) {
-
-            return !checked(g);
-
-          }
-        );
+    var missing = GROUPS.filter(function (g) { return !checked(g); });
 
 
-      if (
-        missing.length
-      ) {
+    if (missing.length) {
+
+      GROUPS.forEach(function (g) {
+
+        var group = form.querySelector('.mvp-group[data-group="' + g + '"]');
+
+        if (group) group.classList.toggle("invalid", missing.indexOf(g) !== -1);
+
+      });
 
 
-        GROUPS.forEach(
-          function (g) {
+      errorEl.textContent = "Please complete every step to continue.";
 
-            var group =
-              form.querySelector(
-                '.mvp-group[data-group="' +
-                g +
-                '"]'
-              );
+      errorEl.classList.remove("show");
+
+      void errorEl.offsetWidth;
+
+      errorEl.classList.add("show");
 
 
-            if (group) {
+      var first = form.querySelector(
+        '.mvp-group[data-group="' + missing[0] + '"]'
+      );
 
-              group.classList.toggle(
+      if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
 
-                "invalid",
-
-                missing.indexOf(
-                  g
-                ) !== -1
-
-              );
-
-            }
-
-          }
-        );
-
-
-        errorEl.textContent =
-          "Please complete every step to continue.";
-
-
-        errorEl.classList.remove(
-          "show"
-        );
-
-
-        void errorEl.offsetWidth;
-
-
-        errorEl.classList.add(
-          "show"
-        );
-
-
-        var first =
-          form.querySelector(
-            '.mvp-group[data-group="' +
-            missing[0] +
-            '"]'
-          );
-
-
-        if (first) {
-
-          first.scrollIntoView({
-
-            behavior:
-              "smooth",
-
-            block:
-              "center"
-
-          });
-
-        }
-
-
-        return;
-
-      }
-
-
-
-      /* =====================================================
-         PAY WITH RAZORPAY
-
-         1. Send ONLY the selected options to our server.
-            The server recalculates the price itself, so the
-            amount can never be changed from the browser.
-         2. Server creates a Razorpay order and returns its id.
-         3. Open Razorpay Checkout for that order.
-         4. After payment, the server verifies the signature.
-      ====================================================== */
-
-      startPayment();
+      return;
 
     }
-  );
+
+
+    startPayment();
+
+  });
 
 
 
@@ -3126,27 +2936,12 @@
      RAZORPAY PAYMENT FLOW
   ========================================================== */
 
-  /* Leave "" if the server serves this site (same origin).
-     If the API lives elsewhere, e.g. "https://api.tfiindia.com" */
-
   var API_BASE = "";
 
-  /* ---------------------------------------------------------
-     PAYMENT MODE
-
-     false = HTML-only. No server needed. The browser opens
-             Razorpay Checkout directly with your PUBLIC key id.
-             (Simple, but see the note in the chat about the
-             amount not being enforced server-side.)
-
-     true  = Secure mode. Needs the Node server (server.js),
-             which recalculates the price and verifies payment.
-  --------------------------------------------------------- */
+  /* false = HTML-only (browser opens Checkout directly)
+     true  = Secure mode (server recalculates price + verifies) */
 
   var USE_SERVER = false;
-
-  /* Razorpay Dashboard -> API Keys. Only the KEY ID goes here
-     (starts with rzp_test_ or rzp_live_). NEVER the Key Secret. */
 
   var RAZORPAY_KEY_ID = "rzp_live_TqqyC8hsSy3a6F";
 
@@ -3177,9 +2972,7 @@
     submit.classList.toggle("is-loading", state);
 
     submit.firstChild.textContent =
-      state
-        ? "Processing… "
-        : "Continue With My Plan ";
+      state ? "Processing… " : "Continue With My Plan ";
 
   }
 
@@ -3196,17 +2989,12 @@
 
     }).then(function (res) {
 
-      return res.json().catch(function () {
-
-        return {};
-
-      }).then(function (data) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
 
         if (!res.ok) {
 
           throw new Error(
-            data.error ||
-            "Something went wrong. Please try again."
+            data.error || "Something went wrong. Please try again."
           );
 
         }
@@ -3239,7 +3027,7 @@
     setPaying(true);
 
 
-    /* ---------- HTML-only mode: open Checkout directly ---------- */
+    /* ---------- HTML-only mode ---------- */
 
     if (!USE_SERVER) {
 
@@ -3253,9 +3041,9 @@
 
       }
 
-      var rupees = Math.round(total());
+      var amountMajor = Math.round(total());
 
-      if (!rupees) {
+      if (!amountMajor) {
 
         setPaying(false);
 
@@ -3267,9 +3055,11 @@
 
         key: RAZORPAY_KEY_ID,
 
-        amount: rupees * 100,
+        /* INR -> paise, USD -> cents: both are x100 */
 
-        currency: "INR",
+        amount: amountMajor * 100,
+
+        currency: currency,
 
         name: "TFI — Time To Fit India",
 
@@ -3296,17 +3086,15 @@
 
           extension: checked("extension").getAttribute("data-label"),
 
-          total_shown_inr: String(rupees)
+          currency: currency,
+
+          total_shown: String(amountMajor)
 
         },
 
         modal: {
 
-          ondismiss: function () {
-
-            setPaying(false);
-
-          }
+          ondismiss: function () { setPaying(false); }
 
         },
 
@@ -3353,7 +3141,9 @@
 
       nutrition: val("nutrition"),
 
-      extension: val("extension")
+      extension: val("extension"),
+
+      currency: currency
 
     }).then(function (order) {
 
@@ -3377,19 +3167,11 @@
 
         modal: {
 
-          ondismiss: function () {
-
-            setPaying(false);
-
-          }
+          ondismiss: function () { setPaying(false); }
 
         },
 
-        handler: function (response) {
-
-          verifyPayment(response);
-
-        }
+        handler: function (response) { verifyPayment(response); }
 
       };
 
@@ -3456,11 +3238,19 @@
 
 
   /* =========================================================
-     INITIAL CALCULATION
+     START
   ========================================================== */
 
-  update();
+  /* No customer-facing currency switch. Detect the country automatically. */
+  buildSwitcher(); // Does not render because ALLOW_SWITCH is false.
 
+  /* Use timezone as an immediate fallback, then update from IP country. */
+  setCurrency(guessFromTimezone());
+
+  lookupCountry(function (country) {
+    var detected = currencyForCountry(country);
+    if (detected !== currency) setCurrency(detected);
+  });
 
 })();
 
