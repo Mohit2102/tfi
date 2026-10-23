@@ -98,7 +98,7 @@ html.dark-mode {
   --text-muted: #E7E5E4;
 
   /* Borders */
-  --line: rgba(245, 240, 223, 0.10);
+  /* --line: rgba(245, 240, 223, 0.10); */
   --line-strong: rgba(245, 240, 223, 0.20);
 
   /* Header */
