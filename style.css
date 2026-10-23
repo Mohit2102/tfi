@@ -57,7 +57,7 @@
   --text-muted: #211b0d;
 
   /* Borders */
-  --line: rgba(23, 19, 10, 0.10);
+  /* --line: rgba(23, 19, 10, 0.10); */
   --line-strong: rgba(23, 19, 10, 0.18);
 
   /* Header */
@@ -441,20 +441,124 @@ html.dark-mode .site-header {
   object-fit: contain;
 }
 
+
+/* TFI — Dynamic Fitness Wordmark */
 .logo .word {
+  --tfi-gold: #b8861b;
+  --tfi-glow: rgba(201, 154, 46, 0.35);
+
+  position: relative;
+  display: inline-block;
+
   font-family: "Oswald", sans-serif;
   font-size: 1.05rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #a67c18;
   line-height: 1;
   white-space: nowrap;
+
+  color: var(--tfi-gold);
+  text-shadow: 0 0 1px currentColor;
+
   transition:
     letter-spacing 0.3s ease,
     color 0.3s ease,
-    filter 0.3s ease;
+    text-shadow 0.3s ease;
 }
+
+/* Animated gold energy under the word */
+.logo .word::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 100%;
+  height: 2px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--tfi-gold) 20%,
+    #ffe9a6 50%,
+    var(--tfi-gold) 80%,
+    transparent
+  );
+
+  background-size: 200% 100%;
+  animation: tfiEnergyPulse 2.4s ease-in-out infinite;
+
+  filter: drop-shadow(0 0 4px var(--tfi-glow));
+  transform-origin: center;
+}
+
+/* Shine travelling through the text */
+@supports (-webkit-background-clip: text) {
+  .logo .word {
+    background: linear-gradient(
+      110deg,
+      var(--tfi-gold) 0%,
+      var(--tfi-gold) 38%,
+      #fff0b5 48%,
+      var(--tfi-gold) 58%,
+      var(--tfi-gold) 100%
+    );
+    background-size: 250% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: tfiWordShine 4s ease-in-out infinite;
+  }
+}
+
+@keyframes tfiWordShine {
+  0%, 15% {
+    background-position: 100% 0;
+  }
+  75%, 100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes tfiEnergyPulse {
+  0%, 100% {
+    background-position: 100% 0;
+    opacity: 0.55;
+    transform: scaleX(0.75);
+  }
+  50% {
+    background-position: 0 0;
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Hover: energetic and premium */
+.logo:hover .word {
+  letter-spacing: 0.19em;
+  text-shadow: 0 0 12px var(--tfi-glow);
+}
+
+/* Dark theme */
+.dark-mode .logo .word,
+[data-theme="dark"] .logo .word,
+html.dark .logo .word {
+  --tfi-gold: #f0cb68;
+  --tfi-glow: rgba(240, 203, 104, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo .word,
+  .logo .word::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 
 .logo:hover .word {
   letter-spacing: 0.2em;
@@ -6016,7 +6120,7 @@ html.dark-mode #why .why-team {
   padding: 9px 13px;
   background: var(--bg);
   color: var(--text-muted);
-  border: 1px solid var(--line);
+  border: 4px solid var(--line);
   border-radius: 3px;
   font-size: 14px;
 }
