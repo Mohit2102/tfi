@@ -16160,10 +16160,12 @@ html.ps-lock { overflow: hidden; }
 }
 
 .bmi-float svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  color: var(--gold-bright);
+  fill: none;
+  stroke: black;
+  stroke-width: 1.8;
 }
 
 /* Label expands on hover/focus (desktop) */
