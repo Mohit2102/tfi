@@ -16113,3 +16113,106 @@ html.ps-lock { overflow: hidden; }
   .ps-buy::before,
   .ps-card--gif .ps-tag::before { animation: none; }
 }
+
+
+/* =========================================================
+   BMI FLOATING BUTTON
+   (Linked from index.html. You can also paste this at the
+   end of style.css and remove the <link> from index.html.)
+========================================================= */
+.bmi-float {
+  position: fixed;
+  left: 20px;
+  bottom: 22px;
+  z-index: 900;
+
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 56px;
+  padding: 0 16px;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #e8c766, #c9a227);
+  color: #111;
+  text-decoration: none;
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: 14px;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35),
+              inset 0 1px 0 rgba(255, 255, 255, .45);
+  transition: transform .25s ease, box-shadow .25s ease,
+              opacity .3s ease, visibility .3s ease;
+}
+
+/* Soft pulse ring */
+.bmi-float::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid #c9a227;
+  animation: bmiPulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+.bmi-float svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* Label expands on hover/focus (desktop) */
+.bmi-float__label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition: max-width .35s ease, opacity .25s ease, margin .35s ease;
+}
+
+.bmi-float:hover,
+.bmi-float:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(201, 162, 39, .45);
+}
+
+.bmi-float:hover .bmi-float__label,
+.bmi-float:focus-visible .bmi-float__label {
+  max-width: 160px;
+  opacity: 1;
+  margin-left: 10px;
+}
+
+.bmi-float:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Hidden while the BMI section is visible */
+.bmi-float.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+@keyframes bmiPulse {
+  0%   { transform: scale(1);    opacity: .7; }
+  100% { transform: scale(1.35); opacity: 0;  }
+}
+
+@media (max-width: 640px) {
+  .bmi-float { left: 14px; bottom: 16px; height: 52px; padding: 0 14px; }
+  /* No hover on touch: show just the icon */
+  .bmi-float:hover .bmi-float__label { max-width: 0; opacity: 0; margin: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmi-float::before { animation: none; }
+  .bmi-float, .bmi-float__label { transition: none; }
+}

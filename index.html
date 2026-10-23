@@ -25,6 +25,8 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
+  <!-- BMI floating button styles -->
+  <link rel="stylesheet" href="bmi-float.css">
 </head>
 
 <body>
@@ -134,7 +136,7 @@
         </button>
 
         <!-- Desktop CTA -->
-        <a class="btn btn-solid nav-book-btn" href="#contact">Login/Signup</a>
+        <a class="btn btn-solid nav-book-btn" href="/login">Login/Signup</a>
 
         <!-- Mobile menu button -->
         <button class="navtoggle" id="navtoggle" type="button"
@@ -224,7 +226,7 @@
       <a href="#contact">Contact</a>
 
       <!-- Mobile CTA -->
-      <a class="btn btn-solid mobile-book-btn" href="#contact">Login/Signup</a>
+      <a class="btn btn-solid mobile-book-btn" href="/login">Login/Signup</a>
 
     </div>
 
@@ -270,8 +272,8 @@
 
     <!-- <a href="personal-training.html" class="hero-know-more">
       Know More
-      <span>→</span>
-    </a> -->
+      <span>→</span> -->
+    </a>
   </div>
 
   <!-- Dots -->
@@ -1791,6 +1793,16 @@
 
   </a>
 
+  <!-- BMI floating button -->
+  <a class="bmi-float" href="#bmi" id="bmiFloat" aria-label="Calculate your BMI">
+
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M7 2h10a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm0 2a1 1 0 0 0-1 1v3h12V5a1 1 0 0 0-1-1H7zm-1 6v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9H6zm2.5 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3.5 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3.5 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM8.5 15.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3.5 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3.5 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+
+    <span class="bmi-float__label">Calculate BMI</span>
+  </a>
+
 
   <!-- =========================================================
        SCRIPTS
@@ -1804,6 +1816,7 @@
        06. Testimonials carousel
        07. BMI calculator
        08. Enquiry form
+       09. BMI floating button
   ========================================================== -->
   <script>
     (function () {
@@ -2190,11 +2203,9 @@
       }
 
 
-      
+
       /* =========================================================
         BMI CALCULATOR + RESULT POPUP
-        Replace your old initBMI() function with this one.
-        (Keep the call  initBMI();  at the bottom of your script.)
       ========================================================= */
 
       function initBMI() {
@@ -2469,6 +2480,42 @@
 
 
       /* =======================================================
+         09. BMI FLOATING BUTTON
+         Scrolls to the calculator and hides itself while the
+         BMI section is on screen.
+      ======================================================= */
+
+      function initBmiFloat() {
+        var btn = document.getElementById("bmiFloat");
+        var section = document.getElementById("bmi");
+
+        if (!btn || !section) return;
+
+        // Smooth scroll, then focus the first field
+        btn.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          section.scrollIntoView({
+            behavior: reduceMotion ? "auto" : "smooth",
+            block: "start"
+          });
+
+          setTimeout(function () {
+            var input = document.getElementById("heightCm");
+            if (input) input.focus({ preventScroll: true });
+          }, reduceMotion ? 0 : 700);
+        });
+
+        // Hide the button while the BMI section is visible
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(function (entries) {
+            btn.classList.toggle("is-hidden", entries[0].isIntersecting);
+          }, { threshold: 0.25 }).observe(section);
+        }
+      }
+
+
+      /* =======================================================
          START
       ======================================================= */
 
@@ -2480,6 +2527,7 @@
       initTestimonials();
       initBMI();
       initEnquiryForm();
+      initBmiFloat();
 
     })();
 
