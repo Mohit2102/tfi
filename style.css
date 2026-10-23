@@ -6118,7 +6118,7 @@ html.dark-mode #why .why-team {
 
 .journey-points div {
   padding: 9px 13px;
-  background: var(--bg);
+  background: #44371d;
   color: var(--text-muted);
   border: 4px solid var(--line);
   border-radius: 3px;
