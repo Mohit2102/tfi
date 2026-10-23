@@ -1102,7 +1102,7 @@ html.dark-mode #mobilemenu {
 .hero-carousel {
   position: relative;
   width: 100%;
-  aspect-ratio: 20 / 8;
+  aspect-ratio: 25 / 10;
   overflow: hidden;
   background: transparent;
 }
