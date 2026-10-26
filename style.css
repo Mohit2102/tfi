@@ -56,6 +56,7 @@
   --text-secondary: #2e2103;
   --text-muted: #211b0d;
 
+
   /* Borders */
   /* --line: rgba(23, 19, 10, 0.10); */
   --line-strong: rgba(23, 19, 10, 0.18);
@@ -93,7 +94,7 @@ html.dark-mode {
   --gold-dark: #8b6313;
 
   /* Text */
-  --text: #ffffff;
+   --text: #ffffff;
   --text-secondary: #fafafa;
   --text-muted: #E7E5E4;
 
@@ -1207,6 +1208,7 @@ html.dark-mode #mobilemenu {
   position: relative;
   width: 100%;
   aspect-ratio: 25 / 10;
+  max-height: 420px;
   overflow: hidden;
   background: transparent;
 }
@@ -1214,6 +1216,7 @@ html.dark-mode #mobilemenu {
 .carousel-slide {
   position: absolute;
   inset: 0;
+  overflow: hidden;
   opacity: 0;
   transition: opacity 0.6s ease;
 }
@@ -1225,11 +1228,13 @@ html.dark-mode #mobilemenu {
 .carousel-slide img,
 .slide-bg,
 .slide-fg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 28%;
 }
 
 .carousel-slide::after {
@@ -1444,6 +1449,10 @@ html.dark-mode #mobilemenu {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
+  .hero-carousel {
+    max-height: 240px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1452,16 +1461,16 @@ html.dark-mode #mobilemenu {
   }
 
   .slide-label {
-    left: 20px;
-    bottom: 35px;
+    left: 14px;
+    bottom: 28px;
   }
 
   .slide-label strong {
-    font-size: 22px;
+    font-size: 16px;
   }
 
   .slide-label span {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 
@@ -1479,22 +1488,49 @@ html.dark-mode #mobilemenu {
 }
 
 /* =========================================================
-   HERO — MOBILE BUTTONS BELOW BANNER
+   HERO — MOBILE BANNER + BUTTONS
 ========================================================= */
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 0;
+  }
 
   .hero-collage {
-    display: flex;
-    flex-direction: column;
+    display: block;
     height: auto;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .hero-carousel {
     width: 100%;
-    /* height: 420px; */
+    aspect-ratio: 2.4 / 1;
+    max-height: 168px;
     position: relative;
+  }
+
+  .carousel-dots {
+    bottom: 8px;
+    gap: 6px;
+  }
+
+  .carousel-dots button {
+    width: 7px;
+    height: 7px;
+  }
+
+  .carousel-dots button.active {
+    width: 18px;
+  }
+
+  .collage-badge {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+  }
+
+  .collage-badge .n {
+    font-size: 15px;
   }
 
   .hero-buttons {
@@ -1502,7 +1538,7 @@ html.dark-mode #mobilemenu {
     transform: none !important;
 
     width: 100%;
-    padding: 14px 10px 0;
+    padding: 10px 10px 0;
 
     display: flex;
     flex-direction: row;
@@ -1520,9 +1556,9 @@ html.dark-mode #mobilemenu {
     width: 50%;
     max-width: none;
 
-    min-height: 46px;
+    min-height: 42px;
     margin: 0 !important;
-    padding: 10px 8px;
+    padding: 8px 8px;
 
     display: flex;
     align-items: center;
@@ -1538,23 +1574,22 @@ html.dark-mode #mobilemenu {
 
 /* Smaller phones */
 @media (max-width: 480px) {
-
   .hero-carousel {
     width: 100%;
-    /* height: 150px; */
+    aspect-ratio: 2.5 / 1;
+    max-height: 140px;
   }
 
   .hero-buttons {
-    padding: 12px 8px 0;
+    padding: 8px 8px 0;
     gap: 8px;
   }
 
   .hero-buttons .hero-btn-primary {
-    min-height: 44px;
+    min-height: 40px;
     padding: 8px 5px;
     font-size: 10px;
   }
-
 }
 
 
@@ -1634,9 +1669,10 @@ html.dark-mode #mobilemenu {
 }
 
 .stat-cell {
-  padding: 38px 20px;
+  padding: 38px 16px;
   border-right: 1px solid var(--line);
   text-align: center;
+  min-width: 0;
 }
 
 .stat-cell:last-child {
@@ -1646,8 +1682,10 @@ html.dark-mode #mobilemenu {
 .stat-num {
   color: var(--text);
   font-family: "Oswald", sans-serif;
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(22px, 3.2vw, 44px);
   font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .stat-num .u {
@@ -1659,15 +1697,70 @@ html.dark-mode #mobilemenu {
   color: var(--text-muted);
   font-size: 12.5px;
   font-weight: 500;
+  line-height: 1.3;
+}
+
+@media (max-width: 900px) {
+  .stat-cell {
+    padding: 28px 12px;
+  }
+
+  .stat-num {
+    font-size: clamp(22px, 3.4vw, 34px);
+  }
 }
 
 @media (max-width: 760px) {
-  .stats-row {
-    grid-template-columns: repeat(2, 1fr);
+  .stats .wrap {
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  .stat-cell:nth-child(2) {
+  .stats-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat-cell {
+    padding: 18px 10px 16px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .stat-cell:nth-child(2n) {
     border-right: none;
+  }
+
+  .stat-cell:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .stat-cell:last-child {
+    border-right: none;
+  }
+
+  .stat-num {
+    font-size: clamp(20px, 6.4vw, 26px);
+  }
+
+  .stat-label {
+    margin-top: 4px;
+    font-size: 11px;
+    padding: 0 4px;
+  }
+}
+
+@media (max-width: 400px) {
+  .stat-cell {
+    padding: 14px 6px 12px;
+  }
+
+  .stat-num {
+    font-size: 20px;
+    letter-spacing: 0;
+  }
+
+  .stat-label {
+    font-size: 10px;
   }
 }
 
@@ -1798,7 +1891,8 @@ html.dark-mode #mobilemenu {
 .tfi-eyebrow {
   display: flex;
   align-items: center;
-
+  justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 12px;
 
   color: var(--gold);
@@ -1811,13 +1905,23 @@ html.dark-mode #mobilemenu {
   margin-bottom: 22px;
 }
 
-.tfi-eyebrow span {
+.tfi-eyebrow span:empty {
   display: block;
-
   width: 30px;
   height: 1px;
-
+  flex-shrink: 0;
   background: var(--gold);
+}
+
+.tfi-eyebrow span:not(:empty) {
+  flex: 1 1 auto;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  background: none;
+  line-height: 1.45;
+  text-align: center;
+  white-space: normal;
 }
 
 
@@ -2397,12 +2501,12 @@ html.dark-mode #mobilemenu {
 @media (max-width: 900px) {
 
   .tfi-personalized {
-    padding: 80px 0;
+    padding: 56px 0;
   }
 
   .tfi-personalized-inner {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 28px;
   }
 
   .tfi-personalized-copy {
@@ -2413,8 +2517,16 @@ html.dark-mode #mobilemenu {
     justify-content: center;
   }
 
+  .tfi-personalized-copy h2 {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(28px, 6vw, 44px);
+    letter-spacing: -0.04em;
+    line-height: 1.12;
+  }
+
   .tfi-title-line {
-    margin: 25px auto;
+    margin: 18px auto;
   }
 
   .tfi-personalized-text {
@@ -2431,28 +2543,44 @@ html.dark-mode #mobilemenu {
 @media (max-width: 600px) {
 
   .tfi-personalized {
-    padding: 65px 0;
+    padding: 36px 0 44px;
+  }
+
+  .tfi-eyebrow {
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+  }
+
+  .tfi-eyebrow span:empty {
+    width: 18px;
   }
 
   .tfi-personalized-copy h2 {
-    font-size: 43px;
+    font-size: clamp(26px, 8vw, 32px);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
 
-    letter-spacing: -1.5px;
+  .tfi-title-line {
+    width: 56px;
+    margin: 14px auto 16px;
   }
 
   .tfi-personalized-subtitle {
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 1.35;
+    margin-bottom: 14px;
   }
 
   .tfi-personalized-text {
     font-size: 14px;
-
-    line-height: 1.8;
+    line-height: 1.7;
   }
 
   .tfi-personalized-points {
     flex-direction: column;
-
     align-items: stretch;
   }
 
@@ -2461,16 +2589,17 @@ html.dark-mode #mobilemenu {
   }
 
   .tfi-personalized-visual {
-    min-height: 350px;
+    min-height: 0;
+    display: none;
   }
 
   .visual-circle {
-    width: 270px;
-    height: 270px;
+    width: 200px;
+    height: 200px;
   }
 
   .visual-inner strong {
-    font-size: 60px;
+    font-size: 44px;
   }
 
   .card-top {
@@ -5814,6 +5943,29 @@ html.dark-mode #why .why-team {
     transition-duration: .01ms !important;
   }
 }
+
+/* ================================
+   JOURNEY POINTS — DARK THEME
+================================ */
+:root,
+[data-theme="dark"],
+.dark-mode {
+  --journey-bg: #302817;
+  --journey-text: #ffffff;
+  --journey-border: #a98536;
+}
+
+/* ================================
+   JOURNEY POINTS — LIGHT THEME
+================================ */
+[data-theme="light"],
+.light-mode {
+  --journey-bg: #fff8e8;
+  --journey-text: #493714;
+  --journey-border: #d6b66a;
+}
+
+
 /* =========================================================
    19. FITNESS JOURNEY
 ========================================================= */
@@ -6116,30 +6268,6 @@ html.dark-mode #why .why-team {
   gap: 9px;
 }
 
-/* ================================
-   JOURNEY POINTS — DARK THEME
-================================ */
-:root,
-[data-theme="dark"],
-.dark-mode {
-  --journey-bg: #302817;
-  --journey-text: #ffffff;
-  --journey-border: #a98536;
-}
-
-/* ================================
-   JOURNEY POINTS — LIGHT THEME
-================================ */
-[data-theme="light"],
-.light-mode {
-  --journey-bg: #fff8e8;
-  --journey-text: #493714;
-  --journey-border: #d6b66a;
-}
-
-/* ================================
-   JOURNEY POINTS — COMMON STYLE
-================================ */
 .journey-points div {
   padding: 9px 13px;
   background: var(--journey-bg);
@@ -6147,7 +6275,7 @@ html.dark-mode #why .why-team {
   border: 2px solid var(--journey-border);
   border-radius: 6px;
   font-size: 14px;
-  font-weight: 600;
+   font-weight: 600;
   line-height: 1.5;
   transition: background-color 0.25s ease,
               color 0.25s ease,
@@ -16247,3 +16375,120 @@ html.ps-lock { overflow: hidden; }
   .bmi-float::before { animation: none; }
   .bmi-float, .bmi-float__label { transition: none; }
 }
+
+ 
+    .tfi-steps {
+      --tfi-gold: #d9a82e;
+      --tfi-card: rgba(255, 255, 255, 0.04);
+      --tfi-border: rgba(217, 168, 46, 0.28);
+      --tfi-text: #f4f4f4;
+      --tfi-muted: rgba(244, 244, 244, 0.68);
+
+      position: relative;
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    /* light theme (html loses .dark-mode when light is chosen) */
+    html:not(.dark-mode) .tfi-steps {
+      --tfi-card: #ffffff;
+      --tfi-border: rgba(217, 168, 46, 0.45);
+      --tfi-text: #1b1b1b;
+      --tfi-muted: rgba(27, 27, 27, 0.68);
+    }
+
+    /* vertical connector line behind the icons */
+    .tfi-steps::before {
+      content: "";
+      position: absolute;
+      left: 33px;
+      top: 40px;
+      bottom: 40px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--tfi-gold), rgba(217, 168, 46, 0.05));
+      z-index: 0;
+    }
+
+    .tfi-step {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 20px 16px 16px;
+      background: var(--tfi-card);
+      border: 1px solid var(--tfi-border);
+      border-radius: 18px;
+      backdrop-filter: blur(6px);
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .tfi-step:hover {
+      transform: translateX(8px);
+      border-color: var(--tfi-gold);
+      box-shadow: 0 14px 34px rgba(217, 168, 46, 0.18);
+    }
+
+    .tfi-step-icon {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f2c85b, #b88414);
+      color: #111;
+      font-size: 15px;
+      box-shadow: 0 0 0 5px rgba(217, 168, 46, 0.16);
+      transition: transform .3s ease;
+    }
+
+    .tfi-step:hover .tfi-step-icon { transform: scale(1.12) rotate(-6deg); }
+
+    .tfi-step-body { position: relative; flex: 1; min-width: 0; }
+
+    .tfi-step-body strong {
+      display: block;
+      font-family: "Oswald", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--tfi-text);
+    }
+
+    .tfi-step-body p {
+      margin: 4px 0 0;
+      font-size: .92rem;
+      line-height: 1.5;
+      color: var(--tfi-muted);
+    }
+
+    /* big ghost number */
+    .tfi-step-num {
+      position: absolute;
+      right: 0;
+      top: -6px;
+      font-family: "Oswald", sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--tfi-gold);
+      opacity: .22;
+      pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+      .tfi-steps::before { left: 29px; }
+      .tfi-step { padding: 14px 14px 14px 12px; gap: 14px; }
+      .tfi-step-body strong { font-size: 1.02rem; }
+      .tfi-step-num { font-size: 2.1rem; }
+      .tfi-step:hover { transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tfi-step, .tfi-step-icon { transition: none; }
+      .tfi-step:hover, .tfi-step:hover .tfi-step-icon { transform: none; }
+    }
+  
